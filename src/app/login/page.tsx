@@ -70,6 +70,33 @@ export default function UserLoginPage() {
 
   useEffect(() => { 
       setIsClient(true); 
+
+      // Soporte SSO automático desde la web principal
+      if (typeof window !== 'undefined') {
+          const params = new URLSearchParams(window.location.search);
+          const ssoToken = params.get('sso');
+          const targetModule = params.get('to');
+          if (ssoToken && auth) {
+              setIsLoading(true);
+              import('firebase/auth').then(({ signInWithCustomToken }) => {
+                  signInWithCustomToken(auth, ssoToken)
+                      .then((userCred) => {
+                          toast({ title: '¡Bienvenido a tu panel!', description: 'Sesión iniciada correctamente.' });
+                          if (targetModule === 'mayorista') {
+                              router.replace('/redeconomix/dashboard-mayorista/pedidos');
+                          } else {
+                              router.replace('/redeconomix/dashboard-negocio/resumen');
+                          }
+                      })
+                      .catch((err) => {
+                          console.error("SSO Token Login Error:", err);
+                          setIsLoading(false);
+                      });
+              });
+              return;
+          }
+      }
+
       // Si el usuario ya está conectado y cargó todo, redirigir automáticamente (silencioso)
       if (!isUserLoading && user) {
           handleRedirect(null); 
@@ -78,7 +105,7 @@ export default function UserLoginPage() {
           const timer = setTimeout(() => setView('email'), 800);
           return () => clearTimeout(timer);
       }
-  }, [isUserLoading, user]);
+  }, [isUserLoading, user, auth, router, toast]);
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
