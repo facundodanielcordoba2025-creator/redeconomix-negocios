@@ -101,24 +101,18 @@ export default function UserLoginPage() {
         } catch(e) {}
     }
     
-    const type = data?.accountType?.toLowerCase();
-    if (type && typeof window !== 'undefined') {
+    const type = data?.accountType?.toLowerCase() || 'negocio';
+    if (typeof window !== 'undefined') {
       localStorage.setItem('rex_role', type);
       localStorage.setItem('rex_session_active', '1');
     }
 
-    if (type === 'preventista') router.push('/redeconomix/empleados');
-    else if (type === 'provider' || type === 'prestador') router.push('/redeconomix/prestadores/panel');
-    else if (type === 'wholesaler' || type === 'mayorista') router.push('/redeconomix/dashboard-mayorista');
-    else if (type === 'retailer' || type === 'negocio' || type === 'admin') {
-      const savedRoute = typeof window !== 'undefined' ? localStorage.getItem('rex_last_route') : null;
-      if (savedRoute && savedRoute.startsWith('/redeconomix/dashboard-negocio')) {
-        router.push(savedRoute);
-      } else {
-        router.push('/redeconomix/dashboard-negocio');
-      }
+    const savedRoute = typeof window !== 'undefined' ? localStorage.getItem('rex_last_route') : null;
+    if (savedRoute && savedRoute.startsWith('/redeconomix/dashboard-negocio')) {
+      router.push(savedRoute);
+    } else {
+      router.push('/redeconomix/dashboard-negocio');
     }
-    else router.push('/redeconomix'); // Redirect Person (Consumer) to Marketplace
     
     toast({ title: '¡Bienvenido!', description: 'Sesión iniciada con éxito.' });
   };

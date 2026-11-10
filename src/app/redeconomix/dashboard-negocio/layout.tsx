@@ -134,19 +134,11 @@ export default function RetailerDashboardLayout({ children }: { children: React.
         isLinkedEmployee ||
         user?.uid?.startsWith('HvnrCjJj');
 
-      const isWholesaler = type === 'wholesaler' || type === 'mayorista';
-      if (isWholesaler) {
-        router.replace('/redeconomix/dashboard-mayorista');
-        return;
-      }
       if (!user) {
         router.replace('/login');
-      } else if (!isBusiness) {
-        // Solo redirigir si NO es un negocio de ningún tipo
-        router.replace('/redeconomix');
       }
     }
-  }, [isLoading, isClient, checkingEmployee, user, userData, isLinkedEmployee, router, pathname]);
+  }, [isLoading, isClient, checkingEmployee, user, router, pathname]);
 
   // 1. Apagar cámara y limpiar clases al cambiar de ruta/pestaña
   useEffect(() => {
