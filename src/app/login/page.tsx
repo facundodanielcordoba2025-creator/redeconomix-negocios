@@ -158,16 +158,26 @@ export default function UserLoginPage() {
     }
     
     const type = data?.accountType?.toLowerCase() || 'negocio';
+    const finalRole = (type === 'retailer' || type === 'negocio' || type === 'admin' || type === 'owner') ? 'admin' : type;
     if (typeof window !== 'undefined') {
-      localStorage.setItem('rex_role', type);
+      localStorage.setItem('rex_role', finalRole);
       localStorage.setItem('rex_session_active', '1');
+      if (finalRole === 'admin') {
+        localStorage.setItem('rex_employee_session', JSON.stringify({
+          id: 'admin',
+          name: data?.name || data?.fullName || 'Dueño (Admin)',
+          dni: 'admin',
+          role: 'admin',
+          retailerId: auth?.currentUser?.uid
+        }));
+      }
     }
 
     const savedRoute = typeof window !== 'undefined' ? localStorage.getItem('rex_last_route') : null;
     if (savedRoute && savedRoute.startsWith('/redeconomix/dashboard-negocio')) {
       router.push(savedRoute);
     } else {
-      router.push('/redeconomix/dashboard-negocio');
+      router.push('/redeconomix/dashboard-negocio/resumen');
     }
     
     toast({ title: '¡Bienvenido!', description: 'Sesión iniciada con éxito.' });

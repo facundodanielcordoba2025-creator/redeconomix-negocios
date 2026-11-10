@@ -113,11 +113,14 @@ export default function RetailerDashboardLayout({ children }: { children: React.
         return; 
       }
 
-      if (!user) {
+      const activeUser = user || auth?.currentUser;
+      const isSessionActive = typeof window !== 'undefined' && localStorage.getItem('rex_session_active') === '1';
+
+      if (!activeUser && !isSessionActive) {
         router.replace('/login');
       }
     }
-  }, [isUserLoading, isClient, user, router, pathname]);
+  }, [isUserLoading, isClient, user, auth, router, pathname]);
 
   // 1. Apagar cámara y limpiar clases al cambiar de ruta/pestaña
   useEffect(() => {
