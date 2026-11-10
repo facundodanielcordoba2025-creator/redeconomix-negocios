@@ -346,12 +346,12 @@ export default function UserLoginPage() {
                 </button>
 
                 <div className="pt-2 border-t border-white/10 w-full">
-                  <Link 
-                    href="/redeconomix/register"
+                  <a 
+                    href="https://www.redeconomix.com/redeconomix/register"
                     className="inline-flex items-center justify-center gap-1.5 text-white font-black text-xs uppercase tracking-wider py-2 px-4 rounded-xl bg-white/10 hover:bg-white/20 transition-all"
                   >
                     ¿No tienes cuenta? <span className="underline decoration-white/40 underline-offset-4 text-white">Regístrate gratis</span>
-                  </Link>
+                  </a>
                 </div>
              </div>
           </motion.div>

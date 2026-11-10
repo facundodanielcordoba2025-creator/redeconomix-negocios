@@ -9,8 +9,8 @@ export default function RegisterRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('/redeconomix/register');
-  }, [router]);
+    window.location.replace('https://www.redeconomix.com/redeconomix/register');
+  }, []);
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center overflow-hidden">

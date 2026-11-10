@@ -26,7 +26,10 @@ import {
   Store,
   Building,
   MapPin,
-  TrendingUp
+  TrendingUp,
+  LayoutDashboard,
+  Package,
+  ShoppingBag
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,13 +49,11 @@ import { cn } from '@/lib/utils';
 import { useRedEconomiXCart } from '@/context/redeconomix-cart-context';
 
 const DESKTOP_NAV_ITEMS = [
-  { href: '/redeconomix', label: 'Marketplace', icon: Store },
-  { href: '/redeconomix/billetera', label: 'Ganar Más', icon: TrendingUp },
-  { href: '/redeconomix/dashboard-negocio', label: 'Mi Negocio', icon: Building },
-
-  { href: '/programa-esencial', label: 'Bienestar', icon: ShieldCheck },
-  // { href: '/gerald', label: 'GeralD', icon: Crown },
-  { href: '/redeconomix/servicios', label: 'Servicios', icon: Wrench },
+  { href: '/redeconomix/dashboard-negocio/resumen', label: 'Resumen', icon: LayoutDashboard },
+  { href: '/redeconomix/dashboard-negocio/control-ventas', label: 'Caja', icon: Zap },
+  { href: '/redeconomix/dashboard-negocio/stock', label: 'Stock', icon: Package },
+  { href: '/redeconomix/dashboard-negocio/pedidos', label: 'Pedidos', icon: ShoppingBag },
+  { href: 'https://www.redeconomix.com/redeconomix', label: 'Tienda Clientes', icon: Store, external: true },
 ];
 
 export function RedEconomiXHeader({ 
@@ -177,7 +178,7 @@ export function RedEconomiXHeader({
                             <ChevronLeft className="h-5 w-5" />
                          </Button>
                     )}
-                    <Link href="/redeconomix" className="flex items-center group">
+                    <Link href="/redeconomix/dashboard-negocio/resumen" className="flex items-center group">
                         <div className="flex flex-col items-start leading-none pr-4">
                             {brandText ? (
                                  <span className={cn(
@@ -266,30 +267,29 @@ export function RedEconomiXHeader({
             <div className="hidden md:block bg-white border-b border-slate-200">
                 <div className="container mx-auto px-4 lg:px-8">
                     <nav className="flex items-center gap-8 h-12 overflow-x-auto no-scrollbar">
-                        {DESKTOP_NAV_ITEMS.filter(item => {
-                            if (item.label === 'Mi Negocio') return isBusiness;
-                            return true;
-                        }).map((item) => {
-                            const isActive = pathname === item.href || (item.href !== '/redeconomix' && pathname.startsWith(item.href));
-                            // Special case for 'Marketplace' to act like '¡Ofertas!' in DIA
-                            const isSpecial = item.label === 'Marketplace';
+                        {DESKTOP_NAV_ITEMS.map((item) => {
+                            const isActive = pathname === item.href;
+                            const isExternal = (item as any).external;
+                            const Tag = isExternal ? 'a' : Link;
+                            const extraProps = isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {};
                             return (
-                                <Link
+                                <Tag
                                     key={item.href}
                                     href={item.href}
+                                    {...extraProps}
                                     className={cn(
                                         "group flex items-center gap-2 h-full text-[13px] font-bold whitespace-nowrap transition-colors duration-200 shrink-0",
-                                        isActive || isSpecial
+                                        isActive
                                             ? "text-[#FF0000]"
                                             : "text-slate-600 hover:text-[#FF0000]"
                                     )}
                                 >
                                     <item.icon className={cn(
                                         "w-[18px] h-[18px]", 
-                                        isActive || isSpecial ? "text-[#FF0000]" : "text-slate-400 group-hover:text-[#FF0000]"
+                                        isActive ? "text-[#FF0000]" : "text-slate-400 group-hover:text-[#FF0000]"
                                     )} />
                                     {item.label}
-                                </Link>
+                                </Tag>
                             );
                         })}
                     </nav>

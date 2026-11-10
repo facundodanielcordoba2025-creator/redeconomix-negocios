@@ -155,7 +155,7 @@ function RetailerAccessWall() {
                 </CardContent>
                 <CardFooter>
                     <Button asChild className="w-full">
-                        <Link href="/emprendedores">Conocer el Plan Emprendedor</Link>
+                        <a href="https://www.redeconomix.com/emprendedores" target="_blank" rel="noopener noreferrer">Conocer el Plan Emprendedor</a>
                     </Button>
                 </CardFooter>
             </Card>
@@ -2566,7 +2566,7 @@ const getDateLabel = (product: any) => {
                                     <b>Agregar Manualmente:</b> Usá el botón <span className="font-semibold text-primary">"Agregar Producto"</span> para buscar en el catálogo maestro y añadir items uno por uno.
                                 </li>
                                 <li>
-                                    <b>Recepción de Pedidos:</b> Hacé un pedido en el <Link href="/redeconomix" className="underline font-semibold text-primary">Marketplace</Link> y, al confirmarlo en "Mis Compras", tu stock se actualizará automáticamente.
+                                    <b>Recepción de Pedidos:</b> Hacé un pedido en el <a href="https://www.redeconomix.com/redeconomix" target="_blank" rel="noopener noreferrer" className="underline font-semibold text-primary">Marketplace</a> y, al confirmarlo en "Mis Compras", tu stock se actualizará automáticamente.
                                 </li>
                             </ul>
                         </AlertDescription>
