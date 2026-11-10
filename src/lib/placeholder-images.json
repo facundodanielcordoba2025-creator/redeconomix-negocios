@@ -1,0 +1,988 @@
+{
+  "placeholderImages": [
+    {
+      "id": "distribuidoraPuntaQR",
+      "description": "Código QR estático para pagos de Distribuidora Punta",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FWhatsApp%20Image%202026-03-05%20at%206.45.35%20PM.jpeg?alt=media&token=6392e720-c922-491b-b78b-55378d6ecf4b",
+      "imageHint": "payment qr code"
+    },
+    {
+      "id": "product1",
+      "description": "Un smartphone moderno sobre un fondo limpio.",
+      "imageUrl": "https://images.unsplash.com/photo-1674751869744-27eddb18e23b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzbWFydHBob25lJTIwdGVjaHxlbnwwfHx8fDE3NjgxNDM4NjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smartphone tech"
+    },
+    {
+      "id": "product2",
+      "description": "Un elegante portátil abierto sobre un escritorio.",
+      "imageUrl": "https://images.unsplash.com/photo-1615274821871-18e23b3bc16b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsYXB0b3AlMjB3b3Jrc3BhY2V8ZW58MHx8fHwxNzY4MTMzODAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "laptop workspace"
+    },
+    {
+      "id": "product3",
+      "description": "Auriculares inalámbricos de alta calidad.",
+      "imageUrl": "https://images.unsplash.com/photo-1566286378558-5d52a6710b6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxoZWFkcGhvbmVzJTIwYXVkaW98ZW58MHx8fHwxNzY4MjEwNTE0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "headphones audio"
+    },
+    {
+      "id": "product4",
+      "description": "Una cámara profesional.",
+      "imageUrl": "https://images.unsplash.com/photo-1668037349467-f1b07bb7c442?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYW1lcmElMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3NjgxODM5NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "camera photography"
+    },
+    {
+      "id": "product5",
+      "description": "Smartwatch mostrando notificaciones.",
+      "imageUrl": "https://images.unsplash.com/photo-1719744755528-797de46cbbff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzbWFydHdhdGNoJTIwd2VhcmFibGV8ZW58MHx8fHwxNzY4MTMxMDk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smartwatch wearable"
+    },
+    {
+      "id": "product6",
+      "description": "Un casco de realidad virtual.",
+      "imageUrl": "https://images.unsplash.com/photo-1650704098443-241484a53bd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx2ciUyMGdhbWluZ3xlbnwwfHx8fDE3NjgxMjg5Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vr gaming"
+    },
+    {
+      "id": "userAvatar1",
+      "description": "Foto de perfil de una persona sonriendo.",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjgxMTI1NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "userAvatar2",
+      "description": "Foto de perfil de una persona.",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzY4MTEyNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "userAvatar3",
+      "description": "Foto de perfil de una persona.",
+      "imageUrl": "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjgxMTI1NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "userAvatar4",
+      "description": "Foto de perfil de una persona.",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzY4MTEyNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "userAvatar5",
+      "description": "Foto de perfil de una persona.",
+      "imageUrl": "https://images.unsplash.com/photo-1521119989659-a83eee488004?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjgxMTI1NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "mercadoPagoLogo",
+      "description": "Logo de Mercado Pago.",
+      "imageUrl": "https://images.unsplash.com/photo-1768106656273-f89f6ea27fbd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsb2dvJTIwcGF5bWVudHxlbnwwfHx8fDE3NjgxMjg5Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo payment"
+    },
+    {
+      "id": "giveawayAlquiler",
+      "description": "Llaves de una casa nueva.",
+      "imageUrl": "https://images.unsplash.com/photo-1588820487534-52b3638d729a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhcGFydG1lbnQlMjBrZXlzfGVufDB8fHx8MTc2ODIzMDAyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "apartment keys"
+    },
+    {
+      "id": "giveawayUniversitario",
+      "description": "Estudiante universitario estudiando.",
+      "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwZWR1Y2F0aW9ufGVufDB8fHx8MTc2ODIzMDAyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "university education"
+    },
+    {
+      "id": "giveawayFFAA",
+      "description": "Uniforme y botas militares.",
+      "imageUrl": "https://images.unsplash.com/photo-1629842272534-453f6e107567?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxtaWxpdGFyeSUyMHVuaWZvcm18ZW58MHx8fHwxNzY4MjMwMDIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "military uniform"
+    },
+    {
+      "id": "giveawaySupermercado",
+      "description": "Un carrito de compras lleno de productos.",
+      "imageUrl": "https://images.unsplash.com/photo-1542838132-92c53300491e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzaG9wcGluZyUyMGNhcnQlMjBncm9jZXJpZXN8ZW58MHx8fHwxNzY4MjMwMDIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "shopping cart"
+    },
+    {
+      "id": "giveawayCombustible",
+      "description": "Una persona cargando combustible a un auto.",
+      "imageUrl": "https://images.unsplash.com/photo-1616348436692-f6266d4f9c87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWZ1ZWxpbmclMjBjYXJ8ZW58MHx8fHwxNzY4MjMxODg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "refueling car"
+    },
+    {
+      "id": "giveawayTransporte",
+      "description": "Un autobús de transporte público en una calle de la ciudad.",
+      "imageUrl": "https://images.unsplash.com/photo-1570125909232-eb263c186902?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwdWJsaWMlMjB0cmFuc3BvcnR8ZW58MHx8fHwxNzY4MzE2MTkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "public transport"
+    },
+    {
+      "id": "heroTeamwork",
+      "description": "Un equipo diverso trabajando colaborativamente en una oficina moderna.",
+      "imageUrl": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "imageHint": "teamwork office"
+    },
+    {
+      "id": "businessMeeting",
+      "description": "Profesionales en una reunión de negocios corporativa.",
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "imageHint": "corporate business"
+    },
+    {
+      "id": "communityPeople",
+      "description": "Un grupo de personas diversas en un entorno comunitario.",
+      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "imageHint": "community people"
+    },
+    {
+      "id": "senpaiVentures",
+      "description": "Una imagen moderna y abstracta que representa capital de riesgo y startups.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/sepppt_8.jpg?alt=media&token=ec32455c-abe5-4589-936d-63b42b4df920",
+      "imageHint": "venture capital"
+    },
+    {
+      "id": "connectHero",
+      "description": "Siluetas de una obra en construcción al atardecer.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/siluetas-del-sitio-de-construccion.jpg?alt=media&token=869e7cc1-2841-4d47-8e36-4ec22cd8f16e",
+      "imageHint": "construction site"
+    },
+    {
+      "id": "sectorConstruction",
+      "description": "Excavadora pesada para cavar con luz diurna.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/excavadora-pesada-para-excavar-con-luz-diurna.jpg?alt=media&token=286e2de1-3e3b-4bbe-9203-afde0ca64315",
+      "imageHint": "construction site"
+    },
+    {
+      "id": "sectorMining",
+      "description": "Planta industrial con chimeneas que simbolizan la minería y la industria.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/contaminacion-ambiental-y-exterior-de-la-industria-la-luz-del-dia.jpg?alt=media&token=798cdfbb-dc27-4172-ad4b-b1ca3c6df3d1",
+      "imageHint": "mining industry"
+    },
+    {
+      "id": "sectorOilGas",
+      "description": "Máquinas de construcción pesada transportando y colocando tuberías de gas en el suelo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/maquinas-de-construccion-de-servicio-pesado-que-transportan-y-colocan-tuberias-de-gas-en-el-suelo.jpg?alt=media&token=8ac0452a-fb4e-4c8b-ae4e-bb56d1b78368",
+      "imageHint": "oil gas"
+    },
+    {
+      "id": "sectorEnergy",
+      "description": "Paneles solares para energía renovable en un campo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/paneles-solares-utilizados-para-energia-renovable-en-el-campo-bajo-el-cielo-lleno-de-nubes.jpg?alt=media&token=39e3e94f-ff9a-41b1-8610-9ceb28ef48ac",
+      "imageHint": "renewable energy"
+    },
+    {
+      "id": "senpaiIndustria",
+      "description": "Planta industrial con chimeneas.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/contaminacion-ambiental-y-exterior-de-la-industria-la-luz-del-dia.jpg?alt=media&token=798cdfbb-dc27-4172-ad4b-b1ca3c6df3d1",
+      "imageHint": "industrial factory"
+    },
+    {
+      "id": "senpaiConstruccion",
+      "description": "Excavadora pesada en una obra.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/excavadora-pesada-para-excavar-con-luz-diurna.jpg?alt=media&token=286e2de1-3e3b-4bbe-9203-afde0ca64315",
+      "imageHint": "construction site"
+    },
+    {
+      "id": "senpaiEnergia",
+      "description": "Paneles solares en un campo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/paneles-solares-utilizados-para-energia-renovable-en-el-campo-bajo-el-cielo-lleno-de-nubes.jpg?alt=media&token=39e3e94f-ff9a-41b1-8610-9ceb28ef48ac",
+      "imageHint": "renewable energy"
+    },
+    {
+      "id": "senpaiOilGas",
+      "description": "Máquinas de construcción colocando tuberías de gas.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/maquinas-de-construccion-de-servicio-pesado-que-transportan-y-colocan-tuberias-de-gas-en-el-suelo.jpg?alt=media&token=8ac0452a-fb4e-4c8b-ae4e-bb56d1b78368",
+      "imageHint": "oil gas rig"
+    },
+    {
+      "id": "senpaiHealthtech",
+      "description": "Consultorio médico vacío con un médico remoto en la pantalla de la computadora.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/oficina-de-medicos-vacia-con-medico-remore-hablando-durante-la-conferencia-de-videollamada-en-linea-en-la-pantalla-de-la-computadora-habitacion-de-hospital-equipada-con-herramientas-medicas-profesionales-servicios-de-medicina.jpg?alt=media&token=cec9863d-9891-4c50-8623-87898ae6f673",
+      "imageHint": "medical technology"
+    },
+    {
+      "id": "senpaiFintech",
+      "description": "Persona pagando con la aplicación de billetera de su smartphone.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/persona-que-paga-con-su-aplicacion-de-billetera-para-telefono-inteligente.jpg?alt=media&token=ea98fcc6-9f74-4b69-a5f0-f9e92b24a1ae",
+      "imageHint": "financial technology"
+    },
+    {
+      "id": "senpaiFoodtech",
+      "description": "Menú de comida rápida para dos personas en un plato blanco.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/menu-de-comida-rapida-para-dos-personas-en-plato-blanco.jpg?alt=media&token=60b25e44-0618-41e4-a9b2-7b76d7ad70a1",
+      "imageHint": "food technology"
+    },
+    {
+      "id": "personasHero",
+      "description": "Fondo abstracto con formas y gradientes.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/sl_021821_40880_04.jpg?alt=media&token=7d908909-8cd2-4750-a41b-9235c3f8edc2",
+      "imageHint": "abstract background"
+    },
+    {
+      "id": "personasCta",
+      "description": "Un grupo de amigos celebrando y divirtiéndose.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2012%20ene%202026%2C%2010_20_19%20a.m..png?alt=media&token=82a93d94-6508-48c5-969a-0a82271f568e",
+      "imageHint": "friends celebrating"
+    },
+    {
+      "id": "giveawayDepto",
+      "description": "Un edificio de apartamentos moderno.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2022%20ene%202026%2C%2001_07_24%20p.m..png?alt=media&token=9f11f695-a00e-4db2-8def-bae3146e6f13",
+      "imageHint": "apartment building"
+    },
+    {
+      "id": "giveawayAuto",
+      "description": "Un auto blanco moderno.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2022%20ene%202026%2C%2001_07_28%20p.m..png?alt=media&token=ce16e895-68ae-4720-b608-3e017b6b69ef",
+      "imageHint": "white car"
+    },
+    {
+      "id": "giveawayMoto400",
+      "description": "Una motocicleta potente.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2022%20ene%202026%2C%2001_07_31%20p.m..png?alt=media&token=1192775d-7639-4939-85a5-3cb1128ee6d8",
+      "imageHint": "motorcycle bike"
+    },
+    {
+      "id": "giveawayMoto110",
+      "description": "Un scooter de ciudad.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2022%20ene%202026%2C%2001_07_35%20p.m..png?alt=media&token=44258e29-48cd-4fb8-8e1d-63b24fbd5d42",
+      "imageHint": "scooter transport"
+    },
+    {
+      "id": "giveawayCelular",
+      "description": "Un smartphone moderno.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2022%20ene%202026%2C%2001_07_41%20p.m..png?alt=media&token=c8a6f969-d076-4b33-bd51-42f9f9c88897",
+      "imageHint": "smartphone tech"
+    },
+    {
+      "id": "microPlanBaseCard",
+      "description": "Tarjeta del Plan Base de Microasistencia.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/MICROASISTENCIA%2FChatGPT%20Image%2023%20ene%202026%2C%2004_10_06%20p.m..png?alt=media&token=23c84e1c-f66b-4155-b17f-f207d25bb95e",
+      "imageHint": "assistance plan"
+    },
+    {
+      "id": "microPlanArranqueCardNew",
+      "description": "Nueva tarjeta del Plan Arranque de Microasistencia.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/MICROASISTENCIA%2FChatGPT%20Image%2023%20ene%202026%2C%2004_10_02%20p.m..png?alt=media&token=26676c02-7446-4081-bd50-6f6dfeaca17d",
+      "imageHint": "assistance plan"
+    },
+    {
+      "id": "microPlanActivoCardNew",
+      "description": "Nueva tarjeta del Plan Activo de Microasistencia.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/MICROASISTENCIA%2FChatGPT%20Image%2023%20ene%202026%2C%2004_09_58%20p.m..png?alt=media&token=57858417-171e-4520-99e1-aa68b483cfb1",
+      "imageHint": "assistance plan"
+    },
+    {
+      "id": "microPlanPlusCardNew",
+      "description": "Nueva tarjeta del Plan Plus de Microasistencia.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/MICROASISTENCIA%2FChatGPT%20Image%2023%20ene%202026%2C%2004_09_54%20p.m..png?alt=media&token=ea645358-2d57-4b65-9ad1-142e3403bb35",
+      "imageHint": "assistance plan"
+    },
+    {
+      "id": "microPlanPremiumCardNew",
+      "description": "Nueva tarjeta del Plan Premium de Microasistencia.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/MICROASISTENCIA%2FChatGPT%20Image%2023%20ene%202026%2C%2004_09_48%20p.m..png?alt=media&token=79eb2ee3-28d1-4533-9e0c-1bfcc3fed27c",
+      "imageHint": "assistance plan"
+    },
+    {
+      "id": "ffaaJuiciosCardNew",
+      "description": "Nueva tarjeta para Juicios por Aportes y Retroactivos.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Tarjetas%20Marketplace%2FChatGPT%20Image%2024%20ene%202026%2C%2005_24_31%20p.m..png?alt=media&token=ae5bf5b9-ea03-496f-9893-f689a8a4acbd",
+      "imageHint": "legal justice"
+    },
+    {
+      "id": "ffaaLimpiezaCardNew",
+      "description": "Nueva tarjeta para Limpieza de Firma y Deudas.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Tarjetas%20Marketplace%2FChatGPT%20Image%2024%20ene%202026%2C%2005_24_26%20p.m..png?alt=media&token=0762dbc0-cc84-4195-a901-65cfd96aede9",
+      "imageHint": "financial clean"
+    },
+    {
+      "id": "sorteoAlquilerCardNew",
+      "description": "Nueva tarjeta para Sorteo Pack Alquiler.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Tarjetas%20Marketplace%2FChatGPT%20Image%2024%20ene%202026%2C%2005_24_42%20p.m..png?alt=media&token=88dc41ef-6660-414e-bdc9-3660499b5712",
+      "imageHint": "rent giveaway"
+    },
+    {
+      "id": "ffaaHero",
+      "description": "Soldados con la bandera argentina.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/soldado-cropped.jpeg?alt=media&token=f0c06b97-71f9-4058-8d01-006db2a03ba5",
+      "imageHint": "argentine soldiers"
+    },
+    {
+      "id": "ffaaCard",
+      "description": "Un soldado de espaldas.",
+      "imageUrl": "https://images.unsplash.com/photo-1629842272534-453f6e107567?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxtaWxpdGFyeSUyMHVuaWZvcm18ZW58MHx8fHwxNzY4MjMwMDIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "military soldier"
+    },
+    {
+      "id": "techoLogo",
+      "description": "Logo de la Fundación TECHO.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/fundacion-techo-aporta-a-la-reduccion-del-deficit-habitacional.jpg?alt=media&token=1c96dd1c-7724-42b4-9c57-98df94f600bd",
+      "imageHint": "TECHO logo"
+    },
+    {
+      "id": "garrahanLogo",
+      "description": "Logo de la Fundación Garrahan.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/472117430_991915256301449_4676609172517849296_n.jpg?alt=media&token=75054332-6c3f-472b-bf87-76a4da93a781",
+      "imageHint": "Garrahan logo"
+    },
+    {
+      "id": "patapilaLogo",
+      "description": "Logo de la Fundación Pata Pila.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/480787363_647520681184429_2924273010040981763_n.jpg?alt=media&token=abb2c6a5-de70-45a4-bb11-0e1b06d02d5f",
+      "imageHint": "Pata Pila logo"
+    },
+    {
+      "id": "remaxLogo",
+      "description": "Imagen del banner de la página de Alquiler Seguro.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/WhatsApp%20Image%202026-01-13%20at%209.28.09%20PM.jpeg?alt=media&token=35a65511-b41b-48b1-91f-2c1614e35431",
+      "imageHint": "alquiler seguro"
+    },
+    {
+      "id": "alquilerSeguroHome",
+      "description": "Paisaje urbano analógico con edificios.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/analog-landscape-city-with-buildings.jpg?alt=media&token=7b2e1e49-add3-469c-8421-054a340235e3",
+      "imageHint": "city buildings"
+    },
+    {
+      "id": "constructionProject",
+      "description": "Crédito para tu proyecto  $30.000.000",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/long-shot-men-working-roof-together.jpg?alt=media&token=4ebdc88c-b4da-415f-a796-20a3d7a400b8",
+      "imageHint": "roof construction"
+    },
+    {
+      "id": "casaTerreno1",
+      "description": "Crédito para tu proyecto  $75.000.000",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/168950376_1524447274424203_7511201674646839794_n.jpg?alt=media&token=e8488861-3644-4b4f-bbac-7c50edada7e3",
+      "imageHint": "modern brick house"
+    },
+    {
+      "id": "casaTerreno2",
+      "description": "Interior de una casa moderna con cocina.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/153511222_1493099877558943_7607779154607417409_n.jpg?alt=media&token=990e7e35-8e5d-4da6-a710-389136d26fc7",
+      "imageHint": "modern kitchen"
+    },
+    {
+      "id": "casaTerreno3",
+      "description": "Plano de una casa de 45m2.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/169151539_1524447257757538_8620504763892768208_n.jpg?alt=media&token=eec6e547-adba-4051-b3cb-b4c288cad16e",
+      "imageHint": "house floor plan"
+    },
+    {
+      "id": "casaTerreno4",
+      "description": "Interior de una casa moderna con sala de estar.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/171335015_1524447287757535_8631227412641975428_n.jpg?alt=media&token=d5588889-bac3-4c32-893d-523170c8c5ab",
+      "imageHint": "modern living room"
+    },
+    {
+      "id": "steelFrameGallery1",
+      "description": "Vista exterior de una casa de steel framing terminada.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/84680084_1203461943189406_5667874435642687488_n.jpg?alt=media&token=b0684ceb-01cb-44e2-b374-fba8ff396fb3",
+      "imageHint": "steel frame house exterior"
+    },
+    {
+      "id": "steelFrameGallery2",
+      "description": "Interior luminoso de una casa de steel framing.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/85182504_1203461756522758_1274906912344768512_n.jpg?alt=media&token=c3eaa86e-0f90-4058-bc06-c386c3e430c9",
+      "imageHint": "steel frame house interior"
+    },
+    {
+      "id": "steelFrameGallery3",
+      "description": "Estructura de steel framing de un techo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/85233021_1203461786522755_7471967816170602496_n.jpg?alt=media&token=a779322a-29c2-402d-8682-7f89b053567f",
+      "imageHint": "steel frame roof"
+    },
+    {
+      "id": "steelFrameGallery4",
+      "description": "Trabajadores montando la estructura de steel framing.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/86277937_1203461836522750_6759284659881771008_n.jpg?alt=media&token=6a760f6b-359e-4eef-858c-1ec5f70a4b5e",
+      "imageHint": "steel frame construction"
+    },
+    {
+      "id": "steelFrameGallery5",
+      "description": "Planos sobre una mesa de construcción de steel framing.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/500736047_1026005743011297_8301074151784645738_n.jpg?alt=media&token=7ee7066e-0447-4617-895a-0c3b6b954e86",
+      "imageHint": "steel frame plan"
+    },
+    {
+      "id": "steelFrameGallery6",
+      "description": "Estructura de steel framing en construcción.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/500325641_1026005729677965_1997136491735593596_n.jpg?alt=media&token=505d9b3a-599e-45f7-97c5-3cc623e1dcb8",
+      "imageHint": "steel frame structure"
+    },
+    {
+      "id": "casaEpsSip1",
+      "description": "Crédito para tu proyecto  $40.000.000",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/41715319_866522006883403_282608994105688064_n.jpg?alt=media&token=c5d664c9-bfd1-4ec3-b448-9173ec9eb0f0",
+      "imageHint": "eps sip house"
+    },
+    {
+      "id": "casaEpsSip2",
+      "description": "Casa EPS / SIP - Vista interior",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/41713463_866521910216746_7493298191425601536_n.jpg?alt=media&token=427d1506-811b-41a0-8400-c7a20b1b2709",
+      "imageHint": "eps sip interior"
+    },
+    {
+      "id": "casaEpsSip3",
+      "description": "Casa EPS / SIP - Proceso de construcción",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/41692557_866521943550076_7392844326620889088_n.jpg?alt=media&token=214b0f48-b3b1-43bc-99f1-2d7ba06634f2",
+      "imageHint": "eps sip construction"
+    },
+    {
+      "id": "casaEpsSip4",
+      "description": "Casa EPS / SIP - Vista exterior",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/41794931_866522030216734_5174671096091246592_n.jpg?alt=media&token=d494424d-6f85-47cd-ba51-0c58046a8a0b",
+      "imageHint": "eps sip exterior"
+    },
+    {
+      "id": "casaEpsSip5",
+      "description": "Casa EPS / SIP de 45m2 + Cochera Liviana de 14m2 + Terreno de 147m2 - thumbnail 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/1718626822718.jpeg?alt=media&token=95c8c6c7-3958-4095-afb5-d95449ed9adb",
+      "imageHint": "eps sip interior"
+    },
+    {
+      "id": "casaEpsSip6",
+      "description": "Casa EPS / SIP de 45m2 + Cochera Liviana de 14m2 + Terreno de 147m2 - thumbnail 2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/1718626770083.jpeg?alt=media&token=671dac38-4d7f-4561-a998-1e402eaef2a7",
+      "imageHint": "eps sip plan"
+    },
+    {
+      "id": "cabana1",
+      "description": "Crédito de $30.000.000 para tu vivienda.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/540698280_1231060629036071_8474146972503081505_n.jpg?alt=media&token=6ecdea49-d2d4-4f8a-a4fc-85c50db2bfaf",
+      "imageHint": "wooden cabin exterior"
+    },
+    {
+      "id": "cabana2",
+      "description": "Cabaña de Madera 45m2 + Cochera Liviana 14m2 + Terreno 147m2 - thumbnail 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/538350997_1225597782915689_9039376540690024721_n.jpg?alt=media&token=120a418e-fd69-4361-a0d0-9e468bc98eb2",
+      "imageHint": "cabin interior living"
+    },
+    {
+      "id": "cabana3",
+      "description": "Cabaña de Madera 45m2 + Cochera Liviana 14m2 + Terreno 147m2 - thumbnail 2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/537970702_1225596606249140_811301736252775855_n.jpg?alt=media&token=ab4922a6-9929-489b-9d39-d6855abf01f6",
+      "imageHint": "cabin interior bedroom"
+    },
+    {
+      "id": "cabana4",
+      "description": "Cabaña de Madera 45m2 + Cochera Liviana 14m2 + Terreno 147m2 - thumbnail 3",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/531733432_1217025387106262_265004504814163521_n.jpg?alt=media&token=e3088a3b-9d53-482a-8e68-bbc57221507",
+      "imageHint": "cabin interior detail"
+    },
+    {
+      "id": "cabana5",
+      "description": "Cabaña de Madera 45m2 + Cochera Liviana 14m2 + Terreno 147m2 - thumbnail 4",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/511877004_1176440627831405_8591183124898281701_n.jpg?alt=media&token=872a8c96-ef23-43ad-a8e3-d5abc4f20700",
+      "imageHint": "cabin interior kitchen"
+    },
+    {
+      "id": "cabana30m2_1",
+      "description": "Crédito de $9.000.000 para tu proyecto. (no incluye Terreno)",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/506350703_1122585733224160_3822438314140267063_n.jpg?alt=media&token=814a8e0b-c672-4d84-8d7a-819a70f0a13d",
+      "imageHint": "small wooden cabin"
+    },
+    {
+      "id": "cabana30m2_2",
+      "description": "Cabaña de Madera 30m2 - thumbnail 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/469861414_18064091416839322_1142374157848354666_n.jpg?alt=media&token=4aa55375-f348-4ef0-a1b2-8d4b48f8f843",
+      "imageHint": "cabin interior"
+    },
+    {
+      "id": "cabana30m2_3",
+      "description": "Cabaña de Madera 30m2 - thumbnail 2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/469790268_18064091494839322_8800845890779982309_n.jpg?alt=media&token=5d5fd083-1331-4ca6-b069-57340ecf27c9",
+      "imageHint": "cabin bedroom"
+    },
+    {
+      "id": "casaRefaccionada",
+      "description": "Crédito de $5.000.000 para refaccionar, mejorar o ampliar tu vivienda.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/employee-working-project-side-view.jpg?alt=media&token=cf23f713-432c-4692-b241-3f29e9a141d0",
+      "imageHint": "house renovation"
+    },
+    {
+      "id": "fiatCronos1",
+      "description": "Si salis sorteado, te lo llevas y no pagas mas.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Fiat-Cronos-210425-05.webp?alt=media&token=60936872-87e4-40dd-a465-a2196e498e2f",
+      "imageHint": "fiat cronos"
+    },
+    {
+      "id": "fiatCronos2",
+      "description": "Fiat Cronos 0 Km - thumbnail 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Fiat-Cronos-210425-04.webp?alt=media&token=7302a517-5cbf-4191-ad0d-bf5502a84a40",
+      "imageHint": "car interior"
+    },
+    {
+      "id": "fiatCronos3",
+      "description": "Fiat Cronos 0 Km - thumbnail 2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Fiat-Cronos-210425-02.webp?alt=media&token=0770bb69-b6da-4823-a446-227a0d137dc9",
+      "imageHint": "car dashboard"
+    },
+    {
+      "id": "fiatCronos4",
+      "description": "Fiat Cronos 0 Km - thumbnail 3",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Fiat-Cronos-210425-01.webp?alt=media&token=774f604a-767c-4c0b-a791-94abf2497698",
+      "imageHint": "car exterior"
+    },
+    {
+      "id": "volkswagenVento1",
+      "description": "USADOS - Volkswagen Vento 2011 o similar",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_828785-MLA100070373814_122025-F.webp?alt=media&token=140fd78a-a7f4-4244-a8a2-1085ba9865e5",
+      "imageHint": "volkswagen vento"
+    },
+    {
+      "id": "volkswagenVento2",
+      "description": "USADOS - Volkswagen Vento 2011 o similar - thumbnail 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_671800-MLA100074305144_122025-F.webp?alt=media&token=aafbac45-1083-488c-8765-85dadfed84f6",
+      "imageHint": "car interior"
+    },
+    {
+      "id": "volkswagenVento3",
+      "description": "USADOS - Volkswagen Vento 2011 o similar - thumbnail 2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_661477-MLA100074305150_122025-F.webp?alt=media&token=fc32e383-1577-47fa-a4e8-92c0efc4eecf",
+      "imageHint": "car dashboard"
+    },
+    {
+      "id": "volkswagenVento4",
+      "description": "USADOS - Volkswagen Vento 2011 o similar - thumbnail 3",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_614122-MLA89842330428_082025-F.webp?alt=media&token=c2a646b2-7abe-4874-9130-ab7085ba3a40",
+      "imageHint": "car trunk"
+    },
+    {
+      "id": "volkswagenGol1",
+      "description": "USADOS - Volkswagen Gol 2012 o similar",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_714443-MLA90220123153_082025-F.webp?alt=media&token=de4cb753-1f47-462e-b28a-26febffe39f",
+      "imageHint": "volkswagen gol"
+    },
+    {
+      "id": "volkswagenGol2",
+      "description": "USADOS - Volkswagen Gol 2012 o similar - thumbnail 1",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_666841-MLA90220182635_082025-F.webp?alt=media&token=be637111-0607-4123-b633-75d9b1ecd6b6",
+      "imageHint": "car interior"
+    },
+    {
+      "id": "volkswagenGol3",
+      "description": "USADOS - Volkswagen Gol 2012 o similar - thumbnail 2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_660887-MLA90220281477_082025-F.webp?alt=media&token=54bba37d-2aff-449f-a394-8d752e2b9e20",
+      "imageHint": "car dashboard"
+    },
+    {
+      "id": "volkswagenGol4",
+      "description": "USADOS - Volkswagen Gol 2012 o similar - thumbnail 3",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_613372-MLA89842330428_082025-F.webp?alt=media&token=b2c0933d-6857-4f8f-89a7-76b9037970f3",
+      "imageHint": "car exterior"
+    },
+    {
+      "id": "zanellaZr150",
+      "description": "MOTO ZANELLA ZR150",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_864932-MLA96780143936_112025-F.webp?alt=media&token=a2b97962-75be-4987-beaf-42bfd730a3f4",
+      "imageHint": "zanella motorcycle"
+    },
+    {
+      "id": "rouser125",
+      "description": "MOTO ROUSER 125cc",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_825376-MLA92024792509_092025-F.webp?alt=media&token=a2700356-22fc-4c6d-a240-824ae673da75",
+      "imageHint": "rouser motorcycle"
+    },
+    {
+      "id": "keller110",
+      "description": "MOTO KELLER 110cc",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/D_NQ_NP_2X_941519-MLA82648110904_032025-F.webp?alt=media&token=190bcb7d-f0d4-4c5b-a52f-18182de5a61e",
+      "imageHint": "keller motorcycle"
+    },
+    {
+      "id": "planMuebles",
+      "description": "Con este plan SIEMPRE GANAS",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2012%20ene%202026%2C%2010_20_19%20a.m..png?alt=media&token=82a93d94-6508-48c5-969a-0a82271f568e",
+      "imageHint": "friends celebrating"
+    },
+    {
+      "id": "kiosko",
+      "description": "Interior de un kiosko bien surtido.",
+      "imageUrl": "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb252ZW5pZW5jZSUyMHN0b3JlfGVufDB8fHx8MTc2ODQzODQyMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "convenience store"
+    },
+    {
+      "id": "panaderia",
+      "description": "Panes recién horneados en una panadería.",
+      "imageUrl": "https://images.unsplash.com/photo-1702742800078-06d9e9af4fd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxiYWtlcnklMjBicmVhZHxlbnwwfHx8fDE3Njg0Mzg0MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bakery bread"
+    },
+    {
+      "id": "verduleria",
+      "description": "Frutas y verduras frescas en una verdulería.",
+      "imageUrl": "https://images.unsplash.com/photo-1584771145729-0bd9fda6529b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z3JvY2VyeSUyMHN0b3JlfGVufDB8fHx8MTc2ODQwMjg3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "grocery store"
+    },
+    {
+      "id": "tiendaFemenina",
+      "description": "Interior de una boutique de ropa femenina.",
+      "imageUrl": "https://images.unsplash.com/photo-1761682719767-36b43e4acd63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmYXNoaW9uJTIwYm91dGlxdWV8ZW58MHx8fHwxNzY4Mzg1MjQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fashion boutique"
+    },
+    {
+      "id": "sandwicheria",
+      "description": "Interior de una sandwichería.",
+      "imageUrl": "https://images.unsplash.com/photo-1552526881-721ce8509abb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzYW5kd2ljaCUyMHNob3B8ZW58MHx8fHwxNzY4NzQ0NzU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sandwich shop"
+    },
+    {
+      "id": "esteticaHero",
+      "description": "Rostro de una mujer con una apariencia natural y saludable, representando bienestar y estética.",
+      "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3b21hbiUyMGZhY2V8ZW58MHx8fHwxNzY4Mzg1Mzk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman face"
+    },
+    {
+      "id": "premiumHero",
+      "description": "Una casa moderna autosuficiente con paneles solares.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ChatGPT%20Image%2017%20ene%202026%2C%2001_11_09%20p.m..png?alt=media&token=96cdc0f8-1c07-4009-a287-e4b94dbfba6a",
+      "imageHint": "modern house"
+    },
+    {
+      "id": "landingHero",
+      "description": "An abstract, modern architectural image representing corporate vision.",
+      "imageUrl": "https://images.unsplash.com/photo-1581094371444-f286a63a6948?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "corporate architecture"
+    },
+    {
+      "id": "bannerCrecer",
+      "description": "Un equipo de trabajo celebrando un logro, simbolizando el crecimiento y las oportunidades.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/ambitious-workers-keeping-hands-up-show-their-positive-mood-break-time-meeting-room.jpg?alt=media&token=e80da3f1-8eff-43df-8345-7156d36e88f4",
+      "imageHint": "team success"
+    },
+    {
+      "id": "bannerConnect",
+      "description": "A large scale industrial construction site.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/siluetas-del-sitio-de-construccion.jpg?alt=media&token=869e7cc1-2841-4d47-8e36-4ec22cd8f16e",
+      "imageHint": "industrial construction"
+    },
+    {
+      "id": "bannerAlquiler",
+      "description": "An analog cityscape with buildings.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/analog-landscape-city-with-buildings.jpg?alt=media&token=7b2e1e49-add3-469c-8421-054a340235e3",
+      "imageHint": "city buildings"
+    },
+    {
+      "id": "bannerSenpai",
+      "description": "A group of creative people collaborating in a startup environment.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/sepppt_8.jpg?alt=media&token=ec32455c-abe5-4589-936d-63b42b4df920",
+      "imageHint": "startup collaboration"
+    },
+    {
+      "id": "redeconomixHero",
+      "description": "Supermercado que vende por celular, fondo rojo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/freepik__supermercado-que-vende-por-celular-fondo-rojo-celu__44957.png?alt=media&token=89be3278-3372-4336-b374-4ed0f2369b04",
+      "imageHint": "supermarket mobile"
+    },
+    {
+      "id": "redeconomixBanner1",
+      "description": "Banner de Retiro y Naranja X",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2Fhomeretiro25.webp?alt=media&token=7cac7dae-9d1a-48ab-9533-1ca8872dd637",
+      "imageHint": "store promotion"
+    },
+    {
+      "id": "redeconomixBanner2",
+      "description": "Banner de Tarjeta Naranja",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2Ftarjeta_naranja_web.png?alt=media&token=48136562-960d-48b0-a31f-507b2935a6c4",
+      "imageHint": "credit card"
+    },
+    {
+      "id": "redeconomixBanner3",
+      "description": "Banner de Danone",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2Fdanone_web.png?alt=media&token=79906de1-0059-4260-8033-18aa43df98d1",
+      "imageHint": "danone yogurt"
+    },
+    {
+      "id": "redeconomixBanner4",
+      "description": "Banner de Supermercado",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2Fbanner_super_desk.png?alt=media&token=c94def45-5f3a-4aec-9900-301624db3a83",
+      "imageHint": "supermarket products"
+    },
+    {
+      "id": "redeconomixInfo1",
+      "description": "Banner informativo sobre cómo funciona RedEconomiX.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FChatGPT%20Image%2020%20feb%202026%2C%2004_59_26%20p.m..png?alt=media&token=13a88bf3-e21f-40a9-9d15-2fcbb28cea2e",
+      "imageHint": "how it works"
+    },
+    {
+      "id": "redeconomixInfo2",
+      "description": "Banner informativo sobre los beneficios de RedEconomiX.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FChatGPT%20Image%2020%20feb%202026%2C%2004_59_21%20p.m..png?alt=media&token=56ae5263-6989-4d23-9f84-f0f01135d9c7",
+      "imageHint": "benefits infographic"
+    },
+    {
+      "id": "redeconomixInfo3",
+      "description": "Banner informativo sobre los premios y sorteos de RedEconomiX.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FChatGPT%20Image%2020%20feb%202026%2C%2004_59_44%20p.m..png?alt=media&token=746c602b-8c93-428e-9eba-914cd8ef6785",
+      "imageHint": "prizes giveaway"
+    },
+    {
+      "id": "redeconomixInfo4",
+      "description": "Banner informativo sobre cómo ser emprendedor en RedEconomiX.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FChatGPT%20Image%2016%20feb%202026%2C%2006_00_15%20p.m..png?alt=media&token=9750fe00-e97f-4e30-ad8d-7c73eecdfce6",
+      "imageHint": "entrepreneur program"
+    },
+    {
+      "id": "heladeraExhibidora",
+      "description": "Heladera exhibidora vertical llena de bebidas.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Equipamiento%2Fheladera.jpg?alt=media&token=c813f28f-755d-4a11-ac61-26dd67b07548",
+      "imageHint": "commercial refrigerator"
+    },
+    {
+      "id": "balanzaDigital",
+      "description": "Balanza digital comercial para pesar productos.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Equipamiento%2Fbalanza.jpg?alt=media&token=e93751a0-5ed3-455b-8647-ac9489f6498c",
+      "imageHint": "digital scale"
+    },
+    {
+      "id": "cortadoraFiambre",
+      "description": "Cortadora de fiambre industrial de acero inoxidable.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Equipamiento%2Fcortadora.jpg?alt=media&token=38a83d3e-9087-431f-b52b-2f08535a96de",
+      "imageHint": "meat slicer"
+    },
+    {
+      "id": "tv32",
+      "description": "Un televisor de 32 pulgadas en una sala de estar.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_756620-MLA99506612808_112025-F.webp?alt=media&token=730c1b88-5952-4aab-8d77-24051ae0add3",
+      "imageHint": "television livingroom"
+    },
+    {
+      "id": "plancha",
+      "description": "Una plancha a vapor moderna.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_671162-MLA100028035497_122025-F.webp?alt=media&token=57fbd1ed-eb99-4ea5-a074-491660c5dec2",
+      "imageHint": "steam iron"
+    },
+    {
+      "id": "lavarropa",
+      "description": "Un lavarropas automático de carga frontal.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_944194-MLA91566875462_092025-F.webp?alt=media&token=5699b702-486e-4d9c-8f00-19cacf965ceb",
+      "imageHint": "washing machine"
+    },
+    {
+      "id": "heladera",
+      "description": "Una heladera moderna con freezer.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_708244-MLA96658718300_112025-F.webp?alt=media&token=397e3318-d38e-4ffa-b881-f4c331af1ac5",
+      "imageHint": "refrigerator kitchen"
+    },
+    {
+      "id": "bicicleta",
+      "description": "Una bicicleta de montaña Venzo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_796996-MLA103755177599_012026-F.webp?alt=media&token=baa8728a-a6bd-4290-87de-b145015c482c",
+      "imageHint": "mountain bike"
+    },
+    {
+      "id": "monopatin",
+      "description": "Un monopatín eléctrico plegado.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_896412-MLA106208827161_012026-F.webp?alt=media&token=ab138cfc-4954-4f41-bf93-684d95f0c634",
+      "imageHint": "electric scooter"
+    },
+    {
+      "id": "licuadora",
+      "description": "Una licuadora de mesa de vidrio.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_981680-MLA99985192101_112025-F.webp?alt=media&token=2c318c39-4b3b-4151-9052-1b6e7aeb5cab",
+      "imageHint": "kitchen blender"
+    },
+    {
+      "id": "cafetera",
+      "description": "Una cafetera express preparando café.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_738300-MLA95497046846_102025-F.webp?alt=media&token=dd4daafd-cfd8-463c-9b85-266b836e366e",
+      "imageHint": "coffee maker"
+    },
+    {
+      "id": "sorteoCasa1",
+      "description": "Casa de ladrillo de 30 m2",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_NQ_NP_2X_694925-MLA78075948702_082024-N.webp?alt=media&token=6e31962b-1d98-4b17-aaba-9c4070b722bc",
+      "imageHint": "brick house"
+    },
+    {
+      "id": "amarokV6_1",
+      "description": "Camioneta Volkswagen Amarok V6",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2FD_888068-MLA84577904374_052025-C.jpg?alt=media&token=bc1d25df-53a5-4eb2-a89d-6d929f97a578",
+      "imageHint": "pickup truck"
+    },
+    {
+      "id": "motomelBlitz1",
+      "description": "Moto Motomel Blitz 110cc",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2Fimages.jpeg?alt=media&token=c493fa0d-56a9-48a6-ae20-08631b8f8741",
+      "imageHint": "scooter motorcycle"
+    },
+    {
+      "id": "ordenDeCompra",
+      "description": "Una orden de compra o voucher de regalo.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2FCarpeta%20Puntos%20RM%2Fistockphoto-2198737136-612x612.jpg?alt=media&token=63fcb276-16c7-4e8d-91e3-db96d4d5ee7b",
+      "imageHint": "gift voucher"
+    },
+    {
+      "id": "promoAlCosto1",
+      "description": "Promoción Arroz",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F220.jpg?alt=media&token=21e9144e-81ff-4ef9-a507-24774fa65e41",
+      "imageHint": "rice promotion"
+    },
+    {
+      "id": "promoAlCosto2",
+      "description": "Promoción Fideos",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F221.jpg?alt=media&token=1c981f32-1008-47fc-b5d3-7fe3f806ac7b",
+      "imageHint": "pasta promotion"
+    },
+    {
+      "id": "promoAlCosto3",
+      "description": "Promoción Atún",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F222.jpg?alt=media&token=3e1579c9-8770-477a-92e5-0eda35ab9440",
+      "imageHint": "tuna promotion"
+    },
+    {
+      "id": "promoAlCosto4",
+      "description": "Promoción Aceite",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F223.jpg?alt=media&token=ac91efbb-d2f3-4bb1-93a9-83dc86357803",
+      "imageHint": "oil promotion"
+    },
+    {
+      "id": "promoAlCosto5",
+      "description": "Promoción Galletitas",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F224.jpg?alt=media&token=be85b65a-50a8-4b69-a7cf-456aee4b4588",
+      "imageHint": "crackers promotion"
+    },
+    {
+      "id": "promoAlCosto6",
+      "description": "Promoción Yerba",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F225.jpg?alt=media&token=0af73064-2ef1-4d55-a416-580caf91b14e",
+      "imageHint": "yerba mate"
+    },
+    {
+      "id": "promoAlCosto7",
+      "description": "Promoción Jabón en polvo",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F226.jpg?alt=media&token=eca2fd91-f5ae-4668-9694-36916ffe6e6f",
+      "imageHint": "laundry detergent"
+    },
+    {
+      "id": "promoAlCosto8",
+      "description": "Promoción Puré de tomate",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F227.jpg?alt=media&token=de065115-d991-453d-8c8a-9612d4dece94",
+      "imageHint": "tomato puree"
+    },
+    {
+      "id": "promoAlCosto9",
+      "description": "Promoción Leche en polvo",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F228.jpg?alt=media&token=1b7dc501-9807-4613-ab12-b0dc51f2cd45",
+      "imageHint": "powdered milk"
+    },
+    {
+      "id": "promoAlCosto10",
+      "description": "Promoción Cacao",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F229.jpg?alt=media&token=742a6fbd-e30e-4de3-8eb5-eb278a2f0677",
+      "imageHint": "cocoa powder"
+    },
+    {
+      "id": "promoAlCosto11",
+      "description": "Promoción Azúcar",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F300.jpg?alt=media&token=88ae3de7-a786-43cd-8762-ce572914fe31",
+      "imageHint": "sugar promotion"
+    },
+    {
+      "id": "promoAlCosto12",
+      "description": "Promoción Mermelada",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F301.jpg?alt=media&token=98ca9216-72f9-465b-8a19-1b520e9b52e6",
+      "imageHint": "jam promotion"
+    },
+    {
+      "id": "promoAlCosto13",
+      "description": "Promoción Dulce de leche",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F302.jpg?alt=media&token=21c13556-8b62-4d7d-a137-1838af077362",
+      "imageHint": "dulce de leche"
+    },
+    {
+      "id": "promoAlCosto14",
+      "description": "Promoción Galletitas surtido",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F305.jpg?alt=media&token=354ecd83-38b3-4f32-811b-953ce7d5e608",
+      "imageHint": "assorted cookies"
+    },
+    {
+      "id": "promoAlCosto15",
+      "description": "Promoción Papas fritas",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F403.jpg?alt=media&token=ff6db122-38b7-4b7f-8113-e33d22db9355",
+      "imageHint": "potato chips"
+    },
+    {
+      "id": "promoAlCosto16",
+      "description": "Promoción Gaseosa",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F404.jpg?alt=media&token=d6f71dfc-d410-4af9-8b05-97332bfbd513",
+      "imageHint": "soda drink"
+    },
+    {
+      "id": "promoAlCosto17",
+      "description": "Promoción Cerveza",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F407.jpg?alt=media&token=40291c75-f493-439e-a3c7-209dbb53d12a",
+      "imageHint": "beer promotion"
+    },
+    {
+      "id": "promoAlCosto18",
+      "description": "Promoción Limpiador",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F604.jpg?alt=media&token=aa94864c-fc8b-4527-bbe7-c9b5ca0b6183",
+      "imageHint": "cleaning product"
+    },
+    {
+      "id": "promoAlCosto19",
+      "description": "Promoción Lavandina",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F605.jpg?alt=media&token=0fbc2401-599c-467a-bbd3-16f0f33e707f",
+      "imageHint": "bleach bottle"
+    },
+    {
+      "id": "promoAlCosto20",
+      "description": "Promoción Desodorante de ambiente",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2FPromociones%20al%20costo%2F606.jpg?alt=media&token=9b240568-668d-49b2-816c-6b48a91f7ad7",
+      "imageHint": "air freshener"
+    },
+    {
+      "id": "mobileAppMockup",
+      "description": "Mockup de la aplicación móvil de Red Mayorista dentro de un celular.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/oggie-8529f.firebasestorage.app/o/Mayorista%2Fmarketing%2Fview-animated-cartoon-character-shopping-goods.jpg?alt=media&token=2c36ba0d-2e4b-4216-8965-29ebaafcc3f7",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "premio_efectivo_arg",
+      "description": "Fajo de billetes argentinos sobre una mesa",
+      "imageUrl": "/images/premios/premio_efectivo_arg_1779845709770.png",
+      "imageHint": "argentine cash"
+    },
+    {
+      "id": "premio_moto_motomel",
+      "description": "Moto Motomel Blitz 110 cc en calle argentina",
+      "imageUrl": "/images/premios/premio_moto_motomel_1779845725592.png",
+      "imageHint": "motomel 110"
+    },
+    {
+      "id": "premio_chevrolet_montana",
+      "description": "Chevrolet Montana LT en Buenos Aires",
+      "imageUrl": "/images/premios/premio_chevrolet_montana_1779845740617.png",
+      "imageHint": "chevrolet montana"
+    },
+    {
+      "id": "premio_cabana_arg",
+      "description": "Cabaña de 3 dormitorios en el sur argentino",
+      "imageUrl": "/images/premios/premio_cabana_arg_1779845755428.png",
+      "imageHint": "argentine cabin"
+    },
+    {
+      "id": "premio_casa_prefab",
+      "description": "Casa prefabricada moderna en barrio argentino",
+      "imageUrl": "/images/premios/premio_casa_prefab_1779845770243.png",
+      "imageHint": "prefab house"
+    },
+    {
+      "id": "premio_vw_polo",
+      "description": "VW Polo Track en calle argentina",
+      "imageUrl": "/images/premios/premio_vw_polo_1779845786456.png",
+      "imageHint": "vw polo track"
+    },
+    {
+      "id": "premio_notebook",
+      "description": "Notebook de trabajo",
+      "imageUrl": "/images/premios/premio_notebook_1779845800016.png",
+      "imageHint": "notebook"
+    },
+    {
+      "id": "premio_smart_tv",
+      "description": "Smart TV 55 en living",
+      "imageUrl": "/images/premios/premio_smart_tv_1779845815347.png",
+      "imageHint": "smart tv"
+    }
+  ]
+}

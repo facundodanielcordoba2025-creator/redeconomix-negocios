@@ -1,0 +1,84 @@
+name: Construir App Android Negocios (APK y AAB)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    name: Construir APK y AAB Negocios
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - name: 📦 Descargar Código Fuente
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js (Para Capacitor)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 📥 Instalar Librerías de Node
+        run: npm install
+
+      - name: 📁 Preparar Carpeta 'out'
+        run: mkdir -p out
+
+      - name: 🔄 Sincronizar Motor Android (Capacitor)
+        run: npx cap sync android
+
+      - name: ☕ Configurar Java (Para compilar Android)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: 🔑 Dar Permisos al Compilador
+        working-directory: android
+        run: chmod +x gradlew
+
+      - name: 🔨 Fabricar Archivo de Prueba .apk
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: 🔨 Fabricar App Bundle .aab de Producción
+        working-directory: android
+        run: ./gradlew bundleRelease
+
+      - name: 🔑 Firmar App Bundle (.AAB) de Producción
+        if: env.ANDROID_KEYSTORE_BASE64 != ''
+        uses: r0adkll/sign-android-release@v1
+        id: sign_app
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        with:
+          releaseDirectory: android/app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          alias: ${{ secrets.ANDROID_KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      - name: 🔗 Link de Descarga Rápida (Sin límites de GitHub)
+        working-directory: android
+        run: |
+          echo "=========================================================="
+          echo "⬇️ DESCARGA TU APK DESDE AQUÍ SI GITHUB ESTÁ LLENO ⬇️"
+          curl -T app/build/outputs/apk/debug/app-debug.apk https://transfer.sh/RedEconomiX-Negocios.apk || echo "Error al subir a transfer.sh"
+          echo ""
+          echo "=========================================================="
+
+      - name: 🚀 Subir APK de Prueba
+        uses: actions/upload-artifact@v4
+        with:
+          name: RedEconomiX-Negocios-APK-Debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 1
+
+      - name: 🚀 Subir AAB de Producción Firmado
+        if: steps.sign_app.outputs.signedReleaseFile != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: RedEconomiX-Negocios-AAB-Production-Signed
+          path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+          retention-days: 1

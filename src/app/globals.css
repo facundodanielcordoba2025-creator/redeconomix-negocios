@@ -1,0 +1,541 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 222 47% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 9%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 55%;
+    --accent: 0 84% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 46%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 0 84% 46%;
+    --radius: 0.75rem;
+    
+    /* Custom RedEconomiX tokens */
+    --rex-red: 0 100% 50%;
+    --rex-red-light: 0 100% 96%;
+    --rex-red-dark: 0 100% 38%;
+    --rex-gold: 42 100% 52%;
+    --rex-gold-light: 42 100% 96%;
+    --rex-navy: 222 47% 11%;
+    --rex-surface: 220 14% 97%;
+    --rex-glass: 0 0% 100% / 0.8;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 40% 97%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 97%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 97%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 32% 15%;
+    --secondary-foreground: 210 40% 97%;
+    --muted: 217 32% 15%;
+    --muted-foreground: 215 20% 58%;
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 0 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body, html, input, button, select, textarea {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-headline, .font-black {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar - Hidden for native app feel */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    background: transparent;
+  }
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* =====================
+   RedEconomiX Design System
+   ===================== */
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #FF0000, #ff4444, #ff8800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Premium card */
+.card-premium {
+  background: white;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card-premium:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+/* Glow effects */
+.glow-red {
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.25), 0 4px 24px rgba(255, 0, 0, 0.15);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.25), 0 4px 24px rgba(251, 191, 36, 0.15);
+}
+
+/* Animated gradient backgrounds */
+.bg-animated-gradient {
+  background: linear-gradient(135deg, #FF0000, #cc0000, #990000);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Shimmer skeleton */
+.skeleton {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Smooth fade-in animations */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Floating animation */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Pulse glow */
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.6); }
+}
+
+/* =====================
+   RedEconomiX Theme
+   ===================== */
+.redeconomix-theme {
+  --background: 220 14% 97%;
+  --foreground: 222 47% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 9%;
+  --primary: 0 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 100%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 215 16% 55%;
+  --accent: 0 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 93%;
+  --input: 220 13% 95%;
+  --ring: 0 100% 50%;
+  --radius: 1.5rem;
+}
+
+.redconstruye-theme {
+  --primary: 42 100% 52%; /* rex-gold */
+  --primary-foreground: 0 0% 100%;
+  --accent: 42 100% 52%;
+  --accent-foreground: 0 0% 100%;
+  --ring: 42 100% 52%;
+  --radius: 2rem;
+}
+
+/* =====================
+   Utility Classes
+   ===================== */
+
+/* Badge variants */
+.badge-premium {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Category chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.chip-default {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border-color: hsl(var(--border));
+}
+
+.chip-default:hover {
+  background: hsl(var(--primary) / 0.08);
+  border-color: hsl(var(--primary) / 0.3);
+  color: hsl(var(--primary));
+}
+
+.chip-active {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+  box-shadow: 0 2px 12px hsl(var(--primary) / 0.3);
+}
+
+/* Hero gradient overlay */
+.hero-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, hsl(var(--border)), transparent);
+  margin: 0;
+}
+
+/* Number display */
+.stat-number {
+  font-family: var(--font-redhat), monospace;
+  font-feature-settings: 'tnum', 'lnum';
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Input focus ring */
+.input-focus {
+  transition: all 0.2s ease;
+}
+
+.input-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px hsl(var(--ring) / 0.2);
+}
+
+/* Bottom nav safe area */
+.bottom-nav {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Scroll snap */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+/* Status dot */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot-green { background: #22c55e; box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2); }
+.status-dot-amber { background: #f59e0b; box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2); }
+.status-dot-red { background: #ef4444; box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2); }
+.status-dot-blue { background: #3b82f6; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+
+/* Truncate lines */
+.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* =====================
+   Special Sector Banners
+   ===================== */
+.sector-health {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+.sector-education {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+.sector-military {
+  background: linear-gradient(135deg, #374151, #1f2937);
+}
+.sector-retail {
+  background: linear-gradient(135deg, #FF0000, #cc0000);
+}
+
+/* =====================
+   Loyalty Level Colors
+   ===================== */
+.loyalty-bronze { color: #cd7f32; }
+.loyalty-silver { color: #9ca3af; }
+.loyalty-gold { color: #f59e0b; }
+.loyalty-platinum { color: #7c3aed; }
+.loyalty-diamond { 
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-loyalty-bronze { background: linear-gradient(135deg, #cd7f32, #b8860b); }
+.bg-loyalty-silver { background: linear-gradient(135deg, #9ca3af, #6b7280); }
+.bg-loyalty-gold { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.bg-loyalty-platinum { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+.bg-loyalty-diamond { background: linear-gradient(135deg, #0ea5e9, #8b5cf6, #ec4899); }
+
+/* =====================
+   Marketplace Theme
+   ===================== */
+.marketplace-theme {
+  --primary: 0 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 0 100% 50%;
+  --accent-foreground: 0 0% 100%;
+}
+
+/* =====================
+   Print styles
+   ===================== */
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+}
+
+.shadow-3xl {
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.1);
+}
+
+/* =====================
+   Capacitor Native Scanner Fix
+   ===================== */
+html.scanner-active,
+body.scanner-active {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Hide main web app contents entirely so the camera preview underneath is visible */
+body.scanner-active main,
+body.scanner-active header,
+body.scanner-active footer,
+body.scanner-active nav,
+body.scanner-active [role="navigation"] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Specific class for page wrappers to become transparent during scan */
+body.scanner-active .scanner-transparent-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Hide other modals when scanner is active */
+body.scanner-active [role="dialog"]:not(.scanner-ui) {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Make shadcn Dialog Overlay fully transparent for scanner-ui */
+body.scanner-active [data-state="open"].fixed.inset-0,
+body.scanner-active [data-state="open"][class*="bg-black/80"],
+body.scanner-active [data-state="open"][class*="bg-black"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Ensure no other fixed elements (like floating cart) block the camera */
+body.scanner-active > div:not([role="dialog"]):not([data-radix-portal]) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+@keyframes laser-scanner {
+  0%, 100% { top: 10%; }
+  50% { top: 90%; }
+}
+.animate-laser-scanner {
+  animation: laser-scanner 2s infinite ease-in-out;
+}
+
+/* Continuous embedded scanner layout rules (Point of Sale, etc.) */
+html.scanner-active-continuous,
+body.scanner-active-continuous {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.scanner-active-continuous .scanner-transparent-wrapper,
+body.scanner-active-continuous main {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Ocultar fondos de modal overlays y backdrops cuando el escáner esté activo */
+body.scanner-active-continuous [data-vaul-overlay],
+body.scanner-active [data-vaul-overlay],
+body.scanner-active-continuous [class*="bg-black/80"],
+body.scanner-active [class*="bg-black/80"],
+body.scanner-active-continuous [class*="bg-background"],
+body.scanner-active [class*="bg-background"],
+body.scanner-active-continuous [class*="bg-[#FCFCFA]"],
+body.scanner-active [class*="bg-[#FCFCFA]"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.scanner-active-continuous [data-vaul-overlay],
+body.scanner-active [data-vaul-overlay] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Force Vercel production rebuild - GPS & Scanner UI fix version */
+
+

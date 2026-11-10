@@ -1,0 +1,9906 @@
+{
+  "3636": {
+    "city": "Lote 8",
+    "province": "Formosa"
+  },
+  "4123": {
+    "city": "Las Saladas",
+    "province": "Salta"
+  },
+  "4126": {
+    "city": "Tala",
+    "province": "Salta"
+  },
+  "4141": {
+    "city": "Pichao",
+    "province": "Tucuman"
+  },
+  "4190": {
+    "city": "Cosme",
+    "province": "Salta"
+  },
+  "4191": {
+    "city": "Vaqueria",
+    "province": "Salta"
+  },
+  "4193": {
+    "city": "Tunal",
+    "province": "Salta"
+  },
+  "4198": {
+    "city": "Horcones",
+    "province": "Salta"
+  },
+  "4400": {
+    "city": "Salta",
+    "province": "Salta"
+  },
+  "4401": {
+    "city": "Monte",
+    "province": "Salta"
+  },
+  "4403": {
+    "city": "Colon",
+    "province": "Salta"
+  },
+  "4405": {
+    "city": "Ballenal",
+    "province": "Salta"
+  },
+  "4407": {
+    "city": "Silleta",
+    "province": "Salta"
+  },
+  "4409": {
+    "city": "Toro",
+    "province": "Salta"
+  },
+  "4411": {
+    "city": "Sey",
+    "province": "Jujuy"
+  },
+  "4413": {
+    "city": "Caipe",
+    "province": "Salta"
+  },
+  "4415": {
+    "city": "Tonco",
+    "province": "Salta"
+  },
+  "4417": {
+    "city": "Puil",
+    "province": "Salta"
+  },
+  "4419": {
+    "city": "Colte",
+    "province": "Salta"
+  },
+  "4421": {
+    "city": "Osma",
+    "province": "Salta"
+  },
+  "4423": {
+    "city": "Viñaco",
+    "province": "Salta"
+  },
+  "4425": {
+    "city": "Sauce",
+    "province": "Salta"
+  },
+  "4427": {
+    "city": "Animana",
+    "province": "Salta"
+  },
+  "4430": {
+    "city": "Quisto",
+    "province": "Salta"
+  },
+  "4431": {
+    "city": "Aguas Calientes",
+    "province": "Jujuy"
+  },
+  "4432": {
+    "city": "Cobos",
+    "province": "Salta"
+  },
+  "4434": {
+    "city": "Anta",
+    "province": "Salta"
+  },
+  "4440": {
+    "city": "Peru",
+    "province": "Salta"
+  },
+  "4441": {
+    "city": "Metan Viejo",
+    "province": "Salta"
+  },
+  "4444": {
+    "city": "El Parque",
+    "province": "Salta"
+  },
+  "4446": {
+    "city": "Puli",
+    "province": "Salta"
+  },
+  "4448": {
+    "city": "Sauce Solo",
+    "province": "Salta"
+  },
+  "4449": {
+    "city": "Palma",
+    "province": "Salta"
+  },
+  "4452": {
+    "city": "Roca",
+    "province": "Salta"
+  },
+  "4530": {
+    "city": "Oran",
+    "province": "Salta"
+  },
+  "4531": {
+    "city": "Los Toldos",
+    "province": "Salta"
+  },
+  "4533": {
+    "city": "Tabacal",
+    "province": "Salta"
+  },
+  "4534": {
+    "city": "Yacara",
+    "province": "Salta"
+  },
+  "4535": {
+    "city": "Paraiso",
+    "province": "Salta"
+  },
+  "4537": {
+    "city": "Yuchan",
+    "province": "Salta"
+  },
+  "4538": {
+    "city": "Saucelito",
+    "province": "Salta"
+  },
+  "4542": {
+    "city": "Urundel",
+    "province": "Salta"
+  },
+  "4550": {
+    "city": "Otomana",
+    "province": "Salta"
+  },
+  "4552": {
+    "city": "Pocoy",
+    "province": "Salta"
+  },
+  "4554": {
+    "city": "Morillo",
+    "province": "Salta"
+  },
+  "4560": {
+    "city": "Tartagal",
+    "province": "Salta"
+  },
+  "4561": {
+    "city": "Hito 1",
+    "province": "Salta"
+  },
+  "4562": {
+    "city": "Vespucio",
+    "province": "Salta"
+  },
+  "4563": {
+    "city": "Recaredo",
+    "province": "Salta"
+  },
+  "4564": {
+    "city": "Yacuy",
+    "province": "Salta"
+  },
+  "4566": {
+    "city": "Aguaray",
+    "province": "Salta"
+  },
+  "4568": {
+    "city": "Pocitos",
+    "province": "Salta"
+  },
+  "4633": {
+    "city": "Iruya",
+    "province": "Salta"
+  },
+  "4644": {
+    "city": "Tuite",
+    "province": "Jujuy"
+  },
+  "4650": {
+    "city": "Tafna",
+    "province": "Jujuy"
+  },
+  "4651": {
+    "city": "Yavi",
+    "province": "Jujuy"
+  },
+  "1601": {
+    "city": "Isla Martin Garcia",
+    "province": "Buenos Aires"
+  },
+  "1602": {
+    "city": "Florida",
+    "province": "Buenos Aires"
+  },
+  "1605": {
+    "city": "Munro",
+    "province": "Buenos Aires"
+  },
+  "1607": {
+    "city": "Jose Marti",
+    "province": "Buenos Aires"
+  },
+  "1609": {
+    "city": "Boulogne",
+    "province": "Buenos Aires"
+  },
+  "1611": {
+    "city": "Kilometro 26",
+    "province": "Buenos Aires"
+  },
+  "1612": {
+    "city": "Kilometro 30",
+    "province": "Buenos Aires"
+  },
+  "1613": {
+    "city": "El Sol",
+    "province": "Buenos Aires"
+  },
+  "1615": {
+    "city": "Grand Bourg",
+    "province": "Buenos Aires"
+  },
+  "1617": {
+    "city": "El Talar",
+    "province": "Buenos Aires"
+  },
+  "1619": {
+    "city": "Garin",
+    "province": "Buenos Aires"
+  },
+  "1621": {
+    "city": "Benavidez",
+    "province": "Buenos Aires"
+  },
+  "1623": {
+    "city": "Los Talas",
+    "province": "Buenos Aires"
+  },
+  "1625": {
+    "city": "Escobar",
+    "province": "Buenos Aires"
+  },
+  "1627": {
+    "city": "Matheu",
+    "province": "Buenos Aires"
+  },
+  "1629": {
+    "city": "Pilar",
+    "province": "Buenos Aires"
+  },
+  "1633": {
+    "city": "Fatima",
+    "province": "Buenos Aires"
+  },
+  "1635": {
+    "city": "Presidente Derqui",
+    "province": "Buenos Aires"
+  },
+  "1636": {
+    "city": "Olivos",
+    "province": "Buenos Aires"
+  },
+  "1640": {
+    "city": "Acassuso",
+    "province": "Buenos Aires"
+  },
+  "1642": {
+    "city": "San Isidro",
+    "province": "Buenos Aires"
+  },
+  "1643": {
+    "city": "Beccar",
+    "province": "Buenos Aires"
+  },
+  "1644": {
+    "city": "Doctor Albert Schweitzer (Parada Fcgm)",
+    "province": "Buenos Aires"
+  },
+  "1646": {
+    "city": "San Fernando",
+    "province": "Buenos Aires"
+  },
+  "1647": {
+    "city": "Canal Nuevo",
+    "province": "Entre Rios"
+  },
+  "1648": {
+    "city": "Nuevo Puerto Tigre",
+    "province": "Buenos Aires"
+  },
+  "1649": {
+    "city": "Canal A",
+    "province": "Buenos Aires"
+  },
+  "1650": {
+    "city": "Miguelete (Parada Fcgm)",
+    "province": "Buenos Aires"
+  },
+  "1651": {
+    "city": "San Andres",
+    "province": "Buenos Aires"
+  },
+  "1655": {
+    "city": "Jose Leon Suarez",
+    "province": "Buenos Aires"
+  },
+  "1657": {
+    "city": "Pablo Podesta",
+    "province": "Buenos Aires"
+  },
+  "1659": {
+    "city": "Campo De Mayo",
+    "province": "Buenos Aires"
+  },
+  "1661": {
+    "city": "Barrio Obligado",
+    "province": "Buenos Aires"
+  },
+  "1663": {
+    "city": "Muñiz",
+    "province": "Buenos Aires"
+  },
+  "1664": {
+    "city": "Barrio Los Paraisos",
+    "province": "Buenos Aires"
+  },
+  "1665": {
+    "city": "El Cruce",
+    "province": "Buenos Aires"
+  },
+  "1667": {
+    "city": "Los Perales",
+    "province": "Buenos Aires"
+  },
+  "1669": {
+    "city": "Del Viso",
+    "province": "Buenos Aires"
+  },
+  "1672": {
+    "city": "Coronel Francisco Linch",
+    "province": "Buenos Aires"
+  },
+  "1674": {
+    "city": "Saenz Peña",
+    "province": "Buenos Aires"
+  },
+  "1676": {
+    "city": "Alianza Talleres",
+    "province": "Buenos Aires"
+  },
+  "1678": {
+    "city": "Caseros Sucursal No.1",
+    "province": "Buenos Aires"
+  },
+  "1682": {
+    "city": "Martin Coronado",
+    "province": "Buenos Aires"
+  },
+  "1684": {
+    "city": "El Palomar",
+    "province": "Buenos Aires"
+  },
+  "1686": {
+    "city": "Hurlingham",
+    "province": "Buenos Aires"
+  },
+  "1688": {
+    "city": "Santos Tesei",
+    "province": "Buenos Aires"
+  },
+  "1702": {
+    "city": "Ciudadela",
+    "province": "Buenos Aires"
+  },
+  "1704": {
+    "city": "Ramos Mejia",
+    "province": "Buenos Aires"
+  },
+  "1706": {
+    "city": "Haedo",
+    "province": "Buenos Aires"
+  },
+  "1708": {
+    "city": "Moron",
+    "province": "Buenos Aires"
+  },
+  "1712": {
+    "city": "Castelar",
+    "province": "Buenos Aires"
+  },
+  "1713": {
+    "city": "Parque Leloir",
+    "province": "Buenos Aires"
+  },
+  "1714": {
+    "city": "Ituzaingo",
+    "province": "Buenos Aires"
+  },
+  "1716": {
+    "city": "Libertad",
+    "province": "Buenos Aires"
+  },
+  "1718": {
+    "city": "San Antonio De Padua",
+    "province": "Buenos Aires"
+  },
+  "1722": {
+    "city": "Merlo",
+    "province": "Buenos Aires"
+  },
+  "1723": {
+    "city": "Mariano Acosta",
+    "province": "Buenos Aires"
+  },
+  "1727": {
+    "city": "Marcos Paz",
+    "province": "Buenos Aires"
+  },
+  "1733": {
+    "city": "Plomer",
+    "province": "Buenos Aires"
+  },
+  "1735": {
+    "city": "El Durazno",
+    "province": "Buenos Aires"
+  },
+  "1737": {
+    "city": "La Choza",
+    "province": "Buenos Aires"
+  },
+  "1739": {
+    "city": "Hornos",
+    "province": "Buenos Aires"
+  },
+  "1741": {
+    "city": "Lozano",
+    "province": "Buenos Aires"
+  },
+  "1742": {
+    "city": "Paso Del Rey",
+    "province": "Buenos Aires"
+  },
+  "1744": {
+    "city": "Moreno",
+    "province": "Buenos Aires"
+  },
+  "1746": {
+    "city": "Agua De Oro",
+    "province": "Buenos Aires"
+  },
+  "1748": {
+    "city": "El Granadero",
+    "province": "Buenos Aires"
+  },
+  "1752": {
+    "city": "Lomas Del Mirador",
+    "province": "Buenos Aires"
+  },
+  "1754": {
+    "city": "San Justo",
+    "province": "Buenos Aires"
+  },
+  "1755": {
+    "city": "La Rosa",
+    "province": "Buenos Aires"
+  },
+  "1757": {
+    "city": "Laferrere",
+    "province": "Buenos Aires"
+  },
+  "1759": {
+    "city": "El Progreso",
+    "province": "Buenos Aires"
+  },
+  "1761": {
+    "city": "Pontevedra",
+    "province": "Buenos Aires"
+  },
+  "1763": {
+    "city": "Barrio Apolo",
+    "province": "Buenos Aires"
+  },
+  "1765": {
+    "city": "Barrio Marconi",
+    "province": "Buenos Aires"
+  },
+  "1766": {
+    "city": "Tablada",
+    "province": "Buenos Aires"
+  },
+  "1770": {
+    "city": "Tapiales",
+    "province": "Buenos Aires"
+  },
+  "1772": {
+    "city": "Barrio Satelite",
+    "province": "Buenos Aires"
+  },
+  "1773": {
+    "city": "Ingeniero Budge",
+    "province": "Buenos Aires"
+  },
+  "1776": {
+    "city": "9 De Abril",
+    "province": "Buenos Aires"
+  },
+  "1778": {
+    "city": "Querandi",
+    "province": "Buenos Aires"
+  },
+  "1802": {
+    "city": "Balneario Popular",
+    "province": "Buenos Aires"
+  },
+  "1804": {
+    "city": "Ezeiza",
+    "province": "Buenos Aires"
+  },
+  "1806": {
+    "city": "Barrio Lujan",
+    "province": "Buenos Aires"
+  },
+  "1807": {
+    "city": "Barrio Stella Maris",
+    "province": "Buenos Aires"
+  },
+  "1808": {
+    "city": "Hogg",
+    "province": "Buenos Aires"
+  },
+  "1812": {
+    "city": "Maximo Paz",
+    "province": "Buenos Aires"
+  },
+  "1814": {
+    "city": "Cañuelas",
+    "province": "Buenos Aires"
+  },
+  "1815": {
+    "city": "Escuela Agricola Don Bosco",
+    "province": "Buenos Aires"
+  },
+  "1816": {
+    "city": "Los Aromos",
+    "province": "Buenos Aires"
+  },
+  "1822": {
+    "city": "Caraza",
+    "province": "Buenos Aires"
+  },
+  "1824": {
+    "city": "Lanus",
+    "province": "Buenos Aires"
+  },
+  "1825": {
+    "city": "La Polvareda",
+    "province": "Buenos Aires"
+  },
+  "1826": {
+    "city": "Las Colonias",
+    "province": "Buenos Aires"
+  },
+  "1828": {
+    "city": "Banfield",
+    "province": "Buenos Aires"
+  },
+  "1832": {
+    "city": "Santa Marta",
+    "province": "Buenos Aires"
+  },
+  "1834": {
+    "city": "Temperley",
+    "province": "Buenos Aires"
+  },
+  "1836": {
+    "city": "Llavallol",
+    "province": "Buenos Aires"
+  },
+  "1838": {
+    "city": "Barrio Lindo",
+    "province": "Buenos Aires"
+  },
+  "1842": {
+    "city": "Barrio Landa",
+    "province": "Buenos Aires"
+  },
+  "1846": {
+    "city": "Adrogue",
+    "province": "Buenos Aires"
+  },
+  "1847": {
+    "city": "Barrio Zabala",
+    "province": "Buenos Aires"
+  },
+  "1848": {
+    "city": "Las Malvinas (Parada Fcdfs.)",
+    "province": "Buenos Aires"
+  },
+  "1849": {
+    "city": "Claypole",
+    "province": "Buenos Aires"
+  },
+  "1852": {
+    "city": "Burzaco",
+    "province": "Buenos Aires"
+  },
+  "1854": {
+    "city": "Longchamps",
+    "province": "Buenos Aires"
+  },
+  "1856": {
+    "city": "Glew",
+    "province": "Buenos Aires"
+  },
+  "1858": {
+    "city": "La Bicha",
+    "province": "Buenos Aires"
+  },
+  "1862": {
+    "city": "Guernica",
+    "province": "Buenos Aires"
+  },
+  "1864": {
+    "city": "Alejandro Korn",
+    "province": "Buenos Aires"
+  },
+  "1865": {
+    "city": "El Pampero",
+    "province": "Buenos Aires"
+  },
+  "1870": {
+    "city": "La Mosca",
+    "province": "Buenos Aires"
+  },
+  "1871": {
+    "city": "Dock Sud",
+    "province": "Buenos Aires"
+  },
+  "1872": {
+    "city": "Sarandi",
+    "province": "Buenos Aires"
+  },
+  "1874": {
+    "city": "Costa De Villa Dominico",
+    "province": "Buenos Aires"
+  },
+  "1876": {
+    "city": "Bernal",
+    "province": "Buenos Aires"
+  },
+  "1878": {
+    "city": "Quilmes",
+    "province": "Buenos Aires"
+  },
+  "1879": {
+    "city": "Quilmes Oeste",
+    "province": "Buenos Aires"
+  },
+  "1881": {
+    "city": "Barrio Draimar",
+    "province": "Buenos Aires"
+  },
+  "1882": {
+    "city": "Ezpeleta",
+    "province": "Buenos Aires"
+  },
+  "1884": {
+    "city": "Berazategui",
+    "province": "Buenos Aires"
+  },
+  "1885": {
+    "city": "Platanos",
+    "province": "Buenos Aires"
+  },
+  "1886": {
+    "city": "Ranelagh",
+    "province": "Buenos Aires"
+  },
+  "1888": {
+    "city": "El Ombu",
+    "province": "Buenos Aires"
+  },
+  "1889": {
+    "city": "Bosques",
+    "province": "Buenos Aires"
+  },
+  "1890": {
+    "city": "Barrio Las Hermanas",
+    "province": "Buenos Aires"
+  },
+  "1891": {
+    "city": "Barrio El Parque",
+    "province": "Buenos Aires"
+  },
+  "1893": {
+    "city": "Montaraz",
+    "province": "Buenos Aires"
+  },
+  "1894": {
+    "city": "El Peligro",
+    "province": "Buenos Aires"
+  },
+  "1895": {
+    "city": "Arturo Segui",
+    "province": "Buenos Aires"
+  },
+  "1896": {
+    "city": "City Bell",
+    "province": "Buenos Aires"
+  },
+  "1897": {
+    "city": "Manuel B. Gonnet",
+    "province": "Buenos Aires"
+  },
+  "1900": {
+    "city": "Gambier",
+    "province": "Buenos Aires"
+  },
+  "1901": {
+    "city": "La Granja",
+    "province": "Buenos Aires"
+  },
+  "1903": {
+    "city": "Abasto",
+    "province": "Buenos Aires"
+  },
+  "1905": {
+    "city": "Poblet",
+    "province": "Buenos Aires"
+  },
+  "1907": {
+    "city": "El Pino",
+    "province": "Buenos Aires"
+  },
+  "1909": {
+    "city": "Arana",
+    "province": "Buenos Aires"
+  },
+  "1911": {
+    "city": "Bertolome Bavio",
+    "province": "Buenos Aires"
+  },
+  "1913": {
+    "city": "Atalaya",
+    "province": "Buenos Aires"
+  },
+  "1915": {
+    "city": "Roberto Payro",
+    "province": "Buenos Aires"
+  },
+  "1917": {
+    "city": "Luis Chico",
+    "province": "Buenos Aires"
+  },
+  "1919": {
+    "city": "Base Aeronaval De Punta Indio",
+    "province": "Buenos Aires"
+  },
+  "1921": {
+    "city": "Pipinas",
+    "province": "Buenos Aires"
+  },
+  "1923": {
+    "city": "Berisso",
+    "province": "Buenos Aires"
+  },
+  "1925": {
+    "city": "Ensenada",
+    "province": "Buenos Aires"
+  },
+  "1927": {
+    "city": "Escuela Naval Militar Rio Santiago",
+    "province": "Buenos Aires"
+  },
+  "1929": {
+    "city": "Isla Paulino",
+    "province": "Buenos Aires"
+  },
+  "1931": {
+    "city": "Piria",
+    "province": "Buenos Aires"
+  },
+  "1980": {
+    "city": "Los Merinos",
+    "province": "Buenos Aires"
+  },
+  "1981": {
+    "city": "Oliden",
+    "province": "Buenos Aires"
+  },
+  "1983": {
+    "city": "Gomez",
+    "province": "Buenos Aires"
+  },
+  "1984": {
+    "city": "Domselaar",
+    "province": "Buenos Aires"
+  },
+  "1986": {
+    "city": "Jeppener",
+    "province": "Buenos Aires"
+  },
+  "1987": {
+    "city": "Alegre",
+    "province": "Buenos Aires"
+  },
+  "2113": {
+    "city": "Peyrano",
+    "province": "Santa Fe"
+  },
+  "2346": {
+    "city": "Estingana",
+    "province": "Buenos Aires"
+  },
+  "2700": {
+    "city": "La Cora",
+    "province": "Buenos Aires"
+  },
+  "2701": {
+    "city": "Rancagua",
+    "province": "Buenos Aires"
+  },
+  "2703": {
+    "city": "Pinzon",
+    "province": "Buenos Aires"
+  },
+  "2705": {
+    "city": "Rojas",
+    "province": "Buenos Aires"
+  },
+  "2707": {
+    "city": "Hunter",
+    "province": "Buenos Aires"
+  },
+  "2709": {
+    "city": "Los Indios (Pdo. Rojas)",
+    "province": "Buenos Aires"
+  },
+  "2711": {
+    "city": "Pearson",
+    "province": "Buenos Aires"
+  },
+  "2715": {
+    "city": "La Vanguardia",
+    "province": "Buenos Aires"
+  },
+  "2717": {
+    "city": "Acevedo",
+    "province": "Buenos Aires"
+  },
+  "2718": {
+    "city": "Maguire",
+    "province": "Buenos Aires"
+  },
+  "2720": {
+    "city": "Colon",
+    "province": "Buenos Aires"
+  },
+  "2721": {
+    "city": "Sarasa",
+    "province": "Buenos Aires"
+  },
+  "2723": {
+    "city": "Juncal",
+    "province": "Santa Fe"
+  },
+  "2740": {
+    "city": "La Delia",
+    "province": "Buenos Aires"
+  },
+  "2741": {
+    "city": "Salto",
+    "province": "Buenos Aires"
+  },
+  "2743": {
+    "city": "Monroe",
+    "province": "Buenos Aires"
+  },
+  "2745": {
+    "city": "Gahan",
+    "province": "Buenos Aires"
+  },
+  "2747": {
+    "city": "Ines Indart",
+    "province": "Buenos Aires"
+  },
+  "2751": {
+    "city": "La Sarita",
+    "province": "Buenos Aires"
+  },
+  "2752": {
+    "city": "La Luisa",
+    "province": "Buenos Aires"
+  },
+  "2754": {
+    "city": "Campo Crisol",
+    "province": "Buenos Aires"
+  },
+  "2760": {
+    "city": "Puente Castex",
+    "province": "Buenos Aires"
+  },
+  "2761": {
+    "city": "Santa Coloma",
+    "province": "Buenos Aires"
+  },
+  "2763": {
+    "city": "Flamenco",
+    "province": "Buenos Aires"
+  },
+  "2764": {
+    "city": "Solis",
+    "province": "Buenos Aires"
+  },
+  "2800": {
+    "city": "Arroyo Ñacurutu",
+    "province": "Buenos Aires"
+  },
+  "2801": {
+    "city": "El Tatu",
+    "province": "Buenos Aires"
+  },
+  "2802": {
+    "city": "Otamendi",
+    "province": "Buenos Aires"
+  },
+  "2804": {
+    "city": "Campana",
+    "province": "Buenos Aires"
+  },
+  "2805": {
+    "city": "Blondeau",
+    "province": "Buenos Aires"
+  },
+  "2806": {
+    "city": "Lima",
+    "province": "Buenos Aires"
+  },
+  "2808": {
+    "city": "Atucha",
+    "province": "Buenos Aires"
+  },
+  "2812": {
+    "city": "Pavon",
+    "province": "Buenos Aires"
+  },
+  "2813": {
+    "city": "Arroyo De La Cruz",
+    "province": "Buenos Aires"
+  },
+  "2814": {
+    "city": "Los Cardales",
+    "province": "Buenos Aires"
+  },
+  "2900": {
+    "city": "San Nicolas",
+    "province": "Buenos Aires"
+  },
+  "2901": {
+    "city": "Barrio Somisa",
+    "province": "Buenos Aires"
+  },
+  "2903": {
+    "city": "Erezcano",
+    "province": "Buenos Aires"
+  },
+  "2905": {
+    "city": "General Rojo",
+    "province": "Buenos Aires"
+  },
+  "2907": {
+    "city": "Pujol",
+    "province": "Buenos Aires"
+  },
+  "2909": {
+    "city": "Mutti",
+    "province": "Buenos Aires"
+  },
+  "2912": {
+    "city": "Sanchez",
+    "province": "Buenos Aires"
+  },
+  "2914": {
+    "city": "Costa Brava",
+    "province": "Buenos Aires"
+  },
+  "2915": {
+    "city": "Ramallo",
+    "province": "Buenos Aires"
+  },
+  "2916": {
+    "city": "El Jupiter",
+    "province": "Buenos Aires"
+  },
+  "2930": {
+    "city": "San Pedro",
+    "province": "Buenos Aires"
+  },
+  "2931": {
+    "city": "Paname",
+    "province": "Buenos Aires"
+  },
+  "2933": {
+    "city": "La Bolsa",
+    "province": "Buenos Aires"
+  },
+  "2935": {
+    "city": "Doyle",
+    "province": "Buenos Aires"
+  },
+  "2938": {
+    "city": "Alsina",
+    "province": "Buenos Aires"
+  },
+  "2942": {
+    "city": "Baradero",
+    "province": "Buenos Aires"
+  },
+  "2943": {
+    "city": "Ireneo Portela",
+    "province": "Buenos Aires"
+  },
+  "2944": {
+    "city": "Rio Tala",
+    "province": "Buenos Aires"
+  },
+  "2946": {
+    "city": "El Espinillo",
+    "province": "Buenos Aires"
+  },
+  "3403": {
+    "city": "Maloya",
+    "province": "Corrientes"
+  },
+  "3445": {
+    "city": "Yatay",
+    "province": "Corrientes"
+  },
+  "3713": {
+    "city": "Manuel Ocampo",
+    "province": "Buenos Aires"
+  },
+  "6000": {
+    "city": "Junin",
+    "province": "Buenos Aires"
+  },
+  "6001": {
+    "city": "Agustina",
+    "province": "Buenos Aires"
+  },
+  "6003": {
+    "city": "Ferre",
+    "province": "Buenos Aires"
+  },
+  "6005": {
+    "city": "Ham",
+    "province": "Buenos Aires"
+  },
+  "6007": {
+    "city": "Delgado",
+    "province": "Buenos Aires"
+  },
+  "6013": {
+    "city": "Irala",
+    "province": "Buenos Aires"
+  },
+  "6015": {
+    "city": "Los Huesos",
+    "province": "Buenos Aires"
+  },
+  "6017": {
+    "city": "Chancay",
+    "province": "Buenos Aires"
+  },
+  "6018": {
+    "city": "Los Bosques",
+    "province": "Buenos Aires"
+  },
+  "6022": {
+    "city": "Saforcada",
+    "province": "Buenos Aires"
+  },
+  "6023": {
+    "city": "Leandro N.Alem",
+    "province": "Buenos Aires"
+  },
+  "6030": {
+    "city": "Sauzales",
+    "province": "Buenos Aires"
+  },
+  "6031": {
+    "city": "De Bruyn",
+    "province": "Buenos Aires"
+  },
+  "6032": {
+    "city": "Blandengues",
+    "province": "Buenos Aires"
+  },
+  "6034": {
+    "city": "Alberdi",
+    "province": "Buenos Aires"
+  },
+  "6042": {
+    "city": "Iriarte",
+    "province": "Buenos Aires"
+  },
+  "6050": {
+    "city": "Dussaud",
+    "province": "Buenos Aires"
+  },
+  "6051": {
+    "city": "Pichincha",
+    "province": "Buenos Aires"
+  },
+  "6053": {
+    "city": "Gunther",
+    "province": "Buenos Aires"
+  },
+  "6058": {
+    "city": "Pazos Kanki",
+    "province": "Buenos Aires"
+  },
+  "6062": {
+    "city": "Coronel Granada",
+    "province": "Buenos Aires"
+  },
+  "6063": {
+    "city": "Porvenir",
+    "province": "Buenos Aires"
+  },
+  "6064": {
+    "city": "Halcey",
+    "province": "Buenos Aires"
+  },
+  "6065": {
+    "city": "Blaquier",
+    "province": "Buenos Aires"
+  },
+  "6070": {
+    "city": "Balsa",
+    "province": "Buenos Aires"
+  },
+  "6071": {
+    "city": "Bermudez",
+    "province": "Buenos Aires"
+  },
+  "6073": {
+    "city": "El Triunfo",
+    "province": "Buenos Aires"
+  },
+  "6075": {
+    "city": "Roberts",
+    "province": "Buenos Aires"
+  },
+  "6077": {
+    "city": "Encina",
+    "province": "Buenos Aires"
+  },
+  "6078": {
+    "city": "Bayauca",
+    "province": "Buenos Aires"
+  },
+  "6105": {
+    "city": "Cañada Seca",
+    "province": "Buenos Aires"
+  },
+  "6223": {
+    "city": "Fernando Marti",
+    "province": "Buenos Aires"
+  },
+  "6230": {
+    "city": "Moores",
+    "province": "Buenos Aires"
+  },
+  "6231": {
+    "city": "Cuenca",
+    "province": "Buenos Aires"
+  },
+  "6233": {
+    "city": "Condarco",
+    "province": "Buenos Aires"
+  },
+  "6237": {
+    "city": "Cerrito",
+    "province": "Buenos Aires"
+  },
+  "6239": {
+    "city": "San Mauricio",
+    "province": "Buenos Aires"
+  },
+  "6241": {
+    "city": "Eldia",
+    "province": "Buenos Aires"
+  },
+  "6242": {
+    "city": "Elordi",
+    "province": "Buenos Aires"
+  },
+  "6244": {
+    "city": "Banderalo",
+    "province": "Buenos Aires"
+  },
+  "6332": {
+    "city": "Benitez",
+    "province": "Buenos Aires"
+  },
+  "6335": {
+    "city": "Quenuma",
+    "province": "Buenos Aires"
+  },
+  "6337": {
+    "city": "Maria P. Moreno",
+    "province": "Buenos Aires"
+  },
+  "6338": {
+    "city": "Leubuco",
+    "province": "Buenos Aires"
+  },
+  "6339": {
+    "city": "Cailomuta",
+    "province": "Buenos Aires"
+  },
+  "6341": {
+    "city": "La Pala",
+    "province": "Buenos Aires"
+  },
+  "6343": {
+    "city": "Maza",
+    "province": "Buenos Aires"
+  },
+  "6346": {
+    "city": "Pellegrini",
+    "province": "Buenos Aires"
+  },
+  "6348": {
+    "city": "De Bary",
+    "province": "Buenos Aires"
+  },
+  "6400": {
+    "city": "Lertora",
+    "province": "Buenos Aires"
+  },
+  "6401": {
+    "city": "Sunblad",
+    "province": "Buenos Aires"
+  },
+  "6403": {
+    "city": "Badano",
+    "province": "Buenos Aires"
+  },
+  "6405": {
+    "city": "Duhau",
+    "province": "Buenos Aires"
+  },
+  "6407": {
+    "city": "Girodias",
+    "province": "Buenos Aires"
+  },
+  "6409": {
+    "city": "Pehuelches",
+    "province": "Buenos Aires"
+  },
+  "6411": {
+    "city": "Papin",
+    "province": "Buenos Aires"
+  },
+  "6417": {
+    "city": "Casey",
+    "province": "Buenos Aires"
+  },
+  "6422": {
+    "city": "Primera Junta",
+    "province": "Buenos Aires"
+  },
+  "6424": {
+    "city": "Berutti",
+    "province": "Buenos Aires"
+  },
+  "6430": {
+    "city": "Pocito",
+    "province": "Buenos Aires"
+  },
+  "6431": {
+    "city": "Lago Epecuen",
+    "province": "Buenos Aires"
+  },
+  "6433": {
+    "city": "Arturo Vatteone",
+    "province": "Buenos Aires"
+  },
+  "6435": {
+    "city": "Guamini",
+    "province": "Buenos Aires"
+  },
+  "6437": {
+    "city": "Alfa",
+    "province": "Buenos Aires"
+  },
+  "6438": {
+    "city": "Masurel",
+    "province": "Buenos Aires"
+  },
+  "6439": {
+    "city": "Luro",
+    "province": "Buenos Aires"
+  },
+  "6441": {
+    "city": "Rivera",
+    "province": "Buenos Aires"
+  },
+  "6443": {
+    "city": "Arano",
+    "province": "Buenos Aires"
+  },
+  "6450": {
+    "city": "Abel",
+    "province": "Buenos Aires"
+  },
+  "6451": {
+    "city": "Ancon",
+    "province": "Buenos Aires"
+  },
+  "6453": {
+    "city": "Las Toscas",
+    "province": "Buenos Aires"
+  },
+  "6455": {
+    "city": "Husares",
+    "province": "Buenos Aires"
+  },
+  "6457": {
+    "city": "Ingeniero Beaugey",
+    "province": "Buenos Aires"
+  },
+  "6459": {
+    "city": "Colonia Sere",
+    "province": "Buenos Aires"
+  },
+  "6461": {
+    "city": "La Cotorra",
+    "province": "Buenos Aires"
+  },
+  "6463": {
+    "city": "Alagon",
+    "province": "Buenos Aires"
+  },
+  "6465": {
+    "city": "Coraceros",
+    "province": "Buenos Aires"
+  },
+  "6467": {
+    "city": "El Trio",
+    "province": "Buenos Aires"
+  },
+  "6469": {
+    "city": "Asturias",
+    "province": "Buenos Aires"
+  },
+  "6471": {
+    "city": "Mouras",
+    "province": "Buenos Aires"
+  },
+  "6472": {
+    "city": "Francisco Madero",
+    "province": "Buenos Aires"
+  },
+  "6474": {
+    "city": "El Recado",
+    "province": "Buenos Aires"
+  },
+  "6475": {
+    "city": "La Higuera",
+    "province": "Buenos Aires"
+  },
+  "6476": {
+    "city": "Guanaco",
+    "province": "Buenos Aires"
+  },
+  "6500": {
+    "city": "Fauzon",
+    "province": "Buenos Aires"
+  },
+  "6501": {
+    "city": "Mulcahy",
+    "province": "Buenos Aires"
+  },
+  "6503": {
+    "city": "Patricios",
+    "province": "Buenos Aires"
+  },
+  "6505": {
+    "city": "Dudignac",
+    "province": "Buenos Aires"
+  },
+  "6507": {
+    "city": "Morea",
+    "province": "Buenos Aires"
+  },
+  "6508": {
+    "city": "Stroeder",
+    "province": "Buenos Aires"
+  },
+  "6509": {
+    "city": "Del Valle",
+    "province": "Buenos Aires"
+  },
+  "6511": {
+    "city": "Hale",
+    "province": "Buenos Aires"
+  },
+  "6513": {
+    "city": "La Niña",
+    "province": "Buenos Aires"
+  },
+  "6515": {
+    "city": "El Tejar",
+    "province": "Buenos Aires"
+  },
+  "6516": {
+    "city": "French",
+    "province": "Buenos Aires"
+  },
+  "6530": {
+    "city": "Santo Tomas",
+    "province": "Buenos Aires"
+  },
+  "6531": {
+    "city": "Smith",
+    "province": "Buenos Aires"
+  },
+  "6533": {
+    "city": "Quiroga",
+    "province": "Buenos Aires"
+  },
+  "6535": {
+    "city": "Cadret",
+    "province": "Buenos Aires"
+  },
+  "6537": {
+    "city": "Ordoqui",
+    "province": "Buenos Aires"
+  },
+  "6538": {
+    "city": "La Dorita",
+    "province": "Buenos Aires"
+  },
+  "6550": {
+    "city": "Bolivar",
+    "province": "Buenos Aires"
+  },
+  "6551": {
+    "city": "Pirovano",
+    "province": "Buenos Aires"
+  },
+  "6553": {
+    "city": "La Torrecita",
+    "province": "Buenos Aires"
+  },
+  "6555": {
+    "city": "Andant",
+    "province": "Buenos Aires"
+  },
+  "6557": {
+    "city": "Paula",
+    "province": "Buenos Aires"
+  },
+  "6559": {
+    "city": "Recalde",
+    "province": "Buenos Aires"
+  },
+  "6561": {
+    "city": "Espigas",
+    "province": "Buenos Aires"
+  },
+  "6567": {
+    "city": "Colonia Inchausti",
+    "province": "Buenos Aires"
+  },
+  "6600": {
+    "city": "Mercedes",
+    "province": "Buenos Aires"
+  },
+  "6601": {
+    "city": "Espora",
+    "province": "Buenos Aires"
+  },
+  "6603": {
+    "city": "Juan Jose Almeyra",
+    "province": "Buenos Aires"
+  },
+  "6604": {
+    "city": "La Verde (Pdo.Mercedes)",
+    "province": "Buenos Aires"
+  },
+  "6605": {
+    "city": "Navarro",
+    "province": "Buenos Aires"
+  },
+  "6607": {
+    "city": "Anasagasti",
+    "province": "Buenos Aires"
+  },
+  "6608": {
+    "city": "Agote",
+    "province": "Buenos Aires"
+  },
+  "6612": {
+    "city": "Suipacha",
+    "province": "Buenos Aires"
+  },
+  "6614": {
+    "city": "Rivas",
+    "province": "Buenos Aires"
+  },
+  "6616": {
+    "city": "Castilla",
+    "province": "Buenos Aires"
+  },
+  "6620": {
+    "city": "Chivilcoy",
+    "province": "Buenos Aires"
+  },
+  "6621": {
+    "city": "Anderson",
+    "province": "Buenos Aires"
+  },
+  "6623": {
+    "city": "La Rica",
+    "province": "Buenos Aires"
+  },
+  "6625": {
+    "city": "Cañada La Rica",
+    "province": "Buenos Aires"
+  },
+  "6627": {
+    "city": "Moll",
+    "province": "Buenos Aires"
+  },
+  "6628": {
+    "city": "La Carlota",
+    "province": "Buenos Aires"
+  },
+  "6632": {
+    "city": "Gorostiaga",
+    "province": "Buenos Aires"
+  },
+  "6634": {
+    "city": "Pla",
+    "province": "Buenos Aires"
+  },
+  "6640": {
+    "city": "Bragado",
+    "province": "Buenos Aires"
+  },
+  "6641": {
+    "city": "Comodoro Py",
+    "province": "Buenos Aires"
+  },
+  "6643": {
+    "city": "Araujo",
+    "province": "Buenos Aires"
+  },
+  "6645": {
+    "city": "Maximo Fernandez",
+    "province": "Buenos Aires"
+  },
+  "6646": {
+    "city": "General O'Brien",
+    "province": "Buenos Aires"
+  },
+  "6648": {
+    "city": "Mecha",
+    "province": "Buenos Aires"
+  },
+  "6652": {
+    "city": "Olascoaga",
+    "province": "Buenos Aires"
+  },
+  "6660": {
+    "city": "25 De Mayo",
+    "province": "Buenos Aires"
+  },
+  "6661": {
+    "city": "Pueblitos",
+    "province": "Buenos Aires"
+  },
+  "6663": {
+    "city": "Juan Vela",
+    "province": "Buenos Aires"
+  },
+  "6665": {
+    "city": "La Gloria",
+    "province": "Buenos Aires"
+  },
+  "6667": {
+    "city": "Islas",
+    "province": "Buenos Aires"
+  },
+  "6700": {
+    "city": "Lujan",
+    "province": "Buenos Aires"
+  },
+  "6701": {
+    "city": "Carlos Keen",
+    "province": "Buenos Aires"
+  },
+  "6703": {
+    "city": "Etchegoyen",
+    "province": "Buenos Aires"
+  },
+  "6706": {
+    "city": "Jauregui",
+    "province": "Buenos Aires"
+  },
+  "6708": {
+    "city": "Sucre",
+    "province": "Buenos Aires"
+  },
+  "6712": {
+    "city": "Cortines",
+    "province": "Buenos Aires"
+  },
+  "6720": {
+    "city": "San Andres De Giles",
+    "province": "Buenos Aires"
+  },
+  "6721": {
+    "city": "Tatay",
+    "province": "Buenos Aires"
+  },
+  "6723": {
+    "city": "Heavy",
+    "province": "Buenos Aires"
+  },
+  "6725": {
+    "city": "La Central",
+    "province": "Buenos Aires"
+  },
+  "6727": {
+    "city": "Gouin",
+    "province": "Buenos Aires"
+  },
+  "6734": {
+    "city": "Rawson",
+    "province": "Buenos Aires"
+  },
+  "6740": {
+    "city": "Chacabuco",
+    "province": "Buenos Aires"
+  },
+  "6743": {
+    "city": "Coliqueo",
+    "province": "Buenos Aires"
+  },
+  "6746": {
+    "city": "Cucha Cucha",
+    "province": "Buenos Aires"
+  },
+  "6748": {
+    "city": "O'Higgins",
+    "province": "Buenos Aires"
+  },
+  "7000": {
+    "city": "Tandil",
+    "province": "Buenos Aires"
+  },
+  "7001": {
+    "city": "Cerro Leones",
+    "province": "Buenos Aires"
+  },
+  "7003": {
+    "city": "Gardey",
+    "province": "Buenos Aires"
+  },
+  "7005": {
+    "city": "Barker",
+    "province": "Buenos Aires"
+  },
+  "7007": {
+    "city": "Fulton",
+    "province": "Buenos Aires"
+  },
+  "7009": {
+    "city": "Iraola",
+    "province": "Buenos Aires"
+  },
+  "7011": {
+    "city": "San Cala",
+    "province": "Buenos Aires"
+  },
+  "7013": {
+    "city": "Egaña",
+    "province": "Buenos Aires"
+  },
+  "7020": {
+    "city": "Juarez",
+    "province": "Buenos Aires"
+  },
+  "7021": {
+    "city": "Lopez",
+    "province": "Buenos Aires"
+  },
+  "7100": {
+    "city": "Dolores",
+    "province": "Buenos Aires"
+  },
+  "7101": {
+    "city": "Sevigne",
+    "province": "Buenos Aires"
+  },
+  "7103": {
+    "city": "General Lavalle",
+    "province": "Buenos Aires"
+  },
+  "7105": {
+    "city": "San Clemente Del Tuyu",
+    "province": "Buenos Aires"
+  },
+  "7106": {
+    "city": "Las Toninas",
+    "province": "Buenos Aires"
+  },
+  "7107": {
+    "city": "Santa Teresita",
+    "province": "Buenos Aires"
+  },
+  "7108": {
+    "city": "Mar Del Tuyu",
+    "province": "Buenos Aires"
+  },
+  "7109": {
+    "city": "Mar De Ajo",
+    "province": "Buenos Aires"
+  },
+  "7111": {
+    "city": "San Bernardo (Partido De La Costa)",
+    "province": "Buenos Aires"
+  },
+  "7112": {
+    "city": "La Posta",
+    "province": "Buenos Aires"
+  },
+  "7113": {
+    "city": "La Lucila Del Mar",
+    "province": "Buenos Aires"
+  },
+  "7114": {
+    "city": "La India",
+    "province": "Buenos Aires"
+  },
+  "7116": {
+    "city": "Pila",
+    "province": "Buenos Aires"
+  },
+  "7118": {
+    "city": "General Guido",
+    "province": "Buenos Aires"
+  },
+  "7119": {
+    "city": "Segurola",
+    "province": "Buenos Aires"
+  },
+  "7122": {
+    "city": "Naposta",
+    "province": "Buenos Aires"
+  },
+  "7130": {
+    "city": "Las Mulas",
+    "province": "Buenos Aires"
+  },
+  "7134": {
+    "city": "Nicolas Levalle",
+    "province": "Buenos Aires"
+  },
+  "7135": {
+    "city": "El Carbon",
+    "province": "Buenos Aires"
+  },
+  "7136": {
+    "city": "Adela",
+    "province": "Buenos Aires"
+  },
+  "7142": {
+    "city": "Ombucta",
+    "province": "Buenos Aires"
+  },
+  "7150": {
+    "city": "Ayacucho",
+    "province": "Buenos Aires"
+  },
+  "7151": {
+    "city": "Solanet",
+    "province": "Buenos Aires"
+  },
+  "7153": {
+    "city": "Fair",
+    "province": "Buenos Aires"
+  },
+  "7160": {
+    "city": "Maipu",
+    "province": "Buenos Aires"
+  },
+  "7161": {
+    "city": "Labarden",
+    "province": "Buenos Aires"
+  },
+  "7163": {
+    "city": "Goñi",
+    "province": "Buenos Aires"
+  },
+  "7164": {
+    "city": "San Martin De Tours",
+    "province": "Buenos Aires"
+  },
+  "7165": {
+    "city": "Mar Azul",
+    "province": "Buenos Aires"
+  },
+  "7167": {
+    "city": "Ostende",
+    "province": "Buenos Aires"
+  },
+  "7169": {
+    "city": "Macedo",
+    "province": "Buenos Aires"
+  },
+  "7172": {
+    "city": "Las Armas",
+    "province": "Buenos Aires"
+  },
+  "7174": {
+    "city": "La Tobiana",
+    "province": "Buenos Aires"
+  },
+  "7200": {
+    "city": "Las Flores",
+    "province": "Buenos Aires"
+  },
+  "7201": {
+    "city": "Colman",
+    "province": "Buenos Aires"
+  },
+  "7203": {
+    "city": "Rauch",
+    "province": "Buenos Aires"
+  },
+  "7205": {
+    "city": "Rosas",
+    "province": "Buenos Aires"
+  },
+  "7207": {
+    "city": "El Trigo",
+    "province": "Buenos Aires"
+  },
+  "7208": {
+    "city": "Coronel Boerr",
+    "province": "Buenos Aires"
+  },
+  "7212": {
+    "city": "Pardo",
+    "province": "Buenos Aires"
+  },
+  "7214": {
+    "city": "Cachari",
+    "province": "Buenos Aires"
+  },
+  "7215": {
+    "city": "El Socorro",
+    "province": "Buenos Aires"
+  },
+  "7220": {
+    "city": "Monte",
+    "province": "Buenos Aires"
+  },
+  "7221": {
+    "city": "Palmitas",
+    "province": "Buenos Aires"
+  },
+  "7223": {
+    "city": "Chas",
+    "province": "Buenos Aires"
+  },
+  "7225": {
+    "city": "La Luz",
+    "province": "Buenos Aires"
+  },
+  "7226": {
+    "city": "Gorchs",
+    "province": "Buenos Aires"
+  },
+  "7228": {
+    "city": "Abbott",
+    "province": "Buenos Aires"
+  },
+  "7240": {
+    "city": "Lobos",
+    "province": "Buenos Aires"
+  },
+  "7241": {
+    "city": "Salvador Maria",
+    "province": "Buenos Aires"
+  },
+  "7243": {
+    "city": "Elvira",
+    "province": "Buenos Aires"
+  },
+  "7245": {
+    "city": "La Paz",
+    "province": "Buenos Aires"
+  },
+  "7247": {
+    "city": "Barrientos",
+    "province": "Buenos Aires"
+  },
+  "7249": {
+    "city": "Empalme Lobos",
+    "province": "Buenos Aires"
+  },
+  "7260": {
+    "city": "Esther",
+    "province": "Buenos Aires"
+  },
+  "7261": {
+    "city": "San Benito",
+    "province": "Buenos Aires"
+  },
+  "7263": {
+    "city": "Emma",
+    "province": "Buenos Aires"
+  },
+  "7265": {
+    "city": "Cazon",
+    "province": "Buenos Aires"
+  },
+  "7267": {
+    "city": "Polvaredas",
+    "province": "Buenos Aires"
+  },
+  "7300": {
+    "city": "Azul",
+    "province": "Buenos Aires"
+  },
+  "7301": {
+    "city": "Ariel",
+    "province": "Buenos Aires"
+  },
+  "7303": {
+    "city": "Altona",
+    "province": "Buenos Aires"
+  },
+  "7305": {
+    "city": "Covello",
+    "province": "Buenos Aires"
+  },
+  "7307": {
+    "city": "Crotto",
+    "province": "Buenos Aires"
+  },
+  "7311": {
+    "city": "Chillar",
+    "province": "Buenos Aires"
+  },
+  "7313": {
+    "city": "La Nutria",
+    "province": "Buenos Aires"
+  },
+  "7316": {
+    "city": "Shaw",
+    "province": "Buenos Aires"
+  },
+  "7318": {
+    "city": "Hinojo",
+    "province": "Buenos Aires"
+  },
+  "7400": {
+    "city": "Olavarria",
+    "province": "Buenos Aires"
+  },
+  "7401": {
+    "city": "Durañona",
+    "province": "Buenos Aires"
+  },
+  "7403": {
+    "city": "Fortabat",
+    "province": "Buenos Aires"
+  },
+  "7404": {
+    "city": "Muñoz",
+    "province": "Buenos Aires"
+  },
+  "7406": {
+    "city": "Lastra",
+    "province": "Buenos Aires"
+  },
+  "7407": {
+    "city": "Libano",
+    "province": "Buenos Aires"
+  },
+  "7408": {
+    "city": "La Colina",
+    "province": "Buenos Aires"
+  },
+  "7412": {
+    "city": "Paraguil",
+    "province": "Buenos Aires"
+  },
+  "7414": {
+    "city": "Laprida",
+    "province": "Buenos Aires"
+  },
+  "7500": {
+    "city": "La Tigra",
+    "province": "Buenos Aires"
+  },
+  "7501": {
+    "city": "Indio Rico",
+    "province": "Buenos Aires"
+  },
+  "7503": {
+    "city": "Orense",
+    "province": "Buenos Aires"
+  },
+  "7505": {
+    "city": "Lin Calel",
+    "province": "Buenos Aires"
+  },
+  "7507": {
+    "city": "Irene",
+    "province": "Buenos Aires"
+  },
+  "7509": {
+    "city": "Oriente",
+    "province": "Buenos Aires"
+  },
+  "7511": {
+    "city": "Reta",
+    "province": "Buenos Aires"
+  },
+  "7513": {
+    "city": "El Lucero",
+    "province": "Buenos Aires"
+  },
+  "7515": {
+    "city": "De La Garma",
+    "province": "Buenos Aires"
+  },
+  "7517": {
+    "city": "Pierini",
+    "province": "Buenos Aires"
+  },
+  "7519": {
+    "city": "Mayol",
+    "province": "Buenos Aires"
+  },
+  "7521": {
+    "city": "Ochandio",
+    "province": "Buenos Aires"
+  },
+  "7530": {
+    "city": "Krabbe",
+    "province": "Buenos Aires"
+  },
+  "7531": {
+    "city": "Lartigau",
+    "province": "Buenos Aires"
+  },
+  "7533": {
+    "city": "Quiñihual",
+    "province": "Buenos Aires"
+  },
+  "7535": {
+    "city": "Pontaut",
+    "province": "Buenos Aires"
+  },
+  "7536": {
+    "city": "Reserva",
+    "province": "Buenos Aires"
+  },
+  "7540": {
+    "city": "Bathurst",
+    "province": "Buenos Aires"
+  },
+  "7541": {
+    "city": "D'Orbigny",
+    "province": "Buenos Aires"
+  },
+  "7543": {
+    "city": "La Primavera (Pdo.Cnel.Suarez)",
+    "province": "Buenos Aires"
+  },
+  "7545": {
+    "city": "Ombu",
+    "province": "Buenos Aires"
+  },
+  "7547": {
+    "city": "Pasman",
+    "province": "Buenos Aires"
+  },
+  "7548": {
+    "city": "Curumalan",
+    "province": "Buenos Aires"
+  },
+  "7600": {
+    "city": "El Soldado",
+    "province": "Buenos Aires"
+  },
+  "7601": {
+    "city": "Los Ortiz",
+    "province": "Buenos Aires"
+  },
+  "7603": {
+    "city": "La Elma",
+    "province": "Buenos Aires"
+  },
+  "7605": {
+    "city": "Mechongue",
+    "province": "Buenos Aires"
+  },
+  "7607": {
+    "city": "Miramar",
+    "province": "Buenos Aires"
+  },
+  "7609": {
+    "city": "Playa Serena",
+    "province": "Buenos Aires"
+  },
+  "7612": {
+    "city": "Cobo",
+    "province": "Buenos Aires"
+  },
+  "7613": {
+    "city": "Calfucura",
+    "province": "Buenos Aires"
+  },
+  "7620": {
+    "city": "Bosch",
+    "province": "Buenos Aires"
+  },
+  "7621": {
+    "city": "San Simon",
+    "province": "Buenos Aires"
+  },
+  "7623": {
+    "city": "El Moro",
+    "province": "Buenos Aires"
+  },
+  "7630": {
+    "city": "Necochea",
+    "province": "Buenos Aires"
+  },
+  "7631": {
+    "city": "Quequen",
+    "province": "Buenos Aires"
+  },
+  "7633": {
+    "city": "Maori",
+    "province": "Buenos Aires"
+  },
+  "7635": {
+    "city": "Loberia",
+    "province": "Buenos Aires"
+  },
+  "7637": {
+    "city": "La Dulce",
+    "province": "Buenos Aires"
+  },
+  "7639": {
+    "city": "Lumb",
+    "province": "Buenos Aires"
+  },
+  "7641": {
+    "city": "Energia",
+    "province": "Buenos Aires"
+  },
+  "8000": {
+    "city": "Bordeu",
+    "province": "Buenos Aires"
+  },
+  "8010": {
+    "city": "Kilometro 11 (Apeadero Fcgr.)",
+    "province": "Buenos Aires"
+  },
+  "8101": {
+    "city": "Galvan",
+    "province": "Buenos Aires"
+  },
+  "8103": {
+    "city": "Spurr",
+    "province": "Buenos Aires"
+  },
+  "8105": {
+    "city": "Aguara",
+    "province": "Buenos Aires"
+  },
+  "8107": {
+    "city": "Base Aeronaval Comandante Espora",
+    "province": "Buenos Aires"
+  },
+  "8109": {
+    "city": "Pehuen Co",
+    "province": "Buenos Aires"
+  },
+  "8111": {
+    "city": "Arroyo Pareja",
+    "province": "Buenos Aires"
+  },
+  "8113": {
+    "city": "Baterias",
+    "province": "Buenos Aires"
+  },
+  "8115": {
+    "city": "Bajo Hondo",
+    "province": "Buenos Aires"
+  },
+  "8117": {
+    "city": "Choique",
+    "province": "Buenos Aires"
+  },
+  "8118": {
+    "city": "Corti",
+    "province": "Buenos Aires"
+  },
+  "8122": {
+    "city": "La Viticola",
+    "province": "Buenos Aires"
+  },
+  "8124": {
+    "city": "Berraondo",
+    "province": "Buenos Aires"
+  },
+  "8126": {
+    "city": "Aldea San Andres",
+    "province": "Buenos Aires"
+  },
+  "8127": {
+    "city": "Estela",
+    "province": "Buenos Aires"
+  },
+  "8129": {
+    "city": "Glorialdo",
+    "province": "Buenos Aires"
+  },
+  "8132": {
+    "city": "Medanos",
+    "province": "Buenos Aires"
+  },
+  "8133": {
+    "city": "Avestruz",
+    "province": "Buenos Aires"
+  },
+  "8134": {
+    "city": "Mascota",
+    "province": "Buenos Aires"
+  },
+  "8136": {
+    "city": "La Eva",
+    "province": "Buenos Aires"
+  },
+  "8138": {
+    "city": "Lote 14",
+    "province": "La Pampa"
+  },
+  "8142": {
+    "city": "San Adolfo",
+    "province": "Buenos Aires"
+  },
+  "8144": {
+    "city": "La Celia",
+    "province": "Buenos Aires"
+  },
+  "8146": {
+    "city": "Isla Verde",
+    "province": "Buenos Aires"
+  },
+  "8148": {
+    "city": "Pedro Luro",
+    "province": "Buenos Aires"
+  },
+  "8150": {
+    "city": "Faro",
+    "province": "Buenos Aires"
+  },
+  "8151": {
+    "city": "Gil",
+    "province": "Buenos Aires"
+  },
+  "8153": {
+    "city": "Monte Hermoso",
+    "province": "Buenos Aires"
+  },
+  "8154": {
+    "city": "Calvo",
+    "province": "Buenos Aires"
+  },
+  "8156": {
+    "city": "Jose A. Guisasola",
+    "province": "Buenos Aires"
+  },
+  "8158": {
+    "city": "Aparicio",
+    "province": "Buenos Aires"
+  },
+  "8160": {
+    "city": "Fortin Chaco",
+    "province": "Buenos Aires"
+  },
+  "8162": {
+    "city": "Garcia Del Rio",
+    "province": "Buenos Aires"
+  },
+  "8164": {
+    "city": "Dufaur",
+    "province": "Buenos Aires"
+  },
+  "8166": {
+    "city": "Saldungaray",
+    "province": "Buenos Aires"
+  },
+  "8168": {
+    "city": "Sierra De La Ventana",
+    "province": "Buenos Aires"
+  },
+  "8170": {
+    "city": "Pigue",
+    "province": "Buenos Aires"
+  },
+  "8171": {
+    "city": "Espartillar (Pdo. Saavedra)",
+    "province": "Buenos Aires"
+  },
+  "8172": {
+    "city": "Arroyo Corto (Pdo. Saavedra)",
+    "province": "Buenos Aires"
+  },
+  "8174": {
+    "city": "Saavedra",
+    "province": "Buenos Aires"
+  },
+  "8175": {
+    "city": "Goyena",
+    "province": "Buenos Aires"
+  },
+  "8180": {
+    "city": "Puan",
+    "province": "Buenos Aires"
+  },
+  "8181": {
+    "city": "Erize",
+    "province": "Buenos Aires"
+  },
+  "8183": {
+    "city": "Darregueira",
+    "province": "Buenos Aires"
+  },
+  "8185": {
+    "city": "La Zulema",
+    "province": "Buenos Aires"
+  },
+  "8187": {
+    "city": "Bordenave",
+    "province": "Buenos Aires"
+  },
+  "8504": {
+    "city": "La Vara",
+    "province": "Buenos Aires"
+  },
+  "8506": {
+    "city": "Jones",
+    "province": "Rio Negro"
+  },
+  "8508": {
+    "city": "Jarilla",
+    "province": "Buenos Aires"
+  },
+  "8512": {
+    "city": "Igarzabal",
+    "province": "Buenos Aires"
+  },
+  "4703": {
+    "city": "Alto",
+    "province": "San Luis"
+  },
+  "5216": {
+    "city": "Tuscal",
+    "province": "Cordoba"
+  },
+  "5421": {
+    "city": "Encon",
+    "province": "San Juan"
+  },
+  "5598": {
+    "city": "Tapon",
+    "province": "Mendoza"
+  },
+  "5700": {
+    "city": "San Luis",
+    "province": "San Luis"
+  },
+  "5701": {
+    "city": "Ulbar",
+    "province": "San Luis"
+  },
+  "5703": {
+    "city": "Nogoli",
+    "province": "San Luis"
+  },
+  "5705": {
+    "city": "Consulta",
+    "province": "San Luis"
+  },
+  "5706": {
+    "city": "La Bava",
+    "province": "San Luis"
+  },
+  "5707": {
+    "city": "Lindo",
+    "province": "San Luis"
+  },
+  "5709": {
+    "city": "Lujan",
+    "province": "San Luis"
+  },
+  "5711": {
+    "city": "El Rio",
+    "province": "San Luis"
+  },
+  "5712": {
+    "city": "Balde De La Linea",
+    "province": "San Luis"
+  },
+  "5713": {
+    "city": "Salinas",
+    "province": "San Luis"
+  },
+  "5714": {
+    "city": "Santa Rita",
+    "province": "San Luis"
+  },
+  "5715": {
+    "city": "Pocitos",
+    "province": "San Luis"
+  },
+  "5717": {
+    "city": "El Calden",
+    "province": "La Rioja"
+  },
+  "5719": {
+    "city": "Recreo",
+    "province": "San Luis"
+  },
+  "5721": {
+    "city": "Paje",
+    "province": "San Luis"
+  },
+  "5722": {
+    "city": "Balda",
+    "province": "San Luis"
+  },
+  "5724": {
+    "city": "Mataco",
+    "province": "San Luis"
+  },
+  "5730": {
+    "city": "Marlito",
+    "province": "San Luis"
+  },
+  "5731": {
+    "city": "Tasto",
+    "province": "San Luis"
+  },
+  "5733": {
+    "city": "Cramer",
+    "province": "San Luis"
+  },
+  "5735": {
+    "city": "Isondu",
+    "province": "San Luis"
+  },
+  "5736": {
+    "city": "Fraga",
+    "province": "San Luis"
+  },
+  "5738": {
+    "city": "La Tula",
+    "province": "San Luis"
+  },
+  "5741": {
+    "city": "Nossar",
+    "province": "San Luis"
+  },
+  "5743": {
+    "city": "La Isabel",
+    "province": "San Luis"
+  },
+  "5750": {
+    "city": "Yacoro",
+    "province": "San Luis"
+  },
+  "5751": {
+    "city": "La Petra",
+    "province": "San Luis"
+  },
+  "5753": {
+    "city": "Sauce",
+    "province": "San Luis"
+  },
+  "5755": {
+    "city": "Pampa",
+    "province": "San Luis"
+  },
+  "5757": {
+    "city": "La Vertiente (Dpto. San Martin)",
+    "province": "San Luis"
+  },
+  "5759": {
+    "city": "Naschel",
+    "province": "San Luis"
+  },
+  "5763": {
+    "city": "General Urquiza",
+    "province": "San Luis"
+  },
+  "5770": {
+    "city": "El Cerro",
+    "province": "San Luis"
+  },
+  "5771": {
+    "city": "La Sala",
+    "province": "San Luis"
+  },
+  "5773": {
+    "city": "Olmo",
+    "province": "San Luis"
+  },
+  "5775": {
+    "city": "Renca",
+    "province": "San Luis"
+  },
+  "5777": {
+    "city": "Moyar",
+    "province": "San Luis"
+  },
+  "5779": {
+    "city": "La Chilca (Dpto. Junin)",
+    "province": "San Luis"
+  },
+  "5789": {
+    "city": "Los Mollecitos",
+    "province": "San Luis"
+  },
+  "5831": {
+    "city": "Real",
+    "province": "San Luis"
+  },
+  "5835": {
+    "city": "Uspara",
+    "province": "San Luis"
+  },
+  "5871": {
+    "city": "Chua",
+    "province": "Cordoba"
+  },
+  "5873": {
+    "city": "Conlara",
+    "province": "Cordoba"
+  },
+  "5881": {
+    "city": "Merlo",
+    "province": "San Luis"
+  },
+  "5883": {
+    "city": "Balcarce",
+    "province": "San Luis"
+  },
+  "5888": {
+    "city": "Cañada La Negra",
+    "province": "San Luis"
+  },
+  "6121": {
+    "city": "Pavin",
+    "province": "Cordoba"
+  },
+  "6179": {
+    "city": "San Isidro (Batavia, Dpto. Gobernador V. Dupuy)",
+    "province": "San Luis"
+  },
+  "6214": {
+    "city": "Jardon",
+    "province": "La Pampa"
+  },
+  "6215": {
+    "city": "Pollado",
+    "province": "San Luis"
+  },
+  "6216": {
+    "city": "Union",
+    "province": "San Luis"
+  },
+  "6269": {
+    "city": "La Colina",
+    "province": "San Luis"
+  },
+  "6277": {
+    "city": "Machao",
+    "province": "San Luis"
+  },
+  "6279": {
+    "city": "Navia",
+    "province": "San Luis"
+  },
+  "6389": {
+    "city": "Alegria",
+    "province": "San Luis"
+  },
+  "2000": {
+    "city": "Hume",
+    "province": "Santa Fe"
+  },
+  "2100": {
+    "city": "Charigue",
+    "province": "Entre Rios"
+  },
+  "2381": {
+    "city": "Colonia Nº6",
+    "province": "Entre Rios"
+  },
+  "2820": {
+    "city": "La Lata",
+    "province": "Entre Rios"
+  },
+  "2821": {
+    "city": "Gualeyan",
+    "province": "Entre Rios"
+  },
+  "2823": {
+    "city": "Ceibal",
+    "province": "Entre Rios"
+  },
+  "2824": {
+    "city": "Britos",
+    "province": "Entre Rios"
+  },
+  "2826": {
+    "city": "Urdinarrain",
+    "province": "Entre Rios"
+  },
+  "2828": {
+    "city": "Gilbert",
+    "province": "Entre Rios"
+  },
+  "2840": {
+    "city": "Albardon",
+    "province": "Entre Rios"
+  },
+  "2841": {
+    "city": "Lazo",
+    "province": "Entre Rios"
+  },
+  "2843": {
+    "city": "Galarza",
+    "province": "Entre Rios"
+  },
+  "2845": {
+    "city": "Echague",
+    "province": "Entre Rios"
+  },
+  "2846": {
+    "city": "Holt",
+    "province": "Entre Rios"
+  },
+  "2848": {
+    "city": "Medanos",
+    "province": "Entre Rios"
+  },
+  "2852": {
+    "city": "Alarcon",
+    "province": "Entre Rios"
+  },
+  "2854": {
+    "city": "Larroque",
+    "province": "Entre Rios"
+  },
+  "2864": {
+    "city": "Kilometro 340 (Parada Fcgu)",
+    "province": "Entre Rios"
+  },
+  "3100": {
+    "city": "Parana",
+    "province": "Entre Rios"
+  },
+  "3101": {
+    "city": "Strobel",
+    "province": "Entre Rios"
+  },
+  "3103": {
+    "city": "Puiggari",
+    "province": "Entre Rios"
+  },
+  "3105": {
+    "city": "Diamante",
+    "province": "Entre Rios"
+  },
+  "3107": {
+    "city": "San Benito",
+    "province": "Entre Rios"
+  },
+  "3109": {
+    "city": "Viale",
+    "province": "Entre Rios"
+  },
+  "3111": {
+    "city": "Tabossi",
+    "province": "Entre Rios"
+  },
+  "3112": {
+    "city": "Colonia Loma Negra",
+    "province": "Entre Rios"
+  },
+  "3113": {
+    "city": "La Balza",
+    "province": "Entre Rios"
+  },
+  "3114": {
+    "city": "Racero",
+    "province": "Entre Rios"
+  },
+  "3116": {
+    "city": "Crespo",
+    "province": "Entre Rios"
+  },
+  "3117": {
+    "city": "Segui",
+    "province": "Entre Rios"
+  },
+  "3118": {
+    "city": "La Picada",
+    "province": "Entre Rios"
+  },
+  "3122": {
+    "city": "Moreno",
+    "province": "Entre Rios"
+  },
+  "3123": {
+    "city": "Colonia San Juan",
+    "province": "Entre Rios"
+  },
+  "3125": {
+    "city": "Antonio Tomas",
+    "province": "Entre Rios"
+  },
+  "3126": {
+    "city": "Pueblo Brugo",
+    "province": "Entre Rios"
+  },
+  "3127": {
+    "city": "Alcete",
+    "province": "Entre Rios"
+  },
+  "3128": {
+    "city": "Colonia Berro",
+    "province": "Entre Rios"
+  },
+  "3129": {
+    "city": "Puerto Viboras",
+    "province": "Entre Rios"
+  },
+  "3132": {
+    "city": "El Pingo",
+    "province": "Entre Rios"
+  },
+  "3133": {
+    "city": "Sosa",
+    "province": "Entre Rios"
+  },
+  "3134": {
+    "city": "Hasenkamp",
+    "province": "Entre Rios"
+  },
+  "3136": {
+    "city": "Las Garzas",
+    "province": "Entre Rios"
+  },
+  "3137": {
+    "city": "El Solar",
+    "province": "Entre Rios"
+  },
+  "3138": {
+    "city": "Alcaraz",
+    "province": "Entre Rios"
+  },
+  "3142": {
+    "city": "Bovril",
+    "province": "Entre Rios"
+  },
+  "3144": {
+    "city": "Alcaraz 1º",
+    "province": "Entre Rios"
+  },
+  "3150": {
+    "city": "Sauce",
+    "province": "Entre Rios"
+  },
+  "3151": {
+    "city": "Antelo",
+    "province": "Entre Rios"
+  },
+  "3153": {
+    "city": "Victoria",
+    "province": "Entre Rios"
+  },
+  "3155": {
+    "city": "Tres Bocas",
+    "province": "Entre Rios"
+  },
+  "3156": {
+    "city": "Betbeder",
+    "province": "Entre Rios"
+  },
+  "3158": {
+    "city": "La Llave",
+    "province": "Entre Rios"
+  },
+  "3159": {
+    "city": "Los Paraisos (20 De Setiembre, Dpto. Nogoya)",
+    "province": "Entre Rios"
+  },
+  "3162": {
+    "city": "Hinojal",
+    "province": "Entre Rios"
+  },
+  "3164": {
+    "city": "Camps",
+    "province": "Entre Rios"
+  },
+  "3170": {
+    "city": "Linea 24",
+    "province": "Entre Rios"
+  },
+  "3172": {
+    "city": "Rocamora",
+    "province": "Entre Rios"
+  },
+  "3174": {
+    "city": "La Ollita",
+    "province": "Entre Rios"
+  },
+  "3176": {
+    "city": "Sola",
+    "province": "Entre Rios"
+  },
+  "3177": {
+    "city": "Macia",
+    "province": "Entre Rios"
+  },
+  "3180": {
+    "city": "Federal",
+    "province": "Entre Rios"
+  },
+  "3181": {
+    "city": "Chañar",
+    "province": "Entre Rios"
+  },
+  "3183": {
+    "city": "Tacas",
+    "province": "Entre Rios"
+  },
+  "3185": {
+    "city": "Garat",
+    "province": "Entre Rios"
+  },
+  "3187": {
+    "city": "Mesa",
+    "province": "Entre Rios"
+  },
+  "3188": {
+    "city": "El Cimarron",
+    "province": "Entre Rios"
+  },
+  "3190": {
+    "city": "Ombu",
+    "province": "Entre Rios"
+  },
+  "3191": {
+    "city": "Bonaldi",
+    "province": "Entre Rios"
+  },
+  "3192": {
+    "city": "El Colorado",
+    "province": "Entre Rios"
+  },
+  "3194": {
+    "city": "Arroyo Soro",
+    "province": "Corrientes"
+  },
+  "3200": {
+    "city": "Lesca",
+    "province": "Entre Rios"
+  },
+  "3201": {
+    "city": "La Rosada",
+    "province": "Entre Rios"
+  },
+  "3203": {
+    "city": "Pedermar",
+    "province": "Entre Rios"
+  },
+  "3204": {
+    "city": "Isthilart",
+    "province": "Entre Rios"
+  },
+  "3206": {
+    "city": "Lamarca",
+    "province": "Entre Rios"
+  },
+  "3208": {
+    "city": "Santa Ana",
+    "province": "Entre Rios"
+  },
+  "3212": {
+    "city": "La Alicia",
+    "province": "Entre Rios"
+  },
+  "3214": {
+    "city": "Yerua",
+    "province": "Entre Rios"
+  },
+  "3216": {
+    "city": "Benitez",
+    "province": "Entre Rios"
+  },
+  "3218": {
+    "city": "La Carlota",
+    "province": "Entre Rios"
+  },
+  "3220": {
+    "city": "Talleres",
+    "province": "Corrientes"
+  },
+  "3224": {
+    "city": "La Palma",
+    "province": "Corrientes"
+  },
+  "3228": {
+    "city": "Surst",
+    "province": "Entre Rios"
+  },
+  "3229": {
+    "city": "Tatuti",
+    "province": "Entre Rios"
+  },
+  "3240": {
+    "city": "Villaguay",
+    "province": "Entre Rios"
+  },
+  "3241": {
+    "city": "Lucas Sud",
+    "province": "Entre Rios"
+  },
+  "3244": {
+    "city": "Lionel",
+    "province": "Entre Rios"
+  },
+  "3246": {
+    "city": "Rachel",
+    "province": "Entre Rios"
+  },
+  "3248": {
+    "city": "Urquiza",
+    "province": "Entre Rios"
+  },
+  "3252": {
+    "city": "Belez",
+    "province": "Entre Rios"
+  },
+  "3254": {
+    "city": "Jubileo",
+    "province": "Entre Rios"
+  },
+  "3260": {
+    "city": "La Goya",
+    "province": "Entre Rios"
+  },
+  "3261": {
+    "city": "Talita",
+    "province": "Entre Rios"
+  },
+  "3262": {
+    "city": "Caseros",
+    "province": "Entre Rios"
+  },
+  "3263": {
+    "city": "San Cipriano",
+    "province": "Entre Rios"
+  },
+  "3265": {
+    "city": "Villa Elisa",
+    "province": "Entre Rios"
+  },
+  "3267": {
+    "city": "Colonia Vazquez",
+    "province": "Entre Rios"
+  },
+  "3269": {
+    "city": "Hambis",
+    "province": "Entre Rios"
+  },
+  "3272": {
+    "city": "Herrera",
+    "province": "Entre Rios"
+  },
+  "3280": {
+    "city": "Colon",
+    "province": "Entre Rios"
+  },
+  "3281": {
+    "city": "Yatay",
+    "province": "Entre Rios"
+  },
+  "3283": {
+    "city": "El Brillante",
+    "province": "Entre Rios"
+  },
+  "3285": {
+    "city": "Berduc",
+    "province": "Entre Rios"
+  },
+  "3287": {
+    "city": "Ubajay",
+    "province": "Entre Rios"
+  },
+  "3322": {
+    "city": "Pastoreo",
+    "province": "Misiones"
+  },
+  "3446": {
+    "city": "Yacare",
+    "province": "Corrientes"
+  },
+  "3826": {
+    "city": "Aldea San Juan",
+    "province": "Entre Rios"
+  },
+  "5263": {
+    "city": "El Medano",
+    "province": "La Rioja"
+  },
+  "5272": {
+    "city": "Pinas",
+    "province": "Cordoba"
+  },
+  "5274": {
+    "city": "La Isla",
+    "province": "La Rioja"
+  },
+  "5275": {
+    "city": "Olpas",
+    "province": "La Rioja"
+  },
+  "5276": {
+    "city": "Nepes",
+    "province": "La Rioja"
+  },
+  "5300": {
+    "city": "La Rioja",
+    "province": "La Rioja"
+  },
+  "5301": {
+    "city": "Huaco",
+    "province": "La Rioja"
+  },
+  "5303": {
+    "city": "Anjullon",
+    "province": "La Rioja"
+  },
+  "5304": {
+    "city": "La Tala",
+    "province": "La Rioja"
+  },
+  "5310": {
+    "city": "Aimogasta",
+    "province": "La Rioja"
+  },
+  "5311": {
+    "city": "Arauco",
+    "province": "La Rioja"
+  },
+  "5313": {
+    "city": "Villa Mazan",
+    "province": "La Rioja"
+  },
+  "5316": {
+    "city": "Buena Vista (Campana, Dpto. Famatina)",
+    "province": "La Rioja"
+  },
+  "5325": {
+    "city": "Lorohuasi",
+    "province": "La Rioja"
+  },
+  "5327": {
+    "city": "Salicas",
+    "province": "La Rioja"
+  },
+  "5329": {
+    "city": "Cuipan",
+    "province": "La Rioja"
+  },
+  "5350": {
+    "city": "El Molle",
+    "province": "La Rioja"
+  },
+  "5351": {
+    "city": "El Fuerte",
+    "province": "La Rioja"
+  },
+  "5353": {
+    "city": "Guandacol",
+    "province": "La Rioja"
+  },
+  "5355": {
+    "city": "Rivadavia",
+    "province": "La Rioja"
+  },
+  "5357": {
+    "city": "El Horno",
+    "province": "La Rioja"
+  },
+  "5359": {
+    "city": "Jague",
+    "province": "La Rioja"
+  },
+  "5360": {
+    "city": "Chilecito",
+    "province": "La Rioja"
+  },
+  "5361": {
+    "city": "Alcuña",
+    "province": "La Rioja"
+  },
+  "5363": {
+    "city": "Anguinan",
+    "province": "La Rioja"
+  },
+  "5365": {
+    "city": "Famatina",
+    "province": "La Rioja"
+  },
+  "5367": {
+    "city": "Guachin",
+    "province": "La Rioja"
+  },
+  "5369": {
+    "city": "Paganzillo",
+    "province": "La Rioja"
+  },
+  "5370": {
+    "city": "Santa Cruz (Chepes, Dpto. Rosario Vera Peñaloza)",
+    "province": "La Rioja"
+  },
+  "5372": {
+    "city": "Nonogasta",
+    "province": "La Rioja"
+  },
+  "5374": {
+    "city": "Vichigasta",
+    "province": "La Rioja"
+  },
+  "5380": {
+    "city": "Chulo",
+    "province": "La Rioja"
+  },
+  "5381": {
+    "city": "Talva",
+    "province": "La Rioja"
+  },
+  "5383": {
+    "city": "El Alto",
+    "province": "La Rioja"
+  },
+  "5384": {
+    "city": "Punta De Los Llanos",
+    "province": "La Rioja"
+  },
+  "5385": {
+    "city": "Tama",
+    "province": "La Rioja"
+  },
+  "5386": {
+    "city": "Amana",
+    "province": "La Rioja"
+  },
+  "5470": {
+    "city": "Chepes",
+    "province": "La Rioja"
+  },
+  "5471": {
+    "city": "Ilisca",
+    "province": "La Rioja"
+  },
+  "5472": {
+    "city": "La America",
+    "province": "La Rioja"
+  },
+  "5473": {
+    "city": "Ulapes",
+    "province": "La Rioja"
+  },
+  "5474": {
+    "city": "El Catorce",
+    "province": "La Rioja"
+  },
+  "5475": {
+    "city": "Ambil",
+    "province": "La Rioja"
+  },
+  "2340": {
+    "city": "Ceres",
+    "province": "Santa Fe"
+  },
+  "2341": {
+    "city": "La Elsa",
+    "province": "Santa Fe"
+  },
+  "2354": {
+    "city": "Selva",
+    "province": "Santiago Del Estero"
+  },
+  "2356": {
+    "city": "Pinto",
+    "province": "Santiago Del Estero"
+  },
+  "2357": {
+    "city": "Union",
+    "province": "Santiago Del Estero"
+  },
+  "3054": {
+    "city": "La Camila",
+    "province": "Santa Fe"
+  },
+  "3061": {
+    "city": "Tres Pozos",
+    "province": "Santa Fe"
+  },
+  "3062": {
+    "city": "El Once",
+    "province": "Santiago Del Estero"
+  },
+  "3064": {
+    "city": "Bandera",
+    "province": "Santiago Del Estero"
+  },
+  "3165": {
+    "city": "Tomas Young",
+    "province": "Santiago Del Estero"
+  },
+  "3238": {
+    "city": "Tableado",
+    "province": "Santiago Del Estero"
+  },
+  "3712": {
+    "city": "Belgica",
+    "province": "Santiago Del Estero"
+  },
+  "3714": {
+    "city": "Urutau",
+    "province": "Santiago Del Estero"
+  },
+  "3731": {
+    "city": "Sachayoj",
+    "province": "Santiago Del Estero"
+  },
+  "3734": {
+    "city": "Gancedo",
+    "province": "Chaco"
+  },
+  "3736": {
+    "city": "Roversi",
+    "province": "Santiago Del Estero"
+  },
+  "3740": {
+    "city": "Quimili",
+    "province": "Santiago Del Estero"
+  },
+  "3741": {
+    "city": "Haase",
+    "province": "Santiago Del Estero"
+  },
+  "3743": {
+    "city": "Tintina",
+    "province": "Santiago Del Estero"
+  },
+  "3745": {
+    "city": "Patay",
+    "province": "Santiago Del Estero"
+  },
+  "3747": {
+    "city": "Santa Lia",
+    "province": "Santiago Del Estero"
+  },
+  "3749": {
+    "city": "Taruca",
+    "province": "Santiago Del Estero"
+  },
+  "3752": {
+    "city": "Puna",
+    "province": "Santiago Del Estero"
+  },
+  "3760": {
+    "city": "Añatuya",
+    "province": "Santiago Del Estero"
+  },
+  "3761": {
+    "city": "Los Linares",
+    "province": "Santiago Del Estero"
+  },
+  "3763": {
+    "city": "Los Juries",
+    "province": "Santiago Del Estero"
+  },
+  "3765": {
+    "city": "La Nena",
+    "province": "Santiago Del Estero"
+  },
+  "3766": {
+    "city": "Averias",
+    "province": "Santiago Del Estero"
+  },
+  "4176": {
+    "city": "Acos",
+    "province": "Santiago Del Estero"
+  },
+  "4178": {
+    "city": "Araoz",
+    "province": "Tucuman"
+  },
+  "4184": {
+    "city": "Añil",
+    "province": "Santiago Del Estero"
+  },
+  "4186": {
+    "city": "Virginia",
+    "province": "Tucuman"
+  },
+  "4187": {
+    "city": "Bobadal",
+    "province": "Santiago Del Estero"
+  },
+  "4189": {
+    "city": "La Tala",
+    "province": "Santiago Del Estero"
+  },
+  "4195": {
+    "city": "Remate",
+    "province": "Santiago Del Estero"
+  },
+  "4197": {
+    "city": "Manga",
+    "province": "Santiago Del Estero"
+  },
+  "4200": {
+    "city": "Barrio Sud",
+    "province": "Santiago Del Estero"
+  },
+  "4201": {
+    "city": "Nuñez",
+    "province": "Santiago Del Estero"
+  },
+  "4203": {
+    "city": "Remes",
+    "province": "Santiago Del Estero"
+  },
+  "4205": {
+    "city": "Chaves",
+    "province": "Santiago Del Estero"
+  },
+  "4206": {
+    "city": "Yanda",
+    "province": "Santiago Del Estero"
+  },
+  "4208": {
+    "city": "Loreto",
+    "province": "Santiago Del Estero"
+  },
+  "4212": {
+    "city": "Guanaco Sombriana",
+    "province": "Santiago Del Estero"
+  },
+  "4220": {
+    "city": "Aguada",
+    "province": "Santiago Del Estero"
+  },
+  "4221": {
+    "city": "Tinco",
+    "province": "Santiago Del Estero"
+  },
+  "4223": {
+    "city": "Vinara",
+    "province": "Santiago Del Estero"
+  },
+  "4225": {
+    "city": "Bejan",
+    "province": "Santiago Del Estero"
+  },
+  "4230": {
+    "city": "Frias",
+    "province": "Santiago Del Estero"
+  },
+  "4231": {
+    "city": "Garzon",
+    "province": "Catamarca"
+  },
+  "4233": {
+    "city": "Choya",
+    "province": "Santiago Del Estero"
+  },
+  "4234": {
+    "city": "Tonzu",
+    "province": "Santiago Del Estero"
+  },
+  "4237": {
+    "city": "Mendoza",
+    "province": "Santiago Del Estero"
+  },
+  "4238": {
+    "city": "Moron",
+    "province": "Santiago Del Estero"
+  },
+  "4239": {
+    "city": "Pozancon",
+    "province": "Santiago Del Estero"
+  },
+  "4296": {
+    "city": "Cardozos",
+    "province": "Santiago Del Estero"
+  },
+  "4298": {
+    "city": "Albardon Chuña",
+    "province": "Santiago Del Estero"
+  },
+  "4300": {
+    "city": "Cuyoj",
+    "province": "Santiago Del Estero"
+  },
+  "4301": {
+    "city": "Ceja",
+    "province": "Santiago Del Estero"
+  },
+  "4302": {
+    "city": "Turena",
+    "province": "Santiago Del Estero"
+  },
+  "4303": {
+    "city": "Anchoriga",
+    "province": "Santiago Del Estero"
+  },
+  "4304": {
+    "city": "Sotelos",
+    "province": "Santiago Del Estero"
+  },
+  "4306": {
+    "city": "El Añil",
+    "province": "Santiago Del Estero"
+  },
+  "4308": {
+    "city": "Mirca",
+    "province": "Santiago Del Estero"
+  },
+  "4312": {
+    "city": "Mili",
+    "province": "Santiago Del Estero"
+  },
+  "4313": {
+    "city": "Tulun",
+    "province": "Santiago Del Estero"
+  },
+  "4314": {
+    "city": "Toro Pozo (Garza, Dpto.Sarmiento)",
+    "province": "Santiago Del Estero"
+  },
+  "4315": {
+    "city": "Codo",
+    "province": "Santiago Del Estero"
+  },
+  "4317": {
+    "city": "Saucen",
+    "province": "Santiago Del Estero"
+  },
+  "4318": {
+    "city": "Vaca Human",
+    "province": "Santiago Del Estero"
+  },
+  "4319": {
+    "city": "Veron",
+    "province": "Santiago Del Estero"
+  },
+  "4321": {
+    "city": "Anga",
+    "province": "Santiago Del Estero"
+  },
+  "4322": {
+    "city": "Yaso",
+    "province": "Santiago Del Estero"
+  },
+  "4324": {
+    "city": "Pozo",
+    "province": "Santiago Del Estero"
+  },
+  "4326": {
+    "city": "Caloj",
+    "province": "Santiago Del Estero"
+  },
+  "4328": {
+    "city": "Mailin",
+    "province": "Santiago Del Estero"
+  },
+  "4332": {
+    "city": "Bracho",
+    "province": "Santiago Del Estero"
+  },
+  "4334": {
+    "city": "Icaño",
+    "province": "Santiago Del Estero"
+  },
+  "4336": {
+    "city": "Cerrillo",
+    "province": "Santiago Del Estero"
+  },
+  "4338": {
+    "city": "Rumios",
+    "province": "Santiago Del Estero"
+  },
+  "4339": {
+    "city": "Señora Pujio",
+    "province": "Santiago Del Estero"
+  },
+  "4343": {
+    "city": "Santo Domingo (Lugones, Dpto.Avellaneda)",
+    "province": "Santiago Del Estero"
+  },
+  "4349": {
+    "city": "Monte Rico (Dpto. Alberdi)",
+    "province": "Santiago Del Estero"
+  },
+  "4350": {
+    "city": "Ampa",
+    "province": "Santiago Del Estero"
+  },
+  "4351": {
+    "city": "Yuchan",
+    "province": "Santiago Del Estero"
+  },
+  "4352": {
+    "city": "Alza Nueva",
+    "province": "Santiago Del Estero"
+  },
+  "4353": {
+    "city": "Rumi",
+    "province": "Santiago Del Estero"
+  },
+  "4354": {
+    "city": "Maco",
+    "province": "Santiago Del Estero"
+  },
+  "4355": {
+    "city": "Tiun Punco",
+    "province": "Santiago Del Estero"
+  },
+  "4356": {
+    "city": "Taruy",
+    "province": "Santiago Del Estero"
+  },
+  "4361": {
+    "city": "El Palomar (Villa Brana, Dpto. Moreno)",
+    "province": "Santiago Del Estero"
+  },
+  "4436": {
+    "city": "Abra Coro",
+    "province": "Santiago Del Estero"
+  },
+  "4514": {
+    "city": "Calilegua",
+    "province": "Jujuy"
+  },
+  "4613": {
+    "city": "Suncho Pozo (Brea Pozo, Dpto.San Martin)",
+    "province": "Santiago Del Estero"
+  },
+  "4643": {
+    "city": "Quera",
+    "province": "Santiago Del Estero"
+  },
+  "5150": {
+    "city": "Pozo Cebado (Ojo De Agua, Dpto. Ojo De Agua)",
+    "province": "Santiago Del Estero"
+  },
+  "5206": {
+    "city": "La Higuera (Arraga, Dpto.Silipica)",
+    "province": "Santiago Del Estero"
+  },
+  "5249": {
+    "city": "Racedo",
+    "province": "Cordoba"
+  },
+  "5250": {
+    "city": "Jume",
+    "province": "Santiago Del Estero"
+  },
+  "5251": {
+    "city": "Isla",
+    "province": "Santiago Del Estero"
+  },
+  "5253": {
+    "city": "Medanos",
+    "province": "Santiago Del Estero"
+  },
+  "5255": {
+    "city": "Baez",
+    "province": "Santiago Del Estero"
+  },
+  "5257": {
+    "city": "Navarro",
+    "province": "Santiago Del Estero"
+  },
+  "5258": {
+    "city": "Cerrito",
+    "province": "Santiago Del Estero"
+  },
+  "5260": {
+    "city": "Recreo",
+    "province": "Catamarca"
+  },
+  "5266": {
+    "city": "Quiros",
+    "province": "Catamarca"
+  },
+  "3500": {
+    "city": "Tigre",
+    "province": "Chaco"
+  },
+  "3501": {
+    "city": "La Liguria",
+    "province": "Chaco"
+  },
+  "3503": {
+    "city": "La Toma",
+    "province": "Chaco"
+  },
+  "3505": {
+    "city": "Pilar",
+    "province": "Chaco"
+  },
+  "3506": {
+    "city": "Los Algarrobos",
+    "province": "Chaco"
+  },
+  "3507": {
+    "city": "Pampa Almiron",
+    "province": "Chaco"
+  },
+  "3508": {
+    "city": "Kilometro 39 (Embaracadero Fcgb)",
+    "province": "Chaco"
+  },
+  "3509": {
+    "city": "Venezuela",
+    "province": "Chaco"
+  },
+  "3511": {
+    "city": "Los Pozos",
+    "province": "Chaco"
+  },
+  "3513": {
+    "city": "Lote 9",
+    "province": "Chaco"
+  },
+  "3514": {
+    "city": "Liva",
+    "province": "Chaco"
+  },
+  "3515": {
+    "city": "La Pastoril",
+    "province": "Chaco"
+  },
+  "3516": {
+    "city": "Basail",
+    "province": "Chaco"
+  },
+  "3518": {
+    "city": "Quia",
+    "province": "Chaco"
+  },
+  "3522": {
+    "city": "Floradora",
+    "province": "Chaco"
+  },
+  "3524": {
+    "city": "Timbo",
+    "province": "Chaco"
+  },
+  "3526": {
+    "city": "Velaz",
+    "province": "Chaco"
+  },
+  "3530": {
+    "city": "Picaditas",
+    "province": "Chaco"
+  },
+  "3531": {
+    "city": "Napalpi",
+    "province": "Chaco"
+  },
+  "3532": {
+    "city": "Curandu",
+    "province": "Chaco"
+  },
+  "3534": {
+    "city": "Machagai",
+    "province": "Chaco"
+  },
+  "3536": {
+    "city": "El Curundu",
+    "province": "Chaco"
+  },
+  "3540": {
+    "city": "Tucuru",
+    "province": "Chaco"
+  },
+  "3541": {
+    "city": "Santa Maria",
+    "province": "Chaco"
+  },
+  "3543": {
+    "city": "Samuhu",
+    "province": "Chaco"
+  },
+  "3545": {
+    "city": "Villa Berthet",
+    "province": "Chaco"
+  },
+  "3620": {
+    "city": "Yunca",
+    "province": "Formosa"
+  },
+  "3700": {
+    "city": "Pampa Loca",
+    "province": "Chaco"
+  },
+  "3701": {
+    "city": "La Tigra",
+    "province": "Chaco"
+  },
+  "3703": {
+    "city": "Aleloy",
+    "province": "Chaco"
+  },
+  "3705": {
+    "city": "Zaparinqui",
+    "province": "Chaco"
+  },
+  "3706": {
+    "city": "Lote 34",
+    "province": "Chaco"
+  },
+  "3708": {
+    "city": "Pampa Hermosa",
+    "province": "Chaco"
+  },
+  "3716": {
+    "city": "Las Chuñas",
+    "province": "Chaco"
+  },
+  "3718": {
+    "city": "Amambay",
+    "province": "Chaco"
+  },
+  "3722": {
+    "city": "El Cajon",
+    "province": "Chaco"
+  },
+  "3730": {
+    "city": "Cabral",
+    "province": "Chaco"
+  },
+  "3732": {
+    "city": "Welhers",
+    "province": "Chaco"
+  },
+  "3733": {
+    "city": "Itin",
+    "province": "Chaco"
+  },
+  "5400": {
+    "city": "San Juan",
+    "province": "San Juan"
+  },
+  "5401": {
+    "city": "Zonda",
+    "province": "San Juan"
+  },
+  "5403": {
+    "city": "Calingasta",
+    "province": "San Juan"
+  },
+  "5405": {
+    "city": "Tontal",
+    "province": "San Juan"
+  },
+  "5407": {
+    "city": "Bebida",
+    "province": "San Juan"
+  },
+  "5409": {
+    "city": "Mogna",
+    "province": "San Juan"
+  },
+  "5411": {
+    "city": "La Legua",
+    "province": "San Juan"
+  },
+  "5413": {
+    "city": "Mogote",
+    "province": "San Juan"
+  },
+  "5415": {
+    "city": "Alamito",
+    "province": "San Juan"
+  },
+  "5417": {
+    "city": "Chacritas",
+    "province": "San Juan"
+  },
+  "5419": {
+    "city": "Albardon",
+    "province": "San Juan"
+  },
+  "5423": {
+    "city": "Capitan Lazo",
+    "province": "San Juan"
+  },
+  "5424": {
+    "city": "Villa Larga",
+    "province": "San Juan"
+  },
+  "5425": {
+    "city": "Yornet",
+    "province": "San Juan"
+  },
+  "5427": {
+    "city": "Juan Celani",
+    "province": "San Juan"
+  },
+  "5429": {
+    "city": "Rinconada",
+    "province": "San Juan"
+  },
+  "5431": {
+    "city": "Pedernal",
+    "province": "San Juan"
+  },
+  "5433": {
+    "city": "Estacion La Rinconada",
+    "province": "San Juan"
+  },
+  "5435": {
+    "city": "Lagunas",
+    "province": "San Juan"
+  },
+  "5436": {
+    "city": "Pedro Echague",
+    "province": "San Juan"
+  },
+  "5438": {
+    "city": "Coll",
+    "province": "San Juan"
+  },
+  "5439": {
+    "city": "San Martin",
+    "province": "San Juan"
+  },
+  "5442": {
+    "city": "Uriburu",
+    "province": "San Juan"
+  },
+  "5443": {
+    "city": "Cuyo",
+    "province": "San Juan"
+  },
+  "5444": {
+    "city": "Bermejo",
+    "province": "San Juan"
+  },
+  "5446": {
+    "city": "Marayes",
+    "province": "San Juan"
+  },
+  "5447": {
+    "city": "Huerta",
+    "province": "San Juan"
+  },
+  "5449": {
+    "city": "Usno",
+    "province": "San Juan"
+  },
+  "5460": {
+    "city": "Villa",
+    "province": "San Juan"
+  },
+  "5461": {
+    "city": "Pimpa",
+    "province": "San Juan"
+  },
+  "5463": {
+    "city": "Huaco",
+    "province": "San Juan"
+  },
+  "5465": {
+    "city": "Rodeo",
+    "province": "San Juan"
+  },
+  "5467": {
+    "city": "Cañada",
+    "province": "San Juan"
+  },
+  "5480": {
+    "city": "Trancas",
+    "province": "San Juan"
+  },
+  "5546": {
+    "city": "Colanguil",
+    "province": "San Juan"
+  },
+  "4139": {
+    "city": "Iapes",
+    "province": "Catamarca"
+  },
+  "4235": {
+    "city": "Oyola",
+    "province": "Catamarca"
+  },
+  "4700": {
+    "city": "Catamarca",
+    "province": "Catamarca"
+  },
+  "4701": {
+    "city": "Taco",
+    "province": "Catamarca"
+  },
+  "4705": {
+    "city": "Sumalao",
+    "province": "Catamarca"
+  },
+  "4707": {
+    "city": "Polcos",
+    "province": "Catamarca"
+  },
+  "4709": {
+    "city": "Piedra Blanca",
+    "province": "Catamarca"
+  },
+  "4711": {
+    "city": "Ambato",
+    "province": "Catamarca"
+  },
+  "4713": {
+    "city": "Ocho Vados",
+    "province": "Catamarca"
+  },
+  "4715": {
+    "city": "Chamorro",
+    "province": "Catamarca"
+  },
+  "4716": {
+    "city": "Yocan",
+    "province": "Catamarca"
+  },
+  "4718": {
+    "city": "Santa Ana",
+    "province": "Catamarca"
+  },
+  "4719": {
+    "city": "Balcosna",
+    "province": "Catamarca"
+  },
+  "4722": {
+    "city": "Huacra",
+    "province": "Catamarca"
+  },
+  "4723": {
+    "city": "Cachi",
+    "province": "Catamarca"
+  },
+  "4724": {
+    "city": "Coneta",
+    "province": "Catamarca"
+  },
+  "4726": {
+    "city": "Capayan",
+    "province": "Catamarca"
+  },
+  "4728": {
+    "city": "Chumbicha",
+    "province": "Catamarca"
+  },
+  "4740": {
+    "city": "Chilca",
+    "province": "Catamarca"
+  },
+  "4741": {
+    "city": "Amanao",
+    "province": "Catamarca"
+  },
+  "4743": {
+    "city": "Alumbrera",
+    "province": "Catamarca"
+  },
+  "4750": {
+    "city": "Belen",
+    "province": "Catamarca"
+  },
+  "4751": {
+    "city": "El Tio",
+    "province": "Catamarca"
+  },
+  "4753": {
+    "city": "Durazno",
+    "province": "Catamarca"
+  },
+  "4758": {
+    "city": "San Buena Ventura",
+    "province": "Catamarca"
+  },
+  "5139": {
+    "city": "Marull",
+    "province": "Cordoba"
+  },
+  "5261": {
+    "city": "Garay",
+    "province": "Catamarca"
+  },
+  "5264": {
+    "city": "Tula",
+    "province": "Catamarca"
+  },
+  "5265": {
+    "city": "Brea",
+    "province": "Catamarca"
+  },
+  "5315": {
+    "city": "Poman",
+    "province": "Catamarca"
+  },
+  "5317": {
+    "city": "Rincon",
+    "province": "Catamarca"
+  },
+  "5319": {
+    "city": "Sijan",
+    "province": "Catamarca"
+  },
+  "5321": {
+    "city": "Saujil",
+    "province": "Catamarca"
+  },
+  "5331": {
+    "city": "Salado",
+    "province": "Catamarca"
+  },
+  "5333": {
+    "city": "Copacabana",
+    "province": "Catamarca"
+  },
+  "5340": {
+    "city": "Tinogasta",
+    "province": "Catamarca"
+  },
+  "5341": {
+    "city": "Taton",
+    "province": "Catamarca"
+  },
+  "5343": {
+    "city": "Santa Rosa (Dpto.Tinogasta)",
+    "province": "Catamarca"
+  },
+  "5345": {
+    "city": "El Peñon",
+    "province": "Catamarca"
+  },
+  "5621": {
+    "city": "Cochico",
+    "province": "Mendoza"
+  },
+  "6200": {
+    "city": "Realico",
+    "province": "La Pampa"
+  },
+  "6201": {
+    "city": "Chanilao",
+    "province": "La Pampa"
+  },
+  "6203": {
+    "city": "El Tigre",
+    "province": "La Pampa"
+  },
+  "6205": {
+    "city": "El Tajamar",
+    "province": "La Pampa"
+  },
+  "6207": {
+    "city": "Ojeda",
+    "province": "La Pampa"
+  },
+  "6212": {
+    "city": "Simson",
+    "province": "La Pampa"
+  },
+  "6213": {
+    "city": "Parera",
+    "province": "La Pampa"
+  },
+  "6220": {
+    "city": "El Antojo",
+    "province": "La Pampa"
+  },
+  "6221": {
+    "city": "Ceballos",
+    "province": "La Pampa"
+  },
+  "6228": {
+    "city": "Sarah",
+    "province": "La Pampa"
+  },
+  "6300": {
+    "city": "El Oasis",
+    "province": "La Pampa"
+  },
+  "6301": {
+    "city": "Cereales",
+    "province": "La Pampa"
+  },
+  "6303": {
+    "city": "Toay",
+    "province": "La Pampa"
+  },
+  "6305": {
+    "city": "Rolon",
+    "province": "La Pampa"
+  },
+  "6307": {
+    "city": "La Bota",
+    "province": "La Pampa"
+  },
+  "6309": {
+    "city": "Alpachiri",
+    "province": "La Pampa"
+  },
+  "6311": {
+    "city": "La Nueva",
+    "province": "La Pampa"
+  },
+  "6312": {
+    "city": "Ricardo Lavalle",
+    "province": "La Pampa"
+  },
+  "6313": {
+    "city": "Winifreda",
+    "province": "La Pampa"
+  },
+  "6315": {
+    "city": "Los Pirineos",
+    "province": "La Pampa"
+  },
+  "6317": {
+    "city": "Loventuel",
+    "province": "La Pampa"
+  },
+  "6319": {
+    "city": "Labal",
+    "province": "La Pampa"
+  },
+  "6321": {
+    "city": "Telen",
+    "province": "La Pampa"
+  },
+  "6323": {
+    "city": "Butalo",
+    "province": "La Pampa"
+  },
+  "6325": {
+    "city": "Naico",
+    "province": "La Pampa"
+  },
+  "6326": {
+    "city": "Anguil",
+    "province": "La Pampa"
+  },
+  "6330": {
+    "city": "Catrilo",
+    "province": "La Pampa"
+  },
+  "6331": {
+    "city": "Pavon",
+    "province": "La Pampa"
+  },
+  "6333": {
+    "city": "Huelen",
+    "province": "La Pampa"
+  },
+  "6336": {
+    "city": "La Japonesa",
+    "province": "La Pampa"
+  },
+  "6345": {
+    "city": "La Bilbaina",
+    "province": "La Pampa"
+  },
+  "6352": {
+    "city": "La Paz",
+    "province": "La Pampa"
+  },
+  "6354": {
+    "city": "Uriburu",
+    "province": "La Pampa"
+  },
+  "6360": {
+    "city": "Mocovi",
+    "province": "La Pampa"
+  },
+  "6361": {
+    "city": "Caimi",
+    "province": "La Pampa"
+  },
+  "6365": {
+    "city": "Trili",
+    "province": "La Pampa"
+  },
+  "6367": {
+    "city": "Metileo",
+    "province": "La Pampa"
+  },
+  "6369": {
+    "city": "Trenel",
+    "province": "La Pampa"
+  },
+  "6380": {
+    "city": "Boeuf",
+    "province": "La Pampa"
+  },
+  "6381": {
+    "city": "Loo Co",
+    "province": "La Pampa"
+  },
+  "6383": {
+    "city": "San Ramon",
+    "province": "La Pampa"
+  },
+  "6385": {
+    "city": "Arata",
+    "province": "La Pampa"
+  },
+  "6387": {
+    "city": "Caraman",
+    "province": "La Pampa"
+  },
+  "8200": {
+    "city": "Maraco",
+    "province": "La Pampa"
+  },
+  "8201": {
+    "city": "El Uno",
+    "province": "La Pampa"
+  },
+  "8203": {
+    "city": "Utracan",
+    "province": "La Pampa"
+  },
+  "8204": {
+    "city": "Maria",
+    "province": "La Pampa"
+  },
+  "8206": {
+    "city": "Traico",
+    "province": "La Pampa"
+  },
+  "8208": {
+    "city": "Campo Cicare",
+    "province": "La Pampa"
+  },
+  "8212": {
+    "city": "Peru",
+    "province": "La Pampa"
+  },
+  "8214": {
+    "city": "Unanue",
+    "province": "La Pampa"
+  },
+  "8238": {
+    "city": "Los Morros",
+    "province": "La Pampa"
+  },
+  "8307": {
+    "city": "Puelen",
+    "province": "La Pampa"
+  },
+  "8336": {
+    "city": "Valle Azul",
+    "province": "Rio Negro"
+  },
+  "5500": {
+    "city": "Mendoza",
+    "province": "Mendoza"
+  },
+  "5501": {
+    "city": "Godoy Cruz",
+    "province": "Mendoza"
+  },
+  "5503": {
+    "city": "Paso De Los Andes",
+    "province": "Mendoza"
+  },
+  "5505": {
+    "city": "Carbometal",
+    "province": "Mendoza"
+  },
+  "5507": {
+    "city": "Lujan De Cuyo",
+    "province": "Mendoza"
+  },
+  "5509": {
+    "city": "Funes",
+    "province": "Mendoza"
+  },
+  "5511": {
+    "city": "Barrio Sarmiento",
+    "province": "Mendoza"
+  },
+  "5513": {
+    "city": "Luzuriaga",
+    "province": "Mendoza"
+  },
+  "5515": {
+    "city": "Maipu",
+    "province": "Mendoza"
+  },
+  "5517": {
+    "city": "Maza",
+    "province": "Mendoza"
+  },
+  "5519": {
+    "city": "Nueva Ciudad",
+    "province": "Mendoza"
+  },
+  "5521": {
+    "city": "Barrio Unimev",
+    "province": "Mendoza"
+  },
+  "5523": {
+    "city": "Buena Nueva",
+    "province": "Mendoza"
+  },
+  "5525": {
+    "city": "Primavera",
+    "province": "Mendoza"
+  },
+  "5527": {
+    "city": "Vergel",
+    "province": "Mendoza"
+  },
+  "5529": {
+    "city": "Pedregal",
+    "province": "Mendoza"
+  },
+  "5531": {
+    "city": "El Paraiso",
+    "province": "Mendoza"
+  },
+  "5533": {
+    "city": "Limon",
+    "province": "Mendoza"
+  },
+  "5535": {
+    "city": "La Celia",
+    "province": "Mendoza"
+  },
+  "5537": {
+    "city": "Arroyito",
+    "province": "Mendoza"
+  },
+  "5539": {
+    "city": "Espejo",
+    "province": "Mendoza"
+  },
+  "5541": {
+    "city": "El Pastal",
+    "province": "Mendoza"
+  },
+  "5543": {
+    "city": "Jocoli",
+    "province": "Mendoza"
+  },
+  "5544": {
+    "city": "Gobernador Benegas",
+    "province": "Mendoza"
+  },
+  "5545": {
+    "city": "Uspallata",
+    "province": "Mendoza"
+  },
+  "5547": {
+    "city": "Villa Hipodromo",
+    "province": "Mendoza"
+  },
+  "5549": {
+    "city": "Guido",
+    "province": "Mendoza"
+  },
+  "5551": {
+    "city": "Polvareda",
+    "province": "Mendoza"
+  },
+  "5553": {
+    "city": "La Pirata",
+    "province": "Mendoza"
+  },
+  "5555": {
+    "city": "Puente Del Inca",
+    "province": "Mendoza"
+  },
+  "5557": {
+    "city": "Moluches",
+    "province": "Mendoza"
+  },
+  "5560": {
+    "city": "Capiz",
+    "province": "Mendoza"
+  },
+  "5561": {
+    "city": "Ancon",
+    "province": "Mendoza"
+  },
+  "5563": {
+    "city": "San Pablo",
+    "province": "Mendoza"
+  },
+  "5565": {
+    "city": "Melocoton",
+    "province": "Mendoza"
+  },
+  "5567": {
+    "city": "La Cañada",
+    "province": "Mendoza"
+  },
+  "5569": {
+    "city": "Yaucha",
+    "province": "Mendoza"
+  },
+  "5570": {
+    "city": "Santa Rita",
+    "province": "Mendoza"
+  },
+  "5571": {
+    "city": "Espino",
+    "province": "Mendoza"
+  },
+  "5573": {
+    "city": "El Moyano",
+    "province": "Mendoza"
+  },
+  "5575": {
+    "city": "Andrade",
+    "province": "Mendoza"
+  },
+  "5577": {
+    "city": "El Alto",
+    "province": "Mendoza"
+  },
+  "5579": {
+    "city": "Minelli",
+    "province": "Mendoza"
+  },
+  "5580": {
+    "city": "Colonia Tabanera",
+    "province": "Mendoza"
+  },
+  "5582": {
+    "city": "Roberts",
+    "province": "Mendoza"
+  },
+  "5584": {
+    "city": "Reina",
+    "province": "Mendoza"
+  },
+  "5585": {
+    "city": "La Isla",
+    "province": "Mendoza"
+  },
+  "5587": {
+    "city": "Barcala",
+    "province": "Mendoza"
+  },
+  "5589": {
+    "city": "Reyes",
+    "province": "Mendoza"
+  },
+  "5590": {
+    "city": "La Paz",
+    "province": "Mendoza"
+  },
+  "5591": {
+    "city": "Sopanta",
+    "province": "Mendoza"
+  },
+  "5592": {
+    "city": "La Dormida",
+    "province": "Mendoza"
+  },
+  "5594": {
+    "city": "Las Catitas",
+    "province": "Mendoza"
+  },
+  "5595": {
+    "city": "Ñacuñan",
+    "province": "Mendoza"
+  },
+  "5596": {
+    "city": "La Costa",
+    "province": "Mendoza"
+  },
+  "5600": {
+    "city": "El Cerrito",
+    "province": "Mendoza"
+  },
+  "5601": {
+    "city": "Iguazu",
+    "province": "Mendoza"
+  },
+  "5603": {
+    "city": "Goudge",
+    "province": "Mendoza"
+  },
+  "5605": {
+    "city": "Nihuil",
+    "province": "Mendoza"
+  },
+  "5607": {
+    "city": "Tabanera",
+    "province": "Mendoza"
+  },
+  "5609": {
+    "city": "Golco",
+    "province": "Mendoza"
+  },
+  "5611": {
+    "city": "Calmuco",
+    "province": "Mendoza"
+  },
+  "5613": {
+    "city": "Minacar",
+    "province": "Mendoza"
+  },
+  "5615": {
+    "city": "25 De Mayo",
+    "province": "Mendoza"
+  },
+  "5620": {
+    "city": "La Pomona",
+    "province": "Mendoza"
+  },
+  "5622": {
+    "city": "Villa Atuel",
+    "province": "Mendoza"
+  },
+  "5623": {
+    "city": "Atuel Sud",
+    "province": "Mendoza"
+  },
+  "5624": {
+    "city": "Palermo Chico",
+    "province": "Mendoza"
+  },
+  "5632": {
+    "city": "Pueblo Luna",
+    "province": "Mendoza"
+  },
+  "5634": {
+    "city": "Bowen",
+    "province": "Mendoza"
+  },
+  "5635": {
+    "city": "Kilometro 43",
+    "province": "Mendoza"
+  },
+  "5636": {
+    "city": "La Mora",
+    "province": "Mendoza"
+  },
+  "5637": {
+    "city": "Corral De Lorca",
+    "province": "Mendoza"
+  },
+  "5677": {
+    "city": "Los Campamentos (Rivadavia, Dpto. Rivadavia)",
+    "province": "Mendoza"
+  },
+  "3300": {
+    "city": "Zaiman",
+    "province": "Misiones"
+  },
+  "3304": {
+    "city": "Garupa",
+    "province": "Misiones"
+  },
+  "3306": {
+    "city": "Damus",
+    "province": "Misiones"
+  },
+  "3308": {
+    "city": "Centinela",
+    "province": "Misiones"
+  },
+  "3309": {
+    "city": "Capueron",
+    "province": "Misiones"
+  },
+  "3311": {
+    "city": "Arroyo Isabel",
+    "province": "Misiones"
+  },
+  "3313": {
+    "city": "Cerro Azul",
+    "province": "Misiones"
+  },
+  "3315": {
+    "city": "Mecking",
+    "province": "Misiones"
+  },
+  "3316": {
+    "city": "Loreto",
+    "province": "Misiones"
+  },
+  "3317": {
+    "city": "Arocena",
+    "province": "Misiones"
+  },
+  "3318": {
+    "city": "Lote 5",
+    "province": "Misiones"
+  },
+  "3324": {
+    "city": "Roca Chica",
+    "province": "Misiones"
+  },
+  "3326": {
+    "city": "El 26",
+    "province": "Misiones"
+  },
+  "3327": {
+    "city": "Manis",
+    "province": "Misiones"
+  },
+  "3328": {
+    "city": "Oasis",
+    "province": "Misiones"
+  },
+  "3332": {
+    "city": "Capivu",
+    "province": "Misiones"
+  },
+  "3334": {
+    "city": "Garuhape",
+    "province": "Misiones"
+  },
+  "3350": {
+    "city": "Tigre",
+    "province": "Misiones"
+  },
+  "3351": {
+    "city": "Azara",
+    "province": "Misiones"
+  },
+  "3353": {
+    "city": "Machadiño",
+    "province": "Misiones"
+  },
+  "3355": {
+    "city": "Arrechea",
+    "province": "Misiones"
+  },
+  "3357": {
+    "city": "Frances",
+    "province": "Misiones"
+  },
+  "3358": {
+    "city": "La Pupil",
+    "province": "Corrientes"
+  },
+  "3360": {
+    "city": "Obera",
+    "province": "Misiones"
+  },
+  "3361": {
+    "city": "Campana",
+    "province": "Misiones"
+  },
+  "3362": {
+    "city": "Campo Viera",
+    "province": "Misiones"
+  },
+  "3363": {
+    "city": "El Macaco",
+    "province": "Misiones"
+  },
+  "3364": {
+    "city": "Fracran",
+    "province": "Misiones"
+  },
+  "3366": {
+    "city": "Piray Mini",
+    "province": "Misiones"
+  },
+  "3370": {
+    "city": "Iguazu",
+    "province": "Misiones"
+  },
+  "3371": {
+    "city": "Cabure I",
+    "province": "Misiones"
+  },
+  "3372": {
+    "city": "Cataratas Del Iguazu",
+    "province": "Misiones"
+  },
+  "3374": {
+    "city": "Libertad",
+    "province": "Misiones"
+  },
+  "3376": {
+    "city": "Colonia Wanda",
+    "province": "Misiones"
+  },
+  "3378": {
+    "city": "Puerto Segundo",
+    "province": "Misiones"
+  },
+  "3380": {
+    "city": "Eldorado",
+    "province": "Misiones"
+  },
+  "3381": {
+    "city": "Piray",
+    "province": "Misiones"
+  },
+  "3382": {
+    "city": "Pati Cua",
+    "province": "Misiones"
+  },
+  "3384": {
+    "city": "Macaco",
+    "province": "Misiones"
+  },
+  "3386": {
+    "city": "Taruma",
+    "province": "Misiones"
+  },
+  "3601": {
+    "city": "Tatane",
+    "province": "Formosa"
+  },
+  "3525": {
+    "city": "Villa Escolar",
+    "province": "Formosa"
+  },
+  "3600": {
+    "city": "Formosa",
+    "province": "Formosa"
+  },
+  "3603": {
+    "city": "Las Cañitas",
+    "province": "Formosa"
+  },
+  "3604": {
+    "city": "San Hilario",
+    "province": "Formosa"
+  },
+  "3606": {
+    "city": "Pirane",
+    "province": "Formosa"
+  },
+  "3608": {
+    "city": "El Ñandu",
+    "province": "Formosa"
+  },
+  "3610": {
+    "city": "Clorinda",
+    "province": "Formosa"
+  },
+  "3611": {
+    "city": "Pigo",
+    "province": "Formosa"
+  },
+  "3613": {
+    "city": "Marca M",
+    "province": "Formosa"
+  },
+  "3615": {
+    "city": "Chagaday",
+    "province": "Formosa"
+  },
+  "3621": {
+    "city": "Las Lolas",
+    "province": "Formosa"
+  },
+  "3622": {
+    "city": "Bruchard",
+    "province": "Formosa"
+  },
+  "3624": {
+    "city": "Legua A",
+    "province": "Formosa"
+  },
+  "3626": {
+    "city": "Alolague",
+    "province": "Formosa"
+  },
+  "3628": {
+    "city": "El Sauce",
+    "province": "Formosa"
+  },
+  "3630": {
+    "city": "Isleta",
+    "province": "Formosa"
+  },
+  "3632": {
+    "city": "El Tastas",
+    "province": "Formosa"
+  },
+  "3634": {
+    "city": "La Palmita",
+    "province": "Formosa"
+  },
+  "8300": {
+    "city": "Neuquen",
+    "province": "Neuquen"
+  },
+  "8301": {
+    "city": "Ferri",
+    "province": "Rio Negro"
+  },
+  "8305": {
+    "city": "Añelo",
+    "province": "Neuquen"
+  },
+  "8309": {
+    "city": "Centenario",
+    "province": "Neuquen"
+  },
+  "8311": {
+    "city": "Villa El Chocon",
+    "province": "Neuquen"
+  },
+  "8313": {
+    "city": "Arroyito",
+    "province": "Neuquen"
+  },
+  "8315": {
+    "city": "Sañico",
+    "province": "Neuquen"
+  },
+  "8316": {
+    "city": "Plottier",
+    "province": "Neuquen"
+  },
+  "8318": {
+    "city": "Gragnos",
+    "province": "Neuquen"
+  },
+  "8319": {
+    "city": "Campamento Sol",
+    "province": "Neuquen"
+  },
+  "8322": {
+    "city": "Cutral-Co",
+    "province": "Neuquen"
+  },
+  "8340": {
+    "city": "Zapala",
+    "province": "Neuquen"
+  },
+  "8341": {
+    "city": "Lapa",
+    "province": "Neuquen"
+  },
+  "8345": {
+    "city": "Litran",
+    "province": "Neuquen"
+  },
+  "8347": {
+    "city": "Conuco",
+    "province": "Neuquen"
+  },
+  "8349": {
+    "city": "Haycu",
+    "province": "Neuquen"
+  },
+  "8351": {
+    "city": "Huncal",
+    "province": "Neuquen"
+  },
+  "8353": {
+    "city": "Milla",
+    "province": "Neuquen"
+  },
+  "8357": {
+    "city": "Mariano Moreno",
+    "province": "Neuquen"
+  },
+  "8363": {
+    "city": "Pomona",
+    "province": "Rio Negro"
+  },
+  "8370": {
+    "city": "Lolog",
+    "province": "Neuquen"
+  },
+  "8371": {
+    "city": "Lubeca",
+    "province": "Neuquen"
+  },
+  "8373": {
+    "city": "Alianza",
+    "province": "Neuquen"
+  },
+  "8375": {
+    "city": "La Negra",
+    "province": "Neuquen"
+  },
+  "8400": {
+    "city": "Ñirihuao",
+    "province": "Rio Negro"
+  },
+  "8401": {
+    "city": "Coihue",
+    "province": "Neuquen"
+  },
+  "8403": {
+    "city": "Traful",
+    "province": "Neuquen"
+  },
+  "8407": {
+    "city": "Ruca Malel",
+    "province": "Neuquen"
+  },
+  "8303": {
+    "city": "La Picasa",
+    "province": "Rio Negro"
+  },
+  "8324": {
+    "city": "Garras",
+    "province": "Rio Negro"
+  },
+  "8326": {
+    "city": "Mainque",
+    "province": "Rio Negro"
+  },
+  "8328": {
+    "city": "Allen",
+    "province": "Rio Negro"
+  },
+  "8332": {
+    "city": "Cain",
+    "province": "Rio Negro"
+  },
+  "8333": {
+    "city": "El Cuy",
+    "province": "Rio Negro"
+  },
+  "8334": {
+    "city": "Ingeniero Huergo",
+    "province": "Rio Negro"
+  },
+  "8356": {
+    "city": "Punta De Agua",
+    "province": "Rio Negro"
+  },
+  "8360": {
+    "city": "La Sara",
+    "province": "Rio Negro"
+  },
+  "8361": {
+    "city": "Isla Grande",
+    "province": "Rio Negro"
+  },
+  "8364": {
+    "city": "Darwin",
+    "province": "Rio Negro"
+  },
+  "8366": {
+    "city": "Chelforo",
+    "province": "Rio Negro"
+  },
+  "8409": {
+    "city": "Tunkelen",
+    "province": "Rio Negro"
+  },
+  "8411": {
+    "city": "Puerto Blest",
+    "province": "Rio Negro"
+  },
+  "8412": {
+    "city": "Carhue",
+    "province": "Rio Negro"
+  },
+  "8415": {
+    "city": "Repollos",
+    "province": "Rio Negro"
+  },
+  "8416": {
+    "city": "Comallo",
+    "province": "Rio Negro"
+  },
+  "8417": {
+    "city": "Mencue",
+    "province": "Rio Negro"
+  },
+  "8418": {
+    "city": "Atraico",
+    "province": "Rio Negro"
+  },
+  "8422": {
+    "city": "Niluan",
+    "province": "Rio Negro"
+  },
+  "8424": {
+    "city": "Comi-C",
+    "province": "Rio Negro"
+  },
+  "8430": {
+    "city": "El Manso",
+    "province": "Rio Negro"
+  },
+  "8500": {
+    "city": "Viedma",
+    "province": "Rio Negro"
+  },
+  "8501": {
+    "city": "Cubanea",
+    "province": "Rio Negro"
+  },
+  "8503": {
+    "city": "Chocori",
+    "province": "Rio Negro"
+  },
+  "8505": {
+    "city": "Cerro Baraja",
+    "province": "Rio Negro"
+  },
+  "8514": {
+    "city": "Saco Viejo",
+    "province": "Rio Negro"
+  },
+  "8520": {
+    "city": "Pozo Moro",
+    "province": "Rio Negro"
+  },
+  "8521": {
+    "city": "Cona Niyeu",
+    "province": "Rio Negro"
+  },
+  "8532": {
+    "city": "Sierra Grande",
+    "province": "Rio Negro"
+  },
+  "8534": {
+    "city": "Treneta",
+    "province": "Rio Negro"
+  },
+  "8536": {
+    "city": "Musters",
+    "province": "Rio Negro"
+  },
+  "9138": {
+    "city": "La Amistad",
+    "province": "Rio Negro"
+  },
+  "2101": {
+    "city": "Albarellos",
+    "province": "Santa Fe"
+  },
+  "2103": {
+    "city": "Navarro",
+    "province": "Santa Fe"
+  },
+  "2105": {
+    "city": "Cepeda",
+    "province": "Santa Fe"
+  },
+  "2107": {
+    "city": "Alvarez",
+    "province": "Santa Fe"
+  },
+  "2109": {
+    "city": "Acebal",
+    "province": "Santa Fe"
+  },
+  "2111": {
+    "city": "Francisco Paz (Apeadero Fcgm)",
+    "province": "Santa Fe"
+  },
+  "2115": {
+    "city": "Paz",
+    "province": "Santa Fe"
+  },
+  "2117": {
+    "city": "Loma Verde",
+    "province": "Santa Fe"
+  },
+  "2119": {
+    "city": "Piñero",
+    "province": "Santa Fe"
+  },
+  "2121": {
+    "city": "Perez",
+    "province": "Santa Fe"
+  },
+  "2123": {
+    "city": "Zavalla",
+    "province": "Santa Fe"
+  },
+  "2124": {
+    "city": "Villa Diego",
+    "province": "Santa Fe"
+  },
+  "2126": {
+    "city": "Alvear",
+    "province": "Santa Fe"
+  },
+  "2128": {
+    "city": "Arroyo Seco",
+    "province": "Santa Fe"
+  },
+  "2132": {
+    "city": "Funes",
+    "province": "Santa Fe"
+  },
+  "2134": {
+    "city": "Roldan",
+    "province": "Santa Fe"
+  },
+  "2136": {
+    "city": "San Geronimo",
+    "province": "Santa Fe"
+  },
+  "2138": {
+    "city": "Carcaraña",
+    "province": "Santa Fe"
+  },
+  "2142": {
+    "city": "Ibarlucea",
+    "province": "Santa Fe"
+  },
+  "2144": {
+    "city": "Larguia",
+    "province": "Santa Fe"
+  },
+  "2146": {
+    "city": "Clason",
+    "province": "Santa Fe"
+  },
+  "2147": {
+    "city": "Villa Blota",
+    "province": "Santa Fe"
+  },
+  "2148": {
+    "city": "Casas",
+    "province": "Santa Fe"
+  },
+  "2152": {
+    "city": "Paganini",
+    "province": "Santa Fe"
+  },
+  "2154": {
+    "city": "Juan Ortiz",
+    "province": "Santa Fe"
+  },
+  "2156": {
+    "city": "Borghi",
+    "province": "Santa Fe"
+  },
+  "2170": {
+    "city": "Casilda",
+    "province": "Santa Fe"
+  },
+  "2173": {
+    "city": "Chabas",
+    "province": "Santa Fe"
+  },
+  "2175": {
+    "city": "Barlett",
+    "province": "Santa Fe"
+  },
+  "2177": {
+    "city": "Bigand",
+    "province": "Santa Fe"
+  },
+  "2179": {
+    "city": "Bombal",
+    "province": "Santa Fe"
+  },
+  "2181": {
+    "city": "Los Molinos",
+    "province": "Santa Fe"
+  },
+  "2183": {
+    "city": "Arequito",
+    "province": "Santa Fe"
+  },
+  "2185": {
+    "city": "Campo Crenna",
+    "province": "Santa Fe"
+  },
+  "2187": {
+    "city": "Arteaga",
+    "province": "Santa Fe"
+  },
+  "2200": {
+    "city": "Las Quintas",
+    "province": "Santa Fe"
+  },
+  "2201": {
+    "city": "Ricardone",
+    "province": "Santa Fe"
+  },
+  "2202": {
+    "city": "Cerana",
+    "province": "Santa Fe"
+  },
+  "2204": {
+    "city": "Timbues",
+    "province": "Santa Fe"
+  },
+  "2206": {
+    "city": "Campo Paletta",
+    "province": "Santa Fe"
+  },
+  "2208": {
+    "city": "Maciel",
+    "province": "Santa Fe"
+  },
+  "2211": {
+    "city": "Serodino",
+    "province": "Santa Fe"
+  },
+  "2212": {
+    "city": "Monje",
+    "province": "Santa Fe"
+  },
+  "2214": {
+    "city": "Aldao",
+    "province": "Santa Fe"
+  },
+  "2216": {
+    "city": "Colonia Tres Marias",
+    "province": "Santa Fe"
+  },
+  "2218": {
+    "city": "Clarke",
+    "province": "Santa Fe"
+  },
+  "2222": {
+    "city": "Diaz",
+    "province": "Santa Fe"
+  },
+  "2240": {
+    "city": "Coronda",
+    "province": "Santa Fe"
+  },
+  "2241": {
+    "city": "Larrechea (Depto.San Jeronimo)",
+    "province": "Santa Fe"
+  },
+  "2242": {
+    "city": "Arijon",
+    "province": "Santa Fe"
+  },
+  "2246": {
+    "city": "Barrancas",
+    "province": "Santa Fe"
+  },
+  "2248": {
+    "city": "Irigoyen",
+    "province": "Santa Fe"
+  },
+  "2252": {
+    "city": "Galvez",
+    "province": "Santa Fe"
+  },
+  "2253": {
+    "city": "Oroño",
+    "province": "Santa Fe"
+  },
+  "2255": {
+    "city": "Rigby",
+    "province": "Santa Fe"
+  },
+  "2257": {
+    "city": "Wildermuth",
+    "province": "Santa Fe"
+  },
+  "2258": {
+    "city": "Santa Clara",
+    "province": "Santa Fe"
+  },
+  "2300": {
+    "city": "Rafaela",
+    "province": "Santa Fe"
+  },
+  "2301": {
+    "city": "Vila",
+    "province": "Santa Fe"
+  },
+  "2303": {
+    "city": "Angelica",
+    "province": "Santa Fe"
+  },
+  "2305": {
+    "city": "Lehman",
+    "province": "Santa Fe"
+  },
+  "2307": {
+    "city": "Ataliva",
+    "province": "Santa Fe"
+  },
+  "2309": {
+    "city": "San Miguel",
+    "province": "Santa Fe"
+  },
+  "2311": {
+    "city": "Capivara",
+    "province": "Santa Fe"
+  },
+  "2313": {
+    "city": "Mutchnik",
+    "province": "Santa Fe"
+  },
+  "2315": {
+    "city": "Estacion Saguier",
+    "province": "Santa Fe"
+  },
+  "2317": {
+    "city": "Eusebia",
+    "province": "Santa Fe"
+  },
+  "2318": {
+    "city": "Aurelia",
+    "province": "Santa Fe"
+  },
+  "2322": {
+    "city": "Raquel",
+    "province": "Santa Fe"
+  },
+  "2323": {
+    "city": "Pujato",
+    "province": "Santa Fe"
+  },
+  "2324": {
+    "city": "Tacural",
+    "province": "Santa Fe"
+  },
+  "2326": {
+    "city": "Palacios",
+    "province": "Santa Fe"
+  },
+  "2342": {
+    "city": "La Rubia",
+    "province": "Santa Fe"
+  },
+  "2344": {
+    "city": "Arrufo",
+    "province": "Santa Fe"
+  },
+  "2345": {
+    "city": "Colonia Ana",
+    "province": "Santa Fe"
+  },
+  "2347": {
+    "city": "Colonia Rosa",
+    "province": "Santa Fe"
+  },
+  "2349": {
+    "city": "Suardi",
+    "province": "Santa Fe"
+  },
+  "2352": {
+    "city": "Hersilia",
+    "province": "Santa Fe"
+  },
+  "2400": {
+    "city": "Villani",
+    "province": "Santa Fe"
+  },
+  "2401": {
+    "city": "Esmeraldita",
+    "province": "Santa Fe"
+  },
+  "2403": {
+    "city": "Bauer Y Sigel",
+    "province": "Santa Fe"
+  },
+  "2405": {
+    "city": "Colonia Cello",
+    "province": "Santa Fe"
+  },
+  "2407": {
+    "city": "Clucellas",
+    "province": "Santa Fe"
+  },
+  "2409": {
+    "city": "Estrada",
+    "province": "Santa Fe"
+  },
+  "2438": {
+    "city": "Frontera",
+    "province": "Santa Fe"
+  },
+  "2440": {
+    "city": "Sastre",
+    "province": "Santa Fe"
+  },
+  "2441": {
+    "city": "Crispi",
+    "province": "Santa Fe"
+  },
+  "2443": {
+    "city": "Garibaldi",
+    "province": "Santa Fe"
+  },
+  "2445": {
+    "city": "Mangore",
+    "province": "Santa Fe"
+  },
+  "2447": {
+    "city": "Los Sembrados",
+    "province": "Santa Fe"
+  },
+  "2449": {
+    "city": "Avena",
+    "province": "Santa Fe"
+  },
+  "2451": {
+    "city": "San Jorge",
+    "province": "Santa Fe"
+  },
+  "2453": {
+    "city": "Carlos Pellegrini",
+    "province": "Santa Fe"
+  },
+  "2454": {
+    "city": "Cañada Rosquin",
+    "province": "Santa Fe"
+  },
+  "2456": {
+    "city": "Traill",
+    "province": "Santa Fe"
+  },
+  "2500": {
+    "city": "Cañada De Gomez",
+    "province": "Santa Fe"
+  },
+  "2501": {
+    "city": "Berretta",
+    "province": "Santa Fe"
+  },
+  "2503": {
+    "city": "Villa Eloisa",
+    "province": "Santa Fe"
+  },
+  "2505": {
+    "city": "Las Parejas",
+    "province": "Santa Fe"
+  },
+  "2506": {
+    "city": "Correa",
+    "province": "Santa Fe"
+  },
+  "2508": {
+    "city": "Armstrong",
+    "province": "Santa Fe"
+  },
+  "2512": {
+    "city": "Tortugas",
+    "province": "Santa Fe"
+  },
+  "2520": {
+    "city": "Las Rosas",
+    "province": "Santa Fe"
+  },
+  "2521": {
+    "city": "Iturraspe",
+    "province": "Santa Fe"
+  },
+  "2523": {
+    "city": "Bouquet",
+    "province": "Santa Fe"
+  },
+  "2527": {
+    "city": "Maria Susana",
+    "province": "Santa Fe"
+  },
+  "2529": {
+    "city": "Piamonte",
+    "province": "Santa Fe"
+  },
+  "2531": {
+    "city": "Landeta",
+    "province": "Santa Fe"
+  },
+  "2535": {
+    "city": "Tais",
+    "province": "Santa Fe"
+  },
+  "2600": {
+    "city": "Venado Tuerto",
+    "province": "Santa Fe"
+  },
+  "2601": {
+    "city": "Murphy",
+    "province": "Santa Fe"
+  },
+  "2603": {
+    "city": "Chapuy",
+    "province": "Santa Fe"
+  },
+  "2605": {
+    "city": "Santa Isabel",
+    "province": "Santa Fe"
+  },
+  "2607": {
+    "city": "Campo Raffo",
+    "province": "Santa Fe"
+  },
+  "2609": {
+    "city": "Maria Teresa",
+    "province": "Santa Fe"
+  },
+  "2611": {
+    "city": "Runciman",
+    "province": "Santa Fe"
+  },
+  "2613": {
+    "city": "La Morocha",
+    "province": "Santa Fe"
+  },
+  "2615": {
+    "city": "La Gama",
+    "province": "Santa Fe"
+  },
+  "2617": {
+    "city": "Sancti Spiritu",
+    "province": "Santa Fe"
+  },
+  "2618": {
+    "city": "Carmen",
+    "province": "Santa Fe"
+  },
+  "2622": {
+    "city": "Maggiolo",
+    "province": "Santa Fe"
+  },
+  "2625": {
+    "city": "Cavanagh",
+    "province": "Cordoba"
+  },
+  "2630": {
+    "city": "Firmat",
+    "province": "Santa Fe"
+  },
+  "2631": {
+    "city": "Cora",
+    "province": "Santa Fe"
+  },
+  "2633": {
+    "city": "Covet",
+    "province": "Santa Fe"
+  },
+  "2635": {
+    "city": "Carlos Dose",
+    "province": "Santa Fe"
+  },
+  "2637": {
+    "city": "Colonia Hansen",
+    "province": "Santa Fe"
+  },
+  "2639": {
+    "city": "Gomez",
+    "province": "Santa Fe"
+  },
+  "2643": {
+    "city": "El Cantor",
+    "province": "Santa Fe"
+  },
+  "2722": {
+    "city": "Wheelwright",
+    "province": "Santa Fe"
+  },
+  "2725": {
+    "city": "Hughes",
+    "province": "Santa Fe"
+  },
+  "2726": {
+    "city": "Labordeboy",
+    "province": "Santa Fe"
+  },
+  "2728": {
+    "city": "Melincue",
+    "province": "Santa Fe"
+  },
+  "2729": {
+    "city": "Carreras",
+    "province": "Santa Fe"
+  },
+  "2732": {
+    "city": "Elortondo",
+    "province": "Santa Fe"
+  },
+  "2918": {
+    "city": "Pavon",
+    "province": "Santa Fe"
+  },
+  "2919": {
+    "city": "Villa Constitucion",
+    "province": "Santa Fe"
+  },
+  "2921": {
+    "city": "Godoy",
+    "province": "Santa Fe"
+  },
+  "3000": {
+    "city": "Santa Fe",
+    "province": "Santa Fe"
+  },
+  "3001": {
+    "city": "Cayasta",
+    "province": "Santa Fe"
+  },
+  "3003": {
+    "city": "Helvecia",
+    "province": "Santa Fe"
+  },
+  "3005": {
+    "city": "San Javier",
+    "province": "Santa Fe"
+  },
+  "3007": {
+    "city": "Empalme San Carlos",
+    "province": "Santa Fe"
+  },
+  "3009": {
+    "city": "Franck",
+    "province": "Santa Fe"
+  },
+  "3011": {
+    "city": "Sa Pereira",
+    "province": "Santa Fe"
+  },
+  "3013": {
+    "city": "Matilde",
+    "province": "Santa Fe"
+  },
+  "3014": {
+    "city": "Monte Vera",
+    "province": "Santa Fe"
+  },
+  "3016": {
+    "city": "San Jose",
+    "province": "Santa Fe"
+  },
+  "3017": {
+    "city": "Sauce Viejo",
+    "province": "Santa Fe"
+  },
+  "3018": {
+    "city": "Recreo",
+    "province": "Santa Fe"
+  },
+  "3020": {
+    "city": "Laguna Paiva",
+    "province": "Santa Fe"
+  },
+  "3021": {
+    "city": "El Galpon",
+    "province": "Santa Fe"
+  },
+  "3023": {
+    "city": "Cululu",
+    "province": "Santa Fe"
+  },
+  "3025": {
+    "city": "Soledad",
+    "province": "Santa Fe"
+  },
+  "3027": {
+    "city": "La Pelada",
+    "province": "Santa Fe"
+  },
+  "3029": {
+    "city": "Elisa",
+    "province": "Santa Fe"
+  },
+  "3032": {
+    "city": "Nelson",
+    "province": "Santa Fe"
+  },
+  "3036": {
+    "city": "Cabal",
+    "province": "Santa Fe"
+  },
+  "3038": {
+    "city": "Cayastasio",
+    "province": "Santa Fe"
+  },
+  "3040": {
+    "city": "Avichucho",
+    "province": "Santa Fe"
+  },
+  "3041": {
+    "city": "Mascias",
+    "province": "Santa Fe"
+  },
+  "3042": {
+    "city": "La Rosa",
+    "province": "Santa Fe"
+  },
+  "3044": {
+    "city": "Colonia Crespo",
+    "province": "Santa Fe"
+  },
+  "3045": {
+    "city": "La Brava",
+    "province": "Santa Fe"
+  },
+  "3046": {
+    "city": "Nare",
+    "province": "Santa Fe"
+  },
+  "3048": {
+    "city": "Luciano Leiva",
+    "province": "Santa Fe"
+  },
+  "3050": {
+    "city": "La Hosca",
+    "province": "Santa Fe"
+  },
+  "3051": {
+    "city": "Los Osos",
+    "province": "Santa Fe"
+  },
+  "3052": {
+    "city": "Cañadita",
+    "province": "Santa Fe"
+  },
+  "3056": {
+    "city": "Espin",
+    "province": "Santa Fe"
+  },
+  "3057": {
+    "city": "Pavenham",
+    "province": "Santa Fe"
+  },
+  "3060": {
+    "city": "Tostado",
+    "province": "Santa Fe"
+  },
+  "3066": {
+    "city": "Logroño",
+    "province": "Santa Fe"
+  },
+  "3070": {
+    "city": "Dho",
+    "province": "Santa Fe"
+  },
+  "3071": {
+    "city": "Portugalete",
+    "province": "Santa Fe"
+  },
+  "3072": {
+    "city": "Lucila",
+    "province": "Santa Fe"
+  },
+  "3074": {
+    "city": "Aguara",
+    "province": "Santa Fe"
+  },
+  "3076": {
+    "city": "Huanqueros",
+    "province": "Santa Fe"
+  },
+  "3080": {
+    "city": "Esperanza",
+    "province": "Santa Fe"
+  },
+  "3081": {
+    "city": "Cavour",
+    "province": "Santa Fe"
+  },
+  "3083": {
+    "city": "Grutly",
+    "province": "Santa Fe"
+  },
+  "3085": {
+    "city": "Pilar",
+    "province": "Santa Fe"
+  },
+  "3087": {
+    "city": "Felicia",
+    "province": "Santa Fe"
+  },
+  "3550": {
+    "city": "Vera",
+    "province": "Santa Fe"
+  },
+  "3551": {
+    "city": "Toba",
+    "province": "Santa Fe"
+  },
+  "3553": {
+    "city": "El 17",
+    "province": "Santa Fe"
+  },
+  "3555": {
+    "city": "Romang",
+    "province": "Santa Fe"
+  },
+  "3557": {
+    "city": "Caraguatay",
+    "province": "Santa Fe"
+  },
+  "3560": {
+    "city": "Reconquista",
+    "province": "Santa Fe"
+  },
+  "3561": {
+    "city": "Ewald",
+    "province": "Santa Fe"
+  },
+  "3563": {
+    "city": "El Araza",
+    "province": "Santa Fe"
+  },
+  "3565": {
+    "city": "Florida",
+    "province": "Santa Fe"
+  },
+  "3567": {
+    "city": "La Lola",
+    "province": "Santa Fe"
+  },
+  "3569": {
+    "city": "Berna",
+    "province": "Santa Fe"
+  },
+  "3572": {
+    "city": "Malabrigo",
+    "province": "Santa Fe"
+  },
+  "3574": {
+    "city": "Las Garzas",
+    "province": "Santa Fe"
+  },
+  "3575": {
+    "city": "Lanteri",
+    "province": "Santa Fe"
+  },
+  "3580": {
+    "city": "Villa Ocampo",
+    "province": "Santa Fe"
+  },
+  "3581": {
+    "city": "Isleta",
+    "province": "Santa Fe"
+  },
+  "3583": {
+    "city": "Villa Ana",
+    "province": "Santa Fe"
+  },
+  "3585": {
+    "city": "La Clarita",
+    "province": "Santa Fe"
+  },
+  "3586": {
+    "city": "Yaguarete",
+    "province": "Santa Fe"
+  },
+  "3587": {
+    "city": "Tacuarendi",
+    "province": "Santa Fe"
+  },
+  "3589": {
+    "city": "Kilometro 23",
+    "province": "Santa Fe"
+  },
+  "3592": {
+    "city": "El Rabon",
+    "province": "Santa Fe"
+  },
+  "3607": {
+    "city": "Las Encadenadas",
+    "province": "Santa Fe"
+  },
+  "6009": {
+    "city": "Teodelina",
+    "province": "Santa Fe"
+  },
+  "6036": {
+    "city": "Diego De Alvear",
+    "province": "Santa Fe"
+  },
+  "6039": {
+    "city": "Christophersen",
+    "province": "Santa Fe"
+  },
+  "6100": {
+    "city": "Rufino",
+    "province": "Santa Fe"
+  },
+  "6103": {
+    "city": "Amenabar",
+    "province": "Santa Fe"
+  },
+  "6106": {
+    "city": "Miramar",
+    "province": "Santa Fe"
+  },
+  "4000": {
+    "city": "Tucuman",
+    "province": "Tucuman"
+  },
+  "4101": {
+    "city": "Ojo",
+    "province": "Tucuman"
+  },
+  "4103": {
+    "city": "Rincon",
+    "province": "Tucuman"
+  },
+  "4105": {
+    "city": "Raco",
+    "province": "Tucuman"
+  },
+  "4106": {
+    "city": "Puerto Cochucho",
+    "province": "Tucuman"
+  },
+  "4107": {
+    "city": "Iglesias",
+    "province": "Tucuman"
+  },
+  "4108": {
+    "city": "San Javier",
+    "province": "Tucuman"
+  },
+  "4109": {
+    "city": "Los Vallistos",
+    "province": "Tucuman"
+  },
+  "4111": {
+    "city": "Roma",
+    "province": "Tucuman"
+  },
+  "4113": {
+    "city": "Leales",
+    "province": "Tucuman"
+  },
+  "4115": {
+    "city": "Moyar",
+    "province": "Tucuman"
+  },
+  "4117": {
+    "city": "Taco",
+    "province": "Tucuman"
+  },
+  "4119": {
+    "city": "Jaguel",
+    "province": "Tucuman"
+  },
+  "4122": {
+    "city": "Yaco",
+    "province": "Tucuman"
+  },
+  "4124": {
+    "city": "Brete",
+    "province": "Tucuman"
+  },
+  "4127": {
+    "city": "Tafi Del Valle",
+    "province": "Tucuman"
+  },
+  "4128": {
+    "city": "Lules",
+    "province": "Tucuman"
+  },
+  "4129": {
+    "city": "Obraje",
+    "province": "Tucuman"
+  },
+  "4132": {
+    "city": "Famailla",
+    "province": "Tucuman"
+  },
+  "4133": {
+    "city": "Padilla",
+    "province": "Tucuman"
+  },
+  "4134": {
+    "city": "Acheral",
+    "province": "Tucuman"
+  },
+  "4135": {
+    "city": "El Nogalar",
+    "province": "Tucuman"
+  },
+  "4137": {
+    "city": "Lara",
+    "province": "Tucuman"
+  },
+  "4142": {
+    "city": "Aran",
+    "province": "Tucuman"
+  },
+  "4143": {
+    "city": "Los Noyes",
+    "province": "Tucuman"
+  },
+  "4144": {
+    "city": "Amberes",
+    "province": "Tucuman"
+  },
+  "4145": {
+    "city": "Ingenio La Providencia",
+    "province": "Tucuman"
+  },
+  "4146": {
+    "city": "Iltico",
+    "province": "Tucuman"
+  },
+  "4147": {
+    "city": "Arcadia",
+    "province": "Tucuman"
+  },
+  "4149": {
+    "city": "Jaya",
+    "province": "Tucuman"
+  },
+  "4151": {
+    "city": "Molinos",
+    "province": "Tucuman"
+  },
+  "4152": {
+    "city": "Nasche",
+    "province": "Tucuman"
+  },
+  "4153": {
+    "city": "Rio Chico",
+    "province": "Tucuman"
+  },
+  "4155": {
+    "city": "Tuscal",
+    "province": "Tucuman"
+  },
+  "4156": {
+    "city": "Manuela Pedraza",
+    "province": "Tucuman"
+  },
+  "4157": {
+    "city": "Posta",
+    "province": "Tucuman"
+  },
+  "4158": {
+    "city": "Escaba",
+    "province": "Tucuman"
+  },
+  "4159": {
+    "city": "Ympas",
+    "province": "Tucuman"
+  },
+  "4161": {
+    "city": "Alongo",
+    "province": "Tucuman"
+  },
+  "4162": {
+    "city": "Mistol",
+    "province": "Tucuman"
+  },
+  "4163": {
+    "city": "Romarello",
+    "province": "Tucuman"
+  },
+  "4164": {
+    "city": "El Bajo",
+    "province": "Tucuman"
+  },
+  "4166": {
+    "city": "Rio Lules",
+    "province": "Tucuman"
+  },
+  "4168": {
+    "city": "El Moyar",
+    "province": "Tucuman"
+  },
+  "4171": {
+    "city": "Guemes",
+    "province": "Tucuman"
+  },
+  "4172": {
+    "city": "Macio",
+    "province": "Tucuman"
+  },
+  "4174": {
+    "city": "Ingas",
+    "province": "Tucuman"
+  },
+  "4179": {
+    "city": "Cejas De Benachillos",
+    "province": "Tucuman"
+  },
+  "4182": {
+    "city": "Mayo",
+    "province": "Tucuman"
+  },
+  "4207": {
+    "city": "Puerta San Javier",
+    "province": "Tucuman"
+  },
+  "4229": {
+    "city": "La Toma (Benjamin Araoz, Dpto. Burruyacu)",
+    "province": "Tucuman"
+  },
+  "4242": {
+    "city": "Coco",
+    "province": "Tucuman"
+  },
+  "4257": {
+    "city": "La Tipa",
+    "province": "Tucuman"
+  },
+  "4263": {
+    "city": "San Jose (Huasa Pampa Norte, Dpto. Graneros)",
+    "province": "Tucuman"
+  },
+  "4276": {
+    "city": "Sol De Mayo",
+    "province": "Tucuman"
+  },
+  "4286": {
+    "city": "San Jose (Las Cejas, Dpto. Cruz Alta)",
+    "province": "Tucuman"
+  },
+  "4424": {
+    "city": "Talitas",
+    "province": "Tucuman"
+  },
+  "5157": {
+    "city": "Los Agudos",
+    "province": "Tucuman"
+  },
+  "8211": {
+    "city": "Cushamen",
+    "province": "Chubut"
+  },
+  "8217": {
+    "city": "El Rincon",
+    "province": "Chubut"
+  },
+  "8431": {
+    "city": "El Hoyo",
+    "province": "Chubut"
+  },
+  "9000": {
+    "city": "Pico Salamanca",
+    "province": "Chubut"
+  },
+  "9001": {
+    "city": "Astra",
+    "province": "Chubut"
+  },
+  "9003": {
+    "city": "Don Bosco",
+    "province": "Chubut"
+  },
+  "9005": {
+    "city": "Valle C",
+    "province": "Chubut"
+  },
+  "9007": {
+    "city": "Visser",
+    "province": "Chubut"
+  },
+  "9009": {
+    "city": "Holdich",
+    "province": "Chubut"
+  },
+  "9020": {
+    "city": "Sarmiento",
+    "province": "Chubut"
+  },
+  "9021": {
+    "city": "Colhue Huapi",
+    "province": "Chubut"
+  },
+  "9023": {
+    "city": "Buen Pasto",
+    "province": "Chubut"
+  },
+  "9030": {
+    "city": "Rio Mayo",
+    "province": "Chubut"
+  },
+  "9031": {
+    "city": "Facundo",
+    "province": "Chubut"
+  },
+  "9033": {
+    "city": "El Coite",
+    "province": "Chubut"
+  },
+  "9035": {
+    "city": "Arroyo Chalia",
+    "province": "Chubut"
+  },
+  "9036": {
+    "city": "Doctor Ricardo Rojas",
+    "province": "Chubut"
+  },
+  "9037": {
+    "city": "Alto Rio Mayo",
+    "province": "Chubut"
+  },
+  "9039": {
+    "city": "Hito 45",
+    "province": "Chubut"
+  },
+  "9100": {
+    "city": "Barrio Maco",
+    "province": "Chubut"
+  },
+  "9101": {
+    "city": "El Mirasol",
+    "province": "Chubut"
+  },
+  "9103": {
+    "city": "Rawson",
+    "province": "Chubut"
+  },
+  "9105": {
+    "city": "Gaiman",
+    "province": "Chubut"
+  },
+  "9107": {
+    "city": "Dolavon",
+    "province": "Chubut"
+  },
+  "9111": {
+    "city": "Ernani",
+    "province": "Chubut"
+  },
+  "9113": {
+    "city": "Florentino Ameghino",
+    "province": "Chubut"
+  },
+  "9120": {
+    "city": "Catayco",
+    "province": "Chubut"
+  },
+  "9121": {
+    "city": "Telsen",
+    "province": "Chubut"
+  },
+  "9123": {
+    "city": "Cochico",
+    "province": "Chubut"
+  },
+  "9200": {
+    "city": "Esquel",
+    "province": "Chubut"
+  },
+  "9201": {
+    "city": "Tecka",
+    "province": "Chubut"
+  },
+  "9203": {
+    "city": "Trevelin",
+    "province": "Chubut"
+  },
+  "9207": {
+    "city": "Kaukel",
+    "province": "Chubut"
+  },
+  "9210": {
+    "city": "El Pueblo",
+    "province": "Chubut"
+  },
+  "9211": {
+    "city": "Epuyen",
+    "province": "Chubut"
+  },
+  "9213": {
+    "city": "Lepa",
+    "province": "Chubut"
+  },
+  "9217": {
+    "city": "Lezama",
+    "province": "Chubut"
+  },
+  "9220": {
+    "city": "El Molle",
+    "province": "Chubut"
+  },
+  "9221": {
+    "city": "Valle Hondo",
+    "province": "Chubut"
+  },
+  "9223": {
+    "city": "Shaman",
+    "province": "Chubut"
+  },
+  "9225": {
+    "city": "Lago Paz",
+    "province": "Chubut"
+  },
+  "9227": {
+    "city": "Staudt",
+    "province": "Chubut"
+  },
+  "9431": {
+    "city": "Lago Puelo",
+    "province": "Chubut"
+  },
+  "9409": {
+    "city": "Islas Malvinas",
+    "province": "Tierra Del Fuego"
+  },
+  "9410": {
+    "city": "Ushuaia",
+    "province": "Tierra Del Fuego"
+  },
+  "9411": {
+    "city": "Primavera",
+    "province": "Tierra Del Fuego"
+  },
+  "9420": {
+    "city": "Ruby",
+    "province": "Tierra Del Fuego"
+  },
+  "9421": {
+    "city": "Frigorifico Cap Rio Grande",
+    "province": "Tierra Del Fuego"
+  },
+  "3196": {
+    "city": "Inga",
+    "province": "Corrientes"
+  },
+  "3197": {
+    "city": "La Nena",
+    "province": "Corrientes"
+  },
+  "3199": {
+    "city": "Malvinas",
+    "province": "Corrientes"
+  },
+  "3222": {
+    "city": "Mota",
+    "province": "Corrientes"
+  },
+  "3226": {
+    "city": "Mocoreta",
+    "province": "Corrientes"
+  },
+  "3230": {
+    "city": "Recreo",
+    "province": "Corrientes"
+  },
+  "3231": {
+    "city": "Yapeyu",
+    "province": "Corrientes"
+  },
+  "3232": {
+    "city": "Cabred",
+    "province": "Corrientes"
+  },
+  "3234": {
+    "city": "Bonpland",
+    "province": "Corrientes"
+  },
+  "3266": {
+    "city": "Abalo",
+    "province": "Corrientes"
+  },
+  "3302": {
+    "city": "Salinas",
+    "province": "Corrientes"
+  },
+  "3340": {
+    "city": "Cambai",
+    "province": "Corrientes"
+  },
+  "3342": {
+    "city": "Sosa",
+    "province": "Corrientes"
+  },
+  "3344": {
+    "city": "Batay",
+    "province": "Corrientes"
+  },
+  "3346": {
+    "city": "Yurucua",
+    "province": "Corrientes"
+  },
+  "3400": {
+    "city": "Corrientes",
+    "province": "Corrientes"
+  },
+  "3401": {
+    "city": "El Pollo",
+    "province": "Corrientes"
+  },
+  "3405": {
+    "city": "Tolatu",
+    "province": "Corrientes"
+  },
+  "3406": {
+    "city": "El Loto",
+    "province": "Corrientes"
+  },
+  "3407": {
+    "city": "Costas",
+    "province": "Corrientes"
+  },
+  "3409": {
+    "city": "Costa Toledo",
+    "province": "Corrientes"
+  },
+  "3412": {
+    "city": "Guayu",
+    "province": "Corrientes"
+  },
+  "3414": {
+    "city": "Itati",
+    "province": "Corrientes"
+  },
+  "3416": {
+    "city": "Pehuaho",
+    "province": "Corrientes"
+  },
+  "3418": {
+    "city": "Empedrado",
+    "province": "Corrientes"
+  },
+  "3420": {
+    "city": "Angua",
+    "province": "Corrientes"
+  },
+  "3421": {
+    "city": "Batel",
+    "province": "Corrientes"
+  },
+  "3423": {
+    "city": "Caiman",
+    "province": "Corrientes"
+  },
+  "3425": {
+    "city": "Pago Alegre",
+    "province": "Corrientes"
+  },
+  "3427": {
+    "city": "Veloso",
+    "province": "Corrientes"
+  },
+  "3428": {
+    "city": "Estacion Saladas",
+    "province": "Corrientes"
+  },
+  "3432": {
+    "city": "Macedo",
+    "province": "Corrientes"
+  },
+  "3433": {
+    "city": "Raices",
+    "province": "Corrientes"
+  },
+  "3440": {
+    "city": "Ferro",
+    "province": "Corrientes"
+  },
+  "3441": {
+    "city": "Algarrobo",
+    "province": "Corrientes"
+  },
+  "3443": {
+    "city": "Lavalle",
+    "province": "Corrientes"
+  },
+  "3448": {
+    "city": "Timbo",
+    "province": "Corrientes"
+  },
+  "3449": {
+    "city": "Juan Diaz",
+    "province": "Corrientes"
+  },
+  "3450": {
+    "city": "Goya",
+    "province": "Corrientes"
+  },
+  "3451": {
+    "city": "Mora",
+    "province": "Corrientes"
+  },
+  "3453": {
+    "city": "Ifran",
+    "province": "Corrientes"
+  },
+  "3454": {
+    "city": "Fanegas",
+    "province": "Corrientes"
+  },
+  "3460": {
+    "city": "Lobory",
+    "province": "Corrientes"
+  },
+  "3461": {
+    "city": "Nina",
+    "province": "Corrientes"
+  },
+  "3463": {
+    "city": "Soto",
+    "province": "Corrientes"
+  },
+  "3465": {
+    "city": "Capirari",
+    "province": "Corrientes"
+  },
+  "3466": {
+    "city": "Abeli",
+    "province": "Corrientes"
+  },
+  "3470": {
+    "city": "Mercedes",
+    "province": "Corrientes"
+  },
+  "3471": {
+    "city": "Uguay",
+    "province": "Corrientes"
+  },
+  "3472": {
+    "city": "Tatare",
+    "province": "Corrientes"
+  },
+  "3474": {
+    "city": "Oscuro",
+    "province": "Corrientes"
+  },
+  "3476": {
+    "city": "Solari",
+    "province": "Corrientes"
+  },
+  "3480": {
+    "city": "Tilita",
+    "province": "Corrientes"
+  },
+  "3481": {
+    "city": "Toro I",
+    "province": "Corrientes"
+  },
+  "3483": {
+    "city": "Loreto",
+    "province": "Corrientes"
+  },
+  "3485": {
+    "city": "Montaña",
+    "province": "Corrientes"
+  },
+  "3486": {
+    "city": "Villa Olivari",
+    "province": "Corrientes"
+  },
+  "3487": {
+    "city": "Puesto Isla",
+    "province": "Corrientes"
+  },
+  "3641": {
+    "city": "Arroyo Seco (Dpto. Curuzu Cuatia)",
+    "province": "Corrientes"
+  },
+  "2189": {
+    "city": "Cruz Alta",
+    "province": "Cordoba"
+  },
+  "2411": {
+    "city": "Luxardo",
+    "province": "Cordoba"
+  },
+  "2412": {
+    "city": "Colonia Ceferina",
+    "province": "Cordoba"
+  },
+  "2413": {
+    "city": "Freyre",
+    "province": "Cordoba"
+  },
+  "2415": {
+    "city": "Porteña",
+    "province": "Cordoba"
+  },
+  "2417": {
+    "city": "Bottaro",
+    "province": "Cordoba"
+  },
+  "2419": {
+    "city": "Seeber",
+    "province": "Cordoba"
+  },
+  "2421": {
+    "city": "Maunier",
+    "province": "Cordoba"
+  },
+  "2423": {
+    "city": "Campo Calvo",
+    "province": "Cordoba"
+  },
+  "2424": {
+    "city": "Amalia",
+    "province": "Cordoba"
+  },
+  "2426": {
+    "city": "La Francia",
+    "province": "Cordoba"
+  },
+  "2428": {
+    "city": "Kilometro 581",
+    "province": "Cordoba"
+  },
+  "2432": {
+    "city": "El Tio",
+    "province": "Cordoba"
+  },
+  "2433": {
+    "city": "La Frontera",
+    "province": "Cordoba"
+  },
+  "2434": {
+    "city": "Arroyito",
+    "province": "Cordoba"
+  },
+  "2435": {
+    "city": "La Coyunda",
+    "province": "Cordoba"
+  },
+  "2436": {
+    "city": "Transito",
+    "province": "Cordoba"
+  },
+  "2516": {
+    "city": "Agua Hedionda",
+    "province": "Cordoba"
+  },
+  "2525": {
+    "city": "Saira",
+    "province": "Cordoba"
+  },
+  "2550": {
+    "city": "Bell Ville",
+    "province": "Cordoba"
+  },
+  "2551": {
+    "city": "Los Patos",
+    "province": "Cordoba"
+  },
+  "2553": {
+    "city": "Justiniano Posse",
+    "province": "Cordoba"
+  },
+  "2555": {
+    "city": "Ordoñez",
+    "province": "Cordoba"
+  },
+  "2557": {
+    "city": "Idiazabal",
+    "province": "Cordoba"
+  },
+  "2558": {
+    "city": "Los Tasis",
+    "province": "Cordoba"
+  },
+  "2559": {
+    "city": "Cintra",
+    "province": "Cordoba"
+  },
+  "2561": {
+    "city": "San Eusebio",
+    "province": "Cordoba"
+  },
+  "2563": {
+    "city": "El Overo",
+    "province": "Cordoba"
+  },
+  "2564": {
+    "city": "Monte Leña",
+    "province": "Cordoba"
+  },
+  "2566": {
+    "city": "San Marcos",
+    "province": "Cordoba"
+  },
+  "2568": {
+    "city": "Morrison",
+    "province": "Cordoba"
+  },
+  "2572": {
+    "city": "Ballesteros",
+    "province": "Cordoba"
+  },
+  "2580": {
+    "city": "El Panal",
+    "province": "Cordoba"
+  },
+  "2581": {
+    "city": "Los Surgentes",
+    "province": "Cordoba"
+  },
+  "2583": {
+    "city": "General Baldissera",
+    "province": "Cordoba"
+  },
+  "2587": {
+    "city": "Inriville",
+    "province": "Cordoba"
+  },
+  "2589": {
+    "city": "Monte Buey",
+    "province": "Cordoba"
+  },
+  "2592": {
+    "city": "General Roca",
+    "province": "Cordoba"
+  },
+  "2594": {
+    "city": "Leones",
+    "province": "Cordoba"
+  },
+  "2619": {
+    "city": "Kilometro 57",
+    "province": "Cordoba"
+  },
+  "2624": {
+    "city": "Arias",
+    "province": "Cordoba"
+  },
+  "2627": {
+    "city": "Guatimozin",
+    "province": "Cordoba"
+  },
+  "2645": {
+    "city": "Colonia Italiana",
+    "province": "Cordoba"
+  },
+  "2650": {
+    "city": "Canals",
+    "province": "Cordoba"
+  },
+  "2651": {
+    "city": "El Dorado",
+    "province": "Cordoba"
+  },
+  "2655": {
+    "city": "Wenceslao Escalante",
+    "province": "Cordoba"
+  },
+  "2657": {
+    "city": "Laborde",
+    "province": "Cordoba"
+  },
+  "2659": {
+    "city": "Matacos",
+    "province": "Cordoba"
+  },
+  "2661": {
+    "city": "El Pilar",
+    "province": "Cordoba"
+  },
+  "2662": {
+    "city": "Alejo Ledesma",
+    "province": "Cordoba"
+  },
+  "2664": {
+    "city": "San Meliton",
+    "province": "Cordoba"
+  },
+  "2670": {
+    "city": "Chacabuco",
+    "province": "Cordoba"
+  },
+  "2671": {
+    "city": "Assunta",
+    "province": "Cordoba"
+  },
+  "2675": {
+    "city": "Chazon",
+    "province": "Cordoba"
+  },
+  "2677": {
+    "city": "Ucacha",
+    "province": "Cordoba"
+  },
+  "2679": {
+    "city": "Pascanas",
+    "province": "Cordoba"
+  },
+  "2681": {
+    "city": "Etruria",
+    "province": "Cordoba"
+  },
+  "2684": {
+    "city": "Olmos",
+    "province": "Cordoba"
+  },
+  "2686": {
+    "city": "Alejandro",
+    "province": "Cordoba"
+  },
+  "2875": {
+    "city": "Quebracho Ladeado",
+    "province": "Cordoba"
+  },
+  "2987": {
+    "city": "Colonia Garzon",
+    "province": "Cordoba"
+  },
+  "5000": {
+    "city": "Cordoba",
+    "province": "Cordoba"
+  },
+  "5006": {
+    "city": "Barrio Altamira",
+    "province": "Cordoba"
+  },
+  "5008": {
+    "city": "Barrio La France",
+    "province": "Cordoba"
+  },
+  "5009": {
+    "city": "Villa Marta",
+    "province": "Cordoba"
+  },
+  "5012": {
+    "city": "Barrio Yofre",
+    "province": "Cordoba"
+  },
+  "5101": {
+    "city": "Cosme",
+    "province": "Cordoba"
+  },
+  "5103": {
+    "city": "Barrio Villa Union",
+    "province": "Cordoba"
+  },
+  "5105": {
+    "city": "La Redencion",
+    "province": "Cordoba"
+  },
+  "5107": {
+    "city": "Ani-Mi",
+    "province": "Cordoba"
+  },
+  "5109": {
+    "city": "Cabana",
+    "province": "Cordoba"
+  },
+  "5111": {
+    "city": "Ñu Pora",
+    "province": "Cordoba"
+  },
+  "5113": {
+    "city": "Salsipuedes",
+    "province": "Cordoba"
+  },
+  "5115": {
+    "city": "La Granja",
+    "province": "Cordoba"
+  },
+  "5117": {
+    "city": "Avanza",
+    "province": "Cordoba"
+  },
+  "5119": {
+    "city": "Bouwer",
+    "province": "Cordoba"
+  },
+  "5120": {
+    "city": "Laboulaye",
+    "province": "Cordoba"
+  },
+  "5121": {
+    "city": "Doctor Lucas A. Olmos",
+    "province": "Cordoba"
+  },
+  "5123": {
+    "city": "Toledo",
+    "province": "Cordoba"
+  },
+  "5125": {
+    "city": "Tejeda",
+    "province": "Cordoba"
+  },
+  "5127": {
+    "city": "Tala Sud",
+    "province": "Cordoba"
+  },
+  "5129": {
+    "city": "El Crispin",
+    "province": "Cordoba"
+  },
+  "5131": {
+    "city": "Tiñoso",
+    "province": "Cordoba"
+  },
+  "5133": {
+    "city": "Espinal",
+    "province": "Cordoba"
+  },
+  "5135": {
+    "city": "Castellanos",
+    "province": "Cordoba"
+  },
+  "5137": {
+    "city": "La Para",
+    "province": "Cordoba"
+  },
+  "5141": {
+    "city": "Plujunta",
+    "province": "Cordoba"
+  },
+  "5142": {
+    "city": "La Cautiva",
+    "province": "Cordoba"
+  },
+  "5143": {
+    "city": "Miramar",
+    "province": "Cordoba"
+  },
+  "5145": {
+    "city": "Guiñazu",
+    "province": "Cordoba"
+  },
+  "5147": {
+    "city": "Arguello",
+    "province": "Cordoba"
+  },
+  "5149": {
+    "city": "Saldan",
+    "province": "Cordoba"
+  },
+  "5151": {
+    "city": "El Pastor",
+    "province": "Cordoba"
+  },
+  "5152": {
+    "city": "Villa Del Lago",
+    "province": "Cordoba"
+  },
+  "5153": {
+    "city": "Mesillas",
+    "province": "Cordoba"
+  },
+  "5155": {
+    "city": "Tanti",
+    "province": "Cordoba"
+  },
+  "5156": {
+    "city": "Villa Suizo Argentina",
+    "province": "Cordoba"
+  },
+  "5158": {
+    "city": "Las Casitas",
+    "province": "Cordoba"
+  },
+  "5162": {
+    "city": "Casa Grande",
+    "province": "Cordoba"
+  },
+  "5164": {
+    "city": "Villa Caeiro",
+    "province": "Cordoba"
+  },
+  "5165": {
+    "city": "Sanatorio Santa Maria",
+    "province": "Cordoba"
+  },
+  "5166": {
+    "city": "Olaen",
+    "province": "Cordoba"
+  },
+  "5168": {
+    "city": "La Usina",
+    "province": "Cordoba"
+  },
+  "5172": {
+    "city": "El Puente",
+    "province": "Cordoba"
+  },
+  "5174": {
+    "city": "Huerta Grande",
+    "province": "Cordoba"
+  },
+  "5175": {
+    "city": "Casa Serrana (Huerta Grande)",
+    "province": "Cordoba"
+  },
+  "5176": {
+    "city": "Thea",
+    "province": "Cordoba"
+  },
+  "5178": {
+    "city": "Pintos",
+    "province": "Cordoba"
+  },
+  "5182": {
+    "city": "Alto Castro",
+    "province": "Cordoba"
+  },
+  "5184": {
+    "city": "Ongamira",
+    "province": "Cordoba"
+  },
+  "5185": {
+    "city": "La Falda (La Playa-Dpto.Minas)",
+    "province": "Cordoba"
+  },
+  "5186": {
+    "city": "La Isolina",
+    "province": "Cordoba"
+  },
+  "5187": {
+    "city": "San Clemente",
+    "province": "Cordoba"
+  },
+  "5189": {
+    "city": "Tecera",
+    "province": "Cordoba"
+  },
+  "5191": {
+    "city": "Calmayo",
+    "province": "Cordoba"
+  },
+  "5192": {
+    "city": "Dique Los Molinos",
+    "province": "Cordoba"
+  },
+  "5194": {
+    "city": "Loma Grande",
+    "province": "Cordoba"
+  },
+  "5195": {
+    "city": "Villa Calamuchita",
+    "province": "Cordoba"
+  },
+  "5196": {
+    "city": "Sariaco",
+    "province": "Cordoba"
+  },
+  "5197": {
+    "city": "Vista Alegre",
+    "province": "Cordoba"
+  },
+  "5199": {
+    "city": "Amboy",
+    "province": "Cordoba"
+  },
+  "5200": {
+    "city": "Dean Funes",
+    "province": "Cordoba"
+  },
+  "5201": {
+    "city": "Maza",
+    "province": "Cordoba"
+  },
+  "5203": {
+    "city": "Tulumba",
+    "province": "Cordoba"
+  },
+  "5205": {
+    "city": "Sevilla",
+    "province": "Cordoba"
+  },
+  "5208": {
+    "city": "Cañada Honda (Cruz Del Eje, Depto. Cruz Del Eje)",
+    "province": "Cordoba"
+  },
+  "5209": {
+    "city": "Jume",
+    "province": "Cordoba"
+  },
+  "5211": {
+    "city": "Macha",
+    "province": "Cordoba"
+  },
+  "5212": {
+    "city": "La Selva",
+    "province": "Cordoba"
+  },
+  "5214": {
+    "city": "La Ruda",
+    "province": "Cordoba"
+  },
+  "5218": {
+    "city": "Chuña",
+    "province": "Cordoba"
+  },
+  "5220": {
+    "city": "Belen",
+    "province": "Cordoba"
+  },
+  "5221": {
+    "city": "Mota",
+    "province": "Cordoba"
+  },
+  "5223": {
+    "city": "Caroya",
+    "province": "Cordoba"
+  },
+  "5225": {
+    "city": "Atahona",
+    "province": "Cordoba"
+  },
+  "5227": {
+    "city": "Puesto De Fierro",
+    "province": "Cordoba"
+  },
+  "5229": {
+    "city": "La Dora",
+    "province": "Cordoba"
+  },
+  "5231": {
+    "city": "Siton",
+    "province": "Cordoba"
+  },
+  "5233": {
+    "city": "El Pozo",
+    "province": "Cordoba"
+  },
+  "5235": {
+    "city": "Candelaria Norte",
+    "province": "Cordoba"
+  },
+  "5236": {
+    "city": "El Pedacito",
+    "province": "Cordoba"
+  },
+  "5238": {
+    "city": "Canteras Los Morales",
+    "province": "Cordoba"
+  },
+  "5242": {
+    "city": "Fatima",
+    "province": "Cordoba"
+  },
+  "5244": {
+    "city": "Beuce",
+    "province": "Cordoba"
+  },
+  "5246": {
+    "city": "Rodeo",
+    "province": "Cordoba"
+  },
+  "5248": {
+    "city": "El Prado",
+    "province": "Cordoba"
+  },
+  "5270": {
+    "city": "Quilmes",
+    "province": "Cordoba"
+  },
+  "5271": {
+    "city": "Puesto De Vera",
+    "province": "Cordoba"
+  },
+  "5280": {
+    "city": "Toco Toco",
+    "province": "Cordoba"
+  },
+  "5281": {
+    "city": "La Abra",
+    "province": "Cordoba"
+  },
+  "5282": {
+    "city": "Escobas",
+    "province": "Cordoba"
+  },
+  "5284": {
+    "city": "Soto",
+    "province": "Cordoba"
+  },
+  "5285": {
+    "city": "Guaico",
+    "province": "Cordoba"
+  },
+  "5287": {
+    "city": "Characato",
+    "province": "Cordoba"
+  },
+  "5289": {
+    "city": "Tosno",
+    "province": "Cordoba"
+  },
+  "5291": {
+    "city": "Sunchal",
+    "province": "Cordoba"
+  },
+  "5293": {
+    "city": "Cerro Bola",
+    "province": "Cordoba"
+  },
+  "5295": {
+    "city": "Viso",
+    "province": "Cordoba"
+  },
+  "5297": {
+    "city": "Arroyo",
+    "province": "Cordoba"
+  },
+  "5299": {
+    "city": "Pocho",
+    "province": "Cordoba"
+  },
+  "5800": {
+    "city": "Saucecito",
+    "province": "Cordoba"
+  },
+  "5801": {
+    "city": "El Tambo",
+    "province": "Cordoba"
+  },
+  "5803": {
+    "city": "Reduccion",
+    "province": "Cordoba"
+  },
+  "5805": {
+    "city": "Chucul",
+    "province": "Cordoba"
+  },
+  "5807": {
+    "city": "Olaeta",
+    "province": "Cordoba"
+  },
+  "5809": {
+    "city": "Colonia Dolores",
+    "province": "Cordoba"
+  },
+  "5811": {
+    "city": "Coronel Baigorria",
+    "province": "Cordoba"
+  },
+  "5813": {
+    "city": "Tegua",
+    "province": "Cordoba"
+  },
+  "5815": {
+    "city": "Elena",
+    "province": "Cordoba"
+  },
+  "5817": {
+    "city": "La Dormida",
+    "province": "Cordoba"
+  },
+  "5819": {
+    "city": "Las Caleras",
+    "province": "Cordoba"
+  },
+  "5821": {
+    "city": "Cano",
+    "province": "Cordoba"
+  },
+  "5823": {
+    "city": "Condor",
+    "province": "Cordoba"
+  },
+  "5825": {
+    "city": "Holmberg",
+    "province": "Cordoba"
+  },
+  "5827": {
+    "city": "Las Vertientes",
+    "province": "Cordoba"
+  },
+  "5829": {
+    "city": "Soria",
+    "province": "Cordoba"
+  },
+  "5833": {
+    "city": "Las Lajas",
+    "province": "Cordoba"
+  },
+  "5837": {
+    "city": "Suco",
+    "province": "Cordoba"
+  },
+  "5839": {
+    "city": "Malena",
+    "province": "Cordoba"
+  },
+  "5841": {
+    "city": "Yatay",
+    "province": "Cordoba"
+  },
+  "5843": {
+    "city": "Adelia Maria",
+    "province": "Cordoba"
+  },
+  "5845": {
+    "city": "Bulnes",
+    "province": "Cordoba"
+  },
+  "5847": {
+    "city": "Fragueyro",
+    "province": "Cordoba"
+  },
+  "5848": {
+    "city": "Escobar",
+    "province": "Cordoba"
+  },
+  "5850": {
+    "city": "Rio Tercero",
+    "province": "Cordoba"
+  },
+  "5851": {
+    "city": "Monsalvo",
+    "province": "Cordoba"
+  },
+  "5853": {
+    "city": "Corralito",
+    "province": "Cordoba"
+  },
+  "5854": {
+    "city": "La Cascada",
+    "province": "Cordoba"
+  },
+  "5856": {
+    "city": "Embalse",
+    "province": "Cordoba"
+  },
+  "5857": {
+    "city": "Segunda Usina",
+    "province": "Cordoba"
+  },
+  "5859": {
+    "city": "Lutti",
+    "province": "Cordoba"
+  },
+  "5862": {
+    "city": "Villa Del Dique",
+    "province": "Cordoba"
+  },
+  "5864": {
+    "city": "El Torreon",
+    "province": "Cordoba"
+  },
+  "5865": {
+    "city": "Colonia Videla",
+    "province": "Cordoba"
+  },
+  "5870": {
+    "city": "Nicho",
+    "province": "Cordoba"
+  },
+  "5875": {
+    "city": "Huasta",
+    "province": "Cordoba"
+  },
+  "5877": {
+    "city": "Yacanto",
+    "province": "Cordoba"
+  },
+  "5879": {
+    "city": "La Fuente",
+    "province": "Cordoba"
+  },
+  "5885": {
+    "city": "Hornillos",
+    "province": "Cordoba"
+  },
+  "5887": {
+    "city": "Nono",
+    "province": "Cordoba"
+  },
+  "5889": {
+    "city": "El Bajo",
+    "province": "Cordoba"
+  },
+  "5891": {
+    "city": "Mogigasta",
+    "province": "Cordoba"
+  },
+  "5893": {
+    "city": "Tasma",
+    "province": "Cordoba"
+  },
+  "5900": {
+    "city": "Las Playas",
+    "province": "Cordoba"
+  },
+  "5901": {
+    "city": "Ausonia",
+    "province": "Cordoba"
+  },
+  "5903": {
+    "city": "Villa Nueva",
+    "province": "Cordoba"
+  },
+  "5905": {
+    "city": "Ana Zumaran",
+    "province": "Cordoba"
+  },
+  "5907": {
+    "city": "Colonia Silvio Pellico",
+    "province": "Cordoba"
+  },
+  "5909": {
+    "city": "Trinchera",
+    "province": "Cordoba"
+  },
+  "5911": {
+    "city": "La Playosa",
+    "province": "Cordoba"
+  },
+  "5913": {
+    "city": "La Zara",
+    "province": "Cordoba"
+  },
+  "5915": {
+    "city": "Carrilobo",
+    "province": "Cordoba"
+  },
+  "5917": {
+    "city": "Luca",
+    "province": "Cordoba"
+  },
+  "5919": {
+    "city": "Dalmacio Velez Sarsfield",
+    "province": "Cordoba"
+  },
+  "5921": {
+    "city": "Las Perdices",
+    "province": "Cordoba"
+  },
+  "5923": {
+    "city": "General Deheza",
+    "province": "Cordoba"
+  },
+  "5925": {
+    "city": "Pasco",
+    "province": "Cordoba"
+  },
+  "5927": {
+    "city": "Ticino",
+    "province": "Cordoba"
+  },
+  "5929": {
+    "city": "Hernando",
+    "province": "Cordoba"
+  },
+  "5931": {
+    "city": "Pampayasta",
+    "province": "Cordoba"
+  },
+  "5933": {
+    "city": "Tancacha",
+    "province": "Cordoba"
+  },
+  "5935": {
+    "city": "Villa Ascasubi",
+    "province": "Cordoba"
+  },
+  "5936": {
+    "city": "Tio Pujio",
+    "province": "Cordoba"
+  },
+  "5940": {
+    "city": "Las Varillas",
+    "province": "Cordoba"
+  },
+  "5941": {
+    "city": "Las Varas",
+    "province": "Cordoba"
+  },
+  "5943": {
+    "city": "Campo Bandillo",
+    "province": "Cordoba"
+  },
+  "5945": {
+    "city": "Sacanta",
+    "province": "Cordoba"
+  },
+  "5947": {
+    "city": "El Jumial",
+    "province": "Cordoba"
+  },
+  "5949": {
+    "city": "Alicia",
+    "province": "Cordoba"
+  },
+  "5951": {
+    "city": "El Fortin",
+    "province": "Cordoba"
+  },
+  "5960": {
+    "city": "Rio Segundo",
+    "province": "Cordoba"
+  },
+  "5961": {
+    "city": "Palo Negro",
+    "province": "Cordoba"
+  },
+  "5963": {
+    "city": "La Isleta",
+    "province": "Cordoba"
+  },
+  "5965": {
+    "city": "Colazo",
+    "province": "Cordoba"
+  },
+  "5967": {
+    "city": "Luqie",
+    "province": "Cordoba"
+  },
+  "5969": {
+    "city": "Estacion Calchin",
+    "province": "Cordoba"
+  },
+  "5972": {
+    "city": "Pilar",
+    "province": "Cordoba"
+  },
+  "5974": {
+    "city": "Laguna Larga",
+    "province": "Cordoba"
+  },
+  "5980": {
+    "city": "Oliva",
+    "province": "Cordoba"
+  },
+  "5984": {
+    "city": "James Craik",
+    "province": "Cordoba"
+  },
+  "5986": {
+    "city": "Oncativo",
+    "province": "Cordoba"
+  },
+  "5987": {
+    "city": "Impira",
+    "province": "Cordoba"
+  },
+  "5988": {
+    "city": "Manfredi",
+    "province": "Cordoba"
+  },
+  "5989": {
+    "city": "Bajo Del Carmen",
+    "province": "Cordoba"
+  },
+  "6101": {
+    "city": "Colonia La Ines",
+    "province": "Cordoba"
+  },
+  "6119": {
+    "city": "Monte Ralo",
+    "province": "Cordoba"
+  },
+  "6120": {
+    "city": "Salguero",
+    "province": "Cordoba"
+  },
+  "6123": {
+    "city": "Melo",
+    "province": "Cordoba"
+  },
+  "6125": {
+    "city": "Serrano",
+    "province": "Cordoba"
+  },
+  "6127": {
+    "city": "El Noy",
+    "province": "Cordoba"
+  },
+  "6128": {
+    "city": "Salas",
+    "province": "Cordoba"
+  },
+  "6132": {
+    "city": "Gavilan",
+    "province": "Cordoba"
+  },
+  "6134": {
+    "city": "Rio Bamba",
+    "province": "Cordoba"
+  },
+  "6140": {
+    "city": "Torres",
+    "province": "Cordoba"
+  },
+  "6141": {
+    "city": "Tosquita",
+    "province": "Cordoba"
+  },
+  "6142": {
+    "city": "General Soler",
+    "province": "Cordoba"
+  },
+  "6144": {
+    "city": "Washington",
+    "province": "Cordoba"
+  },
+  "6153": {
+    "city": "Copina",
+    "province": "Cordoba"
+  },
+  "6225": {
+    "city": "Hipolito Bouchard",
+    "province": "Cordoba"
+  },
+  "6227": {
+    "city": "Onagolty",
+    "province": "Cordoba"
+  },
+  "6270": {
+    "city": "Watt",
+    "province": "Cordoba"
+  },
+  "6271": {
+    "city": "Italo",
+    "province": "Cordoba"
+  },
+  "6273": {
+    "city": "Lecueder",
+    "province": "Cordoba"
+  },
+  "6275": {
+    "city": "La Nacional",
+    "province": "Cordoba"
+  },
+  "8184": {
+    "city": "Cañadon De Los Mogotes",
+    "province": "Cordoba"
+  },
+  "8522": {
+    "city": "La Cotita",
+    "province": "Cordoba"
+  },
+  "4461": {
+    "city": "Abdon Castro Tolay",
+    "province": "Jujuy"
+  },
+  "4500": {
+    "city": "Rodeitos",
+    "province": "Jujuy"
+  },
+  "4501": {
+    "city": "Milan",
+    "province": "Jujuy"
+  },
+  "4503": {
+    "city": "Lavayen",
+    "province": "Jujuy"
+  },
+  "4504": {
+    "city": "Leachs",
+    "province": "Jujuy"
+  },
+  "4506": {
+    "city": "Guayacan",
+    "province": "Jujuy"
+  },
+  "4512": {
+    "city": "Ledesma",
+    "province": "Jujuy"
+  },
+  "4513": {
+    "city": "Pueblo",
+    "province": "Jujuy"
+  },
+  "4516": {
+    "city": "Caimancito",
+    "province": "Jujuy"
+  },
+  "4518": {
+    "city": "Yuto",
+    "province": "Jujuy"
+  },
+  "4522": {
+    "city": "Saladillo",
+    "province": "Jujuy"
+  },
+  "4600": {
+    "city": "Jujuy",
+    "province": "Jujuy"
+  },
+  "4601": {
+    "city": "Ocloyas",
+    "province": "Jujuy"
+  },
+  "4603": {
+    "city": "Pircas",
+    "province": "Jujuy"
+  },
+  "4605": {
+    "city": "Paño",
+    "province": "Jujuy"
+  },
+  "4606": {
+    "city": "El Toba",
+    "province": "Jujuy"
+  },
+  "4608": {
+    "city": "Perico",
+    "province": "Jujuy"
+  },
+  "4612": {
+    "city": "Zapla",
+    "province": "Jujuy"
+  },
+  "4616": {
+    "city": "Leon",
+    "province": "Jujuy"
+  },
+  "4618": {
+    "city": "Pives",
+    "province": "Jujuy"
+  },
+  "4622": {
+    "city": "Tacta",
+    "province": "Jujuy"
+  },
+  "4624": {
+    "city": "Pucara",
+    "province": "Jujuy"
+  },
+  "4626": {
+    "city": "Uquia",
+    "province": "Jujuy"
+  },
+  "4630": {
+    "city": "Ovara",
+    "province": "Jujuy"
+  },
+  "4631": {
+    "city": "Rodero",
+    "province": "Jujuy"
+  },
+  "4632": {
+    "city": "Iturbe",
+    "province": "Jujuy"
+  },
+  "4634": {
+    "city": "Tejadas",
+    "province": "Jujuy"
+  },
+  "4640": {
+    "city": "Lumara",
+    "province": "Jujuy"
+  },
+  "4641": {
+    "city": "Queta",
+    "province": "Jujuy"
+  },
+  "4653": {
+    "city": "Casira",
+    "province": "Jujuy"
+  },
+  "4655": {
+    "city": "Oros",
+    "province": "Jujuy"
+  },
+  "9011": {
+    "city": "El Mangrullo",
+    "province": "Santa Cruz"
+  },
+  "9013": {
+    "city": "Cañadon Seco",
+    "province": "Santa Cruz"
+  },
+  "9015": {
+    "city": "Jelaina",
+    "province": "Santa Cruz"
+  },
+  "9017": {
+    "city": "Cameron",
+    "province": "Santa Cruz"
+  },
+  "9019": {
+    "city": "Langara",
+    "province": "Santa Cruz"
+  },
+  "9040": {
+    "city": "Rio Fenix",
+    "province": "Santa Cruz"
+  },
+  "9041": {
+    "city": "Los Antiguos",
+    "province": "Santa Cruz"
+  },
+  "9050": {
+    "city": "Tres Cerros",
+    "province": "Santa Cruz"
+  },
+  "9051": {
+    "city": "Sarita",
+    "province": "Santa Cruz"
+  },
+  "9053": {
+    "city": "Floradora",
+    "province": "Santa Cruz"
+  },
+  "9300": {
+    "city": "El Guadal",
+    "province": "Santa Cruz"
+  },
+  "9301": {
+    "city": "Lago Tar",
+    "province": "Santa Cruz"
+  },
+  "9303": {
+    "city": "Chonque",
+    "province": "Santa Cruz"
+  },
+  "9305": {
+    "city": "Cañada De Las Vacas",
+    "province": "Santa Cruz"
+  },
+  "9310": {
+    "city": "Bajo Fuego",
+    "province": "Santa Cruz"
+  },
+  "9311": {
+    "city": "Tucu Tucu",
+    "province": "Santa Cruz"
+  },
+  "9313": {
+    "city": "El Salado",
+    "province": "Santa Cruz"
+  },
+  "9315": {
+    "city": "Tamel Aike",
+    "province": "Santa Cruz"
+  },
+  "9400": {
+    "city": "Cap",
+    "province": "Santa Cruz"
+  },
+  "9401": {
+    "city": "El Zurdo",
+    "province": "Santa Cruz"
+  },
+  "9405": {
+    "city": "Calafate",
+    "province": "Santa Cruz"
+  },
+  "9407": {
+    "city": "Gaypon",
+    "province": "Santa Cruz"
+  },
+  "1000": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1001": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1002": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1003": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1004": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1005": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1006": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1007": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1008": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1009": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1010": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1011": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1012": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1013": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1014": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1015": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1016": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1017": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1018": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1019": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1020": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1021": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1022": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1023": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1024": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1025": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1026": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1027": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1028": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1029": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1030": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1031": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1032": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1033": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1034": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1035": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1036": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1037": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1038": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1039": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1040": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1041": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1042": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1043": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1044": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1045": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1046": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1047": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1048": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1049": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1050": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1051": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1052": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1053": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1054": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1055": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1056": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1057": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1058": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1059": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1060": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1061": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1062": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1063": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1064": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1065": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1066": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1067": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1068": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1069": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1070": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1071": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1072": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1073": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1074": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1075": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1076": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1077": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1078": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1079": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1080": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1081": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1082": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1083": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1084": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1085": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1086": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1087": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1088": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1089": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1090": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1091": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1092": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1093": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1094": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1095": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1096": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1097": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1098": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1099": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1100": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1101": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1102": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1103": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1104": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1105": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1106": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1107": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1108": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1109": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1110": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1111": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1112": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1113": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1114": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1115": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1116": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1117": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1118": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1119": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1120": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1121": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1122": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1123": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1124": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1125": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1126": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1127": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1128": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1129": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1130": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1131": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1132": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1133": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1134": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1135": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1136": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1137": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1138": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1139": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1140": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1141": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1142": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1143": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1144": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1145": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1146": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1147": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1148": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1149": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1150": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1151": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1152": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1153": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1154": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1155": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1156": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1157": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1158": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1159": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1160": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1161": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1162": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1163": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1164": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1165": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1166": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1167": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1168": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1169": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1170": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1171": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1172": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1173": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1174": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1175": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1176": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1177": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1178": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1179": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1180": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1181": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1182": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1183": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1184": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1185": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1186": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1187": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1188": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1189": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1190": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1191": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1192": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1193": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1194": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1195": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1196": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1197": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1198": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1199": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1200": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1201": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1202": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1203": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1204": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1205": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1206": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1207": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1208": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1209": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1210": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1211": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1212": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1213": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1214": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1215": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1216": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1217": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1218": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1219": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1220": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1221": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1222": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1223": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1224": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1225": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1226": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1227": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1228": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1229": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1230": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1231": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1232": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1233": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1234": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1235": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1236": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1237": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1238": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1239": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1240": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1241": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1242": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1243": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1244": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1245": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1246": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1247": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1248": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1249": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1250": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1251": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1252": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1253": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1254": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1255": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1256": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1257": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1258": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1259": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1260": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1261": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1262": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1263": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1264": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1265": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1266": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1267": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1268": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1269": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1270": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1271": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1272": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1273": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1274": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1275": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1276": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1277": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1278": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1279": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1280": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1281": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1282": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1283": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1284": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1285": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1286": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1287": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1288": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1289": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1290": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1291": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1292": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1293": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1294": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1295": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1296": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1297": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1298": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1299": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1300": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1301": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1302": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1303": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1304": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1305": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1306": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1307": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1308": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1309": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1310": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1311": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1312": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1313": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1314": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1315": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1316": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1317": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1318": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1319": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1320": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1321": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1322": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1323": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1324": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1325": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1326": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1327": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1328": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1329": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1330": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1331": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1332": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1333": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1334": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1335": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1336": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1337": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1338": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1339": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1340": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1341": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1342": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1343": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1344": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1345": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1346": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1347": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1348": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1349": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1350": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1351": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1352": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1353": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1354": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1355": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1356": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1357": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1358": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1359": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1360": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1361": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1362": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1363": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1364": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1365": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1366": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1367": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1368": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1369": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1370": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1371": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1372": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1373": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1374": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1375": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1376": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1377": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1378": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1379": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1380": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1381": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1382": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1383": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1384": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1385": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1386": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1387": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1388": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1389": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1390": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1391": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1392": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1393": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1394": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1395": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1396": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1397": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1398": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1399": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1400": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1401": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1402": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1403": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1404": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1405": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1406": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1407": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1408": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1409": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1410": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1411": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1412": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1413": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1414": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1415": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1416": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1417": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1418": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1419": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1420": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1421": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1422": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1423": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1424": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1425": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1426": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1427": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1428": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1429": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1430": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1431": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1432": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1433": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1434": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1435": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1436": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1437": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1438": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1439": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1440": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1441": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1442": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1443": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1444": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1445": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1446": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1447": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1448": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1449": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1450": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1451": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1452": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1453": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1454": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1455": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1456": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1457": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1458": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1459": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1460": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1461": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1462": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1463": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1464": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1465": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1466": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1467": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1468": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1469": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1470": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1471": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1472": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1473": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1474": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1475": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1476": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1477": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1478": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1479": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1480": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1481": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1482": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1483": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1484": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1485": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1486": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1487": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1488": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1489": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1490": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1491": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1492": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1493": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1494": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1495": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1496": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1497": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1498": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  },
+  "1499": {
+    "city": "Ciudad Autónoma de Buenos Aires",
+    "province": "CABA"
+  }
+}
