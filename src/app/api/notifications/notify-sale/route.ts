@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { initializeAdmin } from '@/lib/firebase-admin';
+import { getAdminFirestore } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 import { sendNativePush } from '@/lib/push-backend';
 
 export async function POST(req: Request) {
@@ -18,8 +19,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Falta retailerId' }, { status: 400 });
     }
 
-    const admin = initializeAdmin();
-    const firestore = admin.firestore();
+    const firestore = getAdminFirestore();
 
     const formattedAmount = `$${Math.round(amount || 0).toLocaleString('es-AR')}`;
     const methodLabel = paymentMethod === 'cash' ? 'Efectivo' :
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
       type: 'sale',
       href: '/redeconomix/dashboard-negocio/resumen',
       read: false,
-      createdAt: admin.firestore.FieldValue.serverTimestamp()
+      createdAt: FieldValue.serverTimestamp()
     });
 
     // 2. Enviar PUSH NATIVO al celular del dueño (a través de FCM)

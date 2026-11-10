@@ -1,4 +1,5 @@
-import { adminDb, admin } from '@/lib/firebase-admin';
+import { getAdminFirestore, getAdminMessaging } from '@/lib/firebase-admin';
+import { FieldValue } from 'firebase-admin/firestore';
 
 /**
  * Universal Native Push Notification Sender
@@ -9,7 +10,10 @@ import { adminDb, admin } from '@/lib/firebase-admin';
  */
 export async function sendNativePush(userId: string, title: string, body: string, url?: string) {
     try {
-        const userDoc = await adminDb.collection('users').doc(userId).get();
+        const firestore = getAdminFirestore();
+        const messaging = getAdminMessaging();
+
+        const userDoc = await firestore.collection('users').doc(userId).get();
         if (!userDoc.exists) return;
         
         const userData = userDoc.data();
@@ -37,7 +41,7 @@ export async function sendNativePush(userId: string, title: string, body: string
             }
         };
 
-        const response = await admin.messaging().sendEachForMulticast(payload);
+        const response = await messaging.sendEachForMulticast(payload);
         
         // Optional: Clean up invalid tokens
         if (response.failureCount > 0) {
@@ -52,8 +56,8 @@ export async function sendNativePush(userId: string, title: string, body: string
             });
             
             if (failedTokens.length > 0) {
-                await adminDb.collection('users').doc(userId).update({
-                    fcmTokens: admin.firestore.FieldValue.arrayRemove(...failedTokens)
+                await firestore.collection('users').doc(userId).update({
+                    fcmTokens: FieldValue.arrayRemove(...failedTokens)
                 }).catch(e => console.error("Error removing invalid push tokens", e));
             }
         }
