@@ -109,6 +109,17 @@ export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'wh
             description: latest?.message || latest?.title || "Tienes novedades en RedEconomiX",
             variant: isUrgent ? "destructive" : "default",
         });
+
+        if (typeof window !== 'undefined' && 'Notification' in window && Notification.permission === 'granted' && document.hidden) {
+            try {
+                new Notification(isSale ? "💰 ¡VENTA EN CAJA!" : (latest?.title || "RedEconomiX"), {
+                    body: latest?.message || "Nueva venta registrada",
+                    icon: '/icon-192x192.png'
+                });
+            } catch (e) {
+                console.warn("Desktop notification error:", e);
+            }
+        }
     }
     setLastCount(unreadCount);
   }, [unreadCount, lastCount, toast, playAlert]); // Quitamos unreadNotifications de aquí

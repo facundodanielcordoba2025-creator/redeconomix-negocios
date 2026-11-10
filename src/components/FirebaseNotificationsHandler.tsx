@@ -10,23 +10,30 @@ export function FirebaseNotificationsHandler() {
     const { toast } = useToast();
 
     useEffect(() => {
+        if (!user) return;
         const isNative = Capacitor.isNativePlatform();
-        if (user && (isNative || (typeof window !== 'undefined' && 'Notification' in window))) {
-            const requested = sessionStorage.getItem('fcm_permission_requested');
-            if (!requested) {
+        const hasNotification = typeof window !== 'undefined' && 'Notification' in window;
+
+        if (isNative || hasNotification) {
+            const perm = hasNotification ? Notification.permission : 'granted';
+            const alreadyPrompted = sessionStorage.getItem(`fcm_prompted_${user.uid}`);
+
+            // Si ya está otorgado el permiso, refrescar y registrar token en Firestore sin bloquearse
+            // Si está pendiente, pedir permiso al usuario
+            if (perm === 'granted' || !alreadyPrompted) {
+                sessionStorage.setItem(`fcm_prompted_${user.uid}`, 'true');
                 requestAndSaveToken(user.uid).then(result => {
                     if (result.success) {
-                        toast({ title: "Notificaciones de Ventas", description: "Notificaciones push activadas para este dispositivo." });
+                        console.log("[FCM] Dispositivo registrado con éxito para notificaciones.");
                     } else if (result.message.includes('Permiso denegado')) {
-                        console.log("FCM permission denied:", result.message);
+                        console.log("[FCM] Permiso denegado por el usuario.");
                     } else {
-                        console.warn("FCM Token Error:", result.message);
+                        console.warn("[FCM] Estado registro:", result.message);
                     }
-                }).catch(console.error);
-                sessionStorage.setItem('fcm_permission_requested', 'true');
+                }).catch(err => console.error("[FCM] Error registrando push:", err));
             }
         }
-    }, [user, toast]);
+    }, [user]);
 
     return null;
 }
