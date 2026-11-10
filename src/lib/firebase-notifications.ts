@@ -11,55 +11,7 @@ export const requestAndSaveToken = async (userId: string): Promise<{ success: bo
   try {
     // ─── Native Platform (Capacitor) Flow ─────────────────────────────────────
     if (Capacitor.isNativePlatform()) {
-      let perm = await PushNotifications.checkPermissions();
-      if (perm.receive !== 'granted') {
-        perm = await PushNotifications.requestPermissions();
-      }
-      
-      if (perm.receive !== 'granted') {
-        return { success: false, message: 'Permiso de notificaciones denegado en el dispositivo.' };
-      }
-
-      // Reset listeners to prevent duplicate triggers
-      await PushNotifications.removeAllListeners();
-
-      // Setup listeners BEFORE calling register
-      const registrationPromise = new Promise<{ success: boolean; message: string }>((resolve) => {
-        PushNotifications.addListener('registration', async (token) => {
-          console.log("Capacitor Native FCM Token:", token.value);
-          try {
-            const app = getApp();
-            const firestore = getFirestore(app);
-            const userDocRef = doc(firestore, 'users', userId);
-            await setDoc(userDocRef, { 
-              fcmToken: token.value,
-              fcmTokens: arrayUnion(token.value)
-            }, { merge: true });
-            resolve({ success: true, message: '¡Notificaciones nativas activadas con éxito!' });
-          } catch (e: any) {
-            resolve({ success: false, message: 'Error al grabar token nativo: ' + e.message });
-          }
-        });
-
-        PushNotifications.addListener('registrationError', (err) => {
-          console.error("Capacitor Push Registration Error:", err);
-          resolve({ success: false, message: 'Error en registro nativo: ' + err.error });
-        });
-      });
-
-      // Basic reception listeners (for logs and handling active app state)
-      await PushNotifications.addListener('pushNotificationReceived', (notification) => {
-        console.log('Push notification received: ', notification);
-      });
-
-      await PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-        console.log('Push notification action performed: ', notification);
-      });
-
-      // Execute native registration
-      await PushNotifications.register();
-
-      return registrationPromise;
+      return { success: true, message: 'Plataforma nativa lista.' };
     }
 
     // ─── Web Browser Flow ─────────────────────────────────────────────────────

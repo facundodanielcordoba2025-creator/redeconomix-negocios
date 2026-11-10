@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "673509915934",
+    "project_id": "studio-8047565887-3a8da",
+    "storage_bucket": "studio-8047565887-3a8da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673509915934:android:8d3bde814cf8a60168dd0f",
+        "android_client_info": {
+          "package_name": "com.redeconomix.negocios"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa-pw-jc1oDHrMOr25fVqhXMHaRt7Lz28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
