@@ -1,15 +1,6 @@
 import { NextResponse } from 'next/server';
-import * as admin from 'firebase-admin';
+import { initializeAdmin } from '@/lib/firebase-admin';
 import { resend } from '@/lib/resend-client';
-
-// Initialize Admin SDK if not already
-if (!admin.apps.length) {
-  try {
-    admin.initializeApp();
-  } catch (error) {
-    console.error('Firebase Admin init error:', error);
-  }
-}
 
 export async function POST(request: Request) {
   try {
@@ -19,6 +10,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Email requerido' }, { status: 400 });
     }
 
+    const admin = initializeAdmin();
     // 1. Generate Firebase Password Reset Link
     const resetLink = await admin.auth().generatePasswordResetLink(email, {
         url: 'https://www.redeconomix.com/login', // Return URL after success

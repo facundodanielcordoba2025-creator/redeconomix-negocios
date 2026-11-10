@@ -45,3 +45,4 @@ scratch/
 scraper/venv/
 scraper/firebase-key.json
 scraper/__pycache__/
+.kotlin/

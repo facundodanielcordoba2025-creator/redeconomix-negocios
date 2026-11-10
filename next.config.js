@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: ['@grpc/grpc-js', 'firebase-admin', 'firebase'],
   reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,

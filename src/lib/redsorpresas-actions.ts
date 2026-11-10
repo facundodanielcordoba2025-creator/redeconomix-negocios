@@ -1,11 +1,9 @@
 "use server";
 
-import * as admin from 'firebase-admin';
+import { initializeAdmin } from './firebase-admin';
 
 function getAdminDb() {
-  if (!admin.apps.length) {
-    admin.initializeApp();
-  }
+  const admin = initializeAdmin();
   return admin.firestore();
 }
 

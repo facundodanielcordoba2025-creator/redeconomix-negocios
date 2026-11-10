@@ -1,15 +1,5 @@
 import { NextResponse } from 'next/server';
-import * as admin from 'firebase-admin';
-
-if (!admin.apps.length) {
-    try {
-        admin.initializeApp();
-    } catch (error) {
-        console.error('Firebase Admin init error:', error);
-    }
-}
-
-const db = admin.firestore();
+import { initializeAdmin, adminDb } from '@/lib/firebase-admin';
 
 export async function POST(request: Request) {
     try {
@@ -18,6 +8,9 @@ export async function POST(request: Request) {
         if (!retailerId) {
             return NextResponse.json({ error: 'Retailer ID requerido' }, { status: 400 });
         }
+
+        const admin = initializeAdmin();
+        const db = admin.firestore();
 
         const collections = ['retailer_inventory', 'retailer_daily_operations', 'retailer_inventory_logs'];
         const backupData: Record<string, any[]> = {};

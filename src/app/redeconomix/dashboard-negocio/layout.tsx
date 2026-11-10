@@ -21,8 +21,8 @@ import {
   LayoutDashboard, ShoppingBag, Package, DollarSign, 
   ShieldCheck, Zap, Bell, ChevronRight, Store, ArrowLeft, BookOpen
 } from "lucide-react";
-import { RedEconomiXBottomNav } from '@/components/redeconomix-bottom-nav';
 import { RedEconomiXHeader } from '@/components/redeconomix-header';
+import { RetailerBottomNav } from '@/components/retailer-bottom-nav';
 import { NotificationsBell } from '@/components/notifications-bell';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
@@ -273,15 +273,15 @@ export default function RetailerDashboardLayout({ children }: { children: React.
                 <RedEconomiXHeader 
                     variant="red" 
                     title="Negocio" 
-                    hideBackButton={pathname === '/redeconomix/dashboard-negocio'}
-                    backHref="/redeconomix"
+                    hideBackButton={true}
+                    backHref="/redeconomix/dashboard-negocio"
                 />
             </div>
             <main className="flex-1 p-4 md:p-8 lg:p-12 pb-32 md:pb-12 bg-slate-50">
                 {children}
             </main>
             <div className="md:hidden">
-                <RedEconomiXBottomNav />
+                <RetailerBottomNav />
             </div>
        </div>
     </div>

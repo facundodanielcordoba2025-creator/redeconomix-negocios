@@ -10,7 +10,8 @@ const firebaseAdminConfig = {
 };
 
 export function initializeAdmin() {
-  if (!admin.apps.length) {
+  const apps = admin.apps || [];
+  if (!apps.length) {
     try {
       if (firebaseAdminConfig.privateKey && firebaseAdminConfig.clientEmail) {
         admin.initializeApp({
@@ -41,8 +42,22 @@ export function initializeAdmin() {
   return admin;
 }
 
-export const adminDb = initializeAdmin().firestore();
-export const adminAuth = initializeAdmin().auth();
-export const adminStorage = initializeAdmin().storage();
+export const adminDb = {
+  get collection() { return initializeAdmin().firestore().collection.bind(initializeAdmin().firestore()); },
+  get batch() { return initializeAdmin().firestore().batch.bind(initializeAdmin().firestore()); },
+  get runTransaction() { return initializeAdmin().firestore().runTransaction.bind(initializeAdmin().firestore()); },
+  get doc() { return initializeAdmin().firestore().doc.bind(initializeAdmin().firestore()); }
+} as any;
+
+export const adminAuth = {
+  get generatePasswordResetLink() { return initializeAdmin().auth().generatePasswordResetLink.bind(initializeAdmin().auth()); },
+  get getUser() { return initializeAdmin().auth().getUser.bind(initializeAdmin().auth()); },
+  get verifyIdToken() { return initializeAdmin().auth().verifyIdToken.bind(initializeAdmin().auth()); }
+} as any;
+
+export const adminStorage = {
+  get bucket() { return initializeAdmin().storage().bucket.bind(initializeAdmin().storage()); }
+} as any;
+
 export { admin };
 export default admin;
