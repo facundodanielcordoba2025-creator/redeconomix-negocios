@@ -5,46 +5,59 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Zap, Package, BookOpen, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useRole } from '@/hooks/use-role';
 
 export function RetailerBottomNav() {
   const pathname = usePathname() || '';
+  const { role } = useRole();
 
-  const tabs = [
+  const allTabs = [
     { 
       href: '/redeconomix/dashboard-negocio/resumen', 
       label: 'Resumen', 
       icon: LayoutDashboard,
-      isActive: pathname === '/redeconomix/dashboard-negocio/resumen'
+      isActive: pathname === '/redeconomix/dashboard-negocio/resumen',
+      roles: ['admin']
     },
     { 
       href: '/redeconomix/dashboard-negocio/control-ventas', 
       label: 'Caja', 
       icon: Zap,
-      isActive: pathname.includes('/control-ventas') || pathname.includes('/arqueo-caja')
+      isActive: pathname.includes('/control-ventas') || pathname.includes('/arqueo-caja'),
+      roles: ['admin', 'cashier', 'cashier_warehouse', 'accountant']
     },
     { 
       href: '/redeconomix/dashboard-negocio/stock', 
       label: 'Stock', 
       icon: Package,
-      isActive: pathname.includes('/stock')
+      isActive: pathname.includes('/stock'),
+      roles: ['admin', 'cashier', 'warehouse', 'cashier_warehouse', 'accountant']
     },
     { 
       href: '/redeconomix/dashboard-negocio/fiado', 
       label: 'Cuentas', 
       icon: BookOpen,
-      isActive: pathname.includes('/fiado')
+      isActive: pathname.includes('/fiado'),
+      roles: ['admin', 'accountant']
     },
     { 
       href: '/redeconomix/dashboard-negocio', 
       label: 'Menú', 
       icon: Menu,
-      isActive: pathname === '/redeconomix/dashboard-negocio'
+      isActive: pathname === '/redeconomix/dashboard-negocio',
+      roles: ['admin', 'cashier', 'warehouse', 'cashier_warehouse', 'accountant']
     },
   ];
 
+  const currentRole = role || 'admin';
+  const tabs = allTabs.filter(t => t.roles.includes(currentRole));
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-t border-slate-200/80 shadow-[0_-4px_25px_rgba(0,0,0,0.08)] md:hidden pb-[max(env(safe-area-inset-bottom,0px),8px)] pt-1.5">
-      <div className="grid grid-cols-5 h-14 max-w-md mx-auto items-center px-1">
+      <div 
+        className="h-14 max-w-md mx-auto items-center px-1 grid"
+        style={{ gridTemplateColumns: `repeat(${tabs.length}, minmax(0, 1fr))` }}
+      >
         {tabs.map((tab) => {
           const active = tab.isActive;
           return (
