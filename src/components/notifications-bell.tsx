@@ -19,7 +19,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Badge } from '@/components/ui/badge';
-import { Bell, ShoppingCart, Info, Loader2 } from 'lucide-react';
+import { Bell, ShoppingCart, Info, Loader2, DollarSign } from 'lucide-react';
 import { useUser, useFirestore, useCollection, useMemoFirebase, useDoc } from '@/firebase';
 import { collection, query, where, doc, updateDoc } from 'firebase/firestore';
 import { cn } from '@/lib/utils';
@@ -94,16 +94,19 @@ export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'wh
         const isUrgent = title.includes('pedido') || 
                         title.includes('orden') ||
                         latest?.type === 'new_order';
+        const isSale = title.includes('venta') || latest?.type === 'sale';
 
-        if (isUrgent) {
+        if (isSale) {
+            playAlert('ping');
+        } else if (isUrgent) {
             playAlert('siren');
         } else {
             playAlert('ping');
         }
 
         toast({
-            title: isUrgent ? "🚨 ¡URGENTE!" : "🔔 NOTIFICACIÓN",
-            description: latest?.title || "Tienes novedades en RedEconomiX",
+            title: isSale ? "💰 ¡VENTA EN CAJA!" : (isUrgent ? "🚨 ¡URGENTE!" : "🔔 NOTIFICACIÓN"),
+            description: latest?.message || latest?.title || "Tienes novedades en RedEconomiX",
             variant: isUrgent ? "destructive" : "default",
         });
     }
@@ -152,6 +155,7 @@ export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'wh
 
   const getIconForType = (type: string) => {
       switch (type) {
+          case 'sale': return <DollarSign className="h-4 w-4 text-emerald-600" />;
           case 'order_update': return <ShoppingCart className="h-4 w-4 text-primary" />;
           case 'promotion': return <Info className="h-4 w-4 text-primary" />;
           case 'system_alert': return <Bell className="h-4 w-4 text-[#FF0000]" />;

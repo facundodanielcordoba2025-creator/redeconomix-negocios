@@ -125,6 +125,26 @@ export const syncPendingSalesToCloud = async (firestore: any) => {
 
                     await batch.commit();
 
+                    // Notificar al dueño de la venta sincronizada
+                    if (saleData.retailerId && (saleData.type === 'sale' || saleData.type === 'credit_sale')) {
+                        try {
+                            const summary = (saleData.items || []).slice(0, 3).map((i: any) => `${i.qty}x ${i.name}`).join(', ') + ((saleData.items || []).length > 3 ? ' y más' : '');
+                            fetch('/api/notifications/notify-sale', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    retailerId: saleData.retailerId,
+                                    cashierName: saleData.employeeName || 'Cajero',
+                                    amount: saleData.total || 0,
+                                    paymentMethod: saleData.paymentMethod || 'cash',
+                                    itemsSummary: summary,
+                                    branchName: saleData.branchId
+                                }),
+                                keepalive: true
+                            }).catch(() => {});
+                        } catch (err) {}
+                    }
+
                     // Si subió bien, la borramos de IndexedDB
                     const delTx = db.transaction('pending_sync_sales', 'readwrite');
                     delTx.objectStore('pending_sync_sales').delete(localId);

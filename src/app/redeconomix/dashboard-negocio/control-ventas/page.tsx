@@ -1455,6 +1455,33 @@ function SalesTerminalContent() {
                         }
                     }
 
+                    // ENVIAR NOTIFICACIÓN PUSH AL DUEÑO DEL NEGOCIO (No bloqueante)
+                    if (isSales && targetRetailerId && (effectiveRetailerId || role === 'cashier' || role === 'cashier_warehouse' || targetRetailerId !== user?.uid)) {
+                        try {
+                            const cashierName = employee?.name || user?.displayName || (user?.email ? user.email.split('@')[0] : 'Cajero');
+                            const itemsSummary = currentScannedItems
+                                .slice(0, 3)
+                                .map((i: any) => `${i.qty}x ${i.name}`)
+                                .join(', ') + (currentScannedItems.length > 3 ? ` y ${currentScannedItems.length - 3} más` : '');
+
+                            fetch('/api/notifications/notify-sale', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    retailerId: targetRetailerId,
+                                    cashierName,
+                                    amount,
+                                    paymentMethod: method,
+                                    itemsSummary,
+                                    branchName: activeBranchId || selectedAdminBranch || undefined
+                                }),
+                                keepalive: true
+                            }).catch(err => console.error("Error al disparar push de venta:", err));
+                        } catch (pushErr) {
+                            console.error("Non-blocking owner push error:", pushErr);
+                        }
+                    }
+
                     // Registro de logs (no bloqueante)
                     if (isSales) {
                         currentScannedItems.forEach((item: any) => {

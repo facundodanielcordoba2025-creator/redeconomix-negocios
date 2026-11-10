@@ -2,7 +2,7 @@
 import { initializeAdmin } from './firebase-admin';
 import { sendNativePush } from './push-backend';
 
-export type NotificationType = 'order_update' | 'promotion' | 'low_stock' | 'announcement' | 'chat';
+export type NotificationType = 'order_update' | 'promotion' | 'low_stock' | 'announcement' | 'chat' | 'sale';
 
 export async function createNotification(userId: string, title: string, message: string, type: NotificationType, href?: string) {
     const admin = initializeAdmin();
