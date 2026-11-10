@@ -753,7 +753,7 @@ const inventoryQuery = useMemoFirebase(() => {
 
   return (
     <RoleGuard moduleName="Resumen Financiero" allowedRoles={['admin']}>
-      <div className="space-y-6 pt-[90px] md:pt-0 pb-20 px-4 md:px-0">
+      <div className="space-y-6 pt-[80px] md:pt-0 pb-36 px-2 sm:px-4 md:px-0">
       
       {/* ── HEADER ── */}
       <div className="flex items-center justify-between bg-white p-5 rounded-3xl border border-slate-200/80 shadow-xs">

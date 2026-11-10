@@ -223,93 +223,30 @@ export function RedEconomiXHeader({
                         <>
                             <NotificationsBell variant={(variant === 'red' || variant === 'tech') ? 'white' : 'dark'} />
                             
-                            <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                onClick={() => router.push('/redeconomix?showMap=true')} 
-                                className={cn("hidden xs:flex h-8 w-8 sm:h-9 sm:w-9 rounded-full transition-all", variant === 'white' ? "text-slate-600 hover:bg-slate-100" : "text-white hover:bg-white/20")}
-                            >
-                                <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
-                            </Button>
-
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="icon" className={cn("h-8 w-8 sm:h-9 sm:w-9 rounded-full transition-all", variant === 'white' ? "text-slate-600 hover:bg-slate-100" : "text-white hover:bg-white/20")}>
-                                        <Store className="h-4 w-4 sm:h-5 sm:w-5" />
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="w-64 max-h-[350px] overflow-y-auto mt-3 p-4 rounded-[2rem] bg-white text-slate-900 border-slate-100 shadow-2xl relative z-[1000]">
-                                    <DropdownMenuLabel className="font-bold uppercase text-[9px] tracking-widest text-slate-400 mb-2">Comercios</DropdownMenuLabel>
-                                    <DropdownMenuItem onClick={() => router.push('/redeconomix')} className="rounded-xl h-11 mb-1 cursor-pointer hover:bg-slate-50 font-bold">
-                                        Todos los comercios
-                                    </DropdownMenuItem>
-                                    <DropdownMenuSeparator className="bg-slate-100 mb-2" />
-                                    {(() => {
-                                        if (!allBusinesses) return null;
-                                        return allBusinesses
-                                            ?.filter(b => b.businessName || b.fullName)
-                                            .filter(b => businessesWithProducts.has(b.uid || b.id))
-                                            .filter(b => {
-                                                const name = (b.businessName || b.fullName).toLowerCase().trim();
-                                                if (name.includes('prueba')) return false;
-                                                return true;
-                                            })
-                                            .map(b => (
-                                                <DropdownMenuItem 
-                                                    key={b.uid || b.id} onClick={() => router.push(`/redeconomix?storeId=${b.uid || b.id}`)} className="rounded-xl h-11 mb-1 cursor-pointer hover:bg-slate-50">
-                                                    {b.businessName || b.fullName}
-                                                </DropdownMenuItem>
-                                            ));
-                                    })()}
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-
-                            <div className={cn("w-[1px] h-4 mx-1", variant === 'white' ? "bg-slate-200" : "bg-white/20")} />
                             {user ? (
                                 <div className="flex items-center gap-1 sm:gap-3">
-                                    <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        className={cn(
-                                            "relative h-8 w-8 sm:h-9 sm:w-9 rounded-full transition-all",
-                                            variant === 'white' ? "bg-slate-50 text-slate-600 hover:bg-slate-100" : "bg-white/10 text-white hover:bg-white/20"
-                                        )}
-                                        onClick={() => router.push('/redeconomix/carrito')}
-                                    >
-                                        <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
-                                        {itemCount > 0 && (
-                                            <span className={cn(
-                                                "absolute -top-1 -right-1 h-4 w-4 text-white text-[9px] font-black rounded-full flex items-center justify-center shadow-sm",
-                                                variant === 'white' ? "bg-[#FF0000]" : "bg-[#FF0000] border border-white/20"
-                                            )}>
-                                                {itemCount}
-                                            </span>
-                                        )}
-                                    </Button>
-
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
                                             <Button variant="ghost" className="relative h-8 w-8 sm:h-9 sm:w-9 rounded-full p-0 transition-all border-none">
                                                 <Avatar className="h-full w-full rounded-full ring-2 ring-white shadow-sm">
-                                                    {user.photoURL ? <AvatarImage src={user.photoURL} /> : <AvatarFallback className="bg-slate-200 text-slate-600 font-bold text-[10px]">{user.displayName?.charAt(0) || 'U'}</AvatarFallback>}
+                                                    {user.photoURL ? <AvatarImage src={user.photoURL} /> : <AvatarFallback className="bg-white/20 text-white font-bold text-[10px]">{user.displayName?.charAt(0) || user.email?.charAt(0)?.toUpperCase() || 'N'}</AvatarFallback>}
                                                 </Avatar>
                                             </Button>
                                         </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="end" className="w-64 mt-3 p-4 rounded-[2rem] bg-white text-slate-900 border-slate-100 shadow-2xl relative z-[1000]">
-                                            <DropdownMenuLabel className="font-bold uppercase text-[9px] tracking-widest text-slate-400 mb-2">Socio</DropdownMenuLabel>
-                                            <DropdownMenuItem className="rounded-xl h-11 mb-1 cursor-pointer" onSelect={() => router.push('/redeconomix/perfil')}>
-                                                <UserIcon className="mr-3 h-4 w-4 text-slate-500" /> Perfil
-                                            </DropdownMenuItem>
-                                            <DropdownMenuItem className="rounded-xl h-11 mb-1 cursor-pointer" onSelect={() => router.push('/redeconomix/referidos')}>
-                                                <Gift className="mr-3 h-4 w-4 text-primary" /> Invitá y Gana
-                                            </DropdownMenuItem>
-                                            {(userData?.isSeller || userData?.sellerCode || userData?.accountType === 'vendedor') && (
-                                                <DropdownMenuItem className="rounded-xl h-11 mb-1 cursor-pointer font-bold text-[#FF0000] focus:bg-red-50" onSelect={() => router.push('/redeconomix/mis-ventas')}>
-                                                    <TrendingUp className="mr-3 h-4 w-4 text-[#FF0000]" /> Mis Ventas (Vendedor)
-                                                </DropdownMenuItem>
-                                            )}
-                                            <DropdownMenuItem onClick={handleLogout} className="rounded-xl h-11 text-[#FF2E55] focus:bg-red-50 cursor-pointer font-bold">
-                                                <LogOut className="mr-3 h-4 w-4" /> Salir
+                                        <DropdownMenuContent align="end" className="w-64 mt-3 p-4 rounded-2xl bg-white text-slate-900 border-slate-100 shadow-2xl relative z-[1000]">
+                                            <div className="pb-3 border-b border-slate-100 mb-2">
+                                                <p className="font-black text-sm uppercase text-slate-900 truncate">
+                                                    {userData?.businessName || user.displayName || 'Mi Negocio'}
+                                                </p>
+                                                <p className="text-[11px] text-slate-400 truncate">
+                                                    {user.email}
+                                                </p>
+                                                <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-red-50 text-red-600 border border-red-100">
+                                                    {userData?.accountType === 'admin' || !userData?.accountType ? 'Propietario' : userData.accountType}
+                                                </span>
+                                            </div>
+                                            <DropdownMenuItem onClick={handleLogout} className="rounded-xl h-11 text-red-600 focus:bg-red-50 cursor-pointer font-bold">
+                                                <LogOut className="mr-3 h-4 w-4" /> Cerrar Sesión
                                             </DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>

@@ -2408,7 +2408,7 @@ const getDateLabel = (product: any) => {
   return (
     <RoleGuard moduleName="Stock" allowedRoles={['admin', 'warehouse', 'cashier_warehouse', 'cashier', 'accountant']}>
     <>
-    <div id="main-content-wrapper" className="container mx-auto pb-8 pt-16 sm:pt-20 md:pt-4 space-y-6 transition-opacity duration-300">
+    <div id="main-content-wrapper" className="container mx-auto pb-36 sm:pb-12 pt-16 sm:pt-20 md:pt-4 space-y-6 transition-opacity duration-300">
         
         {/* Header & Unified Action Buttons Row */}
         <div className="flex flex-col gap-4 mb-6">

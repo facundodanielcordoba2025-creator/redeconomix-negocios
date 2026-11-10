@@ -526,7 +526,7 @@ export default function FiadoPage() {
 
     return (
         <RoleGuard moduleName="Fiados y Cuentas Corrientes" allowedRoles={['admin', 'accountant']}>
-            <div className="min-h-screen bg-slate-50 font-sans pb-28 px-4 pt-4 select-none touch-manipulation">
+            <div className="min-h-screen bg-slate-50 font-sans pb-36 px-4 pt-4 select-none touch-manipulation">
                 {/* ENCABEZADO PRINCIPAL (Estilo Premium) */}
                 <div className="bg-white text-slate-900 rounded-b-[3.5rem] px-6 pt-[110px] max-sm:pt-[125px] pb-10 relative overflow-hidden shadow-sm border-b border-slate-100">
                 <div className="absolute top-[-20%] right-[-10%] w-64 h-64 bg-slate-50 rounded-full blur-[100px] pointer-events-none" />

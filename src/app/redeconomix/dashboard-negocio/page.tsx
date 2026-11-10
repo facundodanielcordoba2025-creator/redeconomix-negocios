@@ -542,7 +542,7 @@ export default function BusinessDashboardPage() {
 
     return (
         <RoleGuard moduleName="Panel Principal" allowedRoles={['admin', 'cashier', 'warehouse', 'accountant', 'cashier_warehouse']}>
-            <div className="min-h-screen bg-slate-50 -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-8 lg:-mt-12 pb-24">
+            <div className="min-h-screen bg-slate-50 -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-8 lg:-mt-12 pb-36">
             
             {/* 1. TOP WHITE HEADER (Under fixed red header) */}
             <div className="bg-white text-slate-900 rounded-b-[3.5rem] px-6 md:px-10 pt-[110px] max-sm:pt-[125px] pb-10 relative overflow-hidden shadow-sm border-b border-slate-100">

@@ -269,7 +269,7 @@ export default function RetailerDashboardLayout({ children }: { children: React.
                     backHref="/redeconomix/dashboard-negocio"
                 />
             </div>
-            <main className="flex-1 p-4 md:p-8 lg:p-12 pb-32 md:pb-12 bg-slate-50">
+            <main className="flex-1 p-3 sm:p-4 md:p-8 lg:p-12 pb-36 md:pb-12 bg-slate-50">
                 {children}
             </main>
             <div className="md:hidden">
