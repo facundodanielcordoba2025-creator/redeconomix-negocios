@@ -80,12 +80,11 @@ export default function RetailerDashboardLayout({ children }: { children: React.
   const isLoading = isUserLoading || isUserLoadingDoc || isEmployeeLoadingDoc;
   const [isClient, setIsClient] = useState(false);
   const [isLinkedEmployee, setIsLinkedEmployee] = useState(false);
-  const [checkingEmployee, setCheckingEmployee] = useState(true);
+  const [checkingEmployee, setCheckingEmployee] = useState(false);
 
   useEffect(() => {
     async function verifyLinkedEmployee() {
       if (!firestore || !user?.email) {
-        setCheckingEmployee(false);
         return;
       }
       try {
@@ -100,8 +99,6 @@ export default function RetailerDashboardLayout({ children }: { children: React.
         }
       } catch (err) {
         console.error("Error verificando empleado vinculado:", err);
-      } finally {
-        setCheckingEmployee(false);
       }
     }
     verifyLinkedEmployee();
@@ -110,35 +107,17 @@ export default function RetailerDashboardLayout({ children }: { children: React.
   useEffect(() => { setIsClient(true); }, []);
 
   useEffect(() => {
-    if (!isLoading && isClient && !checkingEmployee) {
+    if (!isUserLoading && isClient) {
       // Excepción para la Pantalla Cliente: debe ser pública para que tablets/smartTVs sin login puedan verla
       if (pathname?.includes('/pantalla-cliente')) {
         return; 
       }
 
-      const type = userData?.accountType?.toLowerCase();
-      const isBusiness = 
-        type === 'retailer' || 
-        type === 'negocio' || 
-        type === 'comercio' || 
-        type === 'minorista' || 
-        type === 'shop' ||
-        type === 'preventista' ||
-        type === 'vendedor' ||
-        type === 'admin' ||
-        type === 'owner' ||
-        type === 'dueño' ||
-        type === 'socio' ||
-        !!userData?.businessId || 
-        !!userData?.branchId ||
-        isLinkedEmployee ||
-        user?.uid?.startsWith('HvnrCjJj');
-
       if (!user) {
         router.replace('/login');
       }
     }
-  }, [isLoading, isClient, checkingEmployee, user, router, pathname]);
+  }, [isUserLoading, isClient, user, router, pathname]);
 
   // 1. Apagar cámara y limpiar clases al cambiar de ruta/pestaña
   useEffect(() => {
@@ -175,13 +154,8 @@ export default function RetailerDashboardLayout({ children }: { children: React.
   const [isHovered, setIsHovered] = useState(false);
   const isExpanded = isPinned || isHovered;
 
-  if (!isClient || checkingEmployee) {
-    return (
-      <div className="min-h-screen w-full bg-slate-50 flex flex-col items-center justify-center gap-4">
-        <Loader2 className="w-10 h-10 text-red-600 animate-spin" />
-        <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Cargando Panel...</p>
-      </div>
-    );
+  if (!isClient) {
+    return null;
   }
 
   // Bypass para la pantalla de cliente: Renderizar SOLO los hijos, sin sidebar ni header

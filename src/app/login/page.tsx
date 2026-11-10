@@ -100,9 +100,9 @@ export default function UserLoginPage() {
       // Si el usuario ya está conectado y cargó todo, redirigir automáticamente (silencioso)
       if (!isUserLoading && user) {
           handleRedirect(null); 
-      } else if (!isUserLoading) {
-          // Splash ultra-rápido de 800ms para logo branding
-          const timer = setTimeout(() => setView('email'), 800);
+      } else if (!isUserLoading && !user) {
+          // Solo si NO está cargando y NO hay usuario, mostrar el formulario tras un breve splash
+          const timer = setTimeout(() => setView('email'), 400);
           return () => clearTimeout(timer);
       }
   }, [isUserLoading, user, auth, router, toast]);
