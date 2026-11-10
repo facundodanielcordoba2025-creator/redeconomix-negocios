@@ -2,11 +2,16 @@ name: Construir App Android Negocios (APK y AAB)
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build-apk:
     name: Construir APK y AAB Negocios
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -73,7 +78,19 @@ jobs:
         with:
           name: RedEconomiX-Negocios-APK-Debug
           path: android/app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 1
+          retention-days: 7
+
+      - name: 🏷️ Publicar Release con APK Directo (Sin ZIP)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-apk
+          name: "RedEconomiX Negocios - APK Directo"
+          body: "Descarga directa del APK de RedEconomiX Negocios para Android sin comprimir."
+          files: |
+            android/app/build/outputs/apk/debug/app-debug.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
 
       - name: 🚀 Subir AAB de Producción Firmado
         if: steps.sign_app.outputs.signedReleaseFile != ''

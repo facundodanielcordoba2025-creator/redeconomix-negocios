@@ -6,7 +6,7 @@ const config: CapacitorConfig = {
   webDir: 'out',
   backgroundColor: '#D60000',
   server: {
-    url: 'https://www.redeconomix.com/redeconomix/dashboard-negocio',
+    url: 'https://redeconomix-negocios-h6p3.vercel.app',
     cleartext: true
   },
   plugins: {
