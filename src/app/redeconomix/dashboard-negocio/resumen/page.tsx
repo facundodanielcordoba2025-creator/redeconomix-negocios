@@ -1165,32 +1165,46 @@ const inventoryQuery = useMemoFirebase(() => {
       )}
 
       {/* ── HÁBITOS DE CONSUMO POR DÍA DE LA SEMANA ── */}
-      <Card className="rounded-[2.5rem] border-slate-100 shadow-sm p-6 bg-white">
-        <CardHeader className="px-0 pt-0">
-          <CardTitle className="text-lg font-black uppercase tracking-tight text-slate-900 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-red-600" /> Hábitos de Consumo por Día de la Semana
+      <Card className="rounded-2xl sm:rounded-[2rem] border-slate-100 shadow-sm p-3.5 sm:p-5 bg-white">
+        <CardHeader className="px-0 pt-0 pb-2 sm:pb-3 flex flex-row items-center justify-between space-y-0">
+          <CardTitle className="text-xs sm:text-sm font-black uppercase tracking-tight text-slate-900 flex items-center gap-1.5">
+            <Calendar className="w-4 h-4 text-red-600 shrink-0" /> Hábitos de Consumo por Día
           </CardTitle>
-          
+          {selectedDayOfWeek && (
+            <button 
+              onClick={() => setSelectedDayOfWeek(null)}
+              className="text-[9px] font-bold text-red-600 hover:text-red-700 uppercase bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded-full transition-colors"
+            >
+              Ver todos (✕)
+            </button>
+          )}
         </CardHeader>
-        <CardContent className="px-0 pb-0 mt-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3">
+        <CardContent className="px-0 pb-0">
+          <div className="flex sm:grid sm:grid-cols-7 gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
             {Object.values(habitsByDay).map(dayData => {
-              // Find top product for this day
-              const topProductsList = Object.values(dayData.topProducts).sort((a, b) => b.qty - a.qty);
-              const topProduct = topProductsList[0];
-
+              const isSelected = selectedDayOfWeek === dayData.dayName;
               return (
                 <div 
                   key={dayData.dayName} 
                   onClick={() => setSelectedDayOfWeek(prev => prev === dayData.dayName ? null : dayData.dayName)}
-                  className={`p-4 rounded-2xl border flex flex-col justify-between space-y-3 cursor-pointer transition-all ${selectedDayOfWeek === dayData.dayName ? 'bg-red-50 border-red-200 ring-2 ring-red-600/20 scale-105' : 'bg-slate-50 border-slate-100 hover:bg-slate-100'}`}>
+                  className={`min-w-[78px] sm:min-w-0 flex-1 p-2 sm:p-2.5 rounded-xl border flex flex-col justify-between cursor-pointer transition-all ${
+                    isSelected 
+                      ? 'bg-red-50 border-red-200 ring-1 ring-red-600/30 shadow-xs' 
+                      : 'bg-slate-50/80 border-slate-100 hover:bg-slate-100/80'
+                  }`}
+                >
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{dayData.dayName}</span>
-                    <div className="text-base font-black text-slate-900 mt-1">${dayData.totalAmount.toLocaleString('es-AR')}</div>
-                    <span className="text-[9px] font-bold text-slate-500 uppercase">{dayData.totalUnits} u. vendidas</span>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block truncate">
+                      <span className="sm:hidden">{dayData.dayName.slice(0, 3)}</span>
+                      <span className="hidden sm:inline">{dayData.dayName}</span>
+                    </span>
+                    <div className="text-xs sm:text-sm font-black text-slate-900 mt-0.5 truncate">
+                      ${dayData.totalAmount.toLocaleString('es-AR')}
+                    </div>
+                    <span className="text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase block truncate">
+                      {dayData.totalUnits} u.
+                    </span>
                   </div>
-
-                  
                 </div>
               );
             })}
