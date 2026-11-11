@@ -6,12 +6,12 @@ export async function GET() {
         const uid = 'HvnrCjJjK7armD1qs0ISB7yG1nj1';
         
         let snap = await adminDb.collection('retailer_daily_operations').where('retailerId', '==', uid).get();
-        let ops = snap.docs.map(doc => doc.data());
+        let ops = snap.docs.map((doc: any) => doc.data());
         
         let snapShifts = await adminDb.collection('retailer_cash_shifts').where('retailerId', '==', uid).get();
-        let shifts = snapShifts.docs.map(doc => doc.data());
+        let shifts = snapShifts.docs.map((doc: any) => doc.data());
 
-        return NextResponse.json({ success: true, ops: ops.length, shifts: shifts.length, opDetails: ops.map(o => ({date: o.date, type: o.type, amount: o.amount})) });
+        return NextResponse.json({ success: true, ops: ops.length, shifts: shifts.length, opDetails: ops.map((o: any) => ({date: o.date, type: o.type, amount: o.amount})) });
     } catch(e: any) {
         return NextResponse.json({ error: e.message });
     }

@@ -8,7 +8,7 @@ export async function GET(request: Request) {
             .limit(10)
             .get();
         
-        const results = snap.docs.map(d => ({
+        const results = snap.docs.map((d: any) => ({
             id: d.id,
             barcode: d.data().barcode,
             barcodeType: typeof d.data().barcode,

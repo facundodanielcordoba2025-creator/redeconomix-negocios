@@ -18,12 +18,12 @@ const firebaseAdminConfig = {
 let initializedApp: any = null;
 
 export function initializeAdmin() {
-  const apps = admin.getApps ? admin.getApps() : (admin.apps || []);
+  const apps = getApps();
   if (!apps.length) {
     try {
       if (firebaseAdminConfig.privateKey && firebaseAdminConfig.clientEmail) {
-        initializedApp = admin.initializeApp({
-          credential: admin.credential?.cert ? admin.credential.cert(firebaseAdminConfig as any) : cert(firebaseAdminConfig as any),
+        initializedApp = initializeApp({
+          credential: cert(firebaseAdminConfig as any),
           storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "oggie-8529f.firebasestorage.app",
         });
         console.log('Firebase Admin initialized successfully via Service Account env vars');
@@ -31,8 +31,8 @@ export function initializeAdmin() {
         const localKeyPath = path.resolve(process.cwd(), 'serviceAccountKey.json');
         if (fs.existsSync(localKeyPath)) {
           const serviceAccount = JSON.parse(fs.readFileSync(localKeyPath, 'utf8'));
-          initializedApp = admin.initializeApp({
-            credential: admin.credential?.cert ? admin.credential.cert(serviceAccount) : cert(serviceAccount),
+          initializedApp = initializeApp({
+            credential: cert(serviceAccount),
             storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "oggie-8529f.firebasestorage.app",
           });
           console.log('Firebase Admin initialized successfully via local serviceAccountKey.json');
@@ -40,13 +40,13 @@ export function initializeAdmin() {
           // Fallback: decode embedded credential (safe from GitHub Push Protection, works on Vercel)
           try {
             const decodedCred = JSON.parse(Buffer.from(FALLBACK_B64_CRED, 'base64').toString('utf8'));
-            initializedApp = admin.initializeApp({
-              credential: admin.credential?.cert ? admin.credential.cert(decodedCred) : cert(decodedCred),
+            initializedApp = initializeApp({
+              credential: cert(decodedCred),
               storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "oggie-8529f.firebasestorage.app",
             });
             console.log('Firebase Admin initialized successfully via Serverless Decoded Credential');
           } catch (b64Err) {
-            initializedApp = admin.initializeApp({ projectId: firebaseAdminConfig.projectId });
+            initializedApp = initializeApp({ projectId: firebaseAdminConfig.projectId });
             console.log('Firebase Admin initialized via Default Credentials');
           }
         }
@@ -58,7 +58,7 @@ export function initializeAdmin() {
     initializedApp = apps[0];
   }
 
-  const currentApp = initializedApp || (admin.getApps ? admin.getApps()[0] : (admin.apps as any)?.[0]);
+  const currentApp = initializedApp || getApps()[0];
 
   const firestoreFn: any = () => getFirestore(currentApp);
   firestoreFn.FieldValue = FieldValue;
@@ -72,19 +72,19 @@ export function initializeAdmin() {
 
 export function getAdminFirestore() {
   initializeAdmin();
-  const apps = admin.getApps ? admin.getApps() : (admin.apps || []);
+  const apps = getApps();
   return getFirestore(apps[0]);
 }
 
 export function getAdminMessaging() {
   initializeAdmin();
-  const apps = admin.getApps ? admin.getApps() : (admin.apps || []);
+  const apps = getApps();
   return getMessaging(apps[0]);
 }
 
 export function getAdminAuth() {
   initializeAdmin();
-  const apps = admin.getApps ? admin.getApps() : (admin.apps || []);
+  const apps = getApps();
   return getAuth(apps[0]);
 }
 
@@ -104,7 +104,7 @@ export const adminAuth = {
 export const adminStorage = {
   get bucket() { 
     initializeAdmin();
-    const apps = admin.getApps ? admin.getApps() : (admin.apps || []);
+    const apps = getApps();
     return getStorage(apps[0]).bucket.bind(getStorage(apps[0])); 
   }
 } as any;

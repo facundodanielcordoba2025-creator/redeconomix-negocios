@@ -7,7 +7,7 @@ export async function GET() {
         const masterSnap = await adminDb.collection('products').get();
         const masterDict = new Map();
         
-        masterSnap.docs.forEach(d => {
+        masterSnap.docs.forEach((d: any) => {
             const data = d.data();
             const code = data.code?.toString().trim();
             const imageUrl = data.imageUrl?.trim();

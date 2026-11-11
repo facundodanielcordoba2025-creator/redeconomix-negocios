@@ -7,7 +7,7 @@ export async function GET() {
         const usersRef = adminDb.collection('users');
         const snap = await usersRef.get();
         let donaLiliId: string | null = null;
-        snap.forEach(docSnap => {
+        snap.forEach((docSnap: any) => {
             const data = docSnap.data();
             if (data.businessName?.toLowerCase().includes('lili')) {
                 donaLiliId = docSnap.id;
@@ -26,7 +26,7 @@ export async function GET() {
         const invRef = adminDb.collection('retailer_inventory');
         const invSnap = await invRef.get();
         
-        invSnap.forEach(docSnap => {
+        invSnap.forEach((docSnap: any) => {
             const data = docSnap.data();
             if (data.businessName?.toLowerCase().includes('lili') || data.wholesaler?.includes('Lili')) {
                 if (!data.retailerId || data.retailerId === 'unknown') {
@@ -40,7 +40,7 @@ export async function GET() {
         // 3. Buscar sus productos huerfanos en wholesale_products
         const wholeRef = adminDb.collection('wholesale_products');
         const wholeSnap = await wholeRef.get();
-        wholeSnap.forEach(docSnap => {
+        wholeSnap.forEach((docSnap: any) => {
             const data = docSnap.data();
             if (data.businessName?.toLowerCase().includes('lili') || data.wholesaler?.includes('Lili')) {
                 if (!data.wholesalerId || data.wholesalerId === 'unknown') {

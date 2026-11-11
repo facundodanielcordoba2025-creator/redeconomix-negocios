@@ -371,13 +371,13 @@ export async function updateWholesalerOrderStatus(orderId: string, newStatus: st
                         const branchesSnap = await adminDb.collection('retailer_branches').where('retailerId', '==', buyerId).get();
                         let centralBranchId = 'central';
                         if (!branchesSnap.empty) {
-                            const centralDoc = branchesSnap.docs.find(d => d.data().isCentral) || branchesSnap.docs[0];
+                            const centralDoc = branchesSnap.docs.find((d: any) => d.data().isCentral) || branchesSnap.docs[0];
                             centralBranchId = centralDoc.id;
                         }
                         const targetBranchId = orderData.branchId || centralBranchId;
 
                         const existingInvSnap = await adminDb.collection('retailer_inventory').where('retailerId', '==', buyerId).get();
-                        const existingDocs = existingInvSnap.docs.map(d => ({ id: d.id, ...(d.data() as any) }));
+                        const existingDocs = existingInvSnap.docs.map((d: any) => ({ id: d.id, ...(d.data() as any) }));
 
                         for (const item of orderData.items) {
                             if (item.isRetailerProduct) continue;
@@ -386,7 +386,7 @@ export async function updateWholesalerOrderStatus(orderId: string, newStatus: st
 
                             const itemCode = String(item.code || item.barcode || '').trim();
                             const itemName = String(item.name || '').trim().toLowerCase();
-                            const match = existingDocs.find(p =>
+                            const match = existingDocs.find((p: any) =>
                                 (itemCode && (String(p.code || '').trim() === itemCode || String(p.barcode || '').trim() === itemCode)) ||
                                 (itemName && String(p.name || '').trim().toLowerCase() === itemName)
                             );
