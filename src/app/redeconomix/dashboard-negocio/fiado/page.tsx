@@ -516,7 +516,7 @@ export default function FiadoPage() {
 
     return (
         <RoleGuard moduleName="Fiados y Cuentas Corrientes" allowedRoles={['admin', 'accountant']}>
-            <div className="max-w-2xl mx-auto space-y-4">
+            <div className="max-w-2xl mx-auto space-y-4 pt-[76px] md:pt-2">
                 
                 {/* ═══════════════════════════════════════════════════════════ */}
                 {/* ─── PÁGINA 1: VISTA LISTADO DE CUENTAS CORRIENTES ─────── */}
