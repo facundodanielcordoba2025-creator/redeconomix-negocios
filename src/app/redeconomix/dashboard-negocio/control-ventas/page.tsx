@@ -1492,9 +1492,9 @@ function SalesTerminalContent() {
                     }
 
                     // ENVIAR NOTIFICACIÓN PUSH AL DUEÑO DEL NEGOCIO (No bloqueante)
-                    if (isSales && targetRetailerId && (effectiveRetailerId || role === 'cashier' || role === 'cashier_warehouse' || targetRetailerId !== user?.uid)) {
+                    if (isSales && targetRetailerId) {
                         try {
-                            const cashierName = employee?.name || user?.displayName || (user?.email ? user.email.split('@')[0] : 'Cajero');
+                            const cashierName = employee?.name || (user?.displayName && !user.displayName.toLowerCase().includes('comercio') ? user.displayName : '') || 'Caja Central';
                             const itemsSummary = currentScannedItems
                                 .slice(0, 3)
                                 .map((i: any) => `${i.qty}x ${i.name}`)
