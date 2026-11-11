@@ -30,14 +30,46 @@ export async function sendNativePush(userId: string, title: string, body: string
         // Clean duplicates
         const uniqueTokens = [...new Set(fcmTokens)];
 
-        const payload = {
+        const deepLink = url 
+            ? (url.startsWith('http') ? url : `https://redeconomix-negocios-h6p3.vercel.app${url.startsWith('/') ? url : '/' + url}`)
+            : 'https://redeconomix-negocios-h6p3.vercel.app/redeconomix/dashboard-negocio/resumen';
+
+        const payload: any = {
             tokens: uniqueTokens,
             notification: {
                 title,
                 body
             },
             data: {
-                url: url || '/'
+                url: deepLink,
+                title,
+                body
+            },
+            webpush: {
+                headers: {
+                    Urgency: 'high'
+                },
+                notification: {
+                    title,
+                    body,
+                    icon: 'https://redeconomix-negocios-h6p3.vercel.app/icon-192x192.png',
+                    badge: 'https://redeconomix-negocios-h6p3.vercel.app/favicon.png',
+                    tag: 'redeconomix-notification',
+                    requireInteraction: true,
+                    vibrate: [200, 100, 200]
+                },
+                fcmOptions: {
+                    link: deepLink
+                }
+            },
+            android: {
+                priority: 'high',
+                notification: {
+                    title,
+                    body,
+                    color: '#C00000',
+                    sound: 'default'
+                }
             }
         };
 

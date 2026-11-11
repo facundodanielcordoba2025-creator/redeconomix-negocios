@@ -38,6 +38,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 import { BarcodeScanner } from '@/components/barcode-scanner';
 import { findMasterProductByCode } from '@/app/actions/product-actions';
+import { useAlerts } from '@/hooks/use-alerts';
 
 type ScannedItem = {
     code?: string;
@@ -71,6 +72,41 @@ function SalesTerminalContent() {
     const { role, employee, effectiveRetailerId } = useRole();
     const targetRetailerId = effectiveRetailerId || user?.uid;
     const [selectedAdminBranch, setSelectedAdminBranch] = useState<string>('central');
+
+    const { playAlert } = useAlerts();
+    const todayStr = useMemo(() => new Date().toISOString().split('T')[0], []);
+    const [doorVisitsCount, setDoorVisitsCount] = useState(0);
+    const lastDoorEventIdRef = useRef<string | null>(null);
+
+    // Escuchar eventos de ingreso de clientes desde la cámara en tiempo real
+    const trafficEventsQuery = useMemoFirebase(() => {
+        if (!firestore || !targetRetailerId) return null;
+        return query(
+            collection(firestore, 'retailer_traffic_events'),
+            where('retailerId', '==', targetRetailerId),
+            where('date', '==', todayStr),
+            limit(100)
+        );
+    }, [firestore, targetRetailerId, todayStr]);
+
+    const { data: trafficEvents } = useCollection(trafficEventsQuery);
+
+    useEffect(() => {
+        if (!trafficEvents) return;
+        setDoorVisitsCount(trafficEvents.length);
+        
+        if (trafficEvents.length > 0) {
+            const latest = trafficEvents[trafficEvents.length - 1];
+            if (lastDoorEventIdRef.current && lastDoorEventIdRef.current !== latest.id) {
+                playAlert('chime');
+                toast({
+                    title: "🚪 ¡Cliente en el Local!",
+                    description: `Ingreso registrado [${latest.time || 'Ahora'}]`,
+                });
+            }
+            lastDoorEventIdRef.current = latest.id;
+        }
+    }, [trafficEvents, playAlert, toast]);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {

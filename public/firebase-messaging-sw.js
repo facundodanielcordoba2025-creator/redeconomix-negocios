@@ -22,18 +22,19 @@ try {
     messaging.onBackgroundMessage((payload) => {
       console.log('[firebase-messaging-sw.js] Alerta Recibida en Segundo Plano:', payload);
       
-      const notificationTitle = payload.notification?.title || payload.data?.title || 'RedEconomiX';
+      const notificationTitle = payload.notification?.title || payload.data?.title || 'RedEconomiX Negocio';
+      const targetUrl = payload.data?.url || payload.data?.href || '/redeconomix/dashboard-negocio/resumen';
       const notificationOptions = {
         body: payload.notification?.body || payload.data?.body || '',
         icon: '/icon-192x192.png',
-        badge: '/icon-192x192.png',
+        badge: '/favicon.png',
         vibrate: [200, 100, 200],
-        tag: payload.data?.orderId || 'general-notification',
+        tag: payload.data?.tag || payload.data?.orderId || 'redeconomix-alert',
         data: {
-            url: payload.data?.href || '/'
+            url: targetUrl
         },
         actions: [
-            { action: 'open', title: 'Ver Ahora' }
+            { action: 'open', title: 'Abrir Panel' }
         ]
       };
 
