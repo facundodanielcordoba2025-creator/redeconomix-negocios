@@ -57,6 +57,7 @@ interface WholesaleOfferForm {
   name: string;
   imageUrl: string;
   code: string;
+  purchasePrice: number;
   retailPrice: number;
   wholesalePrice: string;
   deliveryMode: DeliveryMode;
@@ -68,6 +69,7 @@ const INITIAL_FORM: WholesaleOfferForm = {
   name: '',
   imageUrl: '',
   code: '',
+  purchasePrice: 0,
   retailPrice: 0,
   wholesalePrice: '',
   deliveryMode: 'inmediata',
@@ -146,7 +148,8 @@ export default function VentaMayoristaPage() {
       name: offer.name || '',
       imageUrl: offer.imageUrl || '',
       code: offer.code || '',
-      retailPrice: offer.originalPrice || 0,
+      purchasePrice: Number(offer.purchasePrice || 0),
+      retailPrice: Number(offer.originalPrice || 0),
       wholesalePrice: String(offer.salePrice || offer.price || ''),
       deliveryMode: offer.deliveryMode === '7_dias' ? '7_dias' : 'inmediata',
       stock: offer.stock != null ? String(offer.stock) : '',
@@ -161,8 +164,9 @@ export default function VentaMayoristaPage() {
       sourceProductId: prod.id,
       name: prod.name || '',
       imageUrl: prod.imageUrl || '',
-      code: prod.code || '',
-      retailPrice: Number(prod.price || 0),
+      code: String(prod.code || prod.barcode || ''),
+      purchasePrice: Number(prod.purchasePrice || 0),
+      retailPrice: Number(prod.salePrice || prod.price || 0),
       stock: prev.stock || (prod.stock != null ? String(prod.stock) : ''),
     }));
   };
@@ -210,6 +214,7 @@ export default function VentaMayoristaPage() {
         code: form.code.trim() || null,
         price: priceNum,
         salePrice: priceNum,
+        purchasePrice: form.purchasePrice || 0,
         originalPrice: form.retailPrice > priceNum ? form.retailPrice : null,
         stock: stockNum,
         deliveryMode: form.deliveryMode,
@@ -227,7 +232,6 @@ export default function VentaMayoristaPage() {
       } else {
         await addDoc(collection(firestore, 'retailer_inventory'), {
           ...payload,
-          purchasePrice: 0,
           profitMargin: 0,
           createdAt: serverTimestamp(),
         });
@@ -273,7 +277,7 @@ export default function VentaMayoristaPage() {
 
   return (
     <RoleGuard allowedRoles={['admin']}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-[88px] md:pt-6 pb-36 space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
@@ -441,25 +445,26 @@ export default function VentaMayoristaPage() {
               {!editingOfferId && (
                 <div className="space-y-2.5">
                   <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    1. Buscar y seleccionar artículo de tu stock *
+                    1. Seleccionar artículo *
                   </Label>
                   <div className="relative">
                     <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <Input
                       value={productSearch}
                       onChange={(e) => setProductSearch(e.target.value)}
-                      placeholder="Buscar por nombre o código..."
+                      placeholder="Buscar por código o nombre..."
                       className="h-11 pl-10 rounded-xl bg-slate-50 border-slate-200 text-sm"
                     />
                   </div>
                   <div className="max-h-48 overflow-y-auto rounded-2xl border border-slate-100 divide-y divide-slate-100">
                     {filteredSourceProducts.length === 0 ? (
                       <p className="p-4 text-xs text-slate-400 text-center">
-                        No se encontraron artículos en tu inventario.
+                        No se encontraron artículos en tu cuenta.
                       </p>
                     ) : (
                       filteredSourceProducts.map((prod: any) => {
                         const isSelected = form.sourceProductId === prod.id;
+                        const prodCode = prod.code || prod.barcode;
                         return (
                           <button
                             key={prod.id}
@@ -487,7 +492,7 @@ export default function VentaMayoristaPage() {
                                   {prod.name}
                                 </p>
                                 <p className="text-[11px] text-slate-500">
-                                  Precio actual: ${Number(prod.price || 0).toLocaleString('es-AR')} • Stock: {prod.stock ?? 0}
+                                  {prodCode ? `Cód: ${prodCode} • ` : ''}Público: ${Number(prod.salePrice || prod.price || 0).toLocaleString('es-AR')} • Stock: {prod.stock ?? 0}
                                 </p>
                               </div>
                             </div>
@@ -501,23 +506,44 @@ export default function VentaMayoristaPage() {
               )}
 
               {form.name && (
-                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center shrink-0 overflow-hidden">
-                    {form.imageUrl ? (
-                      <img
-                        src={form.imageUrl}
-                        alt={form.name}
-                        className="w-full h-full object-contain p-1"
-                      />
-                    ) : (
-                      <Package className="w-5 h-5 text-slate-300" />
-                    )}
+                <div className="space-y-3">
+                  <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center shrink-0 overflow-hidden">
+                      {form.imageUrl ? (
+                        <img
+                          src={form.imageUrl}
+                          alt={form.name}
+                          className="w-full h-full object-contain p-1"
+                        />
+                      ) : (
+                        <Package className="w-5 h-5 text-slate-300" />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-red-600">
+                        Artículo seleccionado
+                      </p>
+                      <p className="text-sm font-black text-slate-900 truncate">{form.name}</p>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-red-600">
-                      Artículo seleccionado
-                    </p>
-                    <p className="text-sm font-black text-slate-900 truncate">{form.name}</p>
+
+                  <div className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        Precio de Compra
+                      </span>
+                      <span className="text-base font-black text-slate-800">
+                        ${Number(form.purchasePrice || 0).toLocaleString('es-AR')}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        Precio Venta al Público
+                      </span>
+                      <span className="text-base font-black text-slate-800">
+                        ${Number(form.retailPrice || 0).toLocaleString('es-AR')}
+                      </span>
+                    </div>
                   </div>
                 </div>
               )}
@@ -525,7 +551,7 @@ export default function VentaMayoristaPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Precio Mayorista ($) *
+                    Precio Venta Mayorista ($) *
                   </Label>
                   <Input
                     type="number"
@@ -534,13 +560,13 @@ export default function VentaMayoristaPage() {
                     value={form.wholesalePrice}
                     onChange={(e) => setForm({ ...form, wholesalePrice: e.target.value })}
                     placeholder="Ej: 1850"
-                    className="h-11 rounded-xl bg-slate-50 border-slate-200 font-bold"
+                    className="h-11 rounded-xl bg-slate-50 border-slate-200 font-black text-red-600"
                   />
                 </div>
 
                 <div className="space-y-1.5">
                   <Label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                    Cantidad Disponible *
+                    Cantidad *
                   </Label>
                   <Input
                     type="number"
