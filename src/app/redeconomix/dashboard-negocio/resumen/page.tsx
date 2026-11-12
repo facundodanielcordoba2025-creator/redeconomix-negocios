@@ -8,7 +8,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { 
   Loader2, DollarSign, Package, TrendingUp, AlertCircle, 
   Calendar, Store, CalendarRange, Sparkles, CheckCircle2, 
-  Receipt, ArrowUpRight, ShoppingCart, FileText, FileDown, Clock, UserCheck, Star, Users
+  Receipt, ArrowUpRight, ShoppingCart, FileText, FileDown, Clock, UserCheck, Star, Users,
+  ChevronDown, Menu, Banknote, ArrowRightLeft, QrCode
 } from 'lucide-react';
 import { useUser, useFirestore, useMemoFirebase, useCollection } from '@/firebase';
 import { collection, query, where, orderBy, Timestamp, limit } from 'firebase/firestore';
@@ -29,6 +30,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from '@/lib/utils';
 import { useRole } from '@/hooks/use-role';
 import { RoleGuard } from '@/components/role-guard';
@@ -51,9 +58,9 @@ export default function RetailerDashboardPage() {
 
   // Branches Query
   const branchesQuery = useMemoFirebase(() => {
-    if (!firestore || !user) return null;
+    if (!firestore || !user || !effectiveRetailerId) return null;
     return query(collection(firestore, 'retailer_branches'), where('retailerId', '==', effectiveRetailerId));
-  }, [firestore, user]);
+  }, [firestore, user, effectiveRetailerId]);
   const { data: branches } = useCollection(branchesQuery);
 
   // Daily Operations Query (POS / Fiado)
@@ -255,132 +262,7 @@ const inventoryQuery = useMemoFirebase(() => {
     return found?.name || 'Sucursal';
   };
 
-  // Branch Performance & Seller Breakdown
-  const branchBreakdown = useMemo(() => {
-    const allBranchesList: any[] = branches && branches.length > 0 ? [...branches] : [];
-    if (!allBranchesList.some((b: any) => b.id === 'central' || b.isCentral)) {
-      allBranchesList.unshift({
-        id: 'central',
-        name: 'Casa Central',
-        isCentral: true
-      });
-    }
-
-    const totalAllSales = (rawSales || []).reduce((acc: number, s: any) => acc + (s.totalAmount || s.amount || 0), 0);
-
-    return allBranchesList.map((branch: any) => {
-      const isThisCentral = branch.id === 'central' || branch.isCentral;
-      
-      const branchSales = (rawSales || []).filter((s: any) => {
-        if (isThisCentral) {
-          return !s.branchId || s.branchId === 'central' || s.branchId === branch.id;
-        }
-        return s.branchId === branch.id;
-      });
-
-      const totalFacturado = branchSales.reduce((acc: number, s: any) => acc + (s.totalAmount || s.amount || 0), 0);
-      const ticketsCount = branchSales.length;
-
-      // Ganancia estimada de esta sucursal
-      const branchCost = branchSales.reduce((sum: number, sale: any) => sum + (Array.isArray(sale.items) ? sale.items.reduce((itemSum: number, item: any) => {
-        const qty = item.quantity || item.qty || 1;
-        let cost = item.purchasePrice || item.costPrice || 0;
-        if (!cost && item.productId && inventory) {
-          const invItem = inventory.find((p: any) => p.id === item.productId);
-          if (invItem) cost = invItem.purchasePrice || invItem.costPrice || 0;
-        }
-        if (!cost && (item.price || item.salePrice)) {
-          cost = (item.price || item.salePrice || 0) * 0.70;
-        }
-        return itemSum + (cost * qty);
-      }, 0) : 0), 0);
-      const potentialProfit = Math.round(totalFacturado - branchCost);
-
-      // Find if this branch has an active shift
-      const activeShift = (activeShifts || []).find((s: any) => {
-        if (isThisCentral) {
-          return !s.branchId || s.branchId === 'central' || s.branchId === branch.id;
-        }
-        return s.branchId === branch.id;
-      });
-
-      const percentage = totalAllSales > 0 ? Math.round((totalFacturado / totalAllSales) * 100) : 0;
-
-      return {
-        id: branch.id,
-        name: branch.name,
-        isCentral: isThisCentral,
-        address: branch.address || '',
-        totalFacturado,
-        ticketsCount,
-        potentialProfit,
-        activeShift,
-        percentage
-      };
-    });
-  }, [branches, rawSales, activeShifts, inventory]);
-
-  // Helper unificado para obtener el stock físico de una sucursal específica (idéntico a Stock y TPV)
-  const getProductStockForBranch = (product: any, branchId: string) => {
-    if (!product) return 0;
-    return Math.max(0, computeProductBranchStock(product, branchId, branches));
-  };
-
-  // Métricas de Stock e Inversión (centralizadas desde Gestión de Stock)
-  const stockSummary = useMemo(() => {
-    const allProds = inventory || [];
-    const isSpecificBranch = selectedBranchFilter !== 'ALL';
-
-    let totalUnits = 0;
-    let totalCost = 0;
-    let totalSale = 0;
-
-    allProds.forEach((p: any) => {
-      const qty = isSpecificBranch 
-        ? getProductStockForBranch(p, selectedBranchFilter) 
-        : (Number(p.stock) || 0);
-      const purchasePrice = Number(p.purchasePrice || p.costPrice || 0);
-      const salePrice = Number(p.salePrice || p.price || 0);
-
-      totalUnits += qty;
-      totalCost += purchasePrice * qty;
-      totalSale += salePrice * qty;
-    });
-
-    const potentialProfit = totalSale - totalCost;
-
-    // Desglose de stock dividido por cada sucursal
-    const byBranch: Record<string, { units: number; cost: number; sale: number; profit: number }> = {};
-    (branchBreakdown || []).forEach((b: any) => {
-      let bUnits = 0;
-      let bCost = 0;
-      let bSale = 0;
-      allProds.forEach((p: any) => {
-        const qty = getProductStockForBranch(p, b.id);
-        const purchasePrice = Number(p.purchasePrice || p.costPrice || 0);
-        const salePrice = Number(p.salePrice || p.price || 0);
-        bUnits += qty;
-        bCost += purchasePrice * qty;
-        bSale += salePrice * qty;
-      });
-      byBranch[b.id] = {
-        units: bUnits,
-        cost: bCost,
-        sale: bSale,
-        profit: bSale - bCost
-      };
-    });
-
-    return {
-      totalUnits,
-      totalCost,
-      totalSale,
-      potentialProfit,
-      byBranch
-    };
-  }, [inventory, selectedBranchFilter, branchBreakdown, branches]);
-
-  // Compute real-time collections for an open cashier session
+  // Compute real-time collections for a cashier session
   const getShiftMetrics = (shift: any) => {
     if (!rawOpsUnfiltered || !shift) {
       return {
@@ -442,9 +324,9 @@ const inventoryQuery = useMemoFirebase(() => {
           cash += Number(op.splitDetails.cash || 0);
           transfer += Number(op.splitDetails.transfer || 0);
           credit += Number(op.splitDetails.credit || 0);
-        } else if (op.paymentMethod === 'cash') {
+        } else if (op.paymentMethod === 'cash' || op.paymentMethod === 'efectivo') {
           cash += amount;
-        } else if (op.paymentMethod === 'transfer') {
+        } else if (op.paymentMethod === 'transfer' || op.paymentMethod === 'transferencia') {
           transfer += amount;
         } else if (op.paymentMethod === 'qr') {
           qr += amount;
@@ -471,7 +353,232 @@ const inventoryQuery = useMemoFirebase(() => {
     };
   };
 
+  // Branch Performance & Today Breakdown
+  const branchBreakdown = useMemo(() => {
+    const allBranchesList: any[] = branches && branches.length > 0 ? [...branches] : [];
+    if (!allBranchesList.some((b: any) => b.id === 'central' || b.isCentral)) {
+      allBranchesList.unshift({
+        id: 'central',
+        name: 'Casa Central',
+        isCentral: true
+      });
+    }
 
+    const now = new Date();
+    const todayYear = now.getFullYear();
+    const todayMonth = now.getMonth();
+    const todayDate = now.getDate();
+
+    return allBranchesList.map((branch: any) => {
+      const isThisCentral = branch.id === 'central' || branch.isCentral;
+
+      const matchBranch = (itemBranchId?: string) => {
+        if (isThisCentral) {
+          return !itemBranchId || itemBranchId === 'central' || itemBranchId === branch.id;
+        }
+        return itemBranchId === branch.id;
+      };
+
+      // Operaciones de HOY para esta sucursal
+      const todayBranchOps = (rawOpsUnfiltered || []).filter((op: any) => {
+        if (op.status === 'refunded' || op.status === 'voided') return false;
+        if (op.type !== 'sale' && op.type !== 'credit_sale' && op.type !== 'checkout') return false;
+
+        const opTime = op.createdAt?.toDate 
+          ? op.createdAt.toDate() 
+          : (op.createdAt?.seconds ? new Date(op.createdAt.seconds * 1000) : new Date(op.date || 0));
+
+        if (
+          opTime.getFullYear() !== todayYear ||
+          opTime.getMonth() !== todayMonth ||
+          opTime.getDate() !== todayDate
+        ) {
+          return false;
+        }
+
+        return matchBranch(op.branchId);
+      });
+
+      let todayTotal = 0;
+      let todayCash = 0;
+      let todayTransfer = 0;
+      let todayQr = 0;
+      let todayFiado = 0;
+
+      todayBranchOps.forEach((op: any) => {
+        const amount = Number(op.total || op.amount || op.totalAmount || 0);
+        todayTotal += amount;
+
+        if (op.type === 'credit_sale') {
+          todayFiado += amount;
+        } else if (op.paymentMethod === 'mixed' && op.splitDetails) {
+          todayCash += Number(op.splitDetails.cash || 0);
+          todayTransfer += Number(op.splitDetails.transfer || 0);
+          todayQr += Number(op.splitDetails.qr || 0);
+          if (op.splitDetails.credit) todayFiado += Number(op.splitDetails.credit || 0);
+        } else if (op.paymentMethod === 'transfer' || op.paymentMethod === 'transferencia') {
+          todayTransfer += amount;
+        } else if (op.paymentMethod === 'qr') {
+          todayQr += amount;
+        } else if (op.paymentMethod === 'credit') {
+          todayFiado += amount;
+        } else {
+          todayCash += amount;
+        }
+      });
+
+      // Find if this branch has an active shift
+      const activeShift = (activeShifts || []).find((s: any) => matchBranch(s.branchId));
+
+      // Turnos de HOY para esta sucursal
+      const todayShifts: any[] = [];
+
+      // 1. Turnos cerrados hoy
+      (rawShifts || []).forEach((s: any) => {
+        if (!matchBranch(s.branchId)) return;
+
+        const startD = s.startTime ? new Date(s.startTime) : null;
+        const endD = s.endTime ? new Date(s.endTime) : null;
+        const isShiftFromToday = (d: Date | null) => d &&
+          d.getFullYear() === todayYear &&
+          d.getMonth() === todayMonth &&
+          d.getDate() === todayDate;
+
+        if (isShiftFromToday(startD) || isShiftFromToday(endD)) {
+          const shiftTotal = Number(s.report?.total ?? s.actualFinalCash ?? 0);
+          const shiftCash = Number(s.report?.cash ?? s.actualFinalCash ?? 0);
+          const shiftTransfer = Number(s.report?.transfer ?? 0);
+          const shiftQr = Number(s.report?.qr ?? 0);
+          const timeRange = `${startD ? format(startD, 'HH:mm') : ''} a ${endD ? format(endD, 'HH:mm') : ''} hs`;
+
+          todayShifts.push({
+            id: s.id,
+            cashierName: s.cashierName || 'Vendedor',
+            status: 'closed',
+            statusLabel: 'Cerrado',
+            timeRange,
+            total: shiftTotal,
+            cash: shiftCash,
+            transfer: shiftTransfer,
+            qr: shiftQr,
+            rawShift: s,
+          });
+        }
+      });
+
+      // 2. Turno en vivo si está abierto
+      if (activeShift) {
+        const shiftMetrics = getShiftMetrics(activeShift);
+        const startD = activeShift.startTime ? new Date(activeShift.startTime) : new Date();
+        const timeRange = `${format(startD, 'HH:mm')} hs - En curso`;
+
+        todayShifts.push({
+          id: activeShift.id,
+          cashierName: activeShift.cashierName || 'Vendedor',
+          status: 'open',
+          statusLabel: 'En Vivo',
+          timeRange,
+          total: shiftMetrics.totalRecaudado,
+          cash: shiftMetrics.cash,
+          transfer: shiftMetrics.transfer,
+          qr: shiftMetrics.qr,
+          rawShift: activeShift,
+        });
+      }
+
+      // 3. Fallback: Si no hay turnos formalmente registrados en retailer_shifts hoy, agrupar las operaciones de hoy por vendedor
+      const sellersMap: Record<string, { cashierName: string; total: number; cash: number; transfer: number; qr: number; count: number }> = {};
+      todayBranchOps.forEach((op: any) => {
+        const name = op.employeeName || op.cashierName || 'Dueño / Vendedor';
+        if (!sellersMap[name]) {
+          sellersMap[name] = { cashierName: name, total: 0, cash: 0, transfer: 0, qr: 0, count: 0 };
+        }
+        const amt = Number(op.total || op.amount || op.totalAmount || 0);
+        sellersMap[name].total += amt;
+        sellersMap[name].count += 1;
+        if (op.paymentMethod === 'transfer' || op.paymentMethod === 'transferencia') sellersMap[name].transfer += amt;
+        else if (op.paymentMethod === 'qr') sellersMap[name].qr += amt;
+        else sellersMap[name].cash += amt;
+      });
+      const todaySellers = Object.values(sellersMap);
+
+      return {
+        id: branch.id,
+        name: branch.name,
+        isCentral: isThisCentral,
+        address: branch.address || '',
+        activeShift,
+        todayTotal,
+        todaySalesCount: todayBranchOps.length,
+        todayCash,
+        todayTransfer,
+        todayQr,
+        todayFiado,
+        todayShifts,
+        todaySellers,
+      };
+    });
+  }, [branches, rawOpsUnfiltered, rawShifts, activeShifts]);
+
+  // Helper unificado para obtener el stock físico de una sucursal específica (idéntico a Stock y TPV)
+  const getProductStockForBranch = (product: any, branchId: string) => {
+    if (!product) return 0;
+    return Math.max(0, computeProductBranchStock(product, branchId, branches));
+  };
+
+  // Métricas de Stock e Inversión (centralizadas desde Gestión de Stock)
+  const stockSummary = useMemo(() => {
+    const allProds = inventory || [];
+    const isSpecificBranch = selectedBranchFilter !== 'ALL';
+
+    let totalUnits = 0;
+    let totalCost = 0;
+    let totalSale = 0;
+
+    allProds.forEach((p: any) => {
+      const qty = isSpecificBranch 
+        ? getProductStockForBranch(p, selectedBranchFilter) 
+        : (Number(p.stock) || 0);
+      const purchasePrice = Number(p.purchasePrice || p.costPrice || 0);
+      const salePrice = Number(p.salePrice || p.price || 0);
+
+      totalUnits += qty;
+      totalCost += purchasePrice * qty;
+      totalSale += salePrice * qty;
+    });
+
+    const potentialProfit = totalSale - totalCost;
+
+    // Desglose de stock dividido por cada sucursal
+    const byBranch: Record<string, { units: number; cost: number; sale: number; profit: number }> = {};
+    (branchBreakdown || []).forEach((b: any) => {
+      let bUnits = 0;
+      let bCost = 0;
+      let bSale = 0;
+      allProds.forEach((p: any) => {
+        const qty = getProductStockForBranch(p, b.id);
+        const purchasePrice = Number(p.purchasePrice || p.costPrice || 0);
+        const salePrice = Number(p.salePrice || p.price || 0);
+        bUnits += qty;
+        bCost += purchasePrice * qty;
+        bSale += salePrice * qty;
+      });
+      byBranch[b.id] = {
+        units: bUnits,
+        cost: bCost,
+        sale: bSale,
+        profit: bSale - bCost
+      };
+    });
+
+    return {
+      totalUnits,
+      totalCost,
+      totalSale,
+      potentialProfit,
+      byBranch
+    };
+  }, [inventory, selectedBranchFilter, branchBreakdown, branches]);
 
   // KPIs & Stats
   const stats = useMemo(() => {
@@ -629,15 +736,7 @@ const inventoryQuery = useMemoFirebase(() => {
   };
 
   const handleExportBranchExcel = () => {
-    // Si no seleccionó sucursal no ejecuta ninguna acción (requisito del usuario)
-    if (selectedBranchFilter === 'ALL') {
-      return;
-    }
-
-    const currentBranch = branches?.find((b: any) => b.id === selectedBranchFilter);
-    const branchName = currentBranch?.name || (selectedBranchFilter === 'central' ? 'Casa Central' : 'Sucursal');
-    const isCentral = currentBranch?.isCentral || selectedBranchFilter === 'central';
-
+    const isAll = selectedBranchFilter === 'ALL';
     const workbook = XLSX.utils.book_new();
 
     const periodLabel = periodFilter === 'TODAY' 
@@ -648,107 +747,193 @@ const inventoryQuery = useMemoFirebase(() => {
       ? `Día ${customDate || ''}` 
       : 'Ciclo Contable (10 al 10)';
 
-    // Ventas de esta sucursal en el período seleccionado
-    const branchSales = sales || [];
-    const branchTotalSales = branchSales.reduce((sum: number, s: any) => sum + (s.totalAmount || s.amount || 0), 0);
-    const branchTicketsCount = branchSales.length;
+    if (isAll) {
+      // ── INFORME CONSOLIDADO (TODAS LAS SUCURSALES) ──
+      // Hoja 1: Resumen General de Sucursales
+      const summaryRows: any[][] = [
+        ["REDECONOMIX - INFORME CONSOLIDADO DE SUCURSALES"],
+        ["Período Auditado", periodLabel],
+        ["Fecha de Emisión", format(new Date(), 'dd/MM/yyyy HH:mm')],
+        [],
+        ["SUCURSAL", "ESTADO CAJA", "TOTAL HOY ($)", "VENTAS HOY", "EFECTIVO HOY ($)", "TRANSFERENCIA HOY ($)", "QR HOY ($)", "FIADO HOY ($)", "CAJERO EN TURNO"],
+      ];
 
-    // Métodos de cobro
-    const methods: Record<string, number> = {};
-    branchSales.forEach((s: any) => {
-      const m = (s.paymentMethod || 'Efectivo').toUpperCase();
-      methods[m] = (methods[m] || 0) + (s.totalAmount || s.amount || 0);
-    });
+      (branchBreakdown || []).forEach((b: any) => {
+        summaryRows.push([
+          b.name,
+          b.activeShift ? "ABIERTA" : "CERRADA",
+          b.todayTotal,
+          b.todaySalesCount,
+          b.todayCash,
+          b.todayTransfer,
+          b.todayQr,
+          b.todayFiado,
+          b.activeShift?.cashierName || "Sin turno activo"
+        ]);
+      });
 
-    // Sesión de caja en curso
-    const activeShift = (activeShifts || []).find((s: any) => {
-      if (isCentral) return !s.branchId || s.branchId === 'central' || s.branchId === currentBranch?.id;
-      return s.branchId === selectedBranchFilter;
-    });
+      const wsSummary = XLSX.utils.aoa_to_sheet(summaryRows);
+      XLSX.utils.book_append_sheet(workbook, wsSummary, "Resumen General");
 
-    // 1. Hoja: Resumen de Sucursal
-    const summaryData = [
-      ["INFORME DETALLADO DE SUCURSAL - REDECONOMIX"],
-      ["Sucursal", `${branchName} ${isCentral ? '(Central)' : ''}`],
-      ["Período Auditado", periodLabel],
-      ["Fecha de Emisión", format(new Date(), 'dd/MM/yyyy HH:mm')],
-      [],
-      ["ESTADO DE CAJA EN VIVO", "DETALLE"],
-      ["Estado de Caja", activeShift ? "ABIERTA" : "CERRADA"],
-      ["Cajero / Vendedor Asignado", activeShift?.cashierName || "Sin turno activo"],
-      ["Hora de Apertura", activeShift?.startTime ? format(new Date(activeShift.startTime), 'dd/MM/yyyy HH:mm') : "-"],
-      ["Efectivo Inicial en Caja", activeShift?.initialCash ? `$${activeShift.initialCash.toLocaleString('es-AR')}` : "-"],
-      [],
-      ["FACTURACIÓN Y MÉTRICAS DEL PERÍODO", "VALOR"],
-      ["Total Facturado ($)", branchTotalSales],
-      ["Cantidad de Tickets / Ventas", branchTicketsCount],
-      ["Ticket Promedio ($)", branchTicketsCount > 0 ? Math.round(branchTotalSales / branchTicketsCount) : 0],
-      [],
-      ["RECAUDACIÓN POR MÉTODO DE PAGO", "MONTO ($)"],
-      ...Object.entries(methods).map(([k, v]) => [k, v])
-    ];
-    const wsSummary = XLSX.utils.aoa_to_sheet(summaryData);
-    XLSX.utils.book_append_sheet(workbook, wsSummary, "Resumen Sucursal");
-
-    // 2. Hoja: Inventario y Stock de esta Sucursal (únicamente productos con stock real > 0)
-    const stockData = (inventory || [])
-      .map((item: any) => {
-        const currentStock = getProductStockForBranch(item, selectedBranchFilter);
+      // Hoja 2: Stock Consolidado y por Sucursal
+      const stockData = (inventory || []).map((item: any) => {
         const cost = Number(item.purchasePrice || item.costPrice || 0);
         const price = Number(item.salePrice || item.price || 0);
-        const valuation = currentStock * cost;
-        const minStock = Number(item.minStock ?? 5);
-
-        return {
+        const totalStock = Number(item.stock) || 0;
+        
+        const row: any = {
           'Código': item.code || item.barcode || '-',
           'Producto': item.name || 'Sin Nombre',
           'Categoría': item.category || 'General',
-          'Stock Actual (Sucursal)': currentStock,
-          'Stock Mínimo': minStock,
-          'Estado de Stock': currentStock <= minStock ? 'STOCK CRÍTICO' : 'NORMAL',
-          'Precio Costo ($)': cost,
-          'Precio Venta ($)': price,
-          'Valorización en Stock ($)': valuation
+          'Stock Total': totalStock,
         };
-      })
-      .filter((item: any) => item['Stock Actual (Sucursal)'] > 0);
 
-    // Ordenar alfabéticamente por nombre de producto
-    stockData.sort((a, b) => a['Producto'].localeCompare(b['Producto']));
-    const wsStock = XLSX.utils.json_to_sheet(stockData);
-    XLSX.utils.book_append_sheet(workbook, wsStock, "Stock Sucursal");
+        // Desglose de stock por cada sucursal
+        (branchBreakdown || []).forEach((b: any) => {
+          row[`Stock ${b.name}`] = getProductStockForBranch(item, b.id);
+        });
 
-    // 3. Hoja: Detalle de Operaciones y Ventas
-    const salesDetailData = branchSales.map((sale: any) => {
-      const d = sale.normalizedDate || (sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now()));
-      const itemsList = Array.isArray(sale.items) ? sale.items.map((i: any) => `${i.name || i.productName} (x${i.quantity || i.qty || 1})`).join(', ') : 'Venta directa';
-      
-      return {
-        'Fecha y Hora': format(d, 'dd/MM/yyyy HH:mm'),
-        'Tipo': sale.type === 'credit_sale' ? 'Fiado (Cta Cte)' : 'Venta',
-        'Método de Pago': (sale.paymentMethod || 'Efectivo').toUpperCase(),
-        'Cajero / Vendedor': sale.employeeName || sale.cashierName || sale.userName || 'Dueño',
-        'Cliente': sale.customerName || 'Consumidor Final',
-        'Artículos': itemsList,
-        'Total ($)': sale.totalAmount || sale.total || sale.amount || 0
-      };
-    });
-    const wsSales = XLSX.utils.json_to_sheet(salesDetailData);
-    XLSX.utils.book_append_sheet(workbook, wsSales, "Ventas Sucursal");
+        row['Precio Costo ($)'] = cost;
+        row['Precio Venta ($)'] = price;
+        row['Valorización ($)'] = totalStock * cost;
 
-    // 4. Hoja: Ranking Top Productos de la Sucursal
-    const topProductsData = (topProducts || []).map((p: any, idx: number) => ({
-      'Ranking': idx + 1,
-      'Producto': p.name,
-      'Unidades Vendidas': p.qty,
-      'Total Facturado Estimado ($)': p.total
-    }));
-    const wsTop = XLSX.utils.json_to_sheet(topProductsData);
-    XLSX.utils.book_append_sheet(workbook, wsTop, "Top Productos");
+        return row;
+      }).filter((item: any) => item['Stock Total'] > 0);
 
-    // Descarga del Archivo con nombre específico de la sucursal
-    const fileName = `Informe_${branchName.replace(/\s+/g, '_')}_${periodLabel.replace(/\s+/g, '_')}_${format(new Date(), 'dd-MM-yy_HHmm')}.xlsx`;
-    XLSX.writeFile(workbook, fileName);
+      stockData.sort((a: any, b: any) => a['Producto'].localeCompare(b['Producto']));
+      const wsStock = XLSX.utils.json_to_sheet(stockData);
+      XLSX.utils.book_append_sheet(workbook, wsStock, "Stock Consolidado");
+
+      // Hoja 3: Detalle de Ventas del Período
+      const salesDetailData = (rawSales || []).map((sale: any) => {
+        const d = sale.normalizedDate || (sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now()));
+        const itemsList = Array.isArray(sale.items) ? sale.items.map((i: any) => `${i.name || i.productName} (x${i.quantity || i.qty || 1})`).join(', ') : 'Venta directa';
+        
+        return {
+          'Fecha y Hora': format(d, 'dd/MM/yyyy HH:mm'),
+          'Sucursal': getBranchName(sale.branchId),
+          'Tipo': sale.type === 'credit_sale' ? 'Fiado (Cta Cte)' : 'Venta',
+          'Método de Pago': (sale.paymentMethod || 'Efectivo').toUpperCase(),
+          'Cajero / Vendedor': sale.employeeName || sale.cashierName || sale.userName || 'Dueño',
+          'Cliente': sale.customerName || 'Consumidor Final',
+          'Artículos': itemsList,
+          'Total ($)': sale.totalAmount || sale.total || sale.amount || 0
+        };
+      });
+      const wsSales = XLSX.utils.json_to_sheet(salesDetailData);
+      XLSX.utils.book_append_sheet(workbook, wsSales, "Ventas Totales");
+
+      // Hoja 4: Top Productos
+      const topProductsData = (topProducts || []).map((p: any, idx: number) => ({
+        'Ranking': idx + 1,
+        'Producto': p.name,
+        'Unidades Vendidas': p.qty,
+        'Total Facturado Estimado ($)': p.total
+      }));
+      const wsTop = XLSX.utils.json_to_sheet(topProductsData);
+      XLSX.utils.book_append_sheet(workbook, wsTop, "Top Productos");
+
+      const fileName = `Informe_General_Sucursales_${periodLabel.replace(/\s+/g, '_')}_${format(new Date(), 'dd-MM-yy_HHmm')}.xlsx`;
+      XLSX.writeFile(workbook, fileName);
+    } else {
+      // ── INFORME DE SUCURSAL ESPECÍFICA ──
+      const currentBranch = branches?.find((b: any) => b.id === selectedBranchFilter);
+      const branchName = currentBranch?.name || (selectedBranchFilter === 'central' ? 'Casa Central' : 'Sucursal');
+      const isCentral = currentBranch?.isCentral || selectedBranchFilter === 'central';
+
+      const branchSales = sales || [];
+      const branchTotalSales = branchSales.reduce((sum: number, s: any) => sum + (s.totalAmount || s.amount || 0), 0);
+      const branchTicketsCount = branchSales.length;
+
+      const methods: Record<string, number> = {};
+      branchSales.forEach((s: any) => {
+        const m = (s.paymentMethod || 'Efectivo').toUpperCase();
+        methods[m] = (methods[m] || 0) + (s.totalAmount || s.amount || 0);
+      });
+
+      const activeShift = (activeShifts || []).find((s: any) => {
+        if (isCentral) return !s.branchId || s.branchId === 'central' || s.branchId === currentBranch?.id;
+        return s.branchId === selectedBranchFilter;
+      });
+
+      const summaryData = [
+        ["INFORME DETALLADO DE SUCURSAL - REDECONOMIX"],
+        ["Sucursal", `${branchName} ${isCentral ? '(Central)' : ''}`],
+        ["Período Auditado", periodLabel],
+        ["Fecha de Emisión", format(new Date(), 'dd/MM/yyyy HH:mm')],
+        [],
+        ["ESTADO DE CAJA EN VIVO", "DETALLE"],
+        ["Estado de Caja", activeShift ? "ABIERTA" : "CERRADA"],
+        ["Cajero / Vendedor Asignado", activeShift?.cashierName || "Sin turno activo"],
+        ["Hora de Apertura", activeShift?.startTime ? format(new Date(activeShift.startTime), 'dd/MM/yyyy HH:mm') : "-"],
+        ["Efectivo Inicial en Caja", activeShift?.initialCash ? `$${activeShift.initialCash.toLocaleString('es-AR')}` : "-"],
+        [],
+        ["FACTURACIÓN Y MÉTRICAS DEL PERÍODO", "VALOR"],
+        ["Total Facturado ($)", branchTotalSales],
+        ["Cantidad de Tickets / Ventas", branchTicketsCount],
+        ["Ticket Promedio ($)", branchTicketsCount > 0 ? Math.round(branchTotalSales / branchTicketsCount) : 0],
+        [],
+        ["RECAUDACIÓN POR MÉTODO DE PAGO", "MONTO ($)"],
+        ...Object.entries(methods).map(([k, v]) => [k, v])
+      ];
+      const wsSummary = XLSX.utils.aoa_to_sheet(summaryData);
+      XLSX.utils.book_append_sheet(workbook, wsSummary, "Resumen Sucursal");
+
+      const stockData = (inventory || [])
+        .map((item: any) => {
+          const currentStock = getProductStockForBranch(item, selectedBranchFilter);
+          const cost = Number(item.purchasePrice || item.costPrice || 0);
+          const price = Number(item.salePrice || item.price || 0);
+          const valuation = currentStock * cost;
+          const minStock = Number(item.minStock ?? 5);
+
+          return {
+            'Código': item.code || item.barcode || '-',
+            'Producto': item.name || 'Sin Nombre',
+            'Categoría': item.category || 'General',
+            'Stock Actual (Sucursal)': currentStock,
+            'Stock Mínimo': minStock,
+            'Estado de Stock': currentStock <= minStock ? 'STOCK CRÍTICO' : 'NORMAL',
+            'Precio Costo ($)': cost,
+            'Precio Venta ($)': price,
+            'Valorización en Stock ($)': valuation
+          };
+        })
+        .filter((item: any) => item['Stock Actual (Sucursal)'] > 0);
+
+      stockData.sort((a: any, b: any) => a['Producto'].localeCompare(b['Producto']));
+      const wsStock = XLSX.utils.json_to_sheet(stockData);
+      XLSX.utils.book_append_sheet(workbook, wsStock, "Stock Sucursal");
+
+      const salesDetailData = branchSales.map((sale: any) => {
+        const d = sale.normalizedDate || (sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now()));
+        const itemsList = Array.isArray(sale.items) ? sale.items.map((i: any) => `${i.name || i.productName} (x${i.quantity || i.qty || 1})`).join(', ') : 'Venta directa';
+        
+        return {
+          'Fecha y Hora': format(d, 'dd/MM/yyyy HH:mm'),
+          'Tipo': sale.type === 'credit_sale' ? 'Fiado (Cta Cte)' : 'Venta',
+          'Método de Pago': (sale.paymentMethod || 'Efectivo').toUpperCase(),
+          'Cajero / Vendedor': sale.employeeName || sale.cashierName || sale.userName || 'Dueño',
+          'Cliente': sale.customerName || 'Consumidor Final',
+          'Artículos': itemsList,
+          'Total ($)': sale.totalAmount || sale.total || sale.amount || 0
+        };
+      });
+      const wsSales = XLSX.utils.json_to_sheet(salesDetailData);
+      XLSX.utils.book_append_sheet(workbook, wsSales, "Ventas Sucursal");
+
+      const topProductsData = (topProducts || []).map((p: any, idx: number) => ({
+        'Ranking': idx + 1,
+        'Producto': p.name,
+        'Unidades Vendidas': p.qty,
+        'Total Facturado Estimado ($)': p.total
+      }));
+      const wsTop = XLSX.utils.json_to_sheet(topProductsData);
+      XLSX.utils.book_append_sheet(workbook, wsTop, "Top Productos");
+
+      const fileName = `Informe_${branchName.replace(/\s+/g, '_')}_${periodLabel.replace(/\s+/g, '_')}_${format(new Date(), 'dd-MM-yy_HHmm')}.xlsx`;
+      XLSX.writeFile(workbook, fileName);
+    }
   };
 
   return (
@@ -762,230 +947,362 @@ const inventoryQuery = useMemoFirebase(() => {
         </h1>
       </div>
 
-      {/* ── SUCURSALES Y CAJAS EN VIVO (LIMPIO Y COMPACTO) ── */}
-      {branchBreakdown && branchBreakdown.length > 0 && (
-        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-5 space-y-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <Store className="w-5 h-5 text-red-600" />
-              <h2 className="text-base font-black uppercase tracking-tight text-slate-900">
-                Sucursales
-              </h2>
-            </div>
-            
-            {/* Controles de Sucursal, Período y Exportar (Compactos y Elegantes) */}
-            <div className="flex items-center gap-1.5 flex-wrap">
-              {/* Selector de Sucursal */}
-              <Select value={selectedBranchFilter} onValueChange={setSelectedBranchFilter}>
-                <SelectTrigger className="h-7 rounded-lg bg-slate-50 border-slate-200 font-bold uppercase text-[9px] tracking-wider px-2 w-auto">
-                  <Store className="w-3 h-3 mr-1 text-red-600 shrink-0" />
-                  <SelectValue placeholder="Sucursal" />
-                </SelectTrigger>
-                <SelectContent className="rounded-xl shadow-lg border-slate-100">
-                  <SelectItem value="ALL" className="font-bold text-xs uppercase">
-                    Todas las Sucursales ({branchBreakdown.length})
-                  </SelectItem>
-                  {branchBreakdown.map((b: any) => (
-                    <SelectItem key={b.id} value={b.id} className="font-bold text-xs uppercase">
-                      {b.name}
+      {/* ── SUCURSALES Y CAJAS EN VIVO (COMPACTO Y CON SELECTOR SANDWICH) ── */}
+      {branchBreakdown && branchBreakdown.length > 0 && (() => {
+        const branchesToDisplay = selectedBranchFilter === 'ALL'
+          ? branchBreakdown
+          : branchBreakdown.filter((b: any) => b.id === selectedBranchFilter);
+
+        return (
+          <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-4">
+            {/* Header de Sucursales con Menú Sandwich Integrado */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                {/* Selector Desplegable Tipo Sandwich en el Título */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-white border border-slate-200 hover:border-red-300 shadow-2xs transition-all cursor-pointer group focus:outline-none select-none">
+                      <Menu className="w-4 h-4 text-red-600 shrink-0" />
+                      <span className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 group-hover:text-red-600 transition-colors">
+                        Sucursales
+                      </span>
+                      <span className="text-[10px] sm:text-xs font-black uppercase text-red-600 bg-red-50 border border-red-200/80 px-2 py-0.5 rounded-lg flex items-center gap-1">
+                        {selectedBranchFilter === 'ALL'
+                          ? `TODAS (${branchBreakdown.length})`
+                          : (branchBreakdown.find((b: any) => b.id === selectedBranchFilter)?.name || 'Sucursal')}
+                        <ChevronDown className="w-3 h-3 text-red-600" />
+                      </span>
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-64 rounded-2xl p-1.5 shadow-xl border-slate-100 bg-white z-50">
+                    <DropdownMenuItem
+                      onClick={() => setSelectedBranchFilter('ALL')}
+                      className={cn(
+                        "font-bold text-xs uppercase rounded-xl py-2 px-3 cursor-pointer flex items-center justify-between transition-colors",
+                        selectedBranchFilter === 'ALL' ? "bg-red-600 text-white font-black" : "text-slate-700 hover:bg-slate-100"
+                      )}
+                    >
+                      <span>TODAS LAS SUCURSALES</span>
+                      <span className="text-[10px] opacity-80">({branchBreakdown.length})</span>
+                    </DropdownMenuItem>
+                    {branchBreakdown.map((b: any) => (
+                      <DropdownMenuItem
+                        key={b.id}
+                        onClick={() => setSelectedBranchFilter(b.id)}
+                        className={cn(
+                          "font-bold text-xs uppercase rounded-xl py-2 px-3 cursor-pointer mt-1 flex items-center justify-between transition-colors",
+                          selectedBranchFilter === b.id ? "bg-red-600 text-white font-black" : "text-slate-700 hover:bg-slate-100"
+                        )}
+                      >
+                        <span>{b.name}</span>
+                        {b.activeShift ? (
+                          <span className={cn(
+                            "text-[9px] font-black px-1.5 py-0.5 rounded",
+                            selectedBranchFilter === b.id ? "bg-white text-red-600" : "bg-emerald-50 text-emerald-600 border border-emerald-200"
+                          )}>
+                            Abierta
+                          </span>
+                        ) : null}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+
+              {/* Controles de la Derecha: Período y Botón Exportar (100% Funcional) */}
+              <div className="flex items-center gap-1.5 flex-wrap w-full sm:w-auto justify-between sm:justify-end">
+                <Select 
+                  value={periodFilter} 
+                  onValueChange={(val: any) => {
+                    setPeriodFilter(val);
+                    if (val === 'CUSTOM' && !customDate) {
+                      setCustomDate(format(new Date(), 'yyyy-MM-dd'));
+                    }
+                  }}
+                >
+                  <SelectTrigger className="h-7 sm:h-8 rounded-xl bg-slate-50 border-slate-200 font-bold uppercase text-[9px] sm:text-[10px] tracking-wider px-2 sm:px-2.5 w-auto">
+                    <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 text-red-600 shrink-0" />
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-xl shadow-lg border-slate-100">
+                    <SelectItem value="CYCLE" className="font-bold text-xs uppercase">
+                      Ciclo Contable (10 al 10)
                     </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                    <SelectItem value="TODAY" className="font-bold text-xs uppercase">
+                      Hoy (Corte 00:00 hs)
+                    </SelectItem>
+                    <SelectItem value="LAST_7_DAYS" className="font-bold text-xs uppercase">
+                      Últimos 7 Días
+                    </SelectItem>
+                    <SelectItem value="CUSTOM" className="font-bold text-xs uppercase">
+                      Día Específico
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
 
-              {/* Selector de Período */}
-              <Select 
-                value={periodFilter} 
-                onValueChange={(val: any) => {
-                  setPeriodFilter(val);
-                  if (val === 'CUSTOM' && !customDate) {
-                    setCustomDate(format(new Date(), 'yyyy-MM-dd'));
-                  }
-                }}
-              >
-                <SelectTrigger className="h-7 rounded-lg bg-slate-50 border-slate-200 font-bold uppercase text-[9px] tracking-wider px-2 w-auto">
-                  <Calendar className="w-3 h-3 mr-1 text-red-600 shrink-0" />
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="rounded-xl shadow-lg border-slate-100">
-                  <SelectItem value="CYCLE" className="font-bold text-xs uppercase">
-                    Ciclo Contable (10 al 10)
-                  </SelectItem>
-                  <SelectItem value="TODAY" className="font-bold text-xs uppercase">
-                    Hoy (Corte 00:00 hs)
-                  </SelectItem>
-                  <SelectItem value="LAST_7_DAYS" className="font-bold text-xs uppercase">
-                    Últimos 7 Días
-                  </SelectItem>
-                  <SelectItem value="CUSTOM" className="font-bold text-xs uppercase">
-                    Día Específico
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-
-              {/* Fecha personalizada si se selecciona Día Específico */}
-              {periodFilter === 'CUSTOM' && (
-                <input 
-                  type="date" 
-                  value={customDate || ''}
-                  onChange={(e) => setCustomDate(e.target.value)}
-                  className="h-7 text-[9px] font-bold uppercase text-slate-700 bg-slate-50 border border-slate-200 rounded-lg px-2 outline-none focus:border-red-400 transition-colors"
-                />
-              )}
-
-              {/* Botón Exportar Informe y Stock de Sucursal */}
-              <Button
-                size="sm"
-                onClick={handleExportBranchExcel}
-                className={cn(
-                  "h-7 rounded-lg font-bold uppercase text-[9px] tracking-wider px-2.5 flex items-center gap-1 transition-all select-none",
-                  selectedBranchFilter === 'ALL'
-                    ? "bg-slate-100 text-slate-400 border border-slate-200 cursor-default shadow-none hover:bg-slate-100"
-                    : "bg-red-600 hover:bg-red-700 text-white shadow-xs"
+                {periodFilter === 'CUSTOM' && (
+                  <input 
+                    type="date" 
+                    value={customDate || ''}
+                    onChange={(e) => setCustomDate(e.target.value)}
+                    className="h-7 sm:h-8 text-[9px] sm:text-[10px] font-bold uppercase text-slate-700 bg-slate-50 border border-slate-200 rounded-xl px-2 outline-none focus:border-red-400"
+                  />
                 )}
-                title={selectedBranchFilter === 'ALL' ? "Seleccioná una sucursal para exportar su informe" : "Exportar informe completo y stock de la sucursal seleccionada"}
-              >
-                <FileDown className="w-3 h-3" />
-                <span>
-                  {selectedBranchFilter === 'ALL' 
-                    ? "Exportar" 
-                    : `Exportar ${branchBreakdown.find((b: any) => b.id === selectedBranchFilter)?.name || 'Sucursal'}`}
-                </span>
-              </Button>
+
+                <Button
+                  size="sm"
+                  onClick={handleExportBranchExcel}
+                  className="h-7 sm:h-8 rounded-xl font-bold uppercase text-[9px] sm:text-[10px] tracking-wider px-2.5 sm:px-3 bg-red-600 hover:bg-red-700 text-white shadow-xs flex items-center gap-1 select-none transition-transform active:scale-95"
+                  title="Exportar informe detallado en Excel"
+                >
+                  <FileDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <span>
+                    {selectedBranchFilter === 'ALL' 
+                      ? "Exportar Todo" 
+                      : `Exportar ${branchBreakdown.find((b: any) => b.id === selectedBranchFilter)?.name || 'Sucursal'}`}
+                  </span>
+                </Button>
+              </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {branchBreakdown.map((b: any) => {
-              const isSelected = selectedBranchFilter === b.id;
-              const shiftMetrics = b.activeShift ? getShiftMetrics(b.activeShift) : null;
-
-              return (
+            {/* Tarjetas de Sucursal (SOLO INFORMACIÓN DEL DÍA) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {branchesToDisplay.map((b: any) => (
                 <div
                   key={b.id}
-                  onClick={() => setSelectedBranchFilter(selectedBranchFilter === b.id ? 'ALL' : b.id)}
-                  className={cn(
-                    "p-4 rounded-2xl border transition-all cursor-pointer relative flex flex-col justify-between gap-3 select-none",
-                    isSelected 
-                      ? "bg-red-50/40 border-red-300 ring-2 ring-red-600/20 shadow-xs" 
-                      : "bg-slate-50/80 border-slate-200 hover:bg-slate-100/70"
-                  )}
+                  className="p-4 sm:p-5 rounded-3xl border border-slate-200/90 bg-white shadow-xs space-y-4 select-none"
                 >
-                  {/* Fila 1: Nombre de Sucursal y Estado de Caja */}
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <Store className="w-4 h-4 text-red-600 shrink-0" />
-                      <h3 className="font-black text-slate-900 uppercase text-sm tracking-tight">
-                        {b.name}
-                      </h3>
+                  {/* Encabezado: Nombre y Estado en Vivo */}
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-9 h-9 rounded-2xl bg-red-50 flex items-center justify-center text-red-600 shrink-0">
+                        <Store className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-black text-slate-900 uppercase text-sm sm:text-base tracking-tight leading-tight">
+                          {b.name}
+                        </h3>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase">
+                          Hoy • {format(new Date(), 'dd/MM/yyyy')}
+                        </span>
+                      </div>
                     </div>
 
                     {b.activeShift ? (
-                      <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-red-600 text-white shadow-xs">
-                        Caja Abierta
+                      <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-500 text-white shadow-xs flex items-center gap-1.5 animate-pulse">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white" /> Caja Abierta
                       </span>
                     ) : (
-                      <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-md border border-slate-200 text-slate-400 bg-white">
+                      <span className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full border border-slate-200 text-slate-400 bg-slate-50">
                         Cerrada
                       </span>
                     )}
                   </div>
 
-                  {/* Fila 2: Total Facturado y Ganancia Est. de la Sucursal */}
-                  <div className="bg-white p-3 rounded-xl border border-slate-200/70 grid grid-cols-2 gap-2">
+                  {/* Acumulado del Día */}
+                  <div className="bg-red-50/50 border border-red-100 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
                     <div>
-                      <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 block">
-                        Facturado
+                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block">
+                        Acumulado del Día (Hoy)
                       </span>
-                      <div className="text-lg font-black text-slate-900 mt-0.5">
-                        ${b.totalFacturado.toLocaleString('es-AR')}
+                      <div className="text-2xl sm:text-3xl font-black text-red-600 mt-0.5 tracking-tight">
+                        ${b.todayTotal.toLocaleString('es-AR')}
                       </div>
-                      <span className="text-[9px] font-bold text-slate-400 uppercase mt-0.5 block">
-                        {b.ticketsCount} ventas
-                      </span>
                     </div>
                     <div className="text-right">
-                      <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 block">
-                        Ganancia Est.
-                      </span>
-                      <div className="text-lg font-black text-emerald-600 mt-0.5">
-                        ${b.potentialProfit.toLocaleString('es-AR')}
-                      </div>
-                      <span className="text-[9px] font-black text-red-600 mt-0.5 block">
-                        {b.percentage}% del total
+                      <span className="text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-xl bg-white text-slate-700 border border-red-100 shadow-2xs">
+                        {b.todaySalesCount} {b.todaySalesCount === 1 ? 'venta' : 'ventas'}
                       </span>
                     </div>
                   </div>
 
-                  {/* Fila Stock e Inversión de la Sucursal */}
-                  {stockSummary.byBranch[b.id] && (
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/70 grid grid-cols-2 gap-2">
-                      <div>
-                        <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 block">
-                          Stock Góndola
-                        </span>
-                        <div className="text-base font-black text-slate-900 mt-0.5">
-                          {stockSummary.byBranch[b.id].units.toLocaleString('es-AR')} u.
+                  {/* Desglose de Cobros de Hoy (Efectivo, Transferencia, QR) */}
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-1.5">
+                      Cobros de Hoy por Método
+                    </span>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2 sm:p-2.5 text-center">
+                        <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
+                          <Banknote className="w-3.5 h-3.5 text-emerald-600" />
+                          <span className="text-[8px] font-black uppercase tracking-wider">Efectivo</span>
                         </div>
-                        <span className="text-[9px] font-bold text-slate-400 uppercase mt-0.5 block">
-                          En existencia
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-[8px] font-black uppercase tracking-widest text-slate-400 block">
-                          Inversión Stock
-                        </span>
-                        <div className="text-base font-black text-slate-900 mt-0.5">
-                          ${stockSummary.byBranch[b.id].cost.toLocaleString('es-AR', { maximumFractionDigits: 0 })}
+                        <div className="text-xs sm:text-sm font-black text-slate-900 truncate">
+                          ${b.todayCash.toLocaleString('es-AR')}
                         </div>
-                        <span className="text-[9px] font-bold text-emerald-600 uppercase mt-0.5 block">
-                          Venta Est: ${stockSummary.byBranch[b.id].sale.toLocaleString('es-AR', { maximumFractionDigits: 0 })}
-                        </span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Fila 3: Turno en Vivo si está abierto */}
-                  {b.activeShift && shiftMetrics && (
-                    <div className="bg-white p-3 rounded-xl border border-slate-200/70 space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-black uppercase text-slate-900 truncate">
-                          {b.activeShift.cashierName || 'Vendedor'}
-                        </span>
-                        <span className="text-[9px] font-bold text-slate-400">
-                          {b.activeShift.startTime ? format(new Date(b.activeShift.startTime), 'HH:mm') : ''} hs
-                        </span>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-2 text-[10px] pt-1.5 border-t border-slate-100">
-                        <div>
-                          <span className="text-[8px] font-bold uppercase text-slate-400 block">Recaudado</span>
-                          <span className="text-sm font-black text-red-600">${shiftMetrics.totalRecaudado.toLocaleString('es-AR')}</span>
+                      <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2 sm:p-2.5 text-center">
+                        <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
+                          <ArrowRightLeft className="w-3.5 h-3.5 text-blue-600" />
+                          <span className="text-[8px] font-black uppercase tracking-wider">Transf.</span>
                         </div>
-                        <div className="text-right">
-                          <span className="text-[8px] font-bold uppercase text-slate-400 block">En Caja</span>
-                          <span className="text-sm font-black text-slate-900">${shiftMetrics.expectedCash.toLocaleString('es-AR')}</span>
+                        <div className="text-xs sm:text-sm font-black text-slate-900 truncate">
+                          ${b.todayTransfer.toLocaleString('es-AR')}
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2 sm:p-2.5 text-center">
+                        <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
+                          <QrCode className="w-3.5 h-3.5 text-violet-600" />
+                          <span className="text-[8px] font-black uppercase tracking-wider">QR / Apps</span>
+                        </div>
+                        <div className="text-xs sm:text-sm font-black text-slate-900 truncate">
+                          ${b.todayQr.toLocaleString('es-AR')}
                         </div>
                       </div>
                     </div>
-                  )}
+
+                    {b.todayFiado > 0 && (
+                      <div className="mt-2 p-2 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-between text-xs">
+                        <span className="text-[9px] font-black uppercase text-amber-900 flex items-center gap-1">
+                          <Receipt className="w-3.5 h-3.5 text-amber-600" /> Fiado de Hoy:
+                        </span>
+                        <span className="font-black text-amber-950">
+                          ${b.todayFiado.toLocaleString('es-AR')}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Turnos y Vendedores del Día (Quién vendió en un turno y en el otro) */}
+                  <div className="pt-2 border-t border-slate-100 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-red-600" /> Turnos y Vendedores (Hoy)
+                      </span>
+                      <span className="text-[9px] font-bold text-slate-400">
+                        {b.todayShifts.length > 0 
+                          ? `${b.todayShifts.length} turnos` 
+                          : b.todaySellers.length > 0 
+                          ? `${b.todaySellers.length} vendedores` 
+                          : '0 turnos'}
+                      </span>
+                    </div>
+
+                    {b.todayShifts.length > 0 ? (
+                      <div className="space-y-2">
+                        {b.todayShifts.map((shift: any, idx: number) => (
+                          <div key={shift.id || idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-2.5 sm:p-3 space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-7 h-7 rounded-xl bg-red-100 text-red-600 font-black text-xs flex items-center justify-center shrink-0">
+                                  {shift.cashierName.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                  <span className="text-xs font-black uppercase text-slate-900 block leading-tight">
+                                    {shift.cashierName}
+                                  </span>
+                                  <span className="text-[9px] font-bold text-slate-400">
+                                    {shift.timeRange}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="text-right">
+                                <span className="text-xs sm:text-sm font-black text-red-600 block">
+                                  ${shift.total.toLocaleString('es-AR')}
+                                </span>
+                                <span className={cn(
+                                  "text-[8px] font-black uppercase px-1.5 py-0.2 rounded",
+                                  shift.status === 'open' ? "bg-emerald-100 text-emerald-700" : "bg-slate-200 text-slate-600"
+                                )}>
+                                  {shift.statusLabel}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-between pt-1 border-t border-slate-200/50 text-[9px] text-slate-500 font-bold flex-wrap gap-1">
+                              <div className="flex items-center gap-2">
+                                <span>Efvo: <strong className="text-slate-800">${shift.cash.toLocaleString('es-AR')}</strong></span>
+                                <span>•</span>
+                                <span>Transf: <strong className="text-slate-800">${shift.transfer.toLocaleString('es-AR')}</strong></span>
+                                {shift.qr > 0 && (
+                                  <>
+                                    <span>•</span>
+                                    <span>QR: <strong className="text-slate-800">${shift.qr.toLocaleString('es-AR')}</strong></span>
+                                  </>
+                                )}
+                              </div>
+                              {shift.status === 'closed' && (
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => handleDownloadShiftPdf(shift.rawShift)}
+                                  className="h-5 px-1.5 text-[8px] font-black uppercase text-slate-600 hover:text-red-600 hover:bg-white rounded transition-colors"
+                                  title="Descargar comprobante de cierre en PDF"
+                                >
+                                  <FileDown className="w-3 h-3 mr-0.5" /> PDF
+                                </Button>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : b.todaySellers.length > 0 ? (
+                      <div className="space-y-2">
+                        {b.todaySellers.map((seller: any, idx: number) => (
+                          <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-2.5 sm:p-3 space-y-1.5">
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <div className="w-7 h-7 rounded-xl bg-red-100 text-red-600 font-black text-xs flex items-center justify-center shrink-0">
+                                  {seller.cashierName.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                  <span className="text-xs font-black uppercase text-slate-900 block leading-tight">
+                                    {seller.cashierName}
+                                  </span>
+                                  <span className="text-[9px] font-bold text-slate-400">
+                                    {seller.count} {seller.count === 1 ? 'venta hoy' : 'ventas hoy'}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="text-right">
+                                <span className="text-xs sm:text-sm font-black text-red-600 block">
+                                  ${seller.total.toLocaleString('es-AR')}
+                                </span>
+                                <span className="text-[8px] font-bold uppercase text-slate-400">
+                                  Hoy
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-2 pt-1 border-t border-slate-200/50 text-[9px] text-slate-500 font-bold">
+                              <span>Efvo: <strong className="text-slate-800">${seller.cash.toLocaleString('es-AR')}</strong></span>
+                              <span>•</span>
+                              <span>Transf: <strong className="text-slate-800">${seller.transfer.toLocaleString('es-AR')}</strong></span>
+                              {seller.qr > 0 && (
+                                <>
+                                  <span>•</span>
+                                  <span>QR: <strong className="text-slate-800">${seller.qr.toLocaleString('es-AR')}</strong></span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="py-3.5 text-center rounded-2xl bg-slate-50 border border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        Sin turnos ni ventas registradas hoy
+                      </div>
+                    )}
+                  </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
 
-            {/* ── TARJETA: CIERRES DE CAJA (INTEGRADA JUNTO A SUCURSALES) ── */}
+            {/* ── HISTORIAL DE CIERRES DE CAJA (COMPACTO Y ACCESIBLE) ── */}
             {filteredClosedShifts && filteredClosedShifts.length > 0 && (
-              <div className="p-4 rounded-2xl border border-slate-200 bg-slate-50/80 hover:bg-slate-100/70 transition-all flex flex-col justify-between gap-2.5 select-none">
-                {/* Encabezado: Título y Selector Desplegable de Empleado */}
-                <div className="flex items-center justify-between gap-1.5">
+              <div className="p-3 sm:p-4 rounded-2xl border border-slate-200 bg-slate-50/70 transition-all select-none mt-2">
+                <div className="flex items-center justify-between gap-1.5 pb-2 border-b border-slate-200/70 mb-2">
                   <div className="flex items-center gap-1.5 shrink-0">
                     <FileText className="w-4 h-4 text-red-600 shrink-0" />
-                    <h3 className="font-black text-slate-900 uppercase text-sm tracking-tight">
-                      Cierres de Caja
+                    <h3 className="font-black text-slate-900 uppercase text-xs sm:text-sm tracking-tight">
+                      Historial de Cierres de Caja
                     </h3>
                   </div>
 
-                  {/* Dropdown compacto según el perfil del empleado */}
                   <div className="w-32 sm:w-36">
                     <Select value={selectedCashierFilter} onValueChange={setSelectedCashierFilter}>
                       <SelectTrigger className="h-6 rounded-lg bg-white border-slate-200 text-[9px] font-bold px-1.5 py-0 shadow-2xs">
@@ -1013,66 +1330,54 @@ const inventoryQuery = useMemoFirebase(() => {
                   </div>
                 </div>
 
-                {/* Lista scrollable de Cierres de Caja */}
-                <div className="bg-white p-2.5 rounded-xl border border-slate-200/70 flex-1 flex flex-col justify-between min-h-[140px]">
-                  <div className="flex items-center justify-between pb-1.5 border-b border-slate-100 mb-1.5">
-                    <span className="text-[8px] font-black uppercase tracking-widest text-slate-400">
-                      Historial Reciente
-                    </span>
-                    <span className="text-[9px] font-bold text-slate-400">
-                      {displayedClosedShifts.length} {displayedClosedShifts.length === 1 ? 'cierre' : 'cierres'}
-                    </span>
+                {displayedClosedShifts.length === 0 ? (
+                  <div className="py-4 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Sin cierres para este perfil
                   </div>
+                ) : (
+                  <div className="max-h-[140px] overflow-y-auto no-scrollbar space-y-1.5 pr-0.5">
+                    {displayedClosedShifts.map((shift: any) => {
+                      const actual = shift.actualFinalCash || 0;
+                      const shiftDate = shift.endTime ? new Date(shift.endTime) : new Date();
 
-                  {displayedClosedShifts.length === 0 ? (
-                    <div className="py-6 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider flex-1 flex items-center justify-center">
-                      Sin cierres para este perfil
-                    </div>
-                  ) : (
-                    <div className="max-h-[155px] overflow-y-auto no-scrollbar space-y-1.5 pr-0.5">
-                      {displayedClosedShifts.map((shift: any) => {
-                        const actual = shift.actualFinalCash || 0;
-                        const shiftDate = shift.endTime ? new Date(shift.endTime) : new Date();
-
-                        return (
-                          <div 
-                            key={shift.id}
-                            className="p-2 rounded-lg bg-slate-50 hover:bg-slate-100/90 border border-slate-100 flex items-center justify-between gap-2 transition-colors"
-                          >
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center gap-1.5 flex-wrap">
-                                <span className="text-[10px] font-black text-slate-800 uppercase">
-                                  {format(shiftDate, 'dd/MM HH:mm')}
-                                </span>
-                                <span className="text-[8px] font-bold uppercase px-1 py-0.2 rounded bg-white text-slate-600 border border-slate-200 truncate max-w-[85px]">
-                                  {shift.cashierName || 'Dueño'}
-                                </span>
-                              </div>
-                              <span className="text-[9px] font-bold text-slate-500 block mt-0.5">
-                                Declarado: <strong className="text-emerald-600 font-black">${actual.toLocaleString('es-AR')}</strong>
+                      return (
+                        <div 
+                          key={shift.id}
+                          className="p-2 rounded-xl bg-white hover:bg-slate-100/90 border border-slate-200/80 flex items-center justify-between gap-2 transition-colors"
+                        >
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="text-[10px] font-black text-slate-800 uppercase">
+                                {format(shiftDate, 'dd/MM HH:mm')} hs
+                              </span>
+                              <span className="text-[8px] font-bold uppercase px-1 py-0.2 rounded bg-slate-50 text-slate-600 border border-slate-200 truncate max-w-[95px]">
+                                {shift.cashierName || 'Dueño'}
                               </span>
                             </div>
-
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => handleDownloadShiftPdf(shift)}
-                              className="h-6 w-6 p-0 rounded-md hover:bg-red-50 hover:text-red-600 shrink-0 text-slate-400 transition-colors"
-                              title="Descargar PDF de Cierre"
-                            >
-                              <FileDown className="w-3.5 h-3.5" />
-                            </Button>
+                            <span className="text-[9px] font-bold text-slate-500 block mt-0.5">
+                              Declarado: <strong className="text-emerald-600 font-black">${actual.toLocaleString('es-AR')}</strong>
+                            </span>
                           </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
+
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => handleDownloadShiftPdf(shift)}
+                            className="h-6 w-6 p-0 rounded-md hover:bg-red-50 hover:text-red-600 shrink-0 text-slate-400 transition-colors"
+                            title="Descargar PDF de Cierre"
+                          >
+                            <FileDown className="w-3.5 h-3.5" />
+                          </Button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             )}
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* ── HÁBITOS DE CONSUMO POR DÍA DE LA SEMANA ── */}
       <Card className="rounded-2xl sm:rounded-[2rem] border-slate-100 shadow-sm p-3.5 sm:p-5 bg-white">
