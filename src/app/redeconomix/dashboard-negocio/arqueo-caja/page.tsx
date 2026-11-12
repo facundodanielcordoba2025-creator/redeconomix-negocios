@@ -304,17 +304,13 @@ export default function ArqueoDeCajaPage() {
                 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white p-5 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-50 flex flex-col justify-between">
-                        <div className="w-10 h-10 rounded-[1rem] bg-emerald-50 flex items-center justify-center text-emerald-600 mb-4 border border-emerald-100">
-                            <TrendingUp className="w-5 h-5 stroke-[2.5px]" />
-                        </div>
+                        <TrendingUp className="w-5 h-5 text-emerald-600 mb-4 stroke-[2.5px]" />
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Ingresos</p>
                         <p className="text-2xl font-black text-emerald-600 italic tracking-tight">${totalIngresos.toLocaleString()}</p>
                     </div>
                     
                     <div className="bg-white p-5 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-50 flex flex-col justify-between">
-                        <div className="w-10 h-10 rounded-[1rem] bg-rose-50 flex items-center justify-center text-[#FF0000] mb-4 border border-rose-100">
-                            <TrendingDown className="w-5 h-5 stroke-[2.5px]" />
-                        </div>
+                        <TrendingDown className="w-5 h-5 text-red-600 mb-4 stroke-[2.5px]" />
                         <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Egresos / Gastos</p>
                         <p className="text-2xl font-black text-[#FF0000] italic tracking-tight">${totalGastos.toLocaleString()}</p>
                     </div>
@@ -324,9 +320,7 @@ export default function ArqueoDeCajaPage() {
                             <p className="text-[10px] font-black text-amber-600/60 uppercase tracking-widest mb-1">Cuentas por Cobrar (Fiados)</p>
                             <p className="text-3xl font-black text-amber-500 italic tracking-tight">${totalFiados.toLocaleString()}</p>
                         </div>
-                        <div className="w-12 h-12 rounded-[1rem] bg-amber-50 flex items-center justify-center border border-amber-100">
-                            <BookOpen className="w-6 h-6 text-amber-500" />
-                        </div>
+                        <BookOpen className="w-6 h-6 text-amber-500" />
                     </div>
                 </div>
 

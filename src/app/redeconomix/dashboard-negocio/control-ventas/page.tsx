@@ -1857,11 +1857,11 @@ function SalesTerminalContent() {
                                                         {foundUser.dni ? `DNI: ${foundUser.dni}` : ''}
                                                     </p>
                                                     {foundUser.isUnregistered ? (
-                                                        <span className="inline-block mt-1 px-2 py-0.5 text-[8px] font-black uppercase tracking-wider rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+                                                        <span className="inline-block mt-1 text-[9px] font-black uppercase tracking-wider text-amber-700">
                                                             Temporal (No Registrado)
                                                         </span>
                                                     ) : (
-                                                        <span className="inline-block mt-1 px-2 py-0.5 text-[8px] font-black uppercase tracking-wider rounded-full bg-red-100 text-red-800 border border-red-200">
+                                                        <span className="inline-block mt-1 text-[9px] font-black uppercase tracking-wider text-red-600">
                                                             Registrado en App
                                                         </span>
                                                     )}
@@ -2208,7 +2208,7 @@ function SalesTerminalContent() {
                                     ops?.map((op: any) => (
                                         <div key={op.id} className="p-6 rounded-[2.5rem] bg-white border border-slate-100 flex items-center justify-between shadow-sm">
                                             <div className="flex items-center gap-4">
-                                               <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center text-red-600 border border-red-100"><DollarSign className="h-6 w-6" /></div>
+                                               <DollarSign className="h-6 w-6 text-red-600 shrink-0" />
                                                <div>
                                                    <h4 className="font-black text-xs uppercase italic tracking-tighter">{op.concept || 'Gasto General'}</h4>
                                                    <p className="text-[8px] font-bold text-slate-400 uppercase">{op.date ? format(new Date(op.date), "d MMM, HH:mm", { locale: es }) : 'Hoy'}</p>

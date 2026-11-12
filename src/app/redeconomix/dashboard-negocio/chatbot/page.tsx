@@ -205,26 +205,26 @@ export default function ChatbotConfigPage() {
                 </Card>
 
                 {/* 5. QUICK TIPS / INFO */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="p-6 rounded-[2rem] bg-amber-50 border border-amber-100 flex items-start gap-4">
-                        <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3">
+                        <AlertCircle className="w-5 h-5 text-slate-400 shrink-0" />
                         <div>
-                            <p className="text-[10px] font-black text-amber-900 uppercase mb-1">Backup CRM</p>
-                            <p className="text-[9px] text-amber-700 leading-relaxed font-bold">Todos los leads se guardan automáticamente en Cloud Firestore bajo 'leads_whatsapp'.</p>
+                            <p className="text-[10px] font-black text-slate-900 uppercase mb-1">Backup CRM</p>
+                            <p className="text-[9px] text-slate-500 leading-relaxed font-bold">Todos los leads se guardan automáticamente en Cloud Firestore bajo 'leads_whatsapp'.</p>
                         </div>
                     </div>
-                    <div className="p-6 rounded-[2rem] bg-emerald-50 border border-emerald-100 flex items-start gap-4">
-                        <Zap className="w-5 h-5 text-emerald-600 shrink-0" />
+                    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3">
+                        <Zap className="w-5 h-5 text-slate-400 shrink-0" />
                         <div>
-                            <p className="text-[10px] font-black text-emerald-900 uppercase mb-1">Potenciador AI</p>
-                            <p className="text-[9px] text-emerald-700 leading-relaxed font-bold">Usamos GPT-4o para analizar el lenguaje natural y ofrecer productos del marketplace.</p>
+                            <p className="text-[10px] font-black text-slate-900 uppercase mb-1">Potenciador AI</p>
+                            <p className="text-[9px] text-slate-500 leading-relaxed font-bold">Usamos GPT-4o para analizar el lenguaje natural y ofrecer productos del marketplace.</p>
                         </div>
                     </div>
-                    <div className="p-6 rounded-[2rem] bg-indigo-50 border border-indigo-100 flex items-start gap-4">
-                        <Database className="w-5 h-5 text-indigo-600 shrink-0" />
+                    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3">
+                        <Database className="w-5 h-5 text-slate-400 shrink-0" />
                         <div>
-                            <p className="text-[10px] font-black text-indigo-900 uppercase mb-1">Sincronización</p>
-                            <p className="text-[9px] text-indigo-700 leading-relaxed font-bold">Cada 15 minutos se actualiza el stock disponible para el Bot desde Make.</p>
+                            <p className="text-[10px] font-black text-slate-900 uppercase mb-1">Sincronización</p>
+                            <p className="text-[9px] text-slate-500 leading-relaxed font-bold">Cada 15 minutos se actualiza el stock disponible para el Bot desde Make.</p>
                         </div>
                     </div>
                 </div>

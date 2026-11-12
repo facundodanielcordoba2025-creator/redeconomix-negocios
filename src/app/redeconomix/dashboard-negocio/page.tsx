@@ -659,17 +659,13 @@ export default function BusinessDashboardPage() {
                 {/* SCANNER / VENTA RAPIDA */}
                 <Link href="/redeconomix/dashboard-negocio/control-ventas">
                     <motion.div   className="bg-red-600 hover:bg-red-700 shadow-xl shadow-red-600/20 text-white rounded-[2rem] p-6 flex items-center justify-between group transition-all mb-8">
-                        <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center">
-                                <Scan className="w-8 h-8" />
-                            </div>
+                        <div className="flex items-center gap-4">
+                            <Scan className="w-8 h-8 text-white shrink-0" />
                             <div className="text-left">
                                 <h3 className="text-xl font-black uppercase tracking-tight">Punto de Venta</h3>
                             </div>
                         </div>
-                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                            <ChevronRight className="w-6 h-6" />
-                        </div>
+                        <ChevronRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" />
                     </motion.div>
                 </Link>
 
@@ -1009,15 +1005,13 @@ export default function BusinessDashboardPage() {
                     <AnimatePresence mode="wait">
                         {maintenanceStep === 'request' && (
                             <motion.div key="request" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="text-center space-y-6">
-                                <div className="w-20 h-20 max-sm:h-14 bg-primary/10 rounded-[2.5rem] flex items-center justify-center text-primary mx-auto">
-                                    <ShieldCheck className="w-10 h-10" />
-                                </div>
+                                <ShieldCheck className="w-12 h-12 text-primary mx-auto" />
                                 <div className="space-y-1">
                                     <DrawerTitle className="text-2xl font-black uppercase tracking-tight">Acceso al Vault</DrawerTitle>
                                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-relaxed">Para realizar cambios sensibles, solicitá tu PIN.</p>
                                 </div>
                                 <div className="p-4 bg-slate-50 rounded-2xl flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border border-slate-100 shadow-sm"><Save className="w-4 h-4 text-slate-400" /></div>
+                                    <Save className="w-4 h-4 text-slate-400 shrink-0" />
                                     <span className="text-[9px] font-black text-slate-900 truncate">{user?.email}</span>
                                 </div>
                                 <Button 

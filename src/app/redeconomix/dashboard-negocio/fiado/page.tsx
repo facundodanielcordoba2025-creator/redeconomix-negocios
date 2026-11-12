@@ -562,9 +562,9 @@ export default function FiadoPage() {
                                 </div>
                             </div>
                             <div className="text-right space-y-1">
-                                <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200/60">
+                                <div className="text-xs font-bold text-slate-700">
                                     {creditLines.length} cuentas en total
-                                </span>
+                                </div>
                                 <div className="text-[11px] font-semibold text-slate-500">
                                     {activeWithDebtCount} con saldo deudor
                                 </div>
@@ -594,9 +594,7 @@ export default function FiadoPage() {
                         {/* Lista de Clientes */}
                         {creditLines.length === 0 ? (
                             <div className="text-center py-12 bg-white rounded-2xl border border-slate-200/80 shadow-xs p-6 space-y-3">
-                                <div className="w-12 h-12 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto">
-                                    <Users className="w-6 h-6" />
-                                </div>
+                                <Users className="w-8 h-8 text-slate-400 mx-auto" />
                                 <h3 className="text-sm font-bold text-slate-900">No hay cuentas corrientes registradas</h3>
                                 <p className="text-xs text-slate-500 max-w-sm mx-auto">
                                     Creá tu primer cliente fiado para llevar el control de deudas y registrar pagos de forma ordenada.
@@ -1187,9 +1185,7 @@ export default function FiadoPage() {
                     <DialogTitle className="font-bold text-slate-900 text-base mb-1">
                         Autorización Requerida
                     </DialogTitle>
-                    <div className="w-12 h-12 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto my-2">
-                        <Lock className="w-6 h-6" />
-                    </div>
+                    <Lock className="w-8 h-8 text-red-600 mx-auto my-2" />
                     <p className="text-xs text-slate-500 mb-4">
                         Ingresá el código PIN de 4 dígitos enviado a tu correo para autorizar esta operación.
                     </p>
