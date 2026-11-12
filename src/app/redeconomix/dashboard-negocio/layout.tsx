@@ -19,7 +19,7 @@ import { signOut } from 'firebase/auth';
 import { 
   Loader2, User, Users, LogOut, MessageSquare, PanelLeft, 
   LayoutDashboard, ShoppingBag, Package, DollarSign, 
-  ShieldCheck, Zap, Bell, ChevronRight, Store, ArrowLeft, BookOpen, Tag
+  ShieldCheck, Zap, Bell, ChevronRight, Store, ArrowLeft, BookOpen, Tag, Truck
 } from "lucide-react";
 import { RedEconomiXHeader } from '@/components/redeconomix-header';
 import { RetailerBottomNav } from '@/components/retailer-bottom-nav';
@@ -35,6 +35,7 @@ const navLinks = [
     { href: "/redeconomix/dashboard-negocio/fiado", label: "Cuentas Corrientes", icon: BookOpen },
     { href: "/redeconomix/dashboard-negocio/stock", label: "Stock", icon: Package },
     { href: "/redeconomix/dashboard-negocio/promociones", label: "Promociones", icon: Tag },
+    { href: "/redeconomix/dashboard-negocio/venta-mayorista", label: "Venta Mayorista", icon: Truck },
     { href: "/redeconomix/dashboard-negocio/proveedores", label: "Proveedores", icon: Users },
     { href: "/redeconomix/dashboard-negocio/contabilidad", label: "Contabilidad", icon: DollarSign },
     { href: "/redeconomix/dashboard-negocio/rrhh", label: "Recursos Humanos", icon: ShieldCheck },
