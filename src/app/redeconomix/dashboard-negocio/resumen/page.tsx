@@ -48,7 +48,7 @@ export default function RetailerDashboardPage() {
 
   const [periodFilter, setPeriodFilter] = useState<'CYCLE' | 'TODAY' | 'CUSTOM' | 'LAST_7_DAYS'>('CYCLE');
   const [customDate, setCustomDate] = useState<string>('');
-  const [selectedDayOfWeek, setSelectedDayOfWeek] = useState<string | null>(null);
+  const [selectedDateFilter, setSelectedDateFilter] = useState<string | null>(null);
   const [selectedBranchFilter, setSelectedBranchFilter] = useState<string>('ALL');
   const [selectedCashierFilter, setSelectedCashierFilter] = useState<string>('ALL');
 
@@ -149,16 +149,12 @@ export default function RetailerDashboardPage() {
 
   const filteredSales = useMemo(() => {
     if (!sales) return [];
-    if (!selectedDayOfWeek) return sales;
+    if (!selectedDateFilter) return sales;
     return sales.filter((s: any) => {
       const d = s.soldAt?.toDate ? s.soldAt.toDate() : new Date(s.soldAt || s.date || Date.now());
-      const dayName = new Intl.DateTimeFormat('es-AR', { weekday: 'long' }).format(d);
-      const capitalizedDay = dayName.charAt(0).toUpperCase() + dayName.slice(1);
-      return capitalizedDay === selectedDayOfWeek || 
-             (capitalizedDay === 'Miercoles' && selectedDayOfWeek === 'Miércoles') ||
-             (capitalizedDay === 'Sabado' && selectedDayOfWeek === 'Sábado');
+      return format(d, 'yyyy-MM-dd') === selectedDateFilter;
     });
-  }, [sales, selectedDayOfWeek]);
+  }, [sales, selectedDateFilter]);
 
   // Inventory Query for Low Stock & Replenishment
   
@@ -613,10 +609,83 @@ const inventoryQuery = useMemoFirebase(() => {
     };
   }, [sales]);
 
-  // Consumption Habits by Day of Week
-  const habitsByDay = useMemo(() => {
-    return analyzeConsumptionHabitsByDay(sales);
-  }, [sales]); 
+  // Ventas Diarias por Sucursal (Día por Día: Lunes 10/11, Martes 11/11, etc. con sumas de ambos turnos)
+  const dailyBranchSales = useMemo(() => {
+    const days: any[] = [];
+    const today = new Date();
+    
+    // Lista de sucursales disponibles
+    const allBranchesList = branches && branches.length > 0 ? [...branches] : [];
+    if (!allBranchesList.some((b: any) => b.id === 'central' || b.isCentral)) {
+      allBranchesList.unshift({ id: 'central', name: 'Casa Central', isCentral: true });
+    }
+
+    // Últimos 7 días terminando en hoy (cronológico)
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      d.setHours(0, 0, 0, 0);
+
+      const dateKey = format(d, 'yyyy-MM-dd');
+      const dayNameRaw = new Intl.DateTimeFormat('es-AR', { weekday: 'long' }).format(d);
+      const dayName = dayNameRaw.charAt(0).toUpperCase() + dayNameRaw.slice(1);
+      const dayMonth = format(d, 'dd/MM');
+      const isToday = i === 0;
+
+      // Operaciones de ese día (desde rawOpsUnfiltered)
+      const dayOps = (rawOpsUnfiltered || []).filter((op: any) => {
+        if (op.status === 'voided' || op.status === 'refunded') return false;
+        if (op.type !== 'sale' && op.type !== 'credit_sale' && op.type !== 'checkout') return false;
+
+        const opTime = op.createdAt?.toDate 
+          ? op.createdAt.toDate() 
+          : (op.createdAt?.seconds ? new Date(op.createdAt.seconds * 1000) : new Date(op.date || 0));
+
+        return (
+          opTime.getFullYear() === d.getFullYear() &&
+          opTime.getMonth() === d.getMonth() &&
+          opTime.getDate() === d.getDate()
+        );
+      });
+
+      let dayTotal = 0;
+      dayOps.forEach((op: any) => {
+        dayTotal += Number(op.total || op.amount || op.totalAmount || 0);
+      });
+
+      const branchTotals = allBranchesList.map((b: any) => {
+        const isCentral = b.id === 'central' || b.isCentral;
+        const bOps = dayOps.filter((op: any) => {
+          if (isCentral) {
+            return !op.branchId || op.branchId === 'central' || op.branchId === b.id;
+          }
+          return op.branchId === b.id;
+        });
+
+        const bTotal = bOps.reduce((sum: number, op: any) => sum + Number(op.total || op.amount || op.totalAmount || 0), 0);
+        return {
+          id: b.id,
+          name: b.name,
+          total: bTotal,
+          count: bOps.length
+        };
+      });
+
+      days.push({
+        date: d,
+        dateKey,
+        dayName,
+        dayMonth,
+        label: `${dayName} ${dayMonth}`,
+        isToday,
+        dayTotal,
+        branchTotals,
+        totalSalesCount: dayOps.length
+      });
+    }
+
+    return days;
+  }, [rawOpsUnfiltered, branches]); 
  
   
   const topProducts = useMemo(() => {
@@ -945,6 +1014,89 @@ const inventoryQuery = useMemoFirebase(() => {
         <h1 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-slate-900 flex items-center gap-2">
           <TrendingUp className="w-6 h-6 text-red-600" /> Control del Propietario
         </h1>
+      </div>
+
+      {/* ── VENTAS DIARIAS POR SUCURSAL (DÍA POR DÍA: LUNES 10/11, MARTES 11/11...) ── */}
+      <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-3">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-red-600 shrink-0" />
+            <div>
+              <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
+                Ventas Diarias por Sucursal
+              </h2>
+              <span className="text-[10px] font-bold text-slate-400 uppercase hidden sm:block">
+                Totales por día y consolidado de ambos turnos
+              </span>
+            </div>
+          </div>
+          {selectedDateFilter && (
+            <button
+              onClick={() => setSelectedDateFilter(null)}
+              className="text-[9px] font-bold text-red-600 hover:text-red-700 uppercase bg-red-50 hover:bg-red-100 px-2.5 py-1 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              Ver todos (✕)
+            </button>
+          )}
+        </div>
+
+        {/* Carrusel de días horizontal en móviles y grilla en pantallas grandes */}
+        <div className="flex sm:grid sm:grid-cols-7 gap-2 overflow-x-auto no-scrollbar pb-1">
+          {dailyBranchSales.map(day => {
+            const isSelected = selectedDateFilter === day.dateKey;
+
+            return (
+              <div
+                key={day.dateKey}
+                onClick={() => setSelectedDateFilter(prev => prev === day.dateKey ? null : day.dateKey)}
+                className={cn(
+                  "min-w-[150px] sm:min-w-0 flex-1 p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between gap-2 select-none",
+                  isSelected
+                    ? "bg-red-50/70 border-red-300 ring-2 ring-red-600/30 shadow-xs"
+                    : day.isToday
+                    ? "bg-white border-red-200 shadow-2xs hover:border-red-300"
+                    : "bg-slate-50/70 border-slate-200/80 hover:bg-slate-100/70"
+                )}
+              >
+                {/* Encabezado: Día y Fecha (ej: Lunes 10/11) */}
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-tight text-slate-800 truncate">
+                    {day.label}
+                  </span>
+                  {day.isToday && (
+                    <span className="text-[8px] font-black uppercase px-1.5 py-0.2 rounded-full bg-red-600 text-white shadow-2xs shrink-0">
+                      Hoy
+                    </span>
+                  )}
+                </div>
+
+                {/* Importe Total del Día (Suma de ambos turnos / todas las sucursales) */}
+                <div>
+                  <span className="text-[8px] font-black uppercase tracking-wider text-slate-400 block">
+                    Total Facturado
+                  </span>
+                  <div className="text-sm sm:text-base font-black text-red-600 mt-0.5 truncate">
+                    ${day.dayTotal.toLocaleString('es-AR')}
+                  </div>
+                </div>
+
+                {/* Desglose de Sucursales (Solo importes totales) */}
+                <div className="pt-1.5 border-t border-slate-200/60 space-y-1">
+                  {day.branchTotals.map((bt: any) => (
+                    <div key={bt.id} className="flex items-center justify-between text-[10px] gap-1">
+                      <span className="font-bold text-slate-500 uppercase truncate max-w-[70px] sm:max-w-[80px]">
+                        {bt.name}
+                      </span>
+                      <span className="font-black text-slate-900 truncate">
+                        ${bt.total.toLocaleString('es-AR')}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* ── SUCURSALES Y CAJAS EN VIVO (COMPACTO Y CON SELECTOR SANDWICH) ── */}
@@ -1379,54 +1531,6 @@ const inventoryQuery = useMemoFirebase(() => {
         );
       })()}
 
-      {/* ── HÁBITOS DE CONSUMO POR DÍA DE LA SEMANA ── */}
-      <Card className="rounded-2xl sm:rounded-[2rem] border-slate-100 shadow-sm p-3.5 sm:p-5 bg-white">
-        <CardHeader className="px-0 pt-0 pb-2 sm:pb-3 flex flex-row items-center justify-between space-y-0">
-          <CardTitle className="text-xs sm:text-sm font-black uppercase tracking-tight text-slate-900 flex items-center gap-1.5">
-            <Calendar className="w-4 h-4 text-red-600 shrink-0" /> Hábitos de Consumo por Día
-          </CardTitle>
-          {selectedDayOfWeek && (
-            <button 
-              onClick={() => setSelectedDayOfWeek(null)}
-              className="text-[9px] font-bold text-red-600 hover:text-red-700 uppercase bg-red-50 hover:bg-red-100 px-2 py-0.5 rounded-full transition-colors"
-            >
-              Ver todos (✕)
-            </button>
-          )}
-        </CardHeader>
-        <CardContent className="px-0 pb-0">
-          <div className="flex sm:grid sm:grid-cols-7 gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
-            {Object.values(habitsByDay).map(dayData => {
-              const isSelected = selectedDayOfWeek === dayData.dayName;
-              return (
-                <div 
-                  key={dayData.dayName} 
-                  onClick={() => setSelectedDayOfWeek(prev => prev === dayData.dayName ? null : dayData.dayName)}
-                  className={`min-w-[78px] sm:min-w-0 flex-1 p-2 sm:p-2.5 rounded-xl border flex flex-col justify-between cursor-pointer transition-all ${
-                    isSelected 
-                      ? 'bg-red-50 border-red-200 ring-1 ring-red-600/30 shadow-xs' 
-                      : 'bg-slate-50/80 border-slate-100 hover:bg-slate-100/80'
-                  }`}
-                >
-                  <div>
-                    <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block truncate">
-                      <span className="sm:hidden">{dayData.dayName.slice(0, 3)}</span>
-                      <span className="hidden sm:inline">{dayData.dayName}</span>
-                    </span>
-                    <div className="text-xs sm:text-sm font-black text-slate-900 mt-0.5 truncate">
-                      ${dayData.totalAmount.toLocaleString('es-AR')}
-                    </div>
-                    <span className="text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase block truncate">
-                      {dayData.totalUnits} u.
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </CardContent>
-      </Card>
-      
       {/* ── ÚLTIMAS VENTAS Y REPOSICIÓN ── */}
       <div className="grid grid-cols-1 gap-6">
         {/* TABLA ÚLTIMAS VENTAS */}
@@ -1456,7 +1560,7 @@ const inventoryQuery = useMemoFirebase(() => {
                     return (
                       <TableRow>
                         <TableCell colSpan={8} className="text-center h-24 font-bold text-slate-400 text-xs uppercase tracking-widest">
-                          {selectedDayOfWeek ? `Sin operaciones para el día ${selectedDayOfWeek}.` : 'Sin operaciones registradas en el período.'}
+                          {selectedDateFilter ? 'Sin operaciones para el día seleccionado.' : 'Sin operaciones registradas en el período.'}
                         </TableCell>
                       </TableRow>
                     );
