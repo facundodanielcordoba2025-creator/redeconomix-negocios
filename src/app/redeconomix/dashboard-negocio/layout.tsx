@@ -157,6 +157,20 @@ export default function RetailerDashboardLayout({ children }: { children: React.
   const [isHovered, setIsHovered] = useState(false);
   const isExpanded = isPinned || isHovered;
 
+  const handleLogout = async () => {
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('rex_session_active');
+      }
+      if (auth) {
+        await signOut(auth);
+      }
+      router.replace('/login');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  };
+
   if (!isClient) {
     return null;
   }
@@ -234,6 +248,23 @@ export default function RetailerDashboardLayout({ children }: { children: React.
                     )
                 })}
             </nav>
+
+            <div className="px-3 py-4 border-t border-slate-100 shrink-0">
+              <Button
+                variant="ghost"
+                onClick={handleLogout}
+                title={!isExpanded ? "Cerrar Sesión" : undefined}
+                className={cn(
+                  "w-full h-12 rounded-2xl font-bold uppercase text-xs tracking-widest gap-4 transition-colors overflow-hidden text-red-600 hover:bg-slate-100 hover:text-red-700 cursor-pointer",
+                  isExpanded ? "justify-start px-4" : "justify-center px-0"
+                )}
+              >
+                <LogOut className="h-5 w-5 shrink-0 text-red-600" />
+                {isExpanded && (
+                  <span className="truncate animate-in fade-in duration-200">Cerrar Sesión</span>
+                )}
+              </Button>
+            </div>
        </aside>
 
        {/* --- MAIN AREA --- */}
