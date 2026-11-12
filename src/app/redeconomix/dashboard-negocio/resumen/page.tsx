@@ -1003,7 +1003,7 @@ const inventoryQuery = useMemoFirebase(() => {
                 setClosureEmployeeFilter('');
                 setClosureDateFilter('');
               }}
-              className="text-[9px] font-bold text-red-600 hover:text-red-700 uppercase bg-red-50 hover:bg-red-100 px-2.5 py-1 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
+              className="text-[10px] font-bold text-red-600 hover:text-red-700 uppercase transition-colors cursor-pointer"
             >
               Limpiar filtros (✕)
             </button>
@@ -1124,7 +1124,7 @@ const inventoryQuery = useMemoFirebase(() => {
           {selectedDateFilter && (
             <button
               onClick={() => setSelectedDateFilter(null)}
-              className="text-[9px] font-bold text-red-600 hover:text-red-700 uppercase bg-red-50 hover:bg-red-100 px-2.5 py-1 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
+              className="text-[10px] font-bold text-red-600 hover:text-red-700 uppercase transition-colors cursor-pointer"
             >
               Ver todos (✕)
             </button>
@@ -1143,10 +1143,10 @@ const inventoryQuery = useMemoFirebase(() => {
                 className={cn(
                   "min-w-[150px] sm:min-w-0 flex-1 p-3 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between gap-2 select-none",
                   isSelected
-                    ? "bg-red-50/70 border-red-300 ring-2 ring-red-600/30 shadow-xs"
+                    ? "bg-white border-red-600 ring-2 ring-red-600/20 shadow-xs"
                     : day.isToday
-                    ? "bg-white border-red-200 shadow-2xs hover:border-red-300"
-                    : "bg-slate-50/70 border-slate-200/80 hover:bg-slate-100/70"
+                    ? "bg-white border-slate-300 hover:border-slate-400"
+                    : "bg-slate-50 border-slate-200/80 hover:bg-slate-100/70"
                 )}
               >
                 {/* Encabezado: Día y Fecha (ej: Lunes 10/11) */}
