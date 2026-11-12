@@ -214,24 +214,39 @@ const inventoryQuery = useMemoFirebase(() => {
     });
   }, [activeShifts, selectedBranchFilter, branches]);
 
-  // Lista de cajeros/empleados únicos para el menú desplegable
+  const employeesQuery = useMemoFirebase(() => {
+    if (!firestore || !user || !effectiveRetailerId) return null;
+    return query(
+      collection(firestore, 'retailer_employees'),
+      where('retailerId', '==', effectiveRetailerId)
+    );
+  }, [firestore, user, effectiveRetailerId]);
+
+  const { data: employeesData } = useCollection(employeesQuery);
+
+  // Lista de vendedores / empleados del negocio para los filtros
   const uniqueCashiers = useMemo(() => {
-    const map = new Map<string, { id: string; name: string }>();
-    (rawShifts || []).forEach((shift: any) => {
-      const name = (shift.cashierName || '').trim();
-      const id = (shift.cashierName || shift.employeeId || 'admin').trim();
-      if (name && !map.has(name.toLowerCase())) {
-        map.set(name.toLowerCase(), { id: name, name });
-      }
-    });
-    (rawOpsUnfiltered || []).forEach((op: any) => {
-      const name = (op.employeeName || op.cashierName || '').trim();
-      if (name && !map.has(name.toLowerCase())) {
-        map.set(name.toLowerCase(), { id: name, name });
-      }
-    });
-    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
-  }, [rawShifts, rawOpsUnfiltered]);
+    const list: { id: string; name: string }[] = [];
+    if (employeesData && employeesData.length > 0) {
+      employeesData.forEach((emp: any) => {
+        const name = (emp.name || '').trim();
+        if (name && emp.status !== 'inactive' && emp.status !== 'deleted') {
+          list.push({ id: emp.id || name, name });
+        }
+      });
+    } else {
+      // Fallback únicamente a turnos registrados de este comercio
+      const map = new Map<string, string>();
+      (rawShifts || []).forEach((shift: any) => {
+        const name = (shift.cashierName || '').trim();
+        if (name && !map.has(name.toLowerCase())) {
+          map.set(name.toLowerCase(), name);
+          list.push({ id: name, name });
+        }
+      });
+    }
+    return list.sort((a, b) => a.name.localeCompare(b.name));
+  }, [employeesData, rawShifts]);
 
   // Cierres de caja consultados por llamado (Empleado en el mes o Día específico)
   const queriedClosedShifts = useMemo(() => {
@@ -963,207 +978,6 @@ const inventoryQuery = useMemoFirebase(() => {
     }
   };
 
-  const handleExportBranchExcel = () => {
-    const isAll = selectedBranchFilter === 'ALL';
-    const workbook = XLSX.utils.book_new();
-
-    const periodLabel = periodFilter === 'TODAY' 
-      ? 'Hoy' 
-      : periodFilter === 'LAST_7_DAYS' 
-      ? 'Últimos 7 Días' 
-      : periodFilter === 'CUSTOM' 
-      ? `Día ${customDate || ''}` 
-      : 'Ciclo Contable (10 al 10)';
-
-    if (isAll) {
-      // ── INFORME CONSOLIDADO (TODAS LAS SUCURSALES) ──
-      // Hoja 1: Resumen General de Sucursales
-      const summaryRows: any[][] = [
-        ["REDECONOMIX - INFORME CONSOLIDADO DE SUCURSALES"],
-        ["Período Auditado", periodLabel],
-        ["Fecha de Emisión", format(new Date(), 'dd/MM/yyyy HH:mm')],
-        [],
-        ["SUCURSAL", "ESTADO CAJA", "TOTAL HOY ($)", "VENTAS HOY", "EFECTIVO HOY ($)", "TRANSFERENCIA HOY ($)", "QR HOY ($)", "FIADO HOY ($)", "CAJERO EN TURNO"],
-      ];
-
-      (branchBreakdown || []).forEach((b: any) => {
-        summaryRows.push([
-          b.name,
-          b.activeShift ? "ABIERTA" : "CERRADA",
-          b.todayTotal,
-          b.todaySalesCount,
-          b.todayCash,
-          b.todayTransfer,
-          b.todayQr,
-          b.todayFiado,
-          b.activeShift?.cashierName || "Sin turno activo"
-        ]);
-      });
-
-      const wsSummary = XLSX.utils.aoa_to_sheet(summaryRows);
-      XLSX.utils.book_append_sheet(workbook, wsSummary, "Resumen General");
-
-      // Hoja 2: Stock Consolidado y por Sucursal
-      const stockData = (inventory || []).map((item: any) => {
-        const cost = Number(item.purchasePrice || item.costPrice || 0);
-        const price = Number(item.salePrice || item.price || 0);
-        const totalStock = Number(item.stock) || 0;
-        
-        const row: any = {
-          'Código': item.code || item.barcode || '-',
-          'Producto': item.name || 'Sin Nombre',
-          'Categoría': item.category || 'General',
-          'Stock Total': totalStock,
-        };
-
-        // Desglose de stock por cada sucursal
-        (branchBreakdown || []).forEach((b: any) => {
-          row[`Stock ${b.name}`] = getProductStockForBranch(item, b.id);
-        });
-
-        row['Precio Costo ($)'] = cost;
-        row['Precio Venta ($)'] = price;
-        row['Valorización ($)'] = totalStock * cost;
-
-        return row;
-      }).filter((item: any) => item['Stock Total'] > 0);
-
-      stockData.sort((a: any, b: any) => a['Producto'].localeCompare(b['Producto']));
-      const wsStock = XLSX.utils.json_to_sheet(stockData);
-      XLSX.utils.book_append_sheet(workbook, wsStock, "Stock Consolidado");
-
-      // Hoja 3: Detalle de Ventas del Período
-      const salesDetailData = (rawSales || []).map((sale: any) => {
-        const d = sale.normalizedDate || (sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now()));
-        const itemsList = Array.isArray(sale.items) ? sale.items.map((i: any) => `${i.name || i.productName} (x${i.quantity || i.qty || 1})`).join(', ') : 'Venta directa';
-        
-        return {
-          'Fecha y Hora': format(d, 'dd/MM/yyyy HH:mm'),
-          'Sucursal': getBranchName(sale.branchId),
-          'Tipo': sale.type === 'credit_sale' ? 'Fiado (Cta Cte)' : 'Venta',
-          'Método de Pago': (sale.paymentMethod || 'Efectivo').toUpperCase(),
-          'Cajero / Vendedor': sale.employeeName || sale.cashierName || sale.userName || 'Dueño',
-          'Cliente': sale.customerName || 'Consumidor Final',
-          'Artículos': itemsList,
-          'Total ($)': sale.totalAmount || sale.total || sale.amount || 0
-        };
-      });
-      const wsSales = XLSX.utils.json_to_sheet(salesDetailData);
-      XLSX.utils.book_append_sheet(workbook, wsSales, "Ventas Totales");
-
-      // Hoja 4: Top Productos
-      const topProductsData = (topProducts || []).map((p: any, idx: number) => ({
-        'Ranking': idx + 1,
-        'Producto': p.name,
-        'Unidades Vendidas': p.qty,
-        'Total Facturado Estimado ($)': p.total
-      }));
-      const wsTop = XLSX.utils.json_to_sheet(topProductsData);
-      XLSX.utils.book_append_sheet(workbook, wsTop, "Top Productos");
-
-      const fileName = `Informe_General_Sucursales_${periodLabel.replace(/\s+/g, '_')}_${format(new Date(), 'dd-MM-yy_HHmm')}.xlsx`;
-      XLSX.writeFile(workbook, fileName);
-    } else {
-      // ── INFORME DE SUCURSAL ESPECÍFICA ──
-      const currentBranch = branches?.find((b: any) => b.id === selectedBranchFilter);
-      const branchName = currentBranch?.name || (selectedBranchFilter === 'central' ? 'Casa Central' : 'Sucursal');
-      const isCentral = currentBranch?.isCentral || selectedBranchFilter === 'central';
-
-      const branchSales = sales || [];
-      const branchTotalSales = branchSales.reduce((sum: number, s: any) => sum + (s.totalAmount || s.amount || 0), 0);
-      const branchTicketsCount = branchSales.length;
-
-      const methods: Record<string, number> = {};
-      branchSales.forEach((s: any) => {
-        const m = (s.paymentMethod || 'Efectivo').toUpperCase();
-        methods[m] = (methods[m] || 0) + (s.totalAmount || s.amount || 0);
-      });
-
-      const activeShift = (activeShifts || []).find((s: any) => {
-        if (isCentral) return !s.branchId || s.branchId === 'central' || s.branchId === currentBranch?.id;
-        return s.branchId === selectedBranchFilter;
-      });
-
-      const summaryData = [
-        ["INFORME DETALLADO DE SUCURSAL - REDECONOMIX"],
-        ["Sucursal", `${branchName} ${isCentral ? '(Central)' : ''}`],
-        ["Período Auditado", periodLabel],
-        ["Fecha de Emisión", format(new Date(), 'dd/MM/yyyy HH:mm')],
-        [],
-        ["ESTADO DE CAJA EN VIVO", "DETALLE"],
-        ["Estado de Caja", activeShift ? "ABIERTA" : "CERRADA"],
-        ["Cajero / Vendedor Asignado", activeShift?.cashierName || "Sin turno activo"],
-        ["Hora de Apertura", activeShift?.startTime ? format(new Date(activeShift.startTime), 'dd/MM/yyyy HH:mm') : "-"],
-        ["Efectivo Inicial en Caja", activeShift?.initialCash ? `$${activeShift.initialCash.toLocaleString('es-AR')}` : "-"],
-        [],
-        ["FACTURACIÓN Y MÉTRICAS DEL PERÍODO", "VALOR"],
-        ["Total Facturado ($)", branchTotalSales],
-        ["Cantidad de Tickets / Ventas", branchTicketsCount],
-        ["Ticket Promedio ($)", branchTicketsCount > 0 ? Math.round(branchTotalSales / branchTicketsCount) : 0],
-        [],
-        ["RECAUDACIÓN POR MÉTODO DE PAGO", "MONTO ($)"],
-        ...Object.entries(methods).map(([k, v]) => [k, v])
-      ];
-      const wsSummary = XLSX.utils.aoa_to_sheet(summaryData);
-      XLSX.utils.book_append_sheet(workbook, wsSummary, "Resumen Sucursal");
-
-      const stockData = (inventory || [])
-        .map((item: any) => {
-          const currentStock = getProductStockForBranch(item, selectedBranchFilter);
-          const cost = Number(item.purchasePrice || item.costPrice || 0);
-          const price = Number(item.salePrice || item.price || 0);
-          const valuation = currentStock * cost;
-          const minStock = Number(item.minStock ?? 5);
-
-          return {
-            'Código': item.code || item.barcode || '-',
-            'Producto': item.name || 'Sin Nombre',
-            'Categoría': item.category || 'General',
-            'Stock Actual (Sucursal)': currentStock,
-            'Stock Mínimo': minStock,
-            'Estado de Stock': currentStock <= minStock ? 'STOCK CRÍTICO' : 'NORMAL',
-            'Precio Costo ($)': cost,
-            'Precio Venta ($)': price,
-            'Valorización en Stock ($)': valuation
-          };
-        })
-        .filter((item: any) => item['Stock Actual (Sucursal)'] > 0);
-
-      stockData.sort((a: any, b: any) => a['Producto'].localeCompare(b['Producto']));
-      const wsStock = XLSX.utils.json_to_sheet(stockData);
-      XLSX.utils.book_append_sheet(workbook, wsStock, "Stock Sucursal");
-
-      const salesDetailData = branchSales.map((sale: any) => {
-        const d = sale.normalizedDate || (sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now()));
-        const itemsList = Array.isArray(sale.items) ? sale.items.map((i: any) => `${i.name || i.productName} (x${i.quantity || i.qty || 1})`).join(', ') : 'Venta directa';
-        
-        return {
-          'Fecha y Hora': format(d, 'dd/MM/yyyy HH:mm'),
-          'Tipo': sale.type === 'credit_sale' ? 'Fiado (Cta Cte)' : 'Venta',
-          'Método de Pago': (sale.paymentMethod || 'Efectivo').toUpperCase(),
-          'Cajero / Vendedor': sale.employeeName || sale.cashierName || sale.userName || 'Dueño',
-          'Cliente': sale.customerName || 'Consumidor Final',
-          'Artículos': itemsList,
-          'Total ($)': sale.totalAmount || sale.total || sale.amount || 0
-        };
-      });
-      const wsSales = XLSX.utils.json_to_sheet(salesDetailData);
-      XLSX.utils.book_append_sheet(workbook, wsSales, "Ventas Sucursal");
-
-      const topProductsData = (topProducts || []).map((p: any, idx: number) => ({
-        'Ranking': idx + 1,
-        'Producto': p.name,
-        'Unidades Vendidas': p.qty,
-        'Total Facturado Estimado ($)': p.total
-      }));
-      const wsTop = XLSX.utils.json_to_sheet(topProductsData);
-      XLSX.utils.book_append_sheet(workbook, wsTop, "Top Productos");
-
-      const fileName = `Informe_${branchName.replace(/\s+/g, '_')}_${periodLabel.replace(/\s+/g, '_')}_${format(new Date(), 'dd-MM-yy_HHmm')}.xlsx`;
-      XLSX.writeFile(workbook, fileName);
-    }
-  };
-
   return (
     <RoleGuard moduleName="Resumen Financiero" allowedRoles={['admin']}>
       <div className="space-y-6 pt-[80px] md:pt-0 pb-36 px-2 sm:px-4 md:px-0">
@@ -1178,16 +992,10 @@ const inventoryQuery = useMemoFirebase(() => {
       {/* ── CIERRES DE CAJA Y TURNOS (AUDITORÍA A DEMANDA / POR LLAMADO) ── */}
       <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-3.5">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-red-600 shrink-0" />
-            <div>
-              <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
-                Cierres de Caja
-              </h2>
-              <span className="text-[10px] font-bold text-slate-400 uppercase hidden sm:block">
-                Auditoría por llamado de turnos, arqueos y comprobantes en PDF
-              </span>
-            </div>
+          <div>
+            <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
+              Cierres de Caja
+            </h2>
           </div>
           {(closureEmployeeFilter || closureDateFilter) && (
             <button
@@ -1205,8 +1013,8 @@ const inventoryQuery = useMemoFirebase(() => {
         {/* Filtros: Empleado (mes) y Día específico */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase text-slate-500 tracking-wider flex items-center gap-1">
-              <Users className="w-3 h-3 text-red-600" /> Empleado (Turnos del Mes)
+            <label className="text-[10px] font-black uppercase text-slate-500 tracking-wider">
+              Empleado (Turnos del Mes)
             </label>
             <Select 
               value={closureEmployeeFilter || 'NONE'} 
@@ -1221,7 +1029,7 @@ const inventoryQuery = useMemoFirebase(() => {
                 </SelectItem>
                 {uniqueCashiers.map((c: any) => (
                   <SelectItem key={c.id} value={c.name} className="text-xs font-bold py-1.5">
-                    👤 {c.name}
+                    {c.name}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -1229,8 +1037,8 @@ const inventoryQuery = useMemoFirebase(() => {
           </div>
 
           <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase text-slate-500 tracking-wider flex items-center gap-1">
-              <Calendar className="w-3 h-3 text-red-600" /> Día (Turnos de la Fecha)
+            <label className="text-[10px] font-black uppercase text-slate-500 tracking-wider">
+              Día (Turnos de la Fecha)
             </label>
             <input
               type="date"
@@ -1241,100 +1049,77 @@ const inventoryQuery = useMemoFirebase(() => {
           </div>
         </div>
 
-        {/* Estado por llamado: si no hay filtros activos */}
-        {!closureEmployeeFilter && !closureDateFilter ? (
-          <div className="py-6 px-4 text-center rounded-2xl bg-slate-50 border border-dashed border-slate-200">
-            <FileText className="w-8 h-8 text-slate-300 mx-auto mb-1.5" />
-            <p className="text-xs font-bold text-slate-700 uppercase tracking-tight">
-              Consulta de Cierres a Demanda
-            </p>
-            <p className="text-[11px] text-slate-500 mt-0.5 max-w-md mx-auto">
-              Seleccioná un <strong>Empleado</strong> para llamar automáticamente todas sus operaciones del mes, o elegí un <strong>Día</strong> para auditar todos los turnos realizados en esa fecha.
-            </p>
-          </div>
-        ) : queriedClosedShifts.length === 0 ? (
-          <div className="py-6 px-4 text-center rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
-            No se encontraron turnos cerrados con los filtros seleccionados
-          </div>
-        ) : (
-          <div className="space-y-2">
-            <div className="flex items-center justify-between px-1">
-              <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
-                Turnos encontrados: <strong className="text-slate-700">{queriedClosedShifts.length}</strong>
-              </span>
+        {/* Estado por llamado: sólo se muestra si se accionó algún filtro */}
+        {closureEmployeeFilter || closureDateFilter ? (
+          queriedClosedShifts.length === 0 ? (
+            <div className="py-4 text-center rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
+              No se encontraron turnos cerrados con los filtros seleccionados
             </div>
-            <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1">
-              {queriedClosedShifts.map((shift: any) => {
-                const actual = shift.actualFinalCash || 0;
-                const shiftDate = shift.endTime ? (shift.endTime.toDate ? shift.endTime.toDate() : new Date(shift.endTime.seconds ? shift.endTime.seconds * 1000 : shift.endTime)) : new Date();
-                const branchLabel = shift.branchName || (branches.find(b => b.id === shift.branchId)?.name) || 'Sucursal';
-                const totalSold = shift.report?.total ?? shift.totalSold ?? 0;
-                const expected = shift.report?.expectedFinalCash ?? shift.expectedCash ?? actual;
-                const diff = actual - expected;
+          ) : (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between px-1">
+                <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                  Turnos encontrados: <strong className="text-slate-700">{queriedClosedShifts.length}</strong>
+                </span>
+              </div>
+              <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1">
+                {queriedClosedShifts.map((shift: any) => {
+                  const actual = shift.actualFinalCash || 0;
+                  const shiftDate = shift.endTime ? (shift.endTime.toDate ? shift.endTime.toDate() : new Date(shift.endTime.seconds ? shift.endTime.seconds * 1000 : shift.endTime)) : new Date();
+                  const branchLabel = shift.branchName || (branches.find(b => b.id === shift.branchId)?.name) || 'Sucursal';
+                  const totalSold = shift.report?.total ?? shift.totalSold ?? 0;
+                  const expected = shift.report?.expectedFinalCash ?? shift.expectedCash ?? actual;
+                  const diff = actual - expected;
 
-                return (
-                  <div
-                    key={shift.id}
-                    className="p-3 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition-all"
-                  >
-                    <div className="min-w-0 flex-1 space-y-1">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-xs font-black text-slate-900 uppercase">
-                          {format(shiftDate, 'dd/MM/yyyy HH:mm')} hs
-                        </span>
-                        <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-white text-slate-700 border border-slate-200">
-                          👤 {shift.cashierName || 'Cajero'}
-                        </span>
-                        <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-red-50 text-red-700 border border-red-200">
-                          🏪 {branchLabel}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3 text-[10px] font-bold text-slate-500 flex-wrap pt-0.5">
-                        <span>Vendido: <strong className="text-slate-800 font-black">${totalSold.toLocaleString('es-AR')}</strong></span>
-                        <span>•</span>
-                        <span>Declarado Efvo: <strong className="text-emerald-700 font-black">${actual.toLocaleString('es-AR')}</strong></span>
-                        <span>•</span>
-                        <span>
-                          Diferencia:{' '}
-                          <strong className={cn(
-                            "font-black",
-                            diff < 0 ? "text-red-600" : diff > 0 ? "text-amber-600" : "text-emerald-600"
-                          )}>
-                            {diff === 0 ? '$0 (Exacto)' : diff < 0 ? `-$${Math.abs(diff).toLocaleString('es-AR')} (Falta)` : `+$${diff.toLocaleString('es-AR')} (Sobra)`}
-                          </strong>
-                        </span>
-                      </div>
-                    </div>
-
-                    <Button
-                      size="sm"
-                      onClick={() => handleDownloadShiftPdf(shift)}
-                      className="h-8 px-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-black text-[10px] uppercase flex items-center justify-center gap-1.5 shadow-2xs shrink-0 cursor-pointer"
-                      title="Descargar comprobante de cierre en PDF"
+                  return (
+                    <div
+                      key={shift.id}
+                      className="p-3 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition-all"
                     >
-                      <FileDown className="w-3.5 h-3.5" /> Descargar PDF
-                    </Button>
-                  </div>
-                );
-              })}
+                      <div className="min-w-0 flex-1 space-y-1">
+                        <div className="text-xs font-black text-slate-900 uppercase">
+                          {format(shiftDate, 'dd/MM/yyyy HH:mm')} hs • {shift.cashierName || 'Cajero'} • {branchLabel}
+                        </div>
+                        <div className="flex items-center gap-2.5 text-[10px] font-bold text-slate-500 flex-wrap pt-0.5">
+                          <span>Vendido: <strong className="text-slate-900 font-black">${totalSold.toLocaleString('es-AR')}</strong></span>
+                          <span>•</span>
+                          <span>Declarado Efvo: <strong className="text-slate-900 font-black">${actual.toLocaleString('es-AR')}</strong></span>
+                          <span>•</span>
+                          <span>
+                            Diferencia:{' '}
+                            <strong className={cn(
+                              "font-black",
+                              diff < 0 ? "text-red-600" : "text-slate-800"
+                            )}>
+                              {diff === 0 ? '$0 (Exacto)' : diff < 0 ? `-$${Math.abs(diff).toLocaleString('es-AR')}` : `+$${diff.toLocaleString('es-AR')}`}
+                            </strong>
+                          </span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => handleDownloadShiftPdf(shift)}
+                        className="h-8 px-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-black text-[10px] uppercase transition-colors shrink-0 cursor-pointer"
+                        title="Descargar comprobante de cierre en PDF"
+                      >
+                        Descargar PDF
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        ) : null}
       </div>
 
-      {/* ── VENTAS DIARIAS POR SUCURSAL (DÍA POR DÍA: LUNES 10/11, MARTES 11/11...) ── */}
+      {/* ── VENTAS DIARIAS POR SUCURSAL ── */}
       <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-3">
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-red-600 shrink-0" />
-            <div>
-              <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
-                Ventas Diarias por Sucursal
-              </h2>
-              <span className="text-[10px] font-bold text-slate-400 uppercase hidden sm:block">
-                Totales por día y consolidado de ambos turnos
-              </span>
-            </div>
+          <div>
+            <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
+              Ventas Diarias por Sucursal
+            </h2>
           </div>
           {selectedDateFilter && (
             <button
@@ -1370,24 +1155,14 @@ const inventoryQuery = useMemoFirebase(() => {
                     {day.label}
                   </span>
                   {day.isToday && (
-                    <span className="text-[8px] font-black uppercase px-1.5 py-0.2 rounded-full bg-red-600 text-white shadow-2xs shrink-0">
+                    <span className="text-[9px] font-black uppercase text-red-600">
                       Hoy
                     </span>
                   )}
                 </div>
 
-                {/* Importe Total del Día (Suma de ambos turnos / todas las sucursales) */}
-                <div>
-                  <span className="text-[8px] font-black uppercase tracking-wider text-slate-400 block">
-                    Total Facturado
-                  </span>
-                  <div className="text-sm sm:text-base font-black text-red-600 mt-0.5 truncate">
-                    ${day.dayTotal.toLocaleString('es-AR')}
-                  </div>
-                </div>
-
                 {/* Desglose de Sucursales (Solo importes totales) */}
-                <div className="pt-1.5 border-t border-slate-200/60 space-y-1">
+                <div className="pt-1.5 space-y-1">
                   {day.branchTotals.map((bt: any) => (
                     <div key={bt.id} className="flex items-center justify-between text-[10px] gap-1">
                       <span className="font-bold text-slate-500 uppercase truncate max-w-[70px] sm:max-w-[80px]">
@@ -1398,6 +1173,16 @@ const inventoryQuery = useMemoFirebase(() => {
                       </span>
                     </div>
                   ))}
+                </div>
+
+                {/* Total al pie de la tarjeta sumando ambos importes */}
+                <div className="pt-2 border-t border-slate-200/70 flex items-center justify-between">
+                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">
+                    TOTAL
+                  </span>
+                  <div className="text-xs sm:text-sm font-black text-red-600 truncate">
+                    ${day.dayTotal.toLocaleString('es-AR')}
+                  </div>
                 </div>
               </div>
             );
@@ -1413,114 +1198,44 @@ const inventoryQuery = useMemoFirebase(() => {
 
         return (
           <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-4">
-            {/* Header de Sucursales con Menú Sandwich Integrado */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2 flex-wrap">
-                {/* Selector Desplegable Tipo Sandwich en el Título */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <button className="flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-white border border-slate-200 hover:border-red-300 shadow-2xs transition-all cursor-pointer group focus:outline-none select-none">
-                      <Menu className="w-4 h-4 text-red-600 shrink-0" />
-                      <span className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 group-hover:text-red-600 transition-colors">
-                        Sucursales
-                      </span>
-                      <span className="text-[10px] sm:text-xs font-black uppercase text-red-600 bg-red-50 border border-red-200/80 px-2 py-0.5 rounded-lg flex items-center gap-1">
-                        {selectedBranchFilter === 'ALL'
-                          ? `TODAS (${branchBreakdown.length})`
-                          : (branchBreakdown.find((b: any) => b.id === selectedBranchFilter)?.name || 'Sucursal')}
-                        <ChevronDown className="w-3 h-3 text-red-600" />
-                      </span>
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-64 rounded-2xl p-1.5 shadow-xl border-slate-100 bg-white z-50">
+            {/* Header de Sucursales con Selector Desplegable en el Título */}
+            <div className="flex items-center justify-between gap-3">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center gap-1.5 text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 hover:text-red-600 transition-colors cursor-pointer select-none">
+                    <span>Sucursales</span>
+                    <span className="text-red-600">
+                      ({selectedBranchFilter === 'ALL'
+                        ? 'TODAS'
+                        : (branchBreakdown.find((b: any) => b.id === selectedBranchFilter)?.name || 'SUCURSAL')})
+                    </span>
+                    <ChevronDown className="w-4 h-4 text-red-600" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-56 rounded-2xl p-1.5 shadow-xl border-slate-100 bg-white z-50">
+                  <DropdownMenuItem
+                    onClick={() => setSelectedBranchFilter('ALL')}
+                    className={cn(
+                      "font-bold text-xs uppercase rounded-xl py-2 px-3 cursor-pointer flex items-center justify-between transition-colors",
+                      selectedBranchFilter === 'ALL' ? "bg-red-600 text-white font-black" : "text-slate-700 hover:bg-slate-100"
+                    )}
+                  >
+                    <span>TODAS LAS SUCURSALES</span>
+                  </DropdownMenuItem>
+                  {branchBreakdown.map((b: any) => (
                     <DropdownMenuItem
-                      onClick={() => setSelectedBranchFilter('ALL')}
+                      key={b.id}
+                      onClick={() => setSelectedBranchFilter(b.id)}
                       className={cn(
-                        "font-bold text-xs uppercase rounded-xl py-2 px-3 cursor-pointer flex items-center justify-between transition-colors",
-                        selectedBranchFilter === 'ALL' ? "bg-red-600 text-white font-black" : "text-slate-700 hover:bg-slate-100"
+                        "font-bold text-xs uppercase rounded-xl py-2 px-3 cursor-pointer mt-1 flex items-center justify-between transition-colors",
+                        selectedBranchFilter === b.id ? "bg-red-600 text-white font-black" : "text-slate-700 hover:bg-slate-100"
                       )}
                     >
-                      <span>TODAS LAS SUCURSALES</span>
-                      <span className="text-[10px] opacity-80">({branchBreakdown.length})</span>
+                      <span>{b.name}</span>
                     </DropdownMenuItem>
-                    {branchBreakdown.map((b: any) => (
-                      <DropdownMenuItem
-                        key={b.id}
-                        onClick={() => setSelectedBranchFilter(b.id)}
-                        className={cn(
-                          "font-bold text-xs uppercase rounded-xl py-2 px-3 cursor-pointer mt-1 flex items-center justify-between transition-colors",
-                          selectedBranchFilter === b.id ? "bg-red-600 text-white font-black" : "text-slate-700 hover:bg-slate-100"
-                        )}
-                      >
-                        <span>{b.name}</span>
-                        {b.activeShift ? (
-                          <span className={cn(
-                            "text-[9px] font-black px-1.5 py-0.5 rounded",
-                            selectedBranchFilter === b.id ? "bg-white text-red-600" : "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                          )}>
-                            Abierta
-                          </span>
-                        ) : null}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-
-              {/* Controles de la Derecha: Período y Botón Exportar (100% Funcional) */}
-              <div className="flex items-center gap-1.5 flex-wrap w-full sm:w-auto justify-between sm:justify-end">
-                <Select 
-                  value={periodFilter} 
-                  onValueChange={(val: any) => {
-                    setPeriodFilter(val);
-                    if (val === 'CUSTOM' && !customDate) {
-                      setCustomDate(format(new Date(), 'yyyy-MM-dd'));
-                    }
-                  }}
-                >
-                  <SelectTrigger className="h-7 sm:h-8 rounded-xl bg-slate-50 border-slate-200 font-bold uppercase text-[9px] sm:text-[10px] tracking-wider px-2 sm:px-2.5 w-auto">
-                    <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 text-red-600 shrink-0" />
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="rounded-xl shadow-lg border-slate-100">
-                    <SelectItem value="CYCLE" className="font-bold text-xs uppercase">
-                      Ciclo Contable (10 al 10)
-                    </SelectItem>
-                    <SelectItem value="TODAY" className="font-bold text-xs uppercase">
-                      Hoy (Corte 00:00 hs)
-                    </SelectItem>
-                    <SelectItem value="LAST_7_DAYS" className="font-bold text-xs uppercase">
-                      Últimos 7 Días
-                    </SelectItem>
-                    <SelectItem value="CUSTOM" className="font-bold text-xs uppercase">
-                      Día Específico
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-
-                {periodFilter === 'CUSTOM' && (
-                  <input 
-                    type="date" 
-                    value={customDate || ''}
-                    onChange={(e) => setCustomDate(e.target.value)}
-                    className="h-7 sm:h-8 text-[9px] sm:text-[10px] font-bold uppercase text-slate-700 bg-slate-50 border border-slate-200 rounded-xl px-2 outline-none focus:border-red-400"
-                  />
-                )}
-
-                <Button
-                  size="sm"
-                  onClick={handleExportBranchExcel}
-                  className="h-7 sm:h-8 rounded-xl font-bold uppercase text-[9px] sm:text-[10px] tracking-wider px-2.5 sm:px-3 bg-red-600 hover:bg-red-700 text-white shadow-xs flex items-center gap-1 select-none transition-transform active:scale-95"
-                  title="Exportar informe detallado en Excel"
-                >
-                  <FileDown className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                  <span>
-                    {selectedBranchFilter === 'ALL' 
-                      ? "Exportar Todo" 
-                      : `Exportar ${branchBreakdown.find((b: any) => b.id === selectedBranchFilter)?.name || 'Sucursal'}`}
-                  </span>
-                </Button>
-              </div>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             {/* Tarjetas de Sucursal (SOLO INFORMACIÓN DEL DÍA) */}
@@ -1530,35 +1245,30 @@ const inventoryQuery = useMemoFirebase(() => {
                   key={b.id}
                   className="p-4 sm:p-5 rounded-3xl border border-slate-200/90 bg-white shadow-xs space-y-4 select-none"
                 >
-                  {/* Encabezado: Nombre y Estado en Vivo */}
+                  {/* Encabezado: Nombre y Estado */}
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-2xl bg-red-50 flex items-center justify-center text-red-600 shrink-0">
-                        <Store className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="font-black text-slate-900 uppercase text-sm sm:text-base tracking-tight leading-tight">
-                          {b.name}
-                        </h3>
-                        <span className="text-[10px] font-bold text-slate-400 uppercase">
-                          Hoy • {format(new Date(), 'dd/MM/yyyy')}
-                        </span>
-                      </div>
+                    <div>
+                      <h3 className="font-black text-slate-900 uppercase text-sm sm:text-base tracking-tight leading-tight">
+                        {b.name}
+                      </h3>
+                      <span className="text-[10px] font-bold text-slate-400 uppercase">
+                        Hoy • {format(new Date(), 'dd/MM/yyyy')}
+                      </span>
                     </div>
 
                     {b.activeShift ? (
-                      <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-500 text-white shadow-xs flex items-center gap-1.5 animate-pulse">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white" /> Caja Abierta
+                      <span className="text-xs font-black uppercase text-red-600 tracking-wider">
+                        CAJA ABIERTA
                       </span>
                     ) : (
-                      <span className="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full border border-slate-200 text-slate-400 bg-slate-50">
-                        Cerrada
+                      <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">
+                        CERRADA
                       </span>
                     )}
                   </div>
 
                   {/* Acumulado del Día */}
-                  <div className="bg-red-50/50 border border-red-100 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
+                  <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
                     <div>
                       <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block">
                         Acumulado del Día (Hoy)
@@ -1568,7 +1278,7 @@ const inventoryQuery = useMemoFirebase(() => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-xl bg-white text-slate-700 border border-red-100 shadow-2xs">
+                      <span className="text-xs font-bold uppercase text-slate-500">
                         {b.todaySalesCount} {b.todaySalesCount === 1 ? 'venta' : 'ventas'}
                       </span>
                     </div>
@@ -1581,30 +1291,21 @@ const inventoryQuery = useMemoFirebase(() => {
                     </span>
                     <div className="grid grid-cols-3 gap-2">
                       <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2 sm:p-2.5 text-center">
-                        <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
-                          <Banknote className="w-3.5 h-3.5 text-emerald-600" />
-                          <span className="text-[8px] font-black uppercase tracking-wider">Efectivo</span>
-                        </div>
+                        <span className="text-[8px] font-black uppercase tracking-wider text-slate-500 block mb-0.5">Efectivo</span>
                         <div className="text-xs sm:text-sm font-black text-slate-900 truncate">
                           ${b.todayCash.toLocaleString('es-AR')}
                         </div>
                       </div>
 
                       <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2 sm:p-2.5 text-center">
-                        <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
-                          <ArrowRightLeft className="w-3.5 h-3.5 text-blue-600" />
-                          <span className="text-[8px] font-black uppercase tracking-wider">Transf.</span>
-                        </div>
+                        <span className="text-[8px] font-black uppercase tracking-wider text-slate-500 block mb-0.5">Transf.</span>
                         <div className="text-xs sm:text-sm font-black text-slate-900 truncate">
                           ${b.todayTransfer.toLocaleString('es-AR')}
                         </div>
                       </div>
 
                       <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2 sm:p-2.5 text-center">
-                        <div className="flex items-center justify-center gap-1 text-slate-400 mb-0.5">
-                          <QrCode className="w-3.5 h-3.5 text-violet-600" />
-                          <span className="text-[8px] font-black uppercase tracking-wider">QR / Apps</span>
-                        </div>
+                        <span className="text-[8px] font-black uppercase tracking-wider text-slate-500 block mb-0.5">QR / Apps</span>
                         <div className="text-xs sm:text-sm font-black text-slate-900 truncate">
                           ${b.todayQr.toLocaleString('es-AR')}
                         </div>
@@ -1612,11 +1313,11 @@ const inventoryQuery = useMemoFirebase(() => {
                     </div>
 
                     {b.todayFiado > 0 && (
-                      <div className="mt-2 p-2 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-between text-xs">
-                        <span className="text-[9px] font-black uppercase text-amber-900 flex items-center gap-1">
-                          <Receipt className="w-3.5 h-3.5 text-amber-600" /> Fiado de Hoy:
+                      <div className="mt-2 p-2 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs">
+                        <span className="text-[9px] font-black uppercase text-slate-600">
+                          Fiado de Hoy:
                         </span>
-                        <span className="font-black text-amber-950">
+                        <span className="font-black text-slate-900">
                           ${b.todayFiado.toLocaleString('es-AR')}
                         </span>
                       </div>
@@ -1626,8 +1327,8 @@ const inventoryQuery = useMemoFirebase(() => {
                   {/* Turnos y Vendedores del Día (Quién vendió en un turno y en el otro) */}
                   <div className="pt-2 border-t border-slate-100 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-red-600" /> Turnos y Vendedores (Hoy)
+                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">
+                        Turnos y Vendedores (Hoy)
                       </span>
                       <span className="text-[9px] font-bold text-slate-400">
                         {b.todayShifts.length > 0 
@@ -1643,55 +1344,44 @@ const inventoryQuery = useMemoFirebase(() => {
                         {b.todayShifts.map((shift: any, idx: number) => (
                           <div key={shift.id || idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-2.5 sm:p-3 space-y-1.5">
                             <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <div className="w-7 h-7 rounded-xl bg-red-100 text-red-600 font-black text-xs flex items-center justify-center shrink-0">
-                                  {shift.cashierName.charAt(0).toUpperCase()}
-                                </div>
-                                <div>
-                                  <span className="text-xs font-black uppercase text-slate-900 block leading-tight">
-                                    {shift.cashierName}
-                                  </span>
-                                  <span className="text-[9px] font-bold text-slate-400">
-                                    {shift.timeRange}
-                                  </span>
-                                </div>
+                              <div>
+                                <span className="text-xs font-black uppercase text-slate-900 block leading-tight">
+                                  {shift.cashierName}
+                                </span>
+                                <span className="text-[9px] font-bold text-slate-400">
+                                  {shift.timeRange}
+                                </span>
                               </div>
 
                               <div className="text-right">
                                 <span className="text-xs sm:text-sm font-black text-red-600 block">
                                   ${shift.total.toLocaleString('es-AR')}
                                 </span>
-                                <span className={cn(
-                                  "text-[8px] font-black uppercase px-1.5 py-0.2 rounded",
-                                  shift.status === 'open' ? "bg-emerald-100 text-emerald-700" : "bg-slate-200 text-slate-600"
-                                )}>
-                                  {shift.statusLabel}
+                                <span className={shift.status === 'open' ? "text-[9px] font-black uppercase text-red-600" : "text-[9px] font-bold uppercase text-slate-400"}>
+                                  {shift.status === 'open' ? 'En Curso' : 'Cerrado'}
                                 </span>
                               </div>
                             </div>
 
-                            <div className="flex items-center justify-between pt-1 border-t border-slate-200/50 text-[9px] text-slate-500 font-bold flex-wrap gap-1">
+                            <div className="flex items-center justify-between pt-1 border-t border-slate-200/50 text-[9px] text-slate-600 font-bold flex-wrap gap-1">
                               <div className="flex items-center gap-2">
-                                <span>Efvo: <strong className="text-slate-800">${shift.cash.toLocaleString('es-AR')}</strong></span>
+                                <span>Efvo: <strong className="text-slate-900">${shift.cash.toLocaleString('es-AR')}</strong></span>
                                 <span>•</span>
-                                <span>Transf: <strong className="text-slate-800">${shift.transfer.toLocaleString('es-AR')}</strong></span>
+                                <span>Transf: <strong className="text-slate-900">${shift.transfer.toLocaleString('es-AR')}</strong></span>
                                 {shift.qr > 0 && (
                                   <>
                                     <span>•</span>
-                                    <span>QR: <strong className="text-slate-800">${shift.qr.toLocaleString('es-AR')}</strong></span>
+                                    <span>QR: <strong className="text-slate-900">${shift.qr.toLocaleString('es-AR')}</strong></span>
                                   </>
                                 )}
                               </div>
                               {shift.status === 'closed' && (
-                                <Button
-                                  size="sm"
-                                  variant="ghost"
+                                <button
                                   onClick={() => handleDownloadShiftPdf(shift.rawShift)}
-                                  className="h-5 px-1.5 text-[8px] font-black uppercase text-slate-600 hover:text-red-600 hover:bg-white rounded transition-colors"
-                                  title="Descargar comprobante de cierre en PDF"
+                                  className="text-[9px] font-black uppercase text-red-600 hover:text-red-700 cursor-pointer"
                                 >
-                                  <FileDown className="w-3 h-3 mr-0.5" /> PDF
-                                </Button>
+                                  Descargar PDF
+                                </button>
                               )}
                             </div>
                           </div>
@@ -1702,18 +1392,13 @@ const inventoryQuery = useMemoFirebase(() => {
                         {b.todaySellers.map((seller: any, idx: number) => (
                           <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-2.5 sm:p-3 space-y-1.5">
                             <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <div className="w-7 h-7 rounded-xl bg-red-100 text-red-600 font-black text-xs flex items-center justify-center shrink-0">
-                                  {seller.cashierName.charAt(0).toUpperCase()}
-                                </div>
-                                <div>
-                                  <span className="text-xs font-black uppercase text-slate-900 block leading-tight">
-                                    {seller.cashierName}
-                                  </span>
-                                  <span className="text-[9px] font-bold text-slate-400">
-                                    {seller.count} {seller.count === 1 ? 'venta hoy' : 'ventas hoy'}
-                                  </span>
-                                </div>
+                              <div>
+                                <span className="text-xs font-black uppercase text-slate-900 block leading-tight">
+                                  {seller.cashierName}
+                                </span>
+                                <span className="text-[9px] font-bold text-slate-400">
+                                  {seller.count} {seller.count === 1 ? 'venta hoy' : 'ventas hoy'}
+                                </span>
                               </div>
 
                               <div className="text-right">
@@ -1726,14 +1411,14 @@ const inventoryQuery = useMemoFirebase(() => {
                               </div>
                             </div>
 
-                            <div className="flex items-center gap-2 pt-1 border-t border-slate-200/50 text-[9px] text-slate-500 font-bold">
-                              <span>Efvo: <strong className="text-slate-800">${seller.cash.toLocaleString('es-AR')}</strong></span>
+                            <div className="flex items-center gap-2 pt-1 border-t border-slate-200/50 text-[9px] text-slate-600 font-bold">
+                              <span>Efvo: <strong className="text-slate-900">${seller.cash.toLocaleString('es-AR')}</strong></span>
                               <span>•</span>
-                              <span>Transf: <strong className="text-slate-800">${seller.transfer.toLocaleString('es-AR')}</strong></span>
+                              <span>Transf: <strong className="text-slate-900">${seller.transfer.toLocaleString('es-AR')}</strong></span>
                               {seller.qr > 0 && (
                                 <>
                                   <span>•</span>
-                                  <span>QR: <strong className="text-slate-800">${seller.qr.toLocaleString('es-AR')}</strong></span>
+                                  <span>QR: <strong className="text-slate-900">${seller.qr.toLocaleString('es-AR')}</strong></span>
                                 </>
                               )}
                             </div>
@@ -1755,176 +1440,152 @@ const inventoryQuery = useMemoFirebase(() => {
 
       {/* ── ÚLTIMAS VENTAS Y REPOSICIÓN ── */}
       <div className="grid grid-cols-1 gap-6">
-        {/* LISTADO DE ÚLTIMAS VENTAS (DISEÑO TIPO TICKET ERGONÓMICO) */}
-        <Card className="rounded-[2.5rem] border-slate-100 shadow-sm p-4 sm:p-6 bg-white">
-          <CardHeader className="px-0 pt-0 pb-2">
-            <CardTitle className="text-base sm:text-lg font-black uppercase tracking-tight text-slate-900 flex items-center gap-2">
-              <Receipt className="w-5 h-5 text-red-600" /> Últimas Operaciones Registradas
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="px-0 pb-0 mt-2 space-y-4">
-            {(() => {
-              if (!filteredSales || filteredSales.length === 0) {
-                return (
-                  <div className="py-12 text-center font-bold text-slate-400 text-xs uppercase tracking-widest bg-slate-50 rounded-2xl border border-slate-100">
-                    {selectedDateFilter ? 'Sin operaciones para el día seleccionado.' : 'Sin operaciones registradas en el período.'}
-                  </div>
-                );
-              }
+        {/* LISTADO DE ÚLTIMAS VENTAS (A ANCHO COMPLETO Y CON TEXTO LEGIBLE) */}
+        <div className="w-full bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-4">
+          <div className="pb-1 border-b border-slate-100">
+            <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
+              Últimas Operaciones Registradas
+            </h2>
+          </div>
 
-              // Group by date
-              const grouped: Record<string, any[]> = {};
-              filteredSales.forEach((sale: any) => {
-                const d = sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now());
-                const dateKey = format(d, 'yyyy-MM-dd');
-                if (!grouped[dateKey]) grouped[dateKey] = [];
-                grouped[dateKey].push({ sale, date: d });
-              });
-
-              // Sort dates descending
-              const sortedDates = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
-
+          {(() => {
+            if (!filteredSales || filteredSales.length === 0) {
               return (
-                <div className="space-y-4">
-                  {sortedDates.map(dateKey => {
-                    const daySales = grouped[dateKey];
-                    const displayDate = new Intl.DateTimeFormat('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(dateKey + 'T12:00:00'));
-
-                    return (
-                      <div key={dateKey} className="space-y-2.5">
-                        {/* Divisor de Fecha */}
-                        <div className="flex items-center gap-2 pt-2 border-b border-slate-100 pb-1.5">
-                          <Calendar className="w-3.5 h-3.5 text-red-600" />
-                          <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-500">
-                            {displayDate}
-                          </span>
-                          <span className="text-[9px] font-bold text-slate-400 ml-auto">
-                            {daySales.length} {daySales.length === 1 ? 'operación' : 'operaciones'}
-                          </span>
-                        </div>
-
-                        {/* Listado de Tickets en 2 Líneas */}
-                        <div className="space-y-2">
-                          {daySales.map(({ sale, date: saleDate }: any) => {
-                            const isCreditSale = sale.type === 'credit_sale' || sale.paymentMethod === 'credit';
-                            const isRefunded = sale.status === 'refunded';
-                            const isPartiallyRefunded = sale.status === 'partially_refunded';
-                            const items = Array.isArray(sale.items) && sale.items.length > 0 ? sale.items : [null];
-
-                            return (
-                              <div 
-                                key={sale.id}
-                                className={cn(
-                                  "p-3 sm:p-4 rounded-2xl border transition-all space-y-2 select-none",
-                                  isRefunded
-                                    ? "bg-rose-50/50 border-rose-200 opacity-70"
-                                    : isPartiallyRefunded
-                                    ? "bg-amber-50/40 border-amber-300"
-                                    : isCreditSale
-                                    ? "bg-amber-50/70 border-amber-300 ring-1 ring-amber-400/40"
-                                    : "bg-white border-slate-200/90 hover:border-slate-300 shadow-2xs"
-                                )}
-                              >
-                                {/* LÍNEA 1: DÍA / HORA / SUCURSAL / VENDEDOR / MÉTODO DE PAGO Y TOTAL */}
-                                <div className="flex items-center justify-between gap-2 flex-wrap">
-                                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-[11px] sm:text-xs">
-                                    <span className="font-black text-slate-900 uppercase">
-                                      {format(saleDate, 'HH:mm')} hs
-                                    </span>
-                                    <span className="text-slate-300">•</span>
-                                    <span className="font-bold text-slate-600 uppercase flex items-center gap-1">
-                                      <Store className="w-3 h-3 text-red-600 shrink-0" />
-                                      {getBranchName(sale.branchId)}
-                                    </span>
-                                    <span className="text-slate-300">•</span>
-                                    <span className="font-bold text-slate-700 uppercase flex items-center gap-1">
-                                      <Users className="w-3 h-3 text-slate-400 shrink-0" />
-                                      {sale.employeeName || (sale.source === 'online' ? 'Online' : 'Dueño')}
-                                    </span>
-                                  </div>
-
-                                  <div className="flex items-center gap-2 ml-auto">
-                                    {isRefunded ? (
-                                      <span className="text-[8px] font-black uppercase px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 border border-rose-300">
-                                        ↩️ Devuelto
-                                      </span>
-                                    ) : isPartiallyRefunded ? (
-                                      <span className="text-[8px] font-black uppercase px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
-                                        ↩️ Parcial
-                                      </span>
-                                    ) : isCreditSale ? (
-                                      <span className="text-[8px] font-black uppercase px-2 py-0.5 rounded-md bg-amber-400 text-amber-950 border border-amber-500 font-bold">
-                                        ⚡ Fiado {sale.customerName ? `(${sale.customerName})` : ''}
-                                      </span>
-                                    ) : (
-                                      <span className="text-[8px] font-black uppercase px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 border border-slate-200">
-                                        {sale.paymentMethod === 'cash' ? 'Efectivo' : sale.paymentMethod === 'transfer' ? 'Transf.' : sale.paymentMethod === 'qr' ? 'QR' : sale.paymentMethod === 'mixed' ? 'Mixto' : 'Efectivo'}
-                                      </span>
-                                    )}
-                                    <span className={cn("text-sm sm:text-base font-black tracking-tight", isRefunded ? "text-slate-400 line-through" : isCreditSale ? "text-amber-950 font-black" : "text-slate-900")}>
-                                      ${(sale.totalAmount || sale.amount || 0).toLocaleString('es-AR')}
-                                    </span>
-                                  </div>
-                                </div>
-
-                                {/* LÍNEA 2: DETALLE DEL TICKET (CANTIDAD / CÓDIGO / PRODUCTO / IMPORTE) */}
-                                <div className="bg-slate-50 rounded-xl p-2 sm:p-2.5 border border-slate-100 space-y-1.5">
-                                  {items.map((i: any, idx: number) => {
-                                    const code = i?.code || i?.barcode || inventory?.find((p: any) => p.id === i?.productId)?.code || inventory?.find((p: any) => p.id === i?.productId)?.barcode || null;
-                                    const productName = i?.name || sale.concept || 'Venta General';
-                                    const qty = i?.qty || i?.quantity || 1;
-                                    const unitPrice = i?.price || i?.salePrice || 0;
-                                    const itemTotal = unitPrice * qty;
-
-                                    return (
-                                      <div key={idx} className="flex items-center justify-between text-xs gap-2">
-                                        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-1">
-                                          <span className="font-black text-slate-900 bg-white px-1.5 py-0.2 rounded border border-slate-200 text-[10px] shrink-0">
-                                            {qty}x
-                                          </span>
-                                          {code && (
-                                            <span className="font-mono text-[9px] text-slate-400 shrink-0">
-                                              [{code}]
-                                            </span>
-                                          )}
-                                          <span className="font-bold text-slate-800 uppercase truncate">
-                                            {productName}
-                                          </span>
-                                        </div>
-
-                                        <div className="text-right shrink-0">
-                                          <span className="font-black text-slate-900 text-xs">
-                                            ${(itemTotal > 0 ? itemTotal : (sale.totalAmount || sale.amount || 0)).toLocaleString('es-AR')}
-                                          </span>
-                                          {qty > 1 && unitPrice > 0 && (
-                                            <span className="text-[9px] font-bold text-slate-400 block">
-                                              (${unitPrice.toLocaleString('es-AR')} c/u)
-                                            </span>
-                                          )}
-                                        </div>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div className="py-8 text-center font-bold text-slate-400 text-xs uppercase tracking-widest bg-slate-50 rounded-2xl border border-slate-100">
+                  {selectedDateFilter ? 'Sin operaciones para el día seleccionado.' : 'Sin operaciones registradas en el período.'}
                 </div>
               );
-            })()}
-            <div className="mt-4 flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
-              <span className="text-xs font-black text-slate-500 uppercase tracking-widest flex items-center gap-2"><Package className="w-4 h-4" /> Volumen Despachado</span>
-              <span className="text-lg font-black text-slate-900">{stats.unitsSold} <span className="text-xs font-bold text-slate-500 uppercase">Unidades Totales</span></span>
-            </div>
-            <Button variant="outline" className="mt-4 w-full h-12 rounded-2xl font-black uppercase tracking-widest text-xs border-slate-200" asChild>
-              <Link href="/redeconomix/dashboard-negocio/control-ventas">Ir a Caja / Punto de Venta</Link>
-            </Button>
-          </CardContent>
-        </Card>
+            }
+
+            // Group by date
+            const grouped: Record<string, any[]> = {};
+            filteredSales.forEach((sale: any) => {
+              const d = sale.soldAt?.toDate ? sale.soldAt.toDate() : new Date(sale.soldAt || sale.date || Date.now());
+              const dateKey = format(d, 'yyyy-MM-dd');
+              if (!grouped[dateKey]) grouped[dateKey] = [];
+              grouped[dateKey].push({ sale, date: d });
+            });
+
+            // Sort dates descending
+            const sortedDates = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
+
+            return (
+              <div className="space-y-4">
+                {sortedDates.map(dateKey => {
+                  const daySales = grouped[dateKey];
+                  const displayDate = new Intl.DateTimeFormat('es-AR', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(dateKey + 'T12:00:00'));
+
+                  return (
+                    <div key={dateKey} className="space-y-2">
+                      {/* Divisor de Fecha */}
+                      <div className="flex items-center justify-between pb-1.5 border-b border-slate-100 text-xs font-black uppercase tracking-wider text-slate-500">
+                        <span>{displayDate}</span>
+                        <span className="text-[10px] font-bold text-slate-400">
+                          {daySales.length} {daySales.length === 1 ? 'operación' : 'operaciones'}
+                        </span>
+                      </div>
+
+                      {/* Listado de Tickets en 2 Líneas ocupando todo el ancho */}
+                      <div className="space-y-2.5">
+                        {daySales.map(({ sale, date: saleDate }: any) => {
+                          const isCreditSale = sale.type === 'credit_sale' || sale.paymentMethod === 'credit';
+                          const isRefunded = sale.status === 'refunded';
+                          const items = Array.isArray(sale.items) && sale.items.length > 0 ? sale.items : [null];
+
+                          const methodText = isRefunded
+                            ? 'DEVUELTO'
+                            : isCreditSale
+                            ? `FIADO ${sale.customerName ? `(${sale.customerName})` : ''}`
+                            : sale.paymentMethod === 'transfer'
+                            ? 'TRANSF.'
+                            : sale.paymentMethod === 'qr'
+                            ? 'QR'
+                            : sale.paymentMethod === 'mixed'
+                            ? 'MIXTO'
+                            : 'EFECTIVO';
+
+                          return (
+                            <div 
+                              key={sale.id}
+                              className={cn(
+                                "w-full p-3 sm:p-4 rounded-2xl border transition-all space-y-2 select-none",
+                                isRefunded
+                                  ? "bg-slate-50/70 border-slate-200 opacity-60"
+                                  : "bg-white border-slate-200/90 shadow-2xs hover:border-slate-300"
+                              )}
+                            >
+                              {/* LÍNEA 1: HORA • SUCURSAL • VENDEDOR | MÉTODO Y TOTAL */}
+                              <div className="flex items-center justify-between gap-2 flex-wrap">
+                                <div className="text-xs sm:text-sm font-black text-slate-900 uppercase">
+                                  {format(saleDate, 'HH:mm')} hs • {getBranchName(sale.branchId)} • {sale.employeeName || 'Dueño'}
+                                </div>
+
+                                <div className="flex items-center gap-2 ml-auto">
+                                  <span className="text-[10px] font-black uppercase text-slate-500">
+                                    {methodText}
+                                  </span>
+                                  <span className={cn(
+                                    "text-sm sm:text-base font-black tracking-tight",
+                                    isRefunded ? "text-slate-400 line-through" : "text-red-600"
+                                  )}>
+                                    ${(sale.totalAmount || sale.amount || 0).toLocaleString('es-AR')}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* LÍNEA 2: DETALLE DEL TICKET (CANTIDAD / CÓDIGO / PRODUCTO / IMPORTE) */}
+                              <div className="w-full bg-slate-50 rounded-xl p-2.5 sm:p-3 border border-slate-100 space-y-1.5">
+                                {items.map((i: any, idx: number) => {
+                                  const code = i?.code || i?.barcode || inventory?.find((p: any) => p.id === i?.productId)?.code || inventory?.find((p: any) => p.id === i?.productId)?.barcode || null;
+                                  const productName = i?.name || sale.concept || 'Venta General';
+                                  const qty = i?.qty || i?.quantity || 1;
+                                  const unitPrice = i?.price || i?.salePrice || 0;
+                                  const itemTotal = unitPrice * qty;
+
+                                  return (
+                                    <div key={idx} className="flex items-center justify-between text-xs sm:text-sm gap-2">
+                                      <div className="flex items-center gap-2 min-w-0 flex-1">
+                                        <span className="font-black text-slate-900 shrink-0">
+                                          {qty}x
+                                        </span>
+                                        <span className="font-bold text-slate-800 uppercase truncate">
+                                          {productName}
+                                        </span>
+                                        {code && (
+                                          <span className="font-mono text-[10px] text-slate-400 shrink-0 hidden sm:inline">
+                                            ({code})
+                                          </span>
+                                        )}
+                                      </div>
+
+                                      <div className="text-right shrink-0">
+                                        <span className="font-black text-slate-900 text-xs sm:text-sm">
+                                          ${(itemTotal > 0 ? itemTotal : (sale.totalAmount || sale.amount || 0)).toLocaleString('es-AR')}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
+
+          <div className="mt-4 flex items-center justify-between p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
+            <span className="text-xs font-black text-slate-500 uppercase tracking-wider">Volumen Despachado</span>
+            <span className="text-base sm:text-lg font-black text-slate-900">{stats.unitsSold} <span className="text-xs font-bold text-slate-500 uppercase">Unidades</span></span>
+          </div>
+          <Button variant="outline" className="mt-2 w-full h-11 rounded-2xl font-black uppercase tracking-wider text-xs border-slate-200" asChild>
+            <Link href="/redeconomix/dashboard-negocio/control-ventas">Ir a Caja / Punto de Venta</Link>
+          </Button>
+        </div>
         
         {/* TABLA REPOSICIÓN E INVENTARIO */}
         <Card className="rounded-[2.5rem] border-slate-100 shadow-sm p-6 bg-white">
