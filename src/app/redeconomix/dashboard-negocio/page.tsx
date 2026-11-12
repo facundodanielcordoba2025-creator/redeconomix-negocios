@@ -684,7 +684,6 @@ export default function BusinessDashboardPage() {
                                             <DashboardNavButton title="Compras" icon={ShoppingCart} href="/redeconomix/dashboard-negocio/compras" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Contabilidad" icon={FileText} href="/redeconomix/dashboard-negocio/contabilidad" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Proveedores" icon={Users} href="/redeconomix/dashboard-negocio/proveedores" color="bg-red-50 text-red-600" />
-                                            <DashboardNavButton title="Proyectos Expansión" icon={Briefcase} href="/redeconomix/dashboard-negocio/proyectos" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Registrar Gasto" icon={Wallet} onClick={() => setIsExpenseModalOpen(true)} color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Cuentas Corrientes" icon={BookOpen} href="/redeconomix/dashboard-negocio/fiado" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Recursos Humanos" icon={ShieldCheck} href="/redeconomix/dashboard-negocio/rrhh" color="bg-red-50 text-red-600" />

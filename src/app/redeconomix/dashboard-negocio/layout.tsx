@@ -37,7 +37,6 @@ const navLinks = [
     { href: "/redeconomix/dashboard-negocio/proveedores", label: "Proveedores", icon: Users },
     { href: "/redeconomix/dashboard-negocio/contabilidad", label: "Contabilidad", icon: DollarSign },
     { href: "/redeconomix/dashboard-negocio/rrhh", label: "Recursos Humanos", icon: ShieldCheck },
-    { href: "/redeconomix/dashboard-negocio/proyectos", label: "Proyectos de Expansión", icon: Store },
 ];
 
 export default function RetailerDashboardLayout({ children }: { children: React.ReactNode }) {
