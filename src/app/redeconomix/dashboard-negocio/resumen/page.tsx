@@ -50,7 +50,8 @@ export default function RetailerDashboardPage() {
   const [customDate, setCustomDate] = useState<string>('');
   const [selectedDateFilter, setSelectedDateFilter] = useState<string | null>(null);
   const [selectedBranchFilter, setSelectedBranchFilter] = useState<string>('ALL');
-  const [selectedCashierFilter, setSelectedCashierFilter] = useState<string>('ALL');
+  const [closureEmployeeFilter, setClosureEmployeeFilter] = useState<string>('');
+  const [closureDateFilter, setClosureDateFilter] = useState<string>('');
 
   // Dates
   const todayStart = useMemo(() => startOfDay(new Date()), []);
@@ -164,19 +165,19 @@ export default function RetailerDashboardPage() {
       collection(firestore, 'retailer_shifts'),
       where('retailerId', '==', effectiveRetailerId),
       where('status', '==', 'closed'),
-      limit(50)
+      limit(150)
     );
   }, [firestore, user, effectiveRetailerId]);
 
   const { data: rawShiftsData } = useCollection(shiftsQuery);
 
   const rawShifts = useMemo(() => {
-    if (!rawShiftsData) return null;
+    if (!rawShiftsData) return [];
     return [...rawShiftsData].sort((a: any, b: any) => {
-      const timeA = a.endTime?.seconds || (a.endTime ? new Date(a.endTime).getTime() / 1000 : 0);
-      const timeB = b.endTime?.seconds || (b.endTime ? new Date(b.endTime).getTime() / 1000 : 0);
+      const timeA = a.endTime?.seconds ? a.endTime.seconds * 1000 : (a.endTime ? new Date(a.endTime).getTime() : 0);
+      const timeB = b.endTime?.seconds ? b.endTime.seconds * 1000 : (b.endTime ? new Date(b.endTime).getTime() : 0);
       return timeB - timeA;
-    }).slice(0, 20);
+    });
   }, [rawShiftsData]);
 
   const activeShiftsQuery = useMemoFirebase(() => {
@@ -213,40 +214,59 @@ const inventoryQuery = useMemoFirebase(() => {
     });
   }, [activeShifts, selectedBranchFilter, branches]);
 
-  const filteredClosedShifts = useMemo(() => {
-    if (!rawShifts) return [];
-    if (selectedBranchFilter === 'ALL') return rawShifts;
-    const centralBranch = branches?.find((b: any) => b.isCentral);
-    const isCentralFilter = selectedBranchFilter === 'central' || (centralBranch && selectedBranchFilter === centralBranch.id);
-    return rawShifts.filter((s: any) => {
-      if (isCentralFilter) return !s.branchId || s.branchId === 'central' || (centralBranch && s.branchId === centralBranch.id);
-      return s.branchId === selectedBranchFilter;
-    });
-  }, [rawShifts, selectedBranchFilter, branches]);
-
   // Lista de cajeros/empleados únicos para el menú desplegable
   const uniqueCashiers = useMemo(() => {
-    if (!filteredClosedShifts) return [];
     const map = new Map<string, { id: string; name: string }>();
-    filteredClosedShifts.forEach((shift: any) => {
-      const key = shift.employeeId || shift.cashierName || 'admin';
-      const name = shift.cashierName || (key === 'admin' ? 'Dueño (Admin)' : 'Cajero');
-      if (!map.has(key)) {
-        map.set(key, { id: key, name });
+    (rawShifts || []).forEach((shift: any) => {
+      const name = (shift.cashierName || '').trim();
+      const id = (shift.cashierName || shift.employeeId || 'admin').trim();
+      if (name && !map.has(name.toLowerCase())) {
+        map.set(name.toLowerCase(), { id: name, name });
       }
     });
-    return Array.from(map.values());
-  }, [filteredClosedShifts]);
-
-  // Cierres filtrados según el empleado seleccionado en el menú desplegable
-  const displayedClosedShifts = useMemo(() => {
-    if (!filteredClosedShifts) return [];
-    if (selectedCashierFilter === 'ALL') return filteredClosedShifts;
-    return filteredClosedShifts.filter((shift: any) => {
-      const key = shift.employeeId || shift.cashierName || 'admin';
-      return key === selectedCashierFilter || shift.cashierName === selectedCashierFilter;
+    (rawOpsUnfiltered || []).forEach((op: any) => {
+      const name = (op.employeeName || op.cashierName || '').trim();
+      if (name && !map.has(name.toLowerCase())) {
+        map.set(name.toLowerCase(), { id: name, name });
+      }
     });
-  }, [filteredClosedShifts, selectedCashierFilter]);
+    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+  }, [rawShifts, rawOpsUnfiltered]);
+
+  // Cierres de caja consultados por llamado (Empleado en el mes o Día específico)
+  const queriedClosedShifts = useMemo(() => {
+    if (!rawShifts) return [];
+    if (!closureEmployeeFilter && !closureDateFilter) {
+      return []; // Por defecto no muestra nada (función por llamado a demanda)
+    }
+
+    let list = [...rawShifts];
+
+    // Si filtró por empleado: traer todas las operaciones / turnos de ese empleado en el mes / ciclo
+    if (closureEmployeeFilter) {
+      const target = closureEmployeeFilter.toLowerCase().trim();
+      list = list.filter((shift: any) => {
+        const empName = (shift.cashierName || '').toLowerCase().trim();
+        const empId = (shift.employeeId || '').toLowerCase().trim();
+        return empName === target || empId === target;
+      });
+    }
+
+    // Si filtró por día puntual: traer todos los turnos que se hicieron ese día
+    if (closureDateFilter) {
+      list = list.filter((shift: any) => {
+        const startD = shift.startTime ? new Date(shift.startTime) : null;
+        const endD = shift.endTime ? new Date(shift.endTime) : null;
+        const targetKey = closureDateFilter; // 'yyyy-MM-dd'
+
+        const startMatch = startD && format(startD, 'yyyy-MM-dd') === targetKey;
+        const endMatch = endD && format(endD, 'yyyy-MM-dd') === targetKey;
+        return startMatch || endMatch;
+      });
+    }
+
+    return list;
+  }, [rawShifts, closureEmployeeFilter, closureDateFilter]);
 
   // Helper to obtain friendly branch name
   const getBranchName = (branchId?: string) => {
@@ -750,57 +770,196 @@ const inventoryQuery = useMemoFirebase(() => {
   
 
   const handleDownloadShiftPdf = async (shift: any) => {
-    if (!shift.report) { alert("Este turno antiguo no tiene reporte guardado."); return; }
     try {
       const { jsPDF } = await import('jspdf');
       const doc = new jsPDF();
+      
+      const shiftDate = shift.endTime ? new Date(shift.endTime) : (shift.startTime ? new Date(shift.startTime) : new Date());
+      const cashierName = shift.cashierName || shift.employeeName || 'Cajero';
+      const branchName = getBranchName(shift.branchId);
+
+      // Reconstruir reporte si falta para que nunca falle en turnos antiguos
+      const report = shift.report || {};
+      const cash = Number(report.cash ?? shift.actualFinalCash ?? 0);
+      const transfer = Number(report.transfer ?? 0);
+      const qr = Number(report.qr ?? 0);
+      const credit = Number(report.credit ?? 0);
+      const expenses = Number(report.expenses ?? 0);
+      const withdrawals = Number(report.withdrawals ?? 0);
+      const initialCash = Number(shift.initialCash ?? 0);
+      const totalSold = Number(report.total ?? (cash + transfer + qr + credit));
+      const expectedCash = Number(report.expectedCash ?? (initialCash + cash - expenses - withdrawals));
+      const declaredActual = Number(shift.actualFinalCash ?? cash);
+      const declaredDiff = declaredActual - expectedCash;
+
       let y = 20;
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(16);
-      doc.text("RESUMEN DE TURNO - REDECONOMIX", 105, y, { align: "center" });
-      y += 15;
+
+      // Header Banner RedEconomiX
+      doc.setFillColor(192, 0, 0); // #C00000
+      doc.rect(15, 12, 180, 18, 'F');
       
-      doc.setFontSize(12);
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.text("COMPROBANTE DE CIERRE DE CAJA", 105, 21, { align: "center" });
+      doc.setFontSize(9);
+      doc.text("REDECONOMIX NEGOCIO • CONTROL OFICIAL", 105, 27, { align: "center" });
+
+      y = 38;
+      doc.setTextColor(30, 41, 59);
+
+      // Info General
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      doc.text("INFORMACIÓN DEL TURNO", 15, y);
+      y += 5;
+      doc.setDrawColor(226, 232, 240);
+      doc.line(15, y, 195, y);
+      y += 7;
+
       doc.setFont("helvetica", "normal");
-      doc.text(`Cajero: ${shift.cashierName || 'No definido'}`, 20, y);
-      const shiftDate = shift.endTime ? new Date(shift.endTime) : new Date();
-      doc.text(`Cierre: ${format(shiftDate, 'dd/MM/yyyy HH:mm')}`, 120, y);
-      y += 15;
-      
+      doc.text(`Sucursal:`, 15, y);
       doc.setFont("helvetica", "bold");
-      doc.text("ARQUEO DE CAJA", 20, y);
-      y += 10;
+      doc.text(`${branchName}`, 55, y);
+
       doc.setFont("helvetica", "normal");
-      doc.text(`Caja Inicial: ${shift.initialCash || 0}`, 20, y); y += 8;
-      doc.text(`Ventas en Efectivo: ${shift.report.cash || 0}`, 20, y); y += 8;
-      doc.text(`Egresos / Proveedores: ${shift.report.expenses || 0}`, 20, y); y += 8;
-      doc.text(`Retiros de Caja: ${shift.report.withdrawals || 0}`, 20, y); y += 8;
+      doc.text(`Cajero / Vendedor:`, 115, y);
       doc.setFont("helvetica", "bold");
-      doc.text(`Total Esperado (Sistema): ${shift.report.expectedCash || 0}`, 20, y); y += 10;
-      
-      const declaredActual = shift.actualFinalCash || 0;
-      const declaredDiff = declaredActual - (shift.report.expectedCash || 0);
-      doc.text(`Efectivo Real (Declarado): ${declaredActual}`, 20, y); y += 8;
-      
-      doc.setTextColor(declaredDiff < 0 ? 255 : 0, declaredDiff < 0 ? 0 : (declaredDiff > 0 ? 150 : 0), 0);
-      doc.text(`DIFERENCIA: ${declaredDiff > 0 ? '+' : ''}${declaredDiff}`, 20, y);
-      doc.setTextColor(0, 0, 0);
-      y += 15;
+      doc.text(`${cashierName}`, 160, y);
+      y += 7;
+
+      doc.setFont("helvetica", "normal");
+      doc.text(`Apertura:`, 15, y);
+      doc.setFont("helvetica", "bold");
+      doc.text(`${shift.startTime ? format(new Date(shift.startTime), 'dd/MM/yyyy HH:mm') : '-'} hs`, 55, y);
+
+      doc.setFont("helvetica", "normal");
+      doc.text(`Cierre de Caja:`, 115, y);
+      doc.setFont("helvetica", "bold");
+      doc.text(`${format(shiftDate, 'dd/MM/yyyy HH:mm')} hs`, 160, y);
+      y += 12;
+
+      // Arqueo de Efectivo
+      doc.setFont("helvetica", "bold");
+      doc.text("ARQUEO DE EFECTIVO EN CAJA", 15, y);
+      y += 5;
+      doc.line(15, y, 195, y);
+      y += 7;
+
+      doc.setFont("helvetica", "normal");
+      doc.text(`(+) Caja Inicial de Cambio:`, 15, y);
+      doc.text(`$${initialCash.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 6;
+
+      doc.text(`(+) Ventas Cobradas en Efectivo:`, 15, y);
+      doc.text(`$${cash.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 6;
+
+      if (expenses > 0) {
+        doc.text(`(-) Pagos / Egresos de Caja:`, 15, y);
+        doc.text(`-$${expenses.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+        y += 6;
+      }
+
+      if (withdrawals > 0) {
+        doc.text(`(-) Retiros de Efectivo:`, 15, y);
+        doc.text(`-$${withdrawals.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+        y += 6;
+      }
 
       doc.setFont("helvetica", "bold");
-      doc.text("OTROS MEDIOS DE COBRO", 20, y);
-      y += 10;
-      doc.setFont("helvetica", "normal");
-      doc.text(`Transferencias: ${shift.report.transfer || 0}`, 20, y); y += 8;
-      doc.text(`QR / MercadoPago: ${shift.report.qr || 0}`, 20, y); y += 8;
-      doc.text(`Fiados (Cuentas Corrientes): ${shift.report.credit || 0}`, 20, y); y += 15;
+      doc.text(`(=) Total Efectivo Esperado por Sistema:`, 15, y);
+      doc.text(`$${expectedCash.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 7;
 
+      doc.text(`Efectivo Real Declarado en Cierre:`, 15, y);
+      doc.text(`$${declaredActual.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 7;
+
+      doc.text(`Diferencia de Caja:`, 15, y);
+      if (declaredDiff < 0) {
+        doc.setTextColor(220, 38, 38);
+        doc.text(`-$${Math.abs(declaredDiff).toLocaleString('es-AR')} (FALTANTE)`, 175, y, { align: "right" });
+      } else if (declaredDiff > 0) {
+        doc.setTextColor(16, 185, 129);
+        doc.text(`+$${declaredDiff.toLocaleString('es-AR')} (SOBRANTE)`, 175, y, { align: "right" });
+      } else {
+        doc.setTextColor(16, 185, 129);
+        doc.text(`$0 (EXACTO)`, 175, y, { align: "right" });
+      }
+      doc.setTextColor(30, 41, 59);
+      y += 12;
+
+      // Desglose por Medio de Cobro
       doc.setFont("helvetica", "bold");
-      doc.text(`TOTAL VENDIDO EN TURNO: ${shift.report.total || 0}`, 20, y);
-      
-      doc.save(`Cierre_${shift.cashierName || 'Caja'}_${format(shiftDate, 'dd-MM-yy_HHmm')}.pdf`);
+      doc.text("RECAUDACIÓN POR MEDIO DE COBRO", 15, y);
+      y += 5;
+      doc.line(15, y, 195, y);
+      y += 7;
+
+      doc.setFont("helvetica", "normal");
+      doc.text(`Efectivo:`, 15, y);
+      doc.text(`$${cash.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 6;
+
+      doc.text(`Transferencias Bancarias:`, 15, y);
+      doc.text(`$${transfer.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 6;
+
+      doc.text(`QR / MercadoPago / Apps:`, 15, y);
+      doc.text(`$${qr.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+      y += 6;
+
+      if (credit > 0) {
+        doc.text(`Fiados (Cuentas Corrientes):`, 15, y);
+        doc.text(`$${credit.toLocaleString('es-AR')}`, 175, y, { align: "right" });
+        y += 6;
+      }
+
+      y += 2;
+      doc.setFont("helvetica", "bold");
+      doc.setFillColor(241, 245, 249);
+      doc.rect(15, y, 180, 10, 'F');
+      doc.text(`TOTAL VENDIDO EN EL TURNO:`, 20, y + 7);
+      doc.setTextColor(192, 0, 0);
+      doc.text(`$${totalSold.toLocaleString('es-AR')}`, 190, y + 7, { align: "right" });
+      doc.setTextColor(30, 41, 59);
+
+      // Pie del comprobante
+      y += 24;
+      doc.setFontSize(8);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(148, 163, 184);
+      doc.text("Auditoría generada desde RedEconomiX Negocio • Sistema Oficial de Gestión", 105, y, { align: "center" });
+
+      // Descarga / apertura 100% compatible con móviles y navegadores
+      const fileName = `Cierre_${cashierName.replace(/\s+/g, '_')}_${format(shiftDate, 'dd-MM-yy_HHmm')}.pdf`;
+      const pdfBlob = doc.output('blob');
+      const blobUrl = URL.createObjectURL(pdfBlob);
+
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = fileName;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+
+      // En móviles, abrir también directamente la URL blob por si el navegador bloquea la descarga automática
+      setTimeout(() => {
+        try {
+          document.body.removeChild(link);
+        } catch (_) {}
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.open(blobUrl, '_blank');
+        }
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 15000);
+      }, 350);
+
     } catch (e) {
-      alert("Error al generar PDF.");
+      console.error("Error generando PDF de cierre:", e);
+      alert("Error al generar el PDF de cierre. Por favor intente nuevamente.");
     }
   };
 
@@ -1014,6 +1173,153 @@ const inventoryQuery = useMemoFirebase(() => {
         <h1 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-slate-900 flex items-center gap-2">
           <TrendingUp className="w-6 h-6 text-red-600" /> Control del Propietario
         </h1>
+      </div>
+
+      {/* ── CIERRES DE CAJA Y TURNOS (AUDITORÍA A DEMANDA / POR LLAMADO) ── */}
+      <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xs p-4 sm:p-5 space-y-3.5">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-2">
+            <FileText className="w-5 h-5 text-red-600 shrink-0" />
+            <div>
+              <h2 className="text-sm sm:text-base font-black uppercase tracking-tight text-slate-900 leading-tight">
+                Cierres de Caja
+              </h2>
+              <span className="text-[10px] font-bold text-slate-400 uppercase hidden sm:block">
+                Auditoría por llamado de turnos, arqueos y comprobantes en PDF
+              </span>
+            </div>
+          </div>
+          {(closureEmployeeFilter || closureDateFilter) && (
+            <button
+              onClick={() => {
+                setClosureEmployeeFilter('');
+                setClosureDateFilter('');
+              }}
+              className="text-[9px] font-bold text-red-600 hover:text-red-700 uppercase bg-red-50 hover:bg-red-100 px-2.5 py-1 rounded-full transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              Limpiar filtros (✕)
+            </button>
+          )}
+        </div>
+
+        {/* Filtros: Empleado (mes) y Día específico */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div className="space-y-1">
+            <label className="text-[10px] font-black uppercase text-slate-500 tracking-wider flex items-center gap-1">
+              <Users className="w-3 h-3 text-red-600" /> Empleado (Turnos del Mes)
+            </label>
+            <Select 
+              value={closureEmployeeFilter || 'NONE'} 
+              onValueChange={(val) => setClosureEmployeeFilter(val === 'NONE' ? '' : val)}
+            >
+              <SelectTrigger className="h-9 rounded-xl bg-slate-50 border-slate-200 text-xs font-bold px-2.5 shadow-2xs">
+                <SelectValue placeholder="Seleccionar empleado..." />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl shadow-lg border-slate-100">
+                <SelectItem value="NONE" className="text-xs font-medium text-slate-400">
+                  Ninguno (Sin filtro)
+                </SelectItem>
+                {uniqueCashiers.map((c: any) => (
+                  <SelectItem key={c.id} value={c.name} className="text-xs font-bold py-1.5">
+                    👤 {c.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-1">
+            <label className="text-[10px] font-black uppercase text-slate-500 tracking-wider flex items-center gap-1">
+              <Calendar className="w-3 h-3 text-red-600" /> Día (Turnos de la Fecha)
+            </label>
+            <input
+              type="date"
+              value={closureDateFilter}
+              onChange={(e) => setClosureDateFilter(e.target.value)}
+              className="h-9 w-full rounded-xl bg-slate-50 border border-slate-200 text-xs font-bold px-2.5 text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-red-600/30"
+            />
+          </div>
+        </div>
+
+        {/* Estado por llamado: si no hay filtros activos */}
+        {!closureEmployeeFilter && !closureDateFilter ? (
+          <div className="py-6 px-4 text-center rounded-2xl bg-slate-50 border border-dashed border-slate-200">
+            <FileText className="w-8 h-8 text-slate-300 mx-auto mb-1.5" />
+            <p className="text-xs font-bold text-slate-700 uppercase tracking-tight">
+              Consulta de Cierres a Demanda
+            </p>
+            <p className="text-[11px] text-slate-500 mt-0.5 max-w-md mx-auto">
+              Seleccioná un <strong>Empleado</strong> para llamar automáticamente todas sus operaciones del mes, o elegí un <strong>Día</strong> para auditar todos los turnos realizados en esa fecha.
+            </p>
+          </div>
+        ) : queriedClosedShifts.length === 0 ? (
+          <div className="py-6 px-4 text-center rounded-2xl bg-slate-50 border border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
+            No se encontraron turnos cerrados con los filtros seleccionados
+          </div>
+        ) : (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between px-1">
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                Turnos encontrados: <strong className="text-slate-700">{queriedClosedShifts.length}</strong>
+              </span>
+            </div>
+            <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1">
+              {queriedClosedShifts.map((shift: any) => {
+                const actual = shift.actualFinalCash || 0;
+                const shiftDate = shift.endTime ? (shift.endTime.toDate ? shift.endTime.toDate() : new Date(shift.endTime.seconds ? shift.endTime.seconds * 1000 : shift.endTime)) : new Date();
+                const branchLabel = shift.branchName || (branches.find(b => b.id === shift.branchId)?.name) || 'Sucursal';
+                const totalSold = shift.report?.total ?? shift.totalSold ?? 0;
+                const expected = shift.report?.expectedFinalCash ?? shift.expectedCash ?? actual;
+                const diff = actual - expected;
+
+                return (
+                  <div
+                    key={shift.id}
+                    className="p-3 rounded-2xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition-all"
+                  >
+                    <div className="min-w-0 flex-1 space-y-1">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-xs font-black text-slate-900 uppercase">
+                          {format(shiftDate, 'dd/MM/yyyy HH:mm')} hs
+                        </span>
+                        <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-white text-slate-700 border border-slate-200">
+                          👤 {shift.cashierName || 'Cajero'}
+                        </span>
+                        <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-red-50 text-red-700 border border-red-200">
+                          🏪 {branchLabel}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 text-[10px] font-bold text-slate-500 flex-wrap pt-0.5">
+                        <span>Vendido: <strong className="text-slate-800 font-black">${totalSold.toLocaleString('es-AR')}</strong></span>
+                        <span>•</span>
+                        <span>Declarado Efvo: <strong className="text-emerald-700 font-black">${actual.toLocaleString('es-AR')}</strong></span>
+                        <span>•</span>
+                        <span>
+                          Diferencia:{' '}
+                          <strong className={cn(
+                            "font-black",
+                            diff < 0 ? "text-red-600" : diff > 0 ? "text-amber-600" : "text-emerald-600"
+                          )}>
+                            {diff === 0 ? '$0 (Exacto)' : diff < 0 ? `-$${Math.abs(diff).toLocaleString('es-AR')} (Falta)` : `+$${diff.toLocaleString('es-AR')} (Sobra)`}
+                          </strong>
+                        </span>
+                      </div>
+                    </div>
+
+                    <Button
+                      size="sm"
+                      onClick={() => handleDownloadShiftPdf(shift)}
+                      className="h-8 px-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-black text-[10px] uppercase flex items-center justify-center gap-1.5 shadow-2xs shrink-0 cursor-pointer"
+                      title="Descargar comprobante de cierre en PDF"
+                    >
+                      <FileDown className="w-3.5 h-3.5" /> Descargar PDF
+                    </Button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── VENTAS DIARIAS POR SUCURSAL (DÍA POR DÍA: LUNES 10/11, MARTES 11/11...) ── */}
@@ -1443,90 +1749,6 @@ const inventoryQuery = useMemoFirebase(() => {
                 </div>
               ))}
             </div>
-
-            {/* ── HISTORIAL DE CIERRES DE CAJA (COMPACTO Y ACCESIBLE) ── */}
-            {filteredClosedShifts && filteredClosedShifts.length > 0 && (
-              <div className="p-3 sm:p-4 rounded-2xl border border-slate-200 bg-slate-50/70 transition-all select-none mt-2">
-                <div className="flex items-center justify-between gap-1.5 pb-2 border-b border-slate-200/70 mb-2">
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    <FileText className="w-4 h-4 text-red-600 shrink-0" />
-                    <h3 className="font-black text-slate-900 uppercase text-xs sm:text-sm tracking-tight">
-                      Historial de Cierres de Caja
-                    </h3>
-                  </div>
-
-                  <div className="w-32 sm:w-36">
-                    <Select value={selectedCashierFilter} onValueChange={setSelectedCashierFilter}>
-                      <SelectTrigger className="h-6 rounded-lg bg-white border-slate-200 text-[9px] font-bold px-1.5 py-0 shadow-2xs">
-                        <div className="flex items-center gap-1 truncate">
-                          <Users className="w-3 h-3 text-slate-400 shrink-0" />
-                          <SelectValue placeholder="Empleado" />
-                        </div>
-                      </SelectTrigger>
-                      <SelectContent className="rounded-xl shadow-lg border-slate-100">
-                        <SelectItem value="ALL" className="text-xs font-bold py-1.5">
-                          👥 Todos ({filteredClosedShifts.length})
-                        </SelectItem>
-                        {uniqueCashiers.map((c: any) => {
-                          const count = filteredClosedShifts.filter((s: any) => 
-                            (s.employeeId || s.cashierName || 'admin') === c.id || s.cashierName === c.id
-                          ).length;
-                          return (
-                            <SelectItem key={c.id} value={c.id} className="text-xs font-bold py-1.5">
-                              👤 {c.name} ({count})
-                            </SelectItem>
-                          );
-                        })}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                {displayedClosedShifts.length === 0 ? (
-                  <div className="py-4 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                    Sin cierres para este perfil
-                  </div>
-                ) : (
-                  <div className="max-h-[140px] overflow-y-auto no-scrollbar space-y-1.5 pr-0.5">
-                    {displayedClosedShifts.map((shift: any) => {
-                      const actual = shift.actualFinalCash || 0;
-                      const shiftDate = shift.endTime ? new Date(shift.endTime) : new Date();
-
-                      return (
-                        <div 
-                          key={shift.id}
-                          className="p-2 rounded-xl bg-white hover:bg-slate-100/90 border border-slate-200/80 flex items-center justify-between gap-2 transition-colors"
-                        >
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="text-[10px] font-black text-slate-800 uppercase">
-                                {format(shiftDate, 'dd/MM HH:mm')} hs
-                              </span>
-                              <span className="text-[8px] font-bold uppercase px-1 py-0.2 rounded bg-slate-50 text-slate-600 border border-slate-200 truncate max-w-[95px]">
-                                {shift.cashierName || 'Dueño'}
-                              </span>
-                            </div>
-                            <span className="text-[9px] font-bold text-slate-500 block mt-0.5">
-                              Declarado: <strong className="text-emerald-600 font-black">${actual.toLocaleString('es-AR')}</strong>
-                            </span>
-                          </div>
-
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => handleDownloadShiftPdf(shift)}
-                            className="h-6 w-6 p-0 rounded-md hover:bg-red-50 hover:text-red-600 shrink-0 text-slate-400 transition-colors"
-                            title="Descargar PDF de Cierre"
-                          >
-                            <FileDown className="w-3.5 h-3.5" />
-                          </Button>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            )}
           </div>
         );
       })()}
