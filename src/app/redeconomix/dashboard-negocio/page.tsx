@@ -10,7 +10,7 @@ import {
   Wallet, ArrowUpRight, BarChart3, AlertTriangle, Info, Clock, ShieldCheck,
   Store, Loader2, Save, Calendar, Activity, TrendingDown, Calculator,
   Sparkles, Copy, MessageCircle, Sparkles as SparklesIcon, Rocket, BookOpen,
-  FileDown, Unlock, ShoppingBag, FileText, Briefcase, Smartphone
+  FileDown, Unlock, ShoppingBag, FileText, Briefcase, Smartphone, Tag
 } from 'lucide-react';
 import { FloatingCartPanel } from '@/components/floating-cart-panel';
 import { RoleGuard } from '@/components/role-guard';
@@ -681,6 +681,7 @@ export default function BusinessDashboardPage() {
                                     {role === 'admin' && (
                                         <>
                                             <DashboardNavButton title="Resumen" icon={LayoutDashboard} href="/redeconomix/dashboard-negocio/resumen" color="bg-red-50 text-red-600" />
+                                            <DashboardNavButton title="Promociones" icon={Tag} href="/redeconomix/dashboard-negocio/promociones" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Compras" icon={ShoppingCart} href="/redeconomix/dashboard-negocio/compras" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Contabilidad" icon={FileText} href="/redeconomix/dashboard-negocio/contabilidad" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Proveedores" icon={Users} href="/redeconomix/dashboard-negocio/proveedores" color="bg-red-50 text-red-600" />
