@@ -1427,7 +1427,7 @@ export default function StockPage() {
         `Se movieron ${qty} unidades de ${originBranchName} a ${destBranchName}`
       );
 
-      toast({ title: "Traspaso Exitoso 📦", description: `Se movieron ${qty} unidades de ${product.name} a ${destBranchName}.` });
+      toast({ title: "Traspaso Exitoso", description: `Se movieron ${qty} unidades de ${product.name} a ${destBranchName}.` });
       setIsTransferModalOpen(false);
       setTransferProductId('');
       setTransferQuantity('1');
@@ -1732,7 +1732,7 @@ export default function StockPage() {
             );
 
             toast({ 
-              title: isIncoming ? "¡Stock ingresado correctamente! 📦" : "Producto Actualizado 📦",
+              title: isIncoming ? "¡Stock ingresado correctamente!" : "Producto Actualizado",
               description: isIncoming ? `Se sumaron +${addedQty} u. al stock existente.` : undefined
             });
         } else {
@@ -2885,7 +2885,7 @@ const getDateLabel = (product: any) => {
                 (p.barcode && product.barcode && p.barcode.toString() === product.barcode.toString())
             );
             if (isAlreadyListed) {
-                toast({ title: "Producto ya en inventario 📦", description: "Ingresá la cantidad recibida para sumarla al stock.", variant: "default" });
+                toast({ title: "Producto ya en inventario", description: "Ingresá la cantidad recibida para sumarla al stock.", variant: "default" });
                 const existingProduct = products?.find((p: any) => 
                     p.id === product.id || 
                     (p.code && product.code && p.code.toString() === product.code.toString()) ||

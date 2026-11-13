@@ -1537,7 +1537,7 @@ function SalesTerminalContent() {
             if (!committedToCloud) {
                 await queueSaleForSync(data);
                 toast({ 
-                    title: "Venta Registrada Offline 📦", 
+                    title: "Venta Registrada Offline", 
                     description: "El stock local fue descontado. La venta se sincronizará a la nube apenas regrese internet." 
                 });
             }

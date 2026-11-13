@@ -448,7 +448,7 @@ export async function updateWholesalerOrderStatus(orderId: string, newStatus: st
             
             await createNotification(
                 orderData.retailerId,
-                '📦 Actualización de Pedido',
+                'Actualización de Pedido',
                 `Tu pedido #${orderId.slice(-8).toUpperCase()} ${statusLabels[newStatus] || 'ha actualizado su estado'}.`,
                 'order_update',
                 '/redeconomix/mis-compras'

@@ -29,6 +29,10 @@ import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { useAlerts } from '@/hooks/use-alerts';
 
+// Quita emojis de textos guardados (la app usa íconos propios, no emojis)
+const cleanText = (text?: string) =>
+  (text || '').replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu, '').replace(/\s{2,}/g, ' ').trim();
+
 export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'white' }) {
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
@@ -105,8 +109,8 @@ export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'wh
         }
 
         toast({
-            title: isSale ? "💰 ¡VENTA EN CAJA!" : (isUrgent ? "🚨 ¡URGENTE!" : "🔔 NOTIFICACIÓN"),
-            description: latest?.message || latest?.title || "Tienes novedades en RedEconomiX",
+            title: isSale ? "¡VENTA EN CAJA!" : (isUrgent ? "¡URGENTE!" : "NOTIFICACIÓN"),
+            description: cleanText(latest?.message) || cleanText(latest?.title) || "Tienes novedades en RedEconomiX",
             variant: isUrgent ? "destructive" : "default",
         });
 
@@ -214,8 +218,8 @@ export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'wh
                     <div className="flex items-start gap-4">
                         <div className="p-2 bg-primary/5 rounded-xl">{getIconForType(notification.type)}</div>
                         <div className="flex-1 space-y-1">
-                            <p className="font-bold text-xs text-slate-900 uppercase tracking-tight leading-none">{notification.title}</p>
-                            <p className="text-[10px] font-medium text-slate-500 line-clamp-2 leading-relaxed">{notification.message}</p>
+                            <p className="font-bold text-xs text-slate-900 uppercase tracking-tight leading-none">{cleanText(notification.title)}</p>
+                            <p className="text-[10px] font-medium text-slate-500 line-clamp-2 leading-relaxed">{cleanText(notification.message)}</p>
                             <p className="text-[8px] font-black text-primary uppercase tracking-tighter">
                                 {notification.createdAt?.toDate?.() ? formatDistanceToNow(notification.createdAt.toDate(), { addSuffix: true, locale: es }) : ''}
                             </p>
@@ -234,11 +238,11 @@ export function NotificationsBell({ variant = 'dark' }: { variant?: 'dark' | 'wh
                     <div className="p-4 bg-primary/5 rounded-2xl">
                         {selectedNotification && getIconForType(selectedNotification.type)}
                     </div>
-                    <DialogTitle className="text-xl font-bold uppercase tracking-tight">{selectedNotification?.title}</DialogTitle>
+                    <DialogTitle className="text-xl font-bold uppercase tracking-tight">{cleanText(selectedNotification?.title)}</DialogTitle>
                 </div>
             </DialogHeader>
             <DialogDescription className="text-sm font-medium text-slate-600 leading-relaxed">
-                {selectedNotification?.message}
+                {cleanText(selectedNotification?.message)}
             </DialogDescription>
             <DialogFooter className="mt-8">
                 <Button onClick={handleConfirmRead} disabled={isUpdating} className="w-full h-12 rounded-2xl bg-primary hover:bg-red-600 text-white font-bold uppercase tracking-tight">
