@@ -51,18 +51,32 @@ jobs:
         working-directory: android
         run: ./gradlew bundleRelease
 
-      - name: 🔑 Firmar App Bundle (.AAB) de Producción
-        if: env.ANDROID_KEYSTORE_BASE64 != ''
+      - name: 🔑 Firmar App Bundle con Secrets (si existen)
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
         uses: r0adkll/sign-android-release@v1
         id: sign_app
-        env:
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
         with:
           releaseDirectory: android/app/build/outputs/bundle/release
           signingKeyBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           alias: ${{ secrets.ANDROID_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+
+      - name: 🔑 Firmar App Bundle Automático (si no hay secrets)
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+        working-directory: android
+        run: |
+          keytool -genkeypair -v -keystore release-negocios.keystore -alias redeconomix_negocios -keyalg RSA -keysize 2048 -validity 10000 -storepass RedEconomiX2026! -keypass RedEconomiX2026! -dname "CN=RedEconomiX Negocios, OU=RedEconomiX, O=RedEconomiX, L=Cordoba, ST=Cordoba, C=AR"
+          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore release-negocios.keystore -storepass RedEconomiX2026! -keypass RedEconomiX2026! app/build/outputs/bundle/release/app-release.aab redeconomix_negocios
+          cp app/build/outputs/bundle/release/app-release.aab app/build/outputs/bundle/release/app-release-signed.aab
+
+      - name: 🔐 Guardar Keystore de Firma
+        if: ${{ secrets.ANDROID_KEYSTORE_BASE64 == '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: RedEconomiX-Negocios-Keystore
+          path: android/release-negocios.keystore
+          retention-days: 30
 
       - name: 🔗 Link de Descarga Rápida (Sin límites de GitHub)
         working-directory: android
@@ -93,9 +107,10 @@ jobs:
         continue-on-error: true
 
       - name: 🚀 Subir AAB de Producción Firmado
-        if: steps.sign_app.outputs.signedReleaseFile != ''
         uses: actions/upload-artifact@v4
         with:
           name: RedEconomiX-Negocios-AAB-Production-Signed
-          path: ${{ steps.sign_app.outputs.signedReleaseFile }}
-          retention-days: 1
+          path: |
+            android/app/build/outputs/bundle/release/*signed*.aab
+            android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 7
