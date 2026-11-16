@@ -1841,12 +1841,10 @@ function SalesTerminalContent() {
                                 {/* Selector de Cliente */}
                                 <div className="border-t border-slate-100 pt-4 mt-4">
                                 {foundUser ? (
-                                    <div className="bg-red-50/50 rounded-2xl border border-red-200 p-4 relative z-10 animate-in fade-in duration-200">
+                                    <div className="bg-white rounded-2xl border border-slate-200 p-4 relative z-10 shadow-xs animate-in fade-in duration-200">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-2xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs">
-                                                    <User className="h-5 w-5" />
-                                                </div>
+                                                <User className="h-6 w-6 text-[#FF0000] shrink-0" />
                                                 <div>
                                                     <p className="text-xs font-black uppercase text-slate-900 tracking-wider">
                                                         {foundUser.displayName || foundUser.name || 'Cliente Verificado'}
@@ -1857,11 +1855,11 @@ function SalesTerminalContent() {
                                                         {foundUser.dni ? `DNI: ${foundUser.dni}` : ''}
                                                     </p>
                                                     {foundUser.isUnregistered ? (
-                                                        <span className="inline-block mt-1 text-[9px] font-black uppercase tracking-wider text-amber-700">
+                                                        <span className="inline-block mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-500">
                                                             Temporal (No Registrado)
                                                         </span>
                                                     ) : (
-                                                        <span className="inline-block mt-1 text-[9px] font-black uppercase tracking-wider text-red-600">
+                                                        <span className="inline-block mt-1 text-[9px] font-black uppercase tracking-wider text-[#FF0000]">
                                                             Registrado en App
                                                         </span>
                                                     )}
@@ -1874,7 +1872,7 @@ function SalesTerminalContent() {
                                                     setCustomerName('');
                                                 }}
                                                 variant="ghost"
-                                                className="h-8 w-8 p-0 rounded-full hover:bg-red-100/60 text-slate-400 hover:text-red-600"
+                                                className="h-8 w-8 p-0 rounded-full hover:bg-slate-100 text-slate-400 hover:text-[#FF0000]"
                                             >
                                                 <X className="h-4 w-4" />
                                             </Button>
@@ -1882,8 +1880,8 @@ function SalesTerminalContent() {
 
                                         {/* Campo para editar nombre del cliente temporal */}
                                         {foundUser.isUnregistered && (
-                                            <div className="mt-3 pt-3 border-t border-red-100">
-                                                <Label className="text-[9px] font-black text-slate-600 uppercase tracking-widest block mb-1">Nombre para el Ticket</Label>
+                                            <div className="mt-3 pt-3 border-t border-slate-100">
+                                                <Label className="text-[9px] font-black text-slate-700 uppercase tracking-widest block mb-1">Nombre para el Ticket</Label>
                                                 <Input 
                                                     placeholder="Ingrese nombre del cliente temporal"
                                                     value={customerName === foundUser.phone ? '' : customerName}
@@ -1892,7 +1890,7 @@ function SalesTerminalContent() {
                                                         setCustomerName(newName);
                                                         setFoundUser((prev: any) => prev ? { ...prev, displayName: newName } : null);
                                                     }}
-                                                    className="h-9 bg-white border-red-200 rounded-xl text-xs font-bold text-slate-800"
+                                                    className="h-9 bg-slate-50 border-slate-200 rounded-xl text-xs font-bold text-slate-900"
                                                 />
                                             </div>
                                         )}
@@ -1940,12 +1938,12 @@ function SalesTerminalContent() {
                                             <Button 
                                                 onClick={() => handleSearchClient()} 
                                                 disabled={isSearchingClient || !customerName}
-                                                className="px-3.5 sm:px-5 h-11 bg-red-600 text-white rounded-xl border-none hover:bg-red-700 gap-1.5 font-bold text-xs uppercase tracking-wider shadow-md shadow-red-600/20 shrink-0 transition-transform active:scale-95"
+                                                className="px-3.5 sm:px-5 h-11 bg-[#FF0000] text-white rounded-xl border-none hover:bg-[#D60000] gap-1.5 font-bold text-xs uppercase tracking-wider shadow-md shadow-red-500/20 shrink-0 transition-transform active:scale-95"
                                             >
                                                 {isSearchingClient ? (
-                                                    <span className="animate-spin text-sm">⏳</span>
+                                                    <Loader2 className="w-4 h-4 animate-spin text-white" />
                                                 ) : (
-                                                    <Search className="w-3.5 h-3.5" />
+                                                    <Search className="w-3.5 h-3.5 text-white" />
                                                 )}
                                                 BUSCAR
                                             </Button>
@@ -1962,52 +1960,52 @@ function SalesTerminalContent() {
                                             type="button"
                                             onClick={() => setSelectedPaymentMethod('cash')} 
                                             className={cn(
-                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs",
+                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs border-none",
                                                 selectedPaymentMethod === 'cash' 
-                                                    ? "bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500" 
+                                                    ? "bg-[#FF0000] hover:bg-[#D60000] text-white shadow-md shadow-red-500/25" 
                                                     : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                                             )}
                                         >
-                                            <Wallet className={cn("h-4 w-4 sm:h-5 sm:w-5", selectedPaymentMethod === 'cash' ? "text-white" : "text-red-600")} /> 
+                                            <Wallet className={cn("h-4 w-4 sm:h-5 sm:w-5 transition-colors", selectedPaymentMethod === 'cash' ? "text-white" : "text-[#FF0000]")} /> 
                                             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Efectivo</span>
                                         </Button>
                                         <Button 
                                             type="button"
                                             onClick={() => setSelectedPaymentMethod('transfer')} 
                                             className={cn(
-                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs",
+                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs border-none",
                                                 selectedPaymentMethod === 'transfer' 
-                                                    ? "bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500" 
+                                                    ? "bg-[#FF0000] hover:bg-[#D60000] text-white shadow-md shadow-red-500/25" 
                                                     : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                                             )}
                                         >
-                                            <Smartphone className={cn("h-4 w-4 sm:h-5 sm:w-5", selectedPaymentMethod === 'transfer' ? "text-white" : "text-red-600")} /> 
+                                            <Smartphone className={cn("h-4 w-4 sm:h-5 sm:w-5 transition-colors", selectedPaymentMethod === 'transfer' ? "text-white" : "text-[#FF0000]")} /> 
                                             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Transf.</span>
                                         </Button>
                                         <Button 
                                             type="button"
                                             onClick={() => setSelectedPaymentMethod('credit')} 
                                             className={cn(
-                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs",
+                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs border-none",
                                                 selectedPaymentMethod === 'credit' 
-                                                    ? "bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500" 
+                                                    ? "bg-[#FF0000] hover:bg-[#D60000] text-white shadow-md shadow-red-500/25" 
                                                     : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                                             )}
                                         >
-                                            <BookOpen className={cn("h-4 w-4 sm:h-5 sm:w-5", selectedPaymentMethod === 'credit' ? "text-white" : "text-red-600")} /> 
+                                            <BookOpen className={cn("h-4 w-4 sm:h-5 sm:w-5 transition-colors", selectedPaymentMethod === 'credit' ? "text-white" : "text-[#FF0000]")} /> 
                                             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">Fiado</span>
                                         </Button>
                                         <Button 
                                             type="button"
                                             onClick={() => setSelectedPaymentMethod('qr')} 
                                             className={cn(
-                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs",
+                                                "h-13 sm:h-15 px-2 py-1 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all shadow-xs border-none",
                                                 selectedPaymentMethod === 'qr' 
-                                                    ? "bg-red-600 hover:bg-red-700 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500" 
+                                                    ? "bg-[#FF0000] hover:bg-[#D60000] text-white shadow-md shadow-red-500/25" 
                                                     : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                                             )}
                                         >
-                                            <QrCode className={cn("h-4 w-4 sm:h-5 sm:w-5", selectedPaymentMethod === 'qr' ? "text-white" : "text-red-600")} /> 
+                                            <QrCode className={cn("h-4 w-4 sm:h-5 sm:w-5 transition-colors", selectedPaymentMethod === 'qr' ? "text-white" : "text-[#FF0000]")} /> 
                                             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider">QR</span>
                                         </Button>
                                     </div>
@@ -2035,7 +2033,7 @@ function SalesTerminalContent() {
                                             <Button 
                                                 onClick={() => handleConfirmOperation('cash')} 
                                                 disabled={isSubmitting}
-                                                className="w-full h-12 bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-2xl uppercase tracking-wider shadow-lg shadow-red-600/20 flex items-center justify-center transition-all disabled:opacity-50"
+                                                className="w-full h-12 bg-[#FF0000] hover:bg-[#D60000] active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-2xl uppercase tracking-wider shadow-lg shadow-red-500/20 flex items-center justify-center transition-all disabled:opacity-50 border-none"
                                             >
                                                 {isSubmitting ? (
                                                     <span className="flex items-center gap-2">
@@ -2061,7 +2059,7 @@ function SalesTerminalContent() {
                                             <Button 
                                                 onClick={() => handleConfirmOperation('transfer')} 
                                                 disabled={isSubmitting}
-                                                className="w-full h-12 bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-2xl uppercase tracking-wider shadow-lg shadow-red-600/20 flex items-center justify-center transition-all disabled:opacity-50"
+                                                className="w-full h-12 bg-[#FF0000] hover:bg-[#D60000] active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-2xl uppercase tracking-wider shadow-lg shadow-red-500/20 flex items-center justify-center transition-all disabled:opacity-50 border-none"
                                             >
                                                 {isSubmitting ? (
                                                     <span className="flex items-center gap-2">
@@ -2086,8 +2084,8 @@ function SalesTerminalContent() {
                                                         </div>
                                                         <div className="flex justify-between items-center">
                                                             <span className="text-xs font-bold text-slate-500">Estado</span>
-                                                            <span className={cn("text-xs font-black", foundCreditLine.status === 'blocked' ? "text-red-600" : "text-emerald-600")}>
-                                                                {foundCreditLine.status === 'blocked' ? "🔒 BLOQUEADA" : "✅ HABILITADA"}
+                                                            <span className={cn("text-xs font-black", foundCreditLine.status === 'blocked' ? "text-[#FF0000]" : "text-slate-900")}>
+                                                                {foundCreditLine.status === 'blocked' ? "SUSPENDIDA" : "HABILITADA"}
                                                             </span>
                                                         </div>
                                                         <div className="flex justify-between items-center">
@@ -2096,37 +2094,37 @@ function SalesTerminalContent() {
                                                         </div>
                                                         <div className="flex justify-between items-center">
                                                             <span className="text-xs font-bold text-slate-500">Deuda Previa</span>
-                                                            <span className="text-xs font-black text-red-600">${(Number(foundCreditLine.currentDebt) || 0).toLocaleString("es-AR")}</span>
+                                                            <span className="text-xs font-black text-[#FF0000]">${(Number(foundCreditLine.currentDebt) || 0).toLocaleString("es-AR")}</span>
                                                         </div>
                                                         <div className="flex justify-between items-center">
                                                             <span className="text-xs font-bold text-slate-500">Disponible para Fiar</span>
-                                                            <span className={cn("text-xs font-black", ((Number(foundCreditLine.creditLimit) || 0) - (Number(foundCreditLine.currentDebt) || 0) - totalCart) < 0 ? "text-red-600" : "text-emerald-600")}>
+                                                            <span className="text-xs font-black text-slate-900">
                                                                 ${((Number(foundCreditLine.creditLimit) || 0) - (Number(foundCreditLine.currentDebt) || 0)).toLocaleString("es-AR")}
                                                             </span>
                                                         </div>
                                                         <div className="h-px w-full bg-slate-100 my-1" />
                                                         <div className="flex justify-between items-center">
                                                             <span className="text-xs font-bold uppercase text-slate-800">Monto de esta Compra</span>
-                                                            <span className="text-base font-black text-red-600">
+                                                            <span className="text-base font-black text-[#FF0000]">
                                                                 ${totalCart.toLocaleString("es-AR")}
                                                             </span>
                                                         </div>
                                                     </div>
 
                                                     {foundCreditLine.status === 'blocked' ? (
-                                                        <div className="p-3 bg-red-100 text-red-700 rounded-xl text-center text-xs font-bold border border-red-200 mb-2">
-                                                            🚫 Cuenta suspendida por el dueño. No se puede fiar.
+                                                        <div className="p-3 bg-red-50 text-[#FF0000] rounded-xl text-center text-xs font-bold border border-red-200 mb-2">
+                                                            Cuenta suspendida por el dueño. No se puede fiar.
                                                         </div>
                                                     ) : totalCart > ((Number(foundCreditLine.creditLimit) || 0) - (Number(foundCreditLine.currentDebt) || 0)) ? (
-                                                        <div className="p-3 bg-amber-100 text-amber-800 rounded-xl text-center text-xs font-bold border border-amber-200 mb-2">
-                                                            ⚠️ El monto supera el crédito disponible del cliente.
+                                                        <div className="p-3 bg-red-50 text-[#FF0000] rounded-xl text-center text-xs font-bold border border-red-200 mb-2">
+                                                            El monto supera el crédito disponible del cliente.
                                                         </div>
                                                     ) : null}
 
                                                     <Button 
                                                         onClick={() => handleConfirmOperation('credit')} 
                                                         disabled={isSubmitting || foundCreditLine.status === 'blocked' || totalCart > ((Number(foundCreditLine.creditLimit) || 0) - (Number(foundCreditLine.currentDebt) || 0))}
-                                                        className="w-full h-12 bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-2xl uppercase tracking-wider shadow-lg shadow-red-600/20 flex items-center justify-center transition-all disabled:opacity-50"
+                                                        className="w-full h-12 bg-[#FF0000] hover:bg-[#D60000] active:scale-[0.98] text-white font-bold text-xs sm:text-sm rounded-2xl uppercase tracking-wider shadow-lg shadow-red-500/20 flex items-center justify-center transition-all disabled:opacity-50 border-none"
                                                     >
                                                         {isSubmitting ? (
                                                             <span className="flex items-center gap-2">
@@ -2139,11 +2137,11 @@ function SalesTerminalContent() {
                                                     </Button>
                                                 </>
                                             ) : (
-                                                <div className="text-center py-4 space-y-4">
-                                                    <AlertTriangle className="h-8 w-8 text-amber-500 mx-auto mb-2" />
+                                                <div className="text-center py-5 space-y-3 bg-white p-4 rounded-xl border border-slate-200">
+                                                    <AlertTriangle className="h-7 w-7 text-[#FF0000] mx-auto" />
                                                     <div>
-                                                        <p className="text-sm font-bold text-slate-700">Cliente no seleccionado</p>
-                                                        <p className="text-xs text-slate-500 mt-1">Busque arriba el nombre o teléfono del cliente con cuenta corriente autorizada.</p>
+                                                        <p className="text-sm font-black text-slate-900">Cliente no seleccionado</p>
+                                                        <p className="text-xs text-slate-500 mt-0.5">Busque arriba el nombre o teléfono del cliente con cuenta corriente autorizada.</p>
                                                     </div>
                                                 </div>
                                             )}
