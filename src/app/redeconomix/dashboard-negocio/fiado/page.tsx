@@ -544,9 +544,9 @@ export default function FiadoPage() {
                                     setNewAuthPerson('');
                                     setIsManualContactOpen(true);
                                 }}
-                                className="h-9 sm:h-10 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider px-3.5 shadow-xs flex items-center gap-1.5 shrink-0"
+                                className="h-9 sm:h-10 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider px-3.5 shadow-md shadow-red-500/20 flex items-center gap-1.5 shrink-0 transition-all border-none"
                             >
-                                <Plus className="w-4 h-4" />
+                                <Plus className="w-4 h-4 text-white" />
                                 <span>Nuevo Cliente</span>
                             </Button>
                         </div>
@@ -601,9 +601,9 @@ export default function FiadoPage() {
                                 </p>
                                 <Button 
                                     onClick={() => setIsManualContactOpen(true)}
-                                    className="bg-red-600 hover:bg-red-700 text-white rounded-xl h-10 px-4 font-bold text-xs uppercase"
+                                    className="bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white shadow-md shadow-red-500/20 rounded-xl h-10 px-4 font-bold text-xs uppercase transition-all border-none"
                                 >
-                                    <Plus className="w-4 h-4 mr-1.5" /> Crear Primer Cliente
+                                    <Plus className="w-4 h-4 mr-1.5 text-white" /> Crear Primer Cliente
                                 </Button>
                             </div>
                         ) : filteredCreditLines.length === 0 ? (
@@ -637,11 +637,11 @@ export default function FiadoPage() {
                                                     <div className="flex items-center gap-2">
                                                         <h4 className="font-bold text-slate-900 text-sm truncate">{line.customerName}</h4>
                                                         {isBlocked ? (
-                                                            <Badge variant="outline" className="border-red-200 text-red-700 bg-red-50 text-[9px] font-bold px-1.5 py-0 flex items-center gap-0.5 shrink-0">
+                                                            <Badge variant="outline" className="border-red-200 text-[#FF0000] bg-red-50 text-[9px] font-bold px-1.5 py-0 flex items-center gap-0.5 shrink-0">
                                                                 <Lock className="w-2.5 h-2.5" /> Bloqueada
                                                             </Badge>
                                                         ) : (
-                                                            <Badge variant="outline" className="border-emerald-200 text-emerald-700 bg-emerald-50 text-[9px] font-bold px-1.5 py-0 flex items-center gap-0.5 shrink-0">
+                                                            <Badge variant="outline" className="border-slate-200 text-slate-800 bg-slate-100 text-[9px] font-bold px-1.5 py-0 flex items-center gap-0.5 shrink-0">
                                                                 <CheckCircle2 className="w-2.5 h-2.5" /> Activa
                                                             </Badge>
                                                         )}
@@ -688,11 +688,11 @@ export default function FiadoPage() {
 
                             <div className="flex items-center gap-2">
                                 {selectedLine.status === 'blocked' ? (
-                                    <Badge variant="outline" className="border-red-200 text-red-700 bg-red-50 text-[10px] font-bold px-2 py-0.5 flex items-center gap-1">
+                                    <Badge variant="outline" className="border-red-200 text-[#FF0000] bg-red-50 text-[10px] font-bold px-2 py-0.5 flex items-center gap-1">
                                         <Lock className="w-3 h-3" /> Bloqueada
                                     </Badge>
                                 ) : (
-                                    <Badge variant="outline" className="border-emerald-200 text-emerald-700 bg-emerald-50 text-[10px] font-bold px-2 py-0.5 flex items-center gap-1">
+                                    <Badge variant="outline" className="border-slate-200 text-slate-800 bg-slate-100 text-[10px] font-bold px-2 py-0.5 flex items-center gap-1">
                                         <CheckCircle2 className="w-3 h-3" /> Habilitada
                                     </Badge>
                                 )}
@@ -741,7 +741,7 @@ export default function FiadoPage() {
                                             <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">
                                                 Límite: ${Number(selectedLine.creditLimit).toLocaleString('es-AR')}
                                             </span>
-                                            <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md inline-block mt-1">
+                                            <span className="text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md inline-block mt-1">
                                                 Disponible: ${Math.max(0, selectedLine.creditLimit - (selectedLine.currentDebt || 0)).toLocaleString('es-AR')}
                                             </span>
                                         </>
@@ -773,15 +773,15 @@ export default function FiadoPage() {
                             <div className="grid grid-cols-2 gap-2 pt-1">
                                 <Button 
                                     onClick={() => setIsVentaModalOpen(true)}
-                                    className="h-11 bg-red-600 hover:bg-red-700 active:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-xs flex items-center justify-center gap-1.5"
+                                    className="h-11 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md shadow-red-500/20 flex items-center justify-center gap-1.5 transition-all border-none"
                                 >
-                                    <Plus className="w-4 h-4" /> Cargar Fiado
+                                    <Plus className="w-4 h-4 text-white" /> Cargar Fiado
                                 </Button>
                                 <Button 
                                     onClick={() => setIsPagoModalOpen(true)}
-                                    className="h-11 bg-slate-900 hover:bg-slate-800 active:bg-slate-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-xs flex items-center justify-center gap-1.5"
+                                    className="h-11 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5 transition-all border-none"
                                 >
-                                    <CreditCard className="w-4 h-4" /> Cobrar Pago
+                                    <CreditCard className="w-4 h-4 text-white" /> Cobrar Pago
                                 </Button>
                             </div>
 
@@ -789,42 +789,34 @@ export default function FiadoPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 border-t border-slate-100">
                                 {selectedLine.customerPhone ? (
                                     <Button 
-                                        variant="outline"
                                         onClick={() => sendWhatsAppReceipt(selectedLine.customerPhone, selectedLine.customerName, selectedLine.currentDebt || 0, selectedLine.creditLimit || 10000)}
-                                        className="h-9 border-emerald-200 text-emerald-700 hover:bg-emerald-50 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
+                                        className="h-10 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white shadow-md shadow-red-500/20 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border-none"
                                     >
-                                        <MessageCircle className="w-4 h-4 text-emerald-600" /> WhatsApp Resumen
+                                        <MessageCircle className="w-4 h-4 text-white" /> WhatsApp Resumen
                                     </Button>
                                 ) : (
                                     <div className="hidden sm:block" />
                                 )}
 
                                 <Button 
-                                    variant="outline"
                                     disabled={(selectedLine.currentDebt || 0) <= 0}
                                     onClick={() => requestSecurityPin({ type: 'saldar_todo' })}
-                                    className="h-9 border-slate-200 text-slate-700 hover:bg-slate-50 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 disabled:opacity-40"
+                                    className="h-10 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white shadow-md shadow-red-500/20 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border-none disabled:opacity-40"
                                 >
-                                    <CheckCircle2 className="w-4 h-4 text-slate-500" /> Saldar Total
+                                    <CheckCircle2 className="w-4 h-4 text-white" /> Saldar Total
                                 </Button>
 
                                 <Button 
-                                    variant="outline"
                                     onClick={handleToggleBlockAccount}
-                                    className={cn(
-                                        "h-9 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border",
-                                        selectedLine.status === 'blocked'
-                                            ? "border-emerald-200 text-emerald-700 hover:bg-emerald-50"
-                                            : "border-amber-200 text-amber-700 hover:bg-amber-50"
-                                    )}
+                                    className="h-10 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white shadow-md shadow-red-500/20 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all border-none"
                                 >
                                     {selectedLine.status === 'blocked' ? (
                                         <>
-                                            <Unlock className="w-4 h-4 text-emerald-600" /> Habilitar Fiado
+                                            <Unlock className="w-4 h-4 text-white" /> Habilitar Fiado
                                         </>
                                     ) : (
                                         <>
-                                            <Lock className="w-4 h-4 text-amber-600" /> Suspender Fiado
+                                            <Lock className="w-4 h-4 text-white" /> Suspender Fiado
                                         </>
                                     )}
                                 </Button>
@@ -866,7 +858,7 @@ export default function FiadoPage() {
                                             </div>
 
                                             <div className="flex items-center gap-2.5 shrink-0">
-                                                <span className={cn("text-xs font-black tabular-nums", isVenta ? "text-red-600" : "text-emerald-600")}>
+                                                <span className={cn("text-xs font-black tabular-nums", isVenta ? "text-[#FF0000]" : "text-slate-900")}>
                                                     {isVenta ? '+' : '-'}${Number(tx.amount || 0).toLocaleString('es-AR')}
                                                 </span>
                                                 <button 
@@ -1000,7 +992,7 @@ export default function FiadoPage() {
                         <Button 
                             disabled={ventaItems.length === 0}
                             onClick={handleConfirmVenta} 
-                            className="w-full h-11 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold uppercase text-xs tracking-wider shadow-xs disabled:opacity-50"
+                            className="w-full h-11 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white rounded-xl font-bold uppercase text-xs tracking-wider shadow-md shadow-red-500/20 disabled:opacity-50 transition-all border-none"
                         >
                             Confirmar Fiado
                         </Button>
@@ -1046,7 +1038,7 @@ export default function FiadoPage() {
                         <Button 
                             disabled={!pagoAmount || parseFloat(pagoAmount) <= 0}
                             onClick={handleConfirmPago} 
-                            className="w-full h-11 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl font-bold uppercase text-xs tracking-wider shadow-xs disabled:opacity-50"
+                            className="w-full h-11 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white rounded-xl font-bold uppercase text-xs tracking-wider shadow-md shadow-red-500/20 disabled:opacity-50 transition-all border-none"
                         >
                             Guardar Pago
                         </Button>
@@ -1169,7 +1161,7 @@ export default function FiadoPage() {
                                 setIsManualContactOpen(false);
                                 await createOrOpenCreditLine(manualName, phone, manualDNI, manualEmail, manualAuthPersons, limitNum);
                             }}
-                            className="w-full h-11 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold uppercase text-xs tracking-wider shadow-xs disabled:opacity-50 mt-2"
+                            className="w-full h-11 bg-[#FF0000] hover:bg-[#D60000] active:scale-95 text-white rounded-xl font-bold uppercase text-xs tracking-wider shadow-md shadow-red-500/20 disabled:opacity-50 mt-2 transition-all border-none"
                         >
                             Guardar Cliente
                         </Button>
