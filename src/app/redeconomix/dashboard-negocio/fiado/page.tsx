@@ -19,7 +19,8 @@ import { useToast } from '@/hooks/use-toast';
 import { 
   ArrowLeft, Search, History, Users, ArrowRight, Scan, 
   MessageCircle, Phone, Trash2, CheckCircle2, Lock, Unlock, 
-  User, Plus, UserCheck, CreditCard, ChevronRight, AlertCircle, X
+  User, Plus, UserCheck, CreditCard, ChevronRight, AlertCircle, X,
+  Pencil
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { sendSecurityPinEmail } from '../../actions';
@@ -107,6 +108,11 @@ export default function FiadoPage() {
     const [securityPinInput, setSecurityPinInput] = useState('');
     const [isSendingPin, setIsSendingPin] = useState(false);
     const [pendingAction, setPendingAction] = useState<any>(null);
+
+    // EDIT CREDIT LIMIT MODAL
+    const [isEditLimitModalOpen, setIsEditLimitModalOpen] = useState(false);
+    const [newCreditLimitInput, setNewCreditLimitInput] = useState('');
+    const [isSavingLimit, setIsSavingLimit] = useState(false);
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -369,6 +375,38 @@ export default function FiadoPage() {
             setPendingAction(null);
         } catch(e) {
             toast({ title: "Error", description: "No se pudo ejecutar la acción.", variant: 'destructive' });
+        }
+    };
+
+    const handleOpenEditLimit = () => {
+        if (!selectedLine) return;
+        setNewCreditLimitInput(String(selectedLine.creditLimit ?? '100000'));
+        setIsEditLimitModalOpen(true);
+    };
+
+    const handleSaveCreditLimit = async () => {
+        if (!firestore || !selectedLine) return;
+        const parsed = Number(newCreditLimitInput);
+        if (isNaN(parsed) || parsed < 0) {
+            toast({ title: "Monto inválido", description: "Ingresá un número válido para el límite.", variant: 'destructive' });
+            return;
+        }
+        setIsSavingLimit(true);
+        try {
+            await updateDoc(doc(firestore, 'retailer_credit_lines', selectedLine.id), {
+                creditLimit: parsed,
+                updatedAt: serverTimestamp()
+            });
+            const updated = { ...selectedLine, creditLimit: parsed };
+            setSelectedLine(updated);
+            setCreditLines(prev => prev.map(l => l.id === selectedLine.id ? updated : l));
+            toast({ title: "Límite Actualizado", description: `El límite de crédito ahora es de $${parsed.toLocaleString('es-AR')}.` });
+            setIsEditLimitModalOpen(false);
+        } catch (e) {
+            console.error("Error al actualizar límite de crédito:", e);
+            toast({ title: "Error", description: "No se pudo actualizar el límite en la base de datos.", variant: 'destructive' });
+        } finally {
+            setIsSavingLimit(false);
         }
     };
 
@@ -736,20 +774,26 @@ export default function FiadoPage() {
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    {Number(selectedLine.creditLimit) > 0 && Number(selectedLine.creditLimit) < 1000000 ? (
-                                        <>
-                                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">
-                                                Límite: ${Number(selectedLine.creditLimit).toLocaleString('es-AR')}
+                                    <div className="flex items-center justify-end gap-1.5">
+                                        <button
+                                            type="button"
+                                            onClick={handleOpenEditLimit}
+                                            className="group inline-flex items-center gap-1.5 text-[9px] font-bold text-slate-400 hover:text-red-600 uppercase tracking-wider transition-colors cursor-pointer"
+                                            title="Hacé clic para ampliar o modificar el límite"
+                                        >
+                                            <span>
+                                                {Number(selectedLine.creditLimit) > 0 && Number(selectedLine.creditLimit) < 1000000
+                                                    ? `Límite: $${Number(selectedLine.creditLimit).toLocaleString('es-AR')}`
+                                                    : 'Sin tope de límite'}
                                             </span>
-                                            <span className="text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md inline-block mt-1">
-                                                Disponible: ${Math.max(0, selectedLine.creditLimit - (selectedLine.currentDebt || 0)).toLocaleString('es-AR')}
+                                            <span className="w-5 h-5 rounded-md bg-slate-200/80 group-hover:bg-red-50 text-slate-500 group-hover:text-red-600 flex items-center justify-center transition-colors">
+                                                <Pencil className="w-2.5 h-2.5" />
                                             </span>
-                                        </>
-                                    ) : (
-                                        <span className="text-[10px] font-bold text-slate-500 bg-slate-200/60 px-2 py-1 rounded-md inline-block">
-                                            Sin tope de límite
-                                        </span>
-                                    )}
+                                        </button>
+                                    </div>
+                                    <span className="text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md inline-block mt-1">
+                                        Disponible: ${Math.max(0, (selectedLine.creditLimit || 0) - (selectedLine.currentDebt || 0)).toLocaleString('es-AR')}
+                                    </span>
                                 </div>
                             </div>
 
@@ -1197,6 +1241,89 @@ export default function FiadoPage() {
                             className="w-full h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold uppercase tracking-wider text-xs shadow-xs"
                         >
                             Verificar y Confirmar
+                        </Button>
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* ─── MODAL EDITAR / AMPLIAR LÍMITE DE CRÉDITO ───────────── */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            <Dialog open={isEditLimitModalOpen} onOpenChange={setIsEditLimitModalOpen}>
+                <DialogContent className="max-w-[380px] rounded-2xl p-6 bg-white shadow-xl border border-slate-200">
+                    <DialogTitle className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
+                        <Pencil className="w-5 h-5 text-red-600" />
+                        Modificar Límite de Crédito
+                    </DialogTitle>
+                    <p className="text-xs text-slate-500 font-medium mt-1">
+                        Ampliá o ajustá el margen de cuenta corriente para <strong>{selectedLine?.customerName}</strong>. Se guardará de inmediato en la base de datos.
+                    </p>
+
+                    <div className="space-y-4 my-5">
+                        <div>
+                            <label className="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1.5">
+                                Nuevo Margen de Crédito ($)
+                            </label>
+                            <div className="relative">
+                                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-bold text-slate-400">$</span>
+                                <Input 
+                                    type="number"
+                                    value={newCreditLimitInput}
+                                    onChange={e => setNewCreditLimitInput(e.target.value)}
+                                    placeholder="100000"
+                                    className="pl-8 h-12 text-lg font-bold rounded-xl font-mono"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-2">
+                                Atajos rápidos
+                            </span>
+                            <div className="flex flex-wrap gap-1.5">
+                                {[50000, 100000, 150000, 200000, 300000, 500000].map((val) => (
+                                    <button
+                                        key={val}
+                                        type="button"
+                                        onClick={() => setNewCreditLimitInput(String(val))}
+                                        className={`text-xs font-bold px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
+                                            Number(newCreditLimitInput) === val 
+                                                ? 'bg-red-50 border-red-500 text-red-700' 
+                                                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                                        }`}
+                                    >
+                                        ${val.toLocaleString('es-AR')}
+                                    </button>
+                                ))}
+                                <button
+                                    type="button"
+                                    onClick={() => setNewCreditLimitInput('10000000')}
+                                    className={`text-xs font-bold px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
+                                        Number(newCreditLimitInput) >= 1000000 
+                                            ? 'bg-red-50 border-red-500 text-red-700' 
+                                            : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                                    }`}
+                                >
+                                    Sin límite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-2">
+                        <Button
+                            variant="outline"
+                            onClick={() => setIsEditLimitModalOpen(false)}
+                            className="flex-1 rounded-xl h-11 text-xs font-bold uppercase tracking-wider"
+                        >
+                            Cancelar
+                        </Button>
+                        <Button
+                            onClick={handleSaveCreditLimit}
+                            disabled={isSavingLimit}
+                            className="flex-1 rounded-xl h-11 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-red-500/20"
+                        >
+                            {isSavingLimit ? 'Guardando...' : 'Guardar Límite'}
                         </Button>
                     </div>
                 </DialogContent>
