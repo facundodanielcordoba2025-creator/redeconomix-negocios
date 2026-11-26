@@ -1993,7 +1993,7 @@ const getDateLabel = (product: any) => {
 
   const filteredProducts = useMemo(() => {
       if (!products) return [];
-      let result = products;
+      let result = products.filter(p => !p.isWholesaleOffer);
       
       if (selectedCategory !== 'ALL') {
           result = result.filter(p => normalizeCategory(p.category) === selectedCategory);
