@@ -35,7 +35,6 @@ const navLinks = [
     { href: "/redeconomix/dashboard-negocio/fiado", label: "Cuentas Corrientes", icon: BookOpen },
     { href: "/redeconomix/dashboard-negocio/stock", label: "Stock", icon: Package },
     { href: "/redeconomix/dashboard-negocio/promociones", label: "Promociones", icon: Tag },
-    { href: "/redeconomix/dashboard-negocio/venta-mayorista", label: "Venta Mayorista", icon: Truck },
     { href: "/redeconomix/dashboard-negocio/proveedores", label: "Proveedores", icon: Users },
     { href: "/redeconomix/dashboard-negocio/contabilidad", label: "Contabilidad", icon: DollarSign },
     { href: "/redeconomix/dashboard-negocio/rrhh", label: "Recursos Humanos", icon: ShieldCheck },

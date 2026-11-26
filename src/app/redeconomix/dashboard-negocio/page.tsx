@@ -682,7 +682,6 @@ export default function BusinessDashboardPage() {
                                         <>
                                             <DashboardNavButton title="Resumen" icon={LayoutDashboard} href="/redeconomix/dashboard-negocio/resumen" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Promociones" icon={Tag} href="/redeconomix/dashboard-negocio/promociones" color="bg-red-50 text-red-600" />
-                                            <DashboardNavButton title="Venta Mayorista" icon={Truck} href="/redeconomix/dashboard-negocio/venta-mayorista" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Compras" icon={ShoppingCart} href="/redeconomix/dashboard-negocio/compras" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Contabilidad" icon={FileText} href="/redeconomix/dashboard-negocio/contabilidad" color="bg-red-50 text-red-600" />
                                             <DashboardNavButton title="Proveedores" icon={Users} href="/redeconomix/dashboard-negocio/proveedores" color="bg-red-50 text-red-600" />
